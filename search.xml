@@ -1,3 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
+  <entry>
+    <title>test_my_site</title>
+    <url>/2020/03/06/test-my-site-1/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>test_my_site</title>
+    <url>/2020/03/05/test-my-site/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>测试</category>
+      </categories>
+  </entry>
 </search>

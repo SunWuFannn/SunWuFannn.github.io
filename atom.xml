@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>小张日记</title>
+  
+  <subtitle>哭唧唧</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2020-03-05T17:26:41.884Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Zhang SiFan</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>test_my_site</title>
+    <link href="http://yoursite.com/2020/03/06/test-my-site-1/"/>
+    <id>http://yoursite.com/2020/03/06/test-my-site-1/</id>
+    <published>2020-03-05T17:26:41.000Z</published>
+    <updated>2020-03-05T17:26:41.884Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>test_my_site</title>
+    <link href="http://yoursite.com/2020/03/05/test-my-site/"/>
+    <id>http://yoursite.com/2020/03/05/test-my-site/</id>
+    <published>2020-03-05T06:51:16.000Z</published>
+    <updated>2020-03-05T16:39:39.101Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="测试" scheme="http://yoursite.com/categories/%E6%B5%8B%E8%AF%95/"/>
+    
+    
+  </entry>
+  
+</feed>

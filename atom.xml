@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-06T06:53:58.756Z</updated>
+  <updated>2020-03-06T08:16:15.023Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,93 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ArrayList</title>
+    <link href="http://yoursite.com/2020/03/06/JavaArrayList/"/>
+    <id>http://yoursite.com/2020/03/06/JavaArrayList/</id>
+    <published>2020-03-05T16:00:00.000Z</published>
+    <updated>2020-03-06T08:16:15.023Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Array与ArrayList的区别&quot;&gt;&lt;a href=&quot;#Array与ArrayList的区别&quot; class=&quot;headerlink&quot; title=&quot;Array与ArrayList的区别&quot;&gt;&lt;/a&gt;Array与ArrayList的区别&lt;/h2&gt;&lt;p&gt;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="JAVA" scheme="http://yoursite.com/tags/JAVA/"/>
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Random</title>
+    <link href="http://yoursite.com/2020/03/06/Random/"/>
+    <id>http://yoursite.com/2020/03/06/Random/</id>
+    <published>2020-03-05T16:00:00.000Z</published>
+    <updated>2020-03-06T08:15:13.921Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;关于Random&quot;&gt;&lt;a href=&quot;#关于Random&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="JAVA" scheme="http://yoursite.com/tags/JAVA/"/>
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scanner</title>
+    <link href="http://yoursite.com/2020/03/06/Scanner/"/>
+    <id>http://yoursite.com/2020/03/06/Scanner/</id>
+    <published>2020-03-05T16:00:00.000Z</published>
+    <updated>2020-03-06T08:15:35.418Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;关于Scanner&quot;&gt;&lt;a href=&quot;#关于Scanner&quot; class=&quot;headerlink&quot; title=&quot;关于Scanner&quot;&gt;&lt;/a&gt;关于Scanner&lt;/h2&gt;&lt;p&gt; 
+        
+      
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="JAVA" scheme="http://yoursite.com/tags/JAVA/"/>
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>

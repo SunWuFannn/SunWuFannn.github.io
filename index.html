@@ -68,6 +68,304 @@
     
     
     
+    <article id="post-JavaArrayList" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/06/JavaArrayList/"
+    >ArrayList</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/06/JavaArrayList/" class="article-date">
+  <time datetime="2020-03-05T16:00:00.000Z" itemprop="datePublished">2020-03-06</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="Array与ArrayList的区别"><a href="#Array与ArrayList的区别" class="headerlink" title="Array与ArrayList的区别"></a>Array与ArrayList的区别</h2><p> 数组的长度不可以发生改变，但是ArrayList的<strong>长度是可以随意变化的</strong>。</p>
+<h2 id="关于ArrayList"><a href="#关于ArrayList" class="headerlink" title="关于ArrayList"></a>关于ArrayList</h2><p>对于ArrayList来说，用一个尖括号<E>代表泛型。</p>
+<p><strong>泛型</strong>：就是装在集合当中的所有元素，全都是统一的一种类型。</p>
+<p><strong>注意</strong>：泛型 <strong>只能</strong> 是引用类型，<strong>不能</strong> 是基本类型（byte,short,int,long,float,double,boolean,char）</p>
+<h2 id="如果想创建一个基本类型的ArrayList"><a href="#如果想创建一个基本类型的ArrayList" class="headerlink" title="如果想创建一个基本类型的ArrayList"></a>如果想创建一个基本类型的ArrayList</h2><p>可以使用基本类型所对应的“包装类”</p>
+<table>
+<thead>
+<tr>
+<th>基本类型</th>
+<th>包装类（引用类型）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>byte</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>short</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>int</td>
+<td><strong>Integer</strong></td>
+</tr>
+<tr>
+<td>Long</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>float</td>
+<td>Float</td>
+</tr>
+<tr>
+<td>double</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>Boolean</td>
+</tr>
+<tr>
+<td>char</td>
+<td><strong>Character</strong></td>
+</tr>
+</tbody></table>
+<h2 id="ArrayList的常用方法"><a href="#ArrayList的常用方法" class="headerlink" title="ArrayList的常用方法"></a>ArrayList的常用方法</h2><p><code>public boolean add(E e);</code>  向集合当中添加元素，参数的类型和泛型一致</p>
+<p><code>public E get(int index);</code>  从集合当中获取元素，参数是索引编号，返回值就是对应位置的元素</p>
+<p><code>public E remove(int index);</code>  从集合当中删除元素，参数是索引编号，返回值就是被删除的元素</p>
+<p><code>public int size();</code>  获取集合的尺寸长度，返回值就是集合当中包含的元素的个数</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Random" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/06/Random/"
+    >Random</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/06/Random/" class="article-date">
+  <time datetime="2020-03-05T16:00:00.000Z" itemprop="datePublished">2020-03-06</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="关于Random"><a href="#关于Random" class="headerlink" title="关于Random"></a>关于Random</h2><p>Random类位于java.util.Random包下，可以用来生成随机序列。</p>
+<p>有两种常用用法：</p>
+<p><code>Random()</code> 用时间作为种子产生随机序列，随机性性强，一般产生的序列不相同。</p>
+<p><code>Random(seed)</code> seed是产生随机序列的种子，只要是同一种子，每次产生的随机序列都相同。</p>
+<blockquote>
+<p>代码举例</p>
+</blockquote>
+<p>1.第一种方法产生随机序列</p>
+<pre><code>Random r = new Random();
+int a = nextInt(10);</code></pre><p><strong>10代表产生的随机序在0到10之间（不包括10），即[0,10)。</strong></p>
+<hr>
+<p>2.第二种方法产生随机序列</p>
+<pre><code>Random r = new Random(10);
+int a = nextInt(10);</code></pre><p><strong>每次产生的随机序列都相同。</strong></p>
+<hr>
+<p><em>具体更多用法可以查询API</em></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Scanner" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/06/Scanner/"
+    >Scanner</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/06/Scanner/" class="article-date">
+  <time datetime="2020-03-05T16:00:00.000Z" itemprop="datePublished">2020-03-06</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="关于Scanner"><a href="#关于Scanner" class="headerlink" title="关于Scanner"></a>关于Scanner</h2><p>  Scanner的作用类似于输入函数，可以把键盘的输入传递给需要用的变量。</p>
+<blockquote>
+<p>Scanner的使用步骤</p>
+</blockquote>
+<p>1.导包</p>
+<p>  <code>import java.util.Scanner;</code></p>
+<p>2.创建</p>
+<p>  <code>Scanner sc = new Scanner(System.in);</code></p>
+<p>tips：System.in表示从键盘输入。</p>
+<p>3.使用</p>
+<p><code>String str = sc.next();</code></p>
+<p><code>String str = sc.nextLine();</code></p>
+<p>对于字符串，有上述两种常用用法，对于第一种，遇到空格就结束，对于第二种遇到回车才结束。</p>
+<p><code>String str = sc.nextInt();</code></p>
+<p>对于int类型，常用用法如上所写。</p>
+<hr>
+<p><em>更多详细用法请查询API</em></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-hello-world" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 

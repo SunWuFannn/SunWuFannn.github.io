@@ -1,6 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java中的接口</title>
+    <url>/2020/03/07/JavaInterface/</url>
+    <content><![CDATA[<h2 id="关于接口"><a href="#关于接口" class="headerlink" title="关于接口"></a>关于接口</h2><p>  接口就是多个类的公共规范。</p>
+<p>  接口是一种引用数据类型，最重要的内容就是其中的：抽象方法。</p>
+<p>  接口与父子类继承有相似之处，可以把接口中的内容交给“实现类”来实现，接口与父子类相比，更加灵活，一个“实现类”可以<strong>多实现</strong>多个接口，而在父子类中只能<strong>单继承</strong>，一个子类只有一个父类。</p>
+<h2 id="接口的定义格式"><a href="#接口的定义格式" class="headerlink" title="接口的定义格式"></a>接口的定义格式</h2><pre><code>public interface 接口名称{
+    //接口方法
+}</code></pre><p><strong><em>接口中的内容</em></strong><br>&nbsp; &nbsp; </p>
+<ul>
+<li><p>如果是java7，那么接口中可以包含的内容有：</p>
+<ol>
+<li><p>常量（<strong>必须使用public static final三个关键字修饰，可以省略不写，但是初学者不建议这样做，常量必须有赋值</strong>）</p>
+</li>
+<li><p>抽象方法（<strong>有abstract关键字修饰</strong>）</p>
+</li>
+</ol>
+</li>
+<li><p>如果是java8，还可以额外包含有：</p>
+<ol start="3">
+<li>默认方法（<strong>可以解决接口升级的问题，即已经有了接口的实现类以后，接口升级不会影响已经使用此接口的实现类</strong>）</li>
+<li>静态方法</li>
+</ol>
+</li>
+<li><p>如果是java9，还可以额外包含有：</p>
+<ol start="5">
+<li>私有方法（<strong>接口中的私有方法用来作为两个方法的公有方法，解决两个方法之间代码重复的问题。但是这个方法不应该让实现类使用，应该是私有的。有普通私有方法与静态私有方法两种，分别解决多个默认方法之间代码重复的问题与多个静态方法之间代码重复的问题</strong>）</li>
+</ol>
+</li>
+</ul>
+<p><strong><em>接口的使用步骤</em></strong><br>&nbsp; &nbsp; </p>
+<ol>
+<li>接口不能直接使用，必须有一个“实现类”来“实现”接口。</li>
+</ol>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;格式：  </p>
+<pre><code>public class 实现类名称 implements 接口名称 {
+       //....
+}</code></pre><ol start="2">
+<li><p>接口的实现类<strong>必须</strong>覆盖重写（实现）接口中所有的抽象方法，如果实现类没有全部覆盖重写，那么实现类<strong>必须</strong>是抽象类。</p>
+</li>
+<li><p>创建实现类的对象，进行使用。</p>
+</li>
+</ol>
+<h2 id="实现类可以多实现多个接口"><a href="#实现类可以多实现多个接口" class="headerlink" title="实现类可以多实现多个接口"></a>实现类可以多实现多个接口</h2><p>注意事项：<br>&nbsp; &nbsp;</p>
+<ol>
+<li><p>如果实现类实现的多个接口中，<strong>有重复的抽象方法</strong>，那么只需要覆盖重写<strong>一次</strong>即可。</p>
+</li>
+<li><p>如果实现类实现的多个接口中，<strong>有重复的默认方法</strong>，那么实现类必须要对重复的默认方法<strong>覆盖重写</strong>。</p>
+</li>
+<li><p>一个类如果<strong>直接父类中的方法与接口中的默认方法产生了冲突</strong>，优先使用父类当中的方法，<strong>父类的优先级大于接口</strong>。</p>
+</li>
+</ol>
+<h2 id="接口与接口之间也可以多继承"><a href="#接口与接口之间也可以多继承" class="headerlink" title="接口与接口之间也可以多继承"></a>接口与接口之间也可以多继承</h2><p>注意事项：<br>&nbsp; &nbsp;</p>
+<ol>
+<li><p>多个父接口当中的<strong>抽象方法</strong>如果重复，没关系，因为在子接口当中本就要覆盖重写实现抽象方法。</p>
+</li>
+<li><p>多个父接口当中的<strong>默认方法</strong>如果重复，那么子接口必须进行默认方法的覆盖重写，而且必须要带着default关键字。</p>
+</li>
+</ol>
+<hr>
+<p>更多接口的详细信息可以咨询查找。</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ArrayList</title>
     <url>/2020/03/06/JavaArrayList/</url>
     <content><![CDATA[<h2 id="Array与ArrayList的区别"><a href="#Array与ArrayList的区别" class="headerlink" title="Array与ArrayList的区别"></a>Array与ArrayList的区别</h2><p> 数组的长度不可以发生改变，但是ArrayList的<strong>长度是可以随意变化的</strong>。</p>

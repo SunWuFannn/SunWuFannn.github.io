@@ -96,13 +96,10 @@ int a = nextInt(10);</code></pre><p><strong>每次产生的随机序列都相同
 <blockquote>
 <p>Scanner的使用步骤</p>
 </blockquote>
-<p>1.导包</p>
-<p>  <code>import java.util.Scanner;</code></p>
-<p>2.创建</p>
-<p>  <code>Scanner sc = new Scanner(System.in);</code></p>
+<h4 id="1-导包"><a href="#1-导包" class="headerlink" title="1.导包"></a>1.导包</h4><p>  <code>import java.util.Scanner;</code></p>
+<h4 id="2-创建"><a href="#2-创建" class="headerlink" title="2.创建"></a>2.创建</h4><p>  <code>Scanner sc = new Scanner(System.in);</code></p>
 <p>tips：System.in表示从键盘输入。</p>
-<p>3.使用</p>
-<p><code>String str = sc.next();</code></p>
+<h4 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h4><p><code>String str = sc.next();</code></p>
 <p><code>String str = sc.nextLine();</code></p>
 <p>对于字符串，有上述两种常用用法，对于第一种，遇到空格就结束，对于第二种遇到回车才结束。</p>
 <p><code>String str = sc.nextInt();</code></p>

@@ -132,6 +132,32 @@
       </tags>
   </entry>
   <entry>
+    <title>Scanner</title>
+    <url>/2020/03/06/Scanner/</url>
+    <content><![CDATA[<h2 id="关于Scanner"><a href="#关于Scanner" class="headerlink" title="关于Scanner"></a>关于Scanner</h2><p>  Scanner的作用类似于输入函数，可以把键盘的输入传递给需要用的变量。</p>
+<blockquote>
+<p>Scanner的使用步骤</p>
+</blockquote>
+<h4 id="1-导包"><a href="#1-导包" class="headerlink" title="1.导包"></a>1.导包</h4><p>  <code>import java.util.Scanner;</code></p>
+<h4 id="2-创建"><a href="#2-创建" class="headerlink" title="2.创建"></a>2.创建</h4><p>  <code>Scanner sc = new Scanner(System.in);</code></p>
+<p>tips：System.in表示从键盘输入。</p>
+<h4 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h4><p><code>String str = sc.next();</code></p>
+<p><code>String str = sc.nextLine();</code></p>
+<p>对于字符串，有上述两种常用用法，对于第一种，遇到空格就结束，对于第二种遇到回车才结束。</p>
+<p><code>String str = sc.nextInt();</code></p>
+<p>对于int类型，常用用法如上所写。</p>
+<hr>
+<p><em>更多详细用法请查询API</em></p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Random</title>
     <url>/2020/03/06/Random/</url>
     <content><![CDATA[<h2 id="关于Random"><a href="#关于Random" class="headerlink" title="关于Random"></a>关于Random</h2><p>Random类位于java.util.Random包下，可以用来生成随机序列。</p>
@@ -150,32 +176,6 @@ int a = nextInt(10);</code></pre><p><strong>10代表产生的随机序在0到10�
 int a = nextInt(10);</code></pre><p><strong>每次产生的随机序列都相同。</strong></p>
 <hr>
 <p><em>具体更多用法可以查询API</em></p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>JAVA</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Scanner</title>
-    <url>/2020/03/06/Scanner/</url>
-    <content><![CDATA[<h2 id="关于Scanner"><a href="#关于Scanner" class="headerlink" title="关于Scanner"></a>关于Scanner</h2><p>  Scanner的作用类似于输入函数，可以把键盘的输入传递给需要用的变量。</p>
-<blockquote>
-<p>Scanner的使用步骤</p>
-</blockquote>
-<h4 id="1-导包"><a href="#1-导包" class="headerlink" title="1.导包"></a>1.导包</h4><p>  <code>import java.util.Scanner;</code></p>
-<h4 id="2-创建"><a href="#2-创建" class="headerlink" title="2.创建"></a>2.创建</h4><p>  <code>Scanner sc = new Scanner(System.in);</code></p>
-<p>tips：System.in表示从键盘输入。</p>
-<h4 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h4><p><code>String str = sc.next();</code></p>
-<p><code>String str = sc.nextLine();</code></p>
-<p>对于字符串，有上述两种常用用法，对于第一种，遇到空格就结束，对于第二种遇到回车才结束。</p>
-<p><code>String str = sc.nextInt();</code></p>
-<p>对于int类型，常用用法如上所写。</p>
-<hr>
-<p><em>更多详细用法请查询API</em></p>
 ]]></content>
       <categories>
         <category>笔记</category>

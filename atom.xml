@@ -77,6 +77,35 @@
   </entry>
   
   <entry>
+    <title>String字符串</title>
+    <link href="http://yoursite.com/2020/04/04/String/"/>
+    <id>http://yoursite.com/2020/04/04/String/</id>
+    <published>2020-04-03T16:00:00.000Z</published>
+    <updated>2020-04-04T13:21:12.575Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;String字符串&quot;&gt;&lt;a href=&quot;#String字符串&quot; class=&quot;headerlink&quot; title=&quot;String字符串&quot;&gt;&lt;/a&gt;String字符串&lt;/h2&gt;&lt;h3 id=&quot;String字符串的特点&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="JAVA" scheme="http://yoursite.com/tags/JAVA/"/>
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java中的接口</title>
     <link href="http://yoursite.com/2020/03/07/JavaInterface/"/>
     <id>http://yoursite.com/2020/03/07/JavaInterface/</id>

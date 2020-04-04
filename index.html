@@ -252,6 +252,138 @@
 
 </article>
     
+    <article id="post-String" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/04/String/"
+    >String字符串</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/04/String/" class="article-date">
+  <time datetime="2020-04-03T16:00:00.000Z" itemprop="datePublished">2020-04-04</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="String字符串"><a href="#String字符串" class="headerlink" title="String字符串"></a>String字符串</h2><h3 id="String字符串的特点"><a href="#String字符串的特点" class="headerlink" title="String字符串的特点"></a>String字符串的特点</h3><ol>
+<li>字符串的内容永不可变 。 <strong>重点</strong></li>
+<li>正是因为字符串不可变，所以字符串可以共享使用。</li>
+<li>字符串效果相当于是char[]字符数组，但是底层原理是byte[]字节数组</li>
+</ol>
+<p><strong><em>关于字符串内容永不可变</em></strong></p>
+<blockquote>
+<p>String str = “Hello”；<br>  str实际上是对“Hello”的引用，”Hello”才是在堆中被创建的字符串对象，里面存的的字符串内容是Hello，而str则存放的是Hello这个字符串对象的地址。<br><br>  当出现这种情况时：str = “world”；<br>  原本Hello那个字符串的内容并没有改变，只是在堆中新创建了一个world的字符串对象，而str成了world的引用，存放的是world这个字符串对象的地址。<br>  所以字符串内容是永不可变的，你感觉到的变了其实是引用地址的改变。</p>
+</blockquote>
+<h3 id="创建字符串的常见方式（3-1种）"><a href="#创建字符串的常见方式（3-1种）" class="headerlink" title="创建字符串的常见方式（3+1种）"></a>创建字符串的常见方式（3+1种）</h3><p><strong>三种构造方法</strong></p>
+<ol>
+<li><p><code>public String();</code> 创建一个空白字符串，不含有任何内容。</p>
+</li>
+<li><p><code>public String(char[] array);</code> 根据字符数组的内容，来创建对应的字符串。</p>
+</li>
+<li><p><code>public String(byte[] array);</code> 根据字节数组的内容，来创建对应的字符串。</p>
+</li>
+</ol>
+<p><strong>一种直接创建</strong></p>
+<p>String str = “Hello”;</p>
+<h3 id="String类中常用的一些方法"><a href="#String类中常用的一些方法" class="headerlink" title="String类中常用的一些方法"></a>String类中常用的一些方法</h3><h4 id="与转换相关的方法"><a href="#与转换相关的方法" class="headerlink" title="与转换相关的方法"></a><strong><em>与转换相关的方法</em></strong></h4><p><code>public char[] toCharArray();</code> 将当前字符串拆封为字符数组作为返回值。</p>
+<p><code>public byte[] getBytes();</code> 获得当前字符串底层的字节数组。</p>
+<p><code>public String replace(CharSequence oldString,CharSequence newString);</code>将所有出现的老字符串替换为新字符串，返回替换之后的结果字符串。CharSequence意思就是说可以接收字符串类型。<strong>游戏种的关键字屏蔽可以用这种方法</strong></p>
+<h4 id="与比较相关的方法"><a href="#与比较相关的方法" class="headerlink" title="与比较相关的方法"></a><strong><em>与比较相关的方法</em></strong></h4><p>==用于字符串的比较是对<strong>对象的地址</strong>进行比较，如果要对内容进行比较，可以用下面两个方法。</p>
+<p><code>public boolean equals(Object obj);</code> 参数可以是任何对象，只有参数是一个字符串并且内容相同才会返回true，否则返回false。</p>
+<blockquote>
+<p>“Hello”.equals(str);<br><strong>注意</strong>：这样写比str.equals(“Hello”)好，因为str.equals(“Hello”)可能会抛出空指针异常，str是一个变量，而”Hello”.equals(str)不会抛出这个异常，因为“Hello”是一个常量，永远不会空指针。</p>
+</blockquote>
+<p><code>public boolean equalsIgnoreCase(String str);</code>忽略大小写进行字符串比较</p>
+<blockquote>
+<p>str = “ABC”;<br> “abc”.equalsIgnoreCase(str) = true;</p>
+</blockquote>
+<h4 id="与获取相关的一些方法"><a href="#与获取相关的一些方法" class="headerlink" title="与获取相关的一些方法"></a><strong><em>与获取相关的一些方法</em></strong></h4><p><code>public int length();</code> 获取字符串中字符的个数，拿到字符串长度。</p>
+<p><code>public String concat(String str);</code> 将当前字符串和参数字符串拼接成为返回值新的字符串。</p>
+<p><code>public char charAt(int index);</code> 获取指定索引位置的单个字符。</p>
+<p><code>public int indexOf(String str);</code> 查找参数字符串在本字符串中首次出现的位置，若不存在则返回-1。</p>
+<h4 id="字符串的截取方法"><a href="#字符串的截取方法" class="headerlink" title="字符串的截取方法"></a><strong><em>字符串的截取方法</em></strong></h4><p><code>public String substring(int index);</code> 从参数位置开始一直到字符串末尾返回新字符串。</p>
+<p><code>public String substring(int begin, int end);</code> 从begin开始一直到end结束返回新字符串，<strong>包括begin不包括end</strong>。</p>
+<h4 id="分割字符串的方法"><a href="#分割字符串的方法" class="headerlink" title="分割字符串的方法"></a><strong><em>分割字符串的方法</em></strong></h4><p><code>public String[] split(String regex);</code> 按照参数的规则，将字符串切割成若干部分。</p>
+<p>split方法的参数实际上是一个“正则表达式”，如果用英文句点“.”进行切分，<strong>必须写“\\.”</strong>，因为需要转义。</p>
+<h3 id="关于常量池的概念"><a href="#关于常量池的概念" class="headerlink" title="关于常量池的概念"></a>关于常量池的概念</h3><ol>
+<li><p>对于引用类型来说，==进行的是地址值的比较。</p>
+</li>
+<li><p>双引号直接写的字符串在常量池当中，new的不在池中。</p>
+<pre><code>public static void main(String[] args) {
+    String str1 = &quot;a,b,c&quot;;
+    String str2 = &quot;a,b,c&quot;;
+
+    char[] array = {&apos;a&apos;, &apos;b&apos;, &apos;c&apos;};
+    String str3 = new String(array);
+
+    System.out.println(str1 == str2);   //true
+    System.out.println(str1 == str3);   //false
+    System.out.println(str2 == str3);   //false
+}</code></pre></li>
+</ol>
+<p><strong>原理</strong></p>
+<p><img src="https://s1.ax1x.com/2020/04/04/G0Yb9O.png" alt="Principle"></p>
+<hr>
+<p><br>以上是对String字符串类型有关内容的一些小小整理，想要了解更多请自己查询有关知识。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-JavaInterface" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 

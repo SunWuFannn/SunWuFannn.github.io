@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>工具类：Arrays Math</title>
+    <url>/2020/04/04/ArraysAndMath/</url>
+    <content><![CDATA[<h2 id="JAVA中的两个工具类：Arrays与Math"><a href="#JAVA中的两个工具类：Arrays与Math" class="headerlink" title="JAVA中的两个工具类：Arrays与Math"></a>JAVA中的两个工具类：Arrays与Math</h2><h3 id="1-Arrays"><a href="#1-Arrays" class="headerlink" title="1. Arrays"></a>1. Arrays</h3><p>  java.util.Arrays是一个与<strong>数组相关</strong>的工具类。里面提供了大量静态方法，用来实现<strong>数组</strong>常见的操作。</p>
+<p>  <strong>其中比较常用的方法</strong></p>
+<p>  <code>public static String toString(数组)</code></p>
+<p>  作用：将参数数组变成字符串（按默认格式：{元素1，元素2，元素3…….}）。</p>
+<p>  <code>public static void sort(数组)</code></p>
+<p>  作用：按照默认升序对数组进行排序。</p>
+<p>  &nbsp; &nbsp;</p>
+<h3 id="2-Math"><a href="#2-Math" class="headerlink" title="2. Math"></a>2. Math</h3><p>  java.lang.Math类是数学相关的工具类，里面提供了大量的静态方法，完成与数学相关运算的操作。</p>
+<p>  <strong>其中比较常用的方法</strong></p>
+<p>  <code>public static double abs(double num);</code><br>  ：获取绝对值。</p>
+<p>  <code>public static double ceil(double num);</code><br>  ：向上取整。</p>
+<p>  <code>public static double floor(double num);</code><br>  ：向下取整。</p>
+<p>  <code>public static long round(double num);</code><br>  ：四舍五入。</p>
+<p>  tips： <strong><em>Math.PI代表近似圆周率常量（double）</em></strong></p>
+<p>  &nbsp; &nbsp;</p>
+<hr>
+<p>  &nbsp; &nbsp;</p>
+<p>  关于这两个工具类的常用方法简单粗略了写了一下，如过想要了解知道更多，请咨询查找有关信息，<strong>重点记住Arrays是操作数组的工具类，而Math是和数学有关的工具类</strong>。</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java中的接口</title>
     <url>/2020/03/07/JavaInterface/</url>
     <content><![CDATA[<h2 id="关于接口"><a href="#关于接口" class="headerlink" title="关于接口"></a>关于接口</h2><p>  接口就是多个类的公共规范。</p>

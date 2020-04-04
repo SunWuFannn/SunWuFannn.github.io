@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Java中的接口 |  小张日记
+    JAVA当中的继承 |  小张日记
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -34,7 +34,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-JavaInterface" class="article article-type-post" itemscope
+  <article id="post-Extends" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -42,7 +42,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Java中的接口
+  JAVA当中的继承
 </h1>
   
 
@@ -51,8 +51,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/03/07/JavaInterface/" class="article-date">
-  <time datetime="2020-03-06T16:00:00.000Z" itemprop="datePublished">2020-03-07</time>
+      <a href="/2020/04/04/Extends/" class="article-date">
+  <time datetime="2020-04-03T16:00:00.000Z" itemprop="datePublished">2020-04-04</time>
 </a>
       
   <div class="article-category">
@@ -66,7 +66,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">767字</span>
+            <span class="post-count">953字</span>
         </span>
     </span>
 
@@ -75,7 +75,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2分钟</span>
+            <span class="post-count">3分钟</span>
         </span>
     </span>
 </div>
@@ -102,64 +102,74 @@
       
 
       
-      <h2 id="关于接口"><a href="#关于接口" class="headerlink" title="关于接口"></a>关于接口</h2><p>  接口就是多个类的公共规范。</p>
-<p>  接口是一种引用数据类型，最重要的内容就是其中的：抽象方法。</p>
-<p>  接口与父子类继承有相似之处，可以把接口中的内容交给“实现类”来实现，接口与父子类相比，更加灵活，一个“实现类”可以<strong>多实现</strong>多个接口，而在父子类中只能<strong>单继承</strong>，一个子类只有一个父类。</p>
-<h2 id="接口的定义格式"><a href="#接口的定义格式" class="headerlink" title="接口的定义格式"></a>接口的定义格式</h2><pre><code>public interface 接口名称{
-    //接口方法
-}</code></pre><p><strong><em>接口中的内容</em></strong><br>&nbsp; &nbsp; </p>
-<ul>
-<li><p>如果是java7，那么接口中可以包含的内容有：</p>
+      <h2 id="关于继承"><a href="#关于继承" class="headerlink" title="关于继承"></a>关于继承</h2><p>  在继承的关系中，一个子类就是一个父类，也就是说，子类可以被当作父类看待。</p>
+<p>  例如父类是员工，子类是讲师，那么“讲师就是一个员工”。</p>
+<h2 id="父类的格式"><a href="#父类的格式" class="headerlink" title="父类的格式"></a>父类的格式</h2><pre><code>public clss 父类名称(){
+    // ...
+}</code></pre><h2 id="子类的格式"><a href="#子类的格式" class="headerlink" title="子类的格式"></a>子类的格式</h2><pre><code>public class 子类名称 extends 父类名称(){
+    //....
+}</code></pre><blockquote>
+<p>关于继承中的一些注意事项</p>
+</blockquote>
 <ol>
-<li><p>常量（<strong>必须使用public static final三个关键字修饰，可以省略不写，但是初学者不建议这样做，常量必须有赋值</strong>）</p>
-</li>
-<li><p>抽象方法（<strong>有abstract关键字修饰</strong>）</p>
-</li>
-</ol>
-</li>
-<li><p>如果是java8，还可以额外包含有：</p>
-<ol start="3">
-<li>默认方法（<strong>可以解决接口升级的问题，即已经有了接口的实现类以后，接口升级不会影响已经使用此接口的实现类</strong>）</li>
-<li>静态方法</li>
-</ol>
-</li>
-<li><p>如果是java9，还可以额外包含有：</p>
-<ol start="5">
-<li>私有方法（<strong>接口中的私有方法用来作为两个方法的公有方法，解决两个方法之间代码重复的问题。但是这个方法不应该让实现类使用，应该是私有的。有普通私有方法与静态私有方法两种，分别解决多个默认方法之间代码重复的问题与多个静态方法之间代码重复的问题</strong>）</li>
-</ol>
-</li>
+<li>在父子类的继承关系当中，如果成员变量重名，则创建子类对象时，访问有两种方式：<ul>
+<li>直接通过子类对象访问成员变量：等号左边是谁则优先用谁，没有则向上找。</li>
+<li>间接通过成员方法访问成员变量：该方法属于谁就优先用谁，没有则向上找。</li>
 </ul>
-<p><strong><em>接口的使用步骤</em></strong><br>&nbsp; &nbsp; </p>
-<ol>
-<li>接口不能直接使用，必须有一个“实现类”来“实现”接口。</li>
+</li>
+<li>子类与父类成员方法重名，创建的对象是谁就优先用谁，否则就向上找。</li>
 </ol>
-<p>&nbsp; &nbsp; &nbsp; &nbsp;格式：  </p>
-<pre><code>public class 实现类名称 implements 接口名称 {
-       //....
-}</code></pre><ol start="2">
-<li><p>接口的实现类<strong>必须</strong>覆盖重写（实现）接口中所有的抽象方法，如果实现类没有全部覆盖重写，那么实现类<strong>必须</strong>是抽象类。</p>
-</li>
-<li><p>创建实现类的对象，进行使用。</p>
-</li>
-</ol>
-<h2 id="实现类可以多实现多个接口"><a href="#实现类可以多实现多个接口" class="headerlink" title="实现类可以多实现多个接口"></a>实现类可以多实现多个接口</h2><p>注意事项：<br>&nbsp; &nbsp;</p>
+<hr>
+<h2 id="继承中对方法进行覆盖重写"><a href="#继承中对方法进行覆盖重写" class="headerlink" title="继承中对方法进行覆盖重写"></a>继承中对方法进行覆盖重写</h2><p><strong>要求</strong></p>
+<p>1.字符类<strong>成员方法名称一样，参数列表也一样</strong>，@Override 写在方法前面，用来检测是不是有效的正确覆盖重写。（这个注解要是不写，只要满足要求，也是正确的方法覆盖重写）</p>
+<p>2.<strong>子类方法的返回值必须小于等于父类方法的返回值。</strong></p>
+<p><strong>例</strong>：父类中返回值类型为String类，子类中为Object类，这样是不行的，子类返回值大于父类。</p>
+<p>3.<strong>子类方法的权限必须大于等于父类方法的权限修饰符</strong></p>
+<p><strong>注</strong>：public &gt; protected &gt; (default) &gt; private<br>这个(default)不是关键字default，而是代表什么也不写，留空。</p>
+<hr>
+<h2 id="继承关系中的构造方法"><a href="#继承关系中的构造方法" class="headerlink" title="继承关系中的构造方法"></a>继承关系中的构造方法</h2><p>1.子类构造方法中有一个<strong>默认隐含</strong>的“super()”调用，所以一定是<strong>先调用的父类构造，后执行的子类构造</strong>。</p>
+<p>2.可以<strong>通过super关键字来子类构造调用父类重载构造</strong>。</p>
+<p>3.<strong>super的父类构造调用，必须是子类构造的第一个语句，不能一个子类构造调用多次super构造</strong>。</p>
+<p><strong>父类构造方法</strong></p>
+<p><code>public Fu() {System.out.println(&quot;这是一个父类无参构造方法&quot;);}</code></p>
+<p><code>public Fu(int num) {System.out.println(&quot;这是一个父类有参构造方法&quot;);}</code></p>
+<p><strong>子类构造方法</strong></p>
+<pre><code>public Zi(){
+    //        super();  //调用父类无参构造方法
+    super(20);      //调用父类重载的构造方法
+    System.out.println(&quot;这是一个子类构造方法&quot;);
+}
+
+ public Zi(int num){
+    System.out.println(&quot;这是一个有参子类构造方法&quot;);
+}</code></pre><p><strong>主方法</strong></p>
+<p><strong><em>输入</em></strong></p>
+<p><code>public static void main(String[] args) {Zi zi = new Zi();}</code></p>
+<p><strong><em>输出</em></strong></p>
+<p>这是一个父类有参构造方法（子类的无参构造中调用了父类的有参构造）</p>
+<p>这是一个子类构造方法（子类的无参构造方法）</p>
+<p><strong><em>输入</em></strong></p>
+<p><code>public static void main(String[] args) {Zi zi = new Zi(10);}</code></p>
+<p><strong><em>输出</em></strong></p>
+<p>这是一个父类无参构造方法（子类的有参构造方法中默认隐含一个父类的无参构造方法）</p>
+<p>这是一个有参子类构造方法（子类的有参构造方法）</p>
+<hr>
+<h2 id="继承中相关的抽象方法"><a href="#继承中相关的抽象方法" class="headerlink" title="继承中相关的抽象方法"></a>继承中相关的抽象方法</h2><p><strong>抽象方法</strong>：就是加上abstract关键字，然后去掉大括号，直接分号结束。</p>
+<p><strong>抽象类</strong>：抽象方法所在的类，必须是抽象类才行，在class前加上abstract关键字即可。</p>
+<p><strong><em>如何使用抽象类和抽象方法：</em></strong></p>
 <ol>
-<li><p>如果实现类实现的多个接口中，<strong>有重复的抽象方法</strong>，那么只需要覆盖重写<strong>一次</strong>即可。</p>
+<li><p>不能直接创建new抽象类对象。</p>
 </li>
-<li><p>如果实现类实现的多个接口中，<strong>有重复的默认方法</strong>，那么实现类必须要对重复的默认方法<strong>覆盖重写</strong>。</p>
+<li><p>必须用一个子类继承抽象父类。</p>
 </li>
-<li><p>一个类如果<strong>直接父类中的方法与接口中的默认方法产生了冲突</strong>，优先使用父类当中的方法，<strong>父类的优先级大于接口</strong>。</p>
+<li><p>子类必须覆盖重写父类中的所有抽象方法。</p>
+<p>覆盖重写（实现）：去掉abstract关键字，补上{方法体}。</p>
 </li>
-</ol>
-<h2 id="接口与接口之间也可以多继承"><a href="#接口与接口之间也可以多继承" class="headerlink" title="接口与接口之间也可以多继承"></a>接口与接口之间也可以多继承</h2><p>注意事项：<br>&nbsp; &nbsp;</p>
-<ol>
-<li><p>多个父接口当中的<strong>抽象方法</strong>如果重复，没关系，因为在子接口当中本就要覆盖重写实现抽象方法。</p>
-</li>
-<li><p>多个父接口当中的<strong>默认方法</strong>如果重复，那么子接口必须进行默认方法的覆盖重写，而且必须要带着default关键字。</p>
+<li><p>创建子类对象进行使用。</p>
 </li>
 </ol>
 <hr>
-<p>更多接口的详细信息可以咨询查找。</p>
+<p>以上就是有关于继承的一些知识的简要概述，如需知道更多请自己查询相关资料。</p>
 
       
       <!-- reward -->
@@ -229,7 +239,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/03/07/JavaInterface/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/04/Extends/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -247,19 +257,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/04/04/Extends/" class="article-nav-link">
+      <a href="/2020/04/04/String/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            JAVA当中的继承
+            String字符串
           
         </div>
       </a>
     
     
-      <a href="/2020/03/06/JavaArrayList/" class="article-nav-link">
+      <a href="/2020/03/07/JavaInterface/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">ArrayList</div>
+        <div class="article-nav-title">Java中的接口</div>
       </a>
     
   </nav>

@@ -138,6 +138,86 @@
       </tags>
   </entry>
   <entry>
+    <title>JAVA当中的继承</title>
+    <url>/2020/04/04/Extends/</url>
+    <content><![CDATA[<h2 id="关于继承"><a href="#关于继承" class="headerlink" title="关于继承"></a>关于继承</h2><p>  在继承的关系中，一个子类就是一个父类，也就是说，子类可以被当作父类看待。</p>
+<p>  例如父类是员工，子类是讲师，那么“讲师就是一个员工”。</p>
+<h2 id="父类的格式"><a href="#父类的格式" class="headerlink" title="父类的格式"></a>父类的格式</h2><pre><code>public clss 父类名称(){
+    // ...
+}</code></pre><h2 id="子类的格式"><a href="#子类的格式" class="headerlink" title="子类的格式"></a>子类的格式</h2><pre><code>public class 子类名称 extends 父类名称(){
+    //....
+}</code></pre><blockquote>
+<p>关于继承中的一些注意事项</p>
+</blockquote>
+<ol>
+<li>在父子类的继承关系当中，如果成员变量重名，则创建子类对象时，访问有两种方式：<ul>
+<li>直接通过子类对象访问成员变量：等号左边是谁则优先用谁，没有则向上找。</li>
+<li>间接通过成员方法访问成员变量：该方法属于谁就优先用谁，没有则向上找。</li>
+</ul>
+</li>
+<li>子类与父类成员方法重名，创建的对象是谁就优先用谁，否则就向上找。</li>
+</ol>
+<hr>
+<h2 id="继承中对方法进行覆盖重写"><a href="#继承中对方法进行覆盖重写" class="headerlink" title="继承中对方法进行覆盖重写"></a>继承中对方法进行覆盖重写</h2><p><strong>要求</strong></p>
+<p>1.字符类<strong>成员方法名称一样，参数列表也一样</strong>，@Override 写在方法前面，用来检测是不是有效的正确覆盖重写。（这个注解要是不写，只要满足要求，也是正确的方法覆盖重写）</p>
+<p>2.<strong>子类方法的返回值必须小于等于父类方法的返回值。</strong></p>
+<p><strong>例</strong>：父类中返回值类型为String类，子类中为Object类，这样是不行的，子类返回值大于父类。</p>
+<p>3.<strong>子类方法的权限必须大于等于父类方法的权限修饰符</strong></p>
+<p><strong>注</strong>：public &gt; protected &gt; (default) &gt; private<br>这个(default)不是关键字default，而是代表什么也不写，留空。</p>
+<hr>
+<h2 id="继承关系中的构造方法"><a href="#继承关系中的构造方法" class="headerlink" title="继承关系中的构造方法"></a>继承关系中的构造方法</h2><p>1.子类构造方法中有一个<strong>默认隐含</strong>的“super()”调用，所以一定是<strong>先调用的父类构造，后执行的子类构造</strong>。</p>
+<p>2.可以<strong>通过super关键字来子类构造调用父类重载构造</strong>。</p>
+<p>3.<strong>super的父类构造调用，必须是子类构造的第一个语句，不能一个子类构造调用多次super构造</strong>。</p>
+<p><strong>父类构造方法</strong></p>
+<p><code>public Fu() {System.out.println(&quot;这是一个父类无参构造方法&quot;);}</code></p>
+<p><code>public Fu(int num) {System.out.println(&quot;这是一个父类有参构造方法&quot;);}</code></p>
+<p><strong>子类构造方法</strong></p>
+<pre><code>public Zi(){
+    //        super();  //调用父类无参构造方法
+    super(20);      //调用父类重载的构造方法
+    System.out.println(&quot;这是一个子类构造方法&quot;);
+}
+
+ public Zi(int num){
+    System.out.println(&quot;这是一个有参子类构造方法&quot;);
+}</code></pre><p><strong>主方法</strong></p>
+<p><strong><em>输入</em></strong></p>
+<p><code>public static void main(String[] args) {Zi zi = new Zi();}</code></p>
+<p><strong><em>输出</em></strong></p>
+<p>这是一个父类有参构造方法（子类的无参构造中调用了父类的有参构造）</p>
+<p>这是一个子类构造方法（子类的无参构造方法）</p>
+<p><strong><em>输入</em></strong></p>
+<p><code>public static void main(String[] args) {Zi zi = new Zi(10);}</code></p>
+<p><strong><em>输出</em></strong></p>
+<p>这是一个父类无参构造方法（子类的有参构造方法中默认隐含一个父类的无参构造方法）</p>
+<p>这是一个有参子类构造方法（子类的有参构造方法）</p>
+<hr>
+<h2 id="继承中相关的抽象方法"><a href="#继承中相关的抽象方法" class="headerlink" title="继承中相关的抽象方法"></a>继承中相关的抽象方法</h2><p><strong>抽象方法</strong>：就是加上abstract关键字，然后去掉大括号，直接分号结束。</p>
+<p><strong>抽象类</strong>：抽象方法所在的类，必须是抽象类才行，在class前加上abstract关键字即可。</p>
+<p><strong><em>如何使用抽象类和抽象方法：</em></strong></p>
+<ol>
+<li><p>不能直接创建new抽象类对象。</p>
+</li>
+<li><p>必须用一个子类继承抽象父类。</p>
+</li>
+<li><p>子类必须覆盖重写父类中的所有抽象方法。</p>
+<p>覆盖重写（实现）：去掉abstract关键字，补上{方法体}。</p>
+</li>
+<li><p>创建子类对象进行使用。</p>
+</li>
+</ol>
+<hr>
+<p>以上就是有关于继承的一些知识的简要概述，如需知道更多请自己查询相关资料。</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java中的接口</title>
     <url>/2020/03/07/JavaInterface/</url>
     <content><![CDATA[<h2 id="关于接口"><a href="#关于接口" class="headerlink" title="关于接口"></a>关于接口</h2><p>  接口就是多个类的公共规范。</p>

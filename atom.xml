@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-04-04T09:23:31.160Z</updated>
+  <updated>2020-04-04T09:26:30.056Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2020/04/04/ArraysAndMath/"/>
     <id>http://yoursite.com/2020/04/04/ArraysAndMath/</id>
     <published>2020-04-03T16:00:00.000Z</published>
-    <updated>2020-04-04T09:23:31.160Z</updated>
+    <updated>2020-04-04T09:26:30.056Z</updated>
     
     <summary type="html">
     
@@ -36,12 +36,14 @@
     </summary>
     
     
-      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记 工具类" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0-%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
     
     
       <category term="JAVA" scheme="http://yoursite.com/tags/JAVA/"/>
     
       <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="工具类" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
     
   </entry>
   

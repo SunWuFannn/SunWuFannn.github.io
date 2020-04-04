@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>工具类：Arrays Math</title>
+    <title>工具类：Arrays与Math</title>
     <url>/2020/04/04/ArraysAndMath/</url>
     <content><![CDATA[<h2 id="JAVA中的两个工具类：Arrays与Math"><a href="#JAVA中的两个工具类：Arrays与Math" class="headerlink" title="JAVA中的两个工具类：Arrays与Math"></a>JAVA中的两个工具类：Arrays与Math</h2><h3 id="1-Arrays"><a href="#1-Arrays" class="headerlink" title="1. Arrays"></a>1. Arrays</h3><p>  java.util.Arrays是一个与<strong>数组相关</strong>的工具类。里面提供了大量静态方法，用来实现<strong>数组</strong>常见的操作。</p>
 <p>  <strong>其中比较常用的方法</strong></p>

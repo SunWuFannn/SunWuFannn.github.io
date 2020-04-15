@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    工具类：Arrays与Math |  小张日记
+    杂谈：权限修饰符，匿名内部类.... |  小张日记
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -34,7 +34,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-ArraysAndMath" class="article article-type-post" itemscope
+  <article id="post-Inner" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -42,7 +42,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  工具类：Arrays与Math
+  杂谈：权限修饰符，匿名内部类....
 </h1>
   
 
@@ -51,12 +51,12 @@
 
     
     <div class="article-meta">
-      <a href="/2020/04/04/ArraysAndMath/" class="article-date">
-  <time datetime="2020-04-03T16:00:00.000Z" itemprop="datePublished">2020-04-04</time>
+      <a href="/2020/04/15/Inner/" class="article-date">
+  <time datetime="2020-04-14T16:00:00.000Z" itemprop="datePublished">2020-04-15</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E7%B1%BB/">工具类</a>
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
   </div>
 
       
@@ -66,7 +66,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">285字</span>
+            <span class="post-count">798字</span>
         </span>
     </span>
 
@@ -75,7 +75,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1分钟</span>
+            <span class="post-count">2分钟</span>
         </span>
     </span>
 </div>
@@ -102,24 +102,115 @@
       
 
       
-      <h2 id="JAVA中的两个工具类：Arrays与Math"><a href="#JAVA中的两个工具类：Arrays与Math" class="headerlink" title="JAVA中的两个工具类：Arrays与Math"></a>JAVA中的两个工具类：Arrays与Math</h2><h3 id="1-Arrays"><a href="#1-Arrays" class="headerlink" title="1. Arrays"></a>1. Arrays</h3><p>  java.util.Arrays是一个与<strong>数组相关</strong>的工具类。里面提供了大量静态方法，用来实现<strong>数组</strong>常见的操作。</p>
-<p>  <strong>其中比较常用的方法</strong></p>
-<p>  <code>public static String toString(数组)</code></p>
-<p>  作用：将参数数组变成字符串（按默认格式：{元素1，元素2，元素3…….}）。</p>
-<p>  <code>public static void sort(数组)</code></p>
-<p>  作用：按照默认升序对数组进行排序。</p>
-<p>  &nbsp; &nbsp;</p>
-<h3 id="2-Math"><a href="#2-Math" class="headerlink" title="2. Math"></a>2. Math</h3><p>  java.lang.Math类是数学相关的工具类，里面提供了大量的静态方法，完成与数学相关运算的操作。</p>
-<p>  <strong>其中比较常用的方法</strong></p>
-<p>  <code>public static double abs(double num);</code>：获取绝对值。</p>
-<p>  <code>public static double ceil(double num);</code>：向上取整。</p>
-<p>  <code>public static double floor(double num);</code>：向下取整。</p>
-<p>  <code>public static long round(double num);</code>：四舍五入。</p>
-<p>  tips： <strong><em>Math.PI代表近似圆周率常量（double）</em></strong></p>
-<p>  &nbsp; &nbsp;</p>
+      <h2 id="权限修饰符"><a href="#权限修饰符" class="headerlink" title="权限修饰符"></a>权限修饰符</h2><p><strong>JAVA中有四种权限修饰符：public，protected，（default），private。</strong></p>
+<p><strong>四种权限修饰符权限大小：public &gt; protected &gt; （default） &gt; private</strong></p>
+<p><strong><em>注意：（default）代表什么也不加，例：class person。</em></strong></p>
+<blockquote>
+<p>权限修饰符在不同范围的权限</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="center">public</th>
+<th align="center">protected</th>
+<th align="center">(default)</th>
+<th align="center">private</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">同一个类</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+</tr>
+<tr>
+<td align="left">同一个包</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+<td align="center">No</td>
+</tr>
+<tr>
+<td align="left">不同包子类</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+<td align="center">No</td>
+<td align="center">No</td>
+</tr>
+<tr>
+<td align="left">不同包非子类</td>
+<td align="center">Yes</td>
+<td align="center">No</td>
+<td align="center">No</td>
+<td align="center">No</td>
+</tr>
+</tbody></table>
 <hr>
-<p>  &nbsp; &nbsp;</p>
-<p>  关于这两个工具类的常用方法简单粗略了写了一下，如过想要了解知道更多，请咨询查找有关信息，<strong>重点记住Arrays是操作数组的工具类，而Math是和数学有关的工具类</strong>。</p>
+<h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h2><p>如果一个事物内部包含另一个事物，那么这就是一个类包含另一个类。</p>
+<p>如：身体和心脏的关系，汽车和发动机的关系</p>
+<p>分类：</p>
+<ol>
+<li>成员内部类</li>
+<li>局部内部类（其中包含匿名内部类）</li>
+</ol>
+<hr>
+<h3 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h3><p>成员内部类的定义格式：</p>
+<pre><code>修饰符 class 外部类名称{
+    修饰符 class 内部类名称{
+        ....
+    }
+    .....
+}</code></pre><p><strong><em>注意：内用外，可以随意访问；外用内，需要借助内部类对象。</em></strong></p>
+<p>如何使用成员内部类？</p>
+<ol>
+<li><p>间接方式：在外部类的成员方法中，使用内部类，然后main只是调用外部类的方法。</p>
+</li>
+<li><p>直接方式：公式</p>
+</li>
+</ol>
+<p><strong>外部类名称.内部类名称 对象名 = new 外部类名称（）.new 内部类名称（）；</strong>。</p>
+<p>注意：内部类访问重名的外部类成员变量：<strong>外部类名称.this.成员变量名称</strong>。</p>
+<hr>
+<h3 id="局部内部类（匿名内部类）"><a href="#局部内部类（匿名内部类）" class="headerlink" title="局部内部类（匿名内部类）"></a>局部内部类（匿名内部类）</h3><p>如果<strong>一个类定义在一个方法内部</strong>，那么这就是一个局部内部类。</p>
+<p>“局部”：只有当前所属的方法能使用它，出了这个方法外面就不能用了。</p>
+<p>定义格式：</p>
+<pre><code>修饰符 class 外部类名称 {
+    修饰符 返回值类型 外部类方法名称（参数列表） {
+        class 局部内部类名称 {
+            ....
+        }
+    }
+    .....
+}</code></pre><blockquote>
+<p>定义一个类的时候，权限修饰符规则：</p>
+</blockquote>
+<ol>
+<li>外部类：public/（default）</li>
+<li>成员内部类：public/protected/（default）/private</li>
+<li>局部内部类：什么也不写</li>
+</ol>
+<p>局部内部类：如果希望<strong>访问所在方法的局部变量</strong>，那么这个局部变量必须是<strong>有效final的</strong>。</p>
+<p><strong><em>备注：从java8开始，只要局部变量事实不变，那么final关键字可以省略。</em></strong></p>
+<blockquote>
+<p>原因：</p>
+</blockquote>
+<ol>
+<li>new出来的对象在堆内存当中。</li>
+<li>局部变量跟着方法走，在栈内存当中。</li>
+<li>方法运行结束之后，立刻出栈，局部变量就会消失。</li>
+<li>但是new出来的对象会在堆当中持续存在，直到垃圾回收消失。</li>
+</ol>
+<h3 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h3><p>匿名内部类也是一种局部内部类。</p>
+<p>如果接口的实现类（或者是父类的子类）<strong>只需使用唯一的一次，</strong> 那么这种情况下就可以省略掉这类的定义，而改为使用<strong>匿名内部类</strong>。</p>
+<p>匿名内部类的定义格式：</p>
+<pre><code>接口名称 对象名 = new 接口名称（） {
+    //覆盖重写所有抽象方法
+}</code></pre><p><strong><em>注意：匿名内部类，在创建对象的时候，只能使用唯一一次。</em></strong></p>
+<p>如果希望多次创建对象，而且类的内容一样的话，那么就必须使用单独定义的实现类了。</p>
+<hr>
+<p>以上就是关于内部类的一些简要描述，如需知道更多请自己查询。</p>
 
       
       <!-- reward -->
@@ -189,14 +280,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/04/ArraysAndMath/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/15/Inner/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/" rel="tag">工具类</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
 
 
     </footer>
@@ -207,19 +298,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/04/15/toString/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            一些自定义类中的方法重写：toString.....
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/04/04/Static/" class="article-nav-link">
+      <a href="/2020/04/15/JavaFinal/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Static静态</div>
+        <div class="article-nav-title">JAVA当中的final关键字</div>
       </a>
     
   </nav>

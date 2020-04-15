@@ -66,7 +66,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">996字</span>
+            <span class="post-count">1.2k字</span>
         </span>
     </span>
 
@@ -75,7 +75,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3分钟</span>
+            <span class="post-count">4分钟</span>
         </span>
     </span>
 </div>
@@ -105,12 +105,13 @@
       <h2 id="String字符串"><a href="#String字符串" class="headerlink" title="String字符串"></a>String字符串</h2><h3 id="String字符串的特点"><a href="#String字符串的特点" class="headerlink" title="String字符串的特点"></a>String字符串的特点</h3><ol>
 <li>字符串的内容永不可变 。 <strong>重点</strong></li>
 <li>正是因为字符串不可变，所以字符串可以共享使用。</li>
-<li>字符串效果相当于是char[]字符数组，但是底层原理是byte[]字节数组</li>
+<li>字符串效果相当于是char[] 字符数组，但是底层原理是byte[] 字节数组。</li>
 </ol>
 <p><strong><em>关于字符串内容永不可变</em></strong></p>
 <blockquote>
 <p>String str = “Hello”；<br>  str实际上是对“Hello”的引用，”Hello”才是在堆中被创建的字符串对象，里面存的的字符串内容是Hello，而str则存放的是Hello这个字符串对象的地址。<br><br>  当出现这种情况时：str = “world”；<br>  原本Hello那个字符串的内容并没有改变，只是在堆中新创建了一个world的字符串对象，而str成了world的引用，存放的是world这个字符串对象的地址。<br>  所以字符串内容是永不可变的，你感觉到的变了其实是引用地址的改变。</p>
 </blockquote>
+<hr>
 <h3 id="创建字符串的常见方式（3-1种）"><a href="#创建字符串的常见方式（3-1种）" class="headerlink" title="创建字符串的常见方式（3+1种）"></a>创建字符串的常见方式（3+1种）</h3><p><strong>三种构造方法</strong></p>
 <ol>
 <li><p><code>public String();</code> 创建一个空白字符串，不含有任何内容。</p>
@@ -122,9 +123,10 @@
 </ol>
 <p><strong>一种直接创建</strong></p>
 <p>String str = “Hello”;</p>
+<hr>
 <h3 id="String类中常用的一些方法"><a href="#String类中常用的一些方法" class="headerlink" title="String类中常用的一些方法"></a>String类中常用的一些方法</h3><h4 id="与转换相关的方法"><a href="#与转换相关的方法" class="headerlink" title="与转换相关的方法"></a><strong><em>与转换相关的方法</em></strong></h4><p><code>public char[] toCharArray();</code> 将当前字符串拆封为字符数组作为返回值。</p>
 <p><code>public byte[] getBytes();</code> 获得当前字符串底层的字节数组。</p>
-<p><code>public String replace(CharSequence oldString,CharSequence newString);</code>将所有出现的老字符串替换为新字符串，返回替换之后的结果字符串。CharSequence意思就是说可以接收字符串类型。<strong>游戏种的关键字屏蔽可以用这种方法</strong></p>
+<p><code>public String replace(CharSequence oldString,CharSequence newString);</code>将所有出现的老字符串替换为新字符串，返回替换之后的结果字符串。CharSequence意思就是说可以接收字符串类型。<strong>游戏中的关键字屏蔽可以用这种方法</strong></p>
 <h4 id="与比较相关的方法"><a href="#与比较相关的方法" class="headerlink" title="与比较相关的方法"></a><strong><em>与比较相关的方法</em></strong></h4><p>==用于字符串的比较是对<strong>对象的地址</strong>进行比较，如果要对内容进行比较，可以用下面两个方法。</p>
 <p><code>public boolean equals(Object obj);</code> 参数可以是任何对象，只有参数是一个字符串并且内容相同才会返回true，否则返回false。</p>
 <blockquote>
@@ -142,6 +144,23 @@
 <p><code>public String substring(int begin, int end);</code> 从begin开始一直到end结束返回新字符串，<strong>包括begin不包括end</strong>。</p>
 <h4 id="分割字符串的方法"><a href="#分割字符串的方法" class="headerlink" title="分割字符串的方法"></a><strong><em>分割字符串的方法</em></strong></h4><p><code>public String[] split(String regex);</code> 按照参数的规则，将字符串切割成若干部分。</p>
 <p>split方法的参数实际上是一个“正则表达式”，如果用英文句点“.”进行切分，<strong>必须写“\\.”</strong>，因为需要转义。</p>
+<hr>
+<h3 id="基本类型与字符串类型之间的相互转换"><a href="#基本类型与字符串类型之间的相互转换" class="headerlink" title="基本类型与字符串类型之间的相互转换"></a>基本类型与字符串类型之间的相互转换</h3><p>基本类型与字符串类型之间的互相转换。</p>
+<p><strong>基本类型–&gt;字符串（String）：</strong></p>
+<ol>
+<li><p>基本类型的值 + “”。   <strong>最简单的方法，工作中常用</strong>。</p>
+</li>
+<li><p>包装类的静态方法toString（参数），<strong>不是Object类的toString</strong>。</p>
+</li>
+</ol>
+<p><code>static String toString(包装类的基本类型参数)；</code>返回一个表示指定整数的 String 对象。</p>
+<ol start="3">
+<li>String类的静态方法valueOf（基本类型参数）；返回参数的字符串表示形式。</li>
+</ol>
+<p><strong>字符串（String）–&gt;基本类型：</strong></p>
+<p>使用包装类的静态方法<strong>parse基本类型名称（字符串）</strong>；</p>
+<p><strong>如：Integer类：static int parseInt(String s);</strong></p>
+<hr>
 <h3 id="关于常量池的概念"><a href="#关于常量池的概念" class="headerlink" title="关于常量池的概念"></a>关于常量池的概念</h3><ol>
 <li><p>对于引用类型来说，==进行的是地址值的比较。</p>
 </li>

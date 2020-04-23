@@ -1,6 +1,285 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>常用的SQL语句</title>
+    <url>/2020/04/23/SQL/</url>
+    <content><![CDATA[<h1 id="常用的SQL语句"><a href="#常用的SQL语句" class="headerlink" title="常用的SQL语句"></a>常用的SQL语句</h1><hr>
+<h2 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h2><p>DDL是操作是数据库和表的SQL语句。</p>
+<ol>
+<li><p><strong>操作数据库</strong></p>
+<ol>
+<li><p>创建</p>
+<ul>
+<li>创建数据库<ul>
+<li>CREATE DATABASE 数据库名称；</li>
+</ul>
+</li>
+<li>创建数据库，判断不存在，再创建<ul>
+<li>CREATE DATABASE IF NOT EXISTS 数据库名称；</li>
+</ul>
+</li>
+<li>创建数据库，并指定字符集<ul>
+<li>CREATE DATABASE 数据库名称 character set 字符集名；</li>
+</ul>
+</li>
+<li>创建数据库，判断不存在，再创建，并指定字符集<ul>
+<li>CREATE DATABASE IF NOT EXISTS 数据库名称 character set 字符集名；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>查询</p>
+<ul>
+<li>查询所有数据库的名称<ul>
+<li>SHOW DATABASES；</li>
+</ul>
+</li>
+<li>查询某个数据库的字符集，查询某个数据库的查询语句<ul>
+<li>SHOW CREATE DATABASE 数据库名称；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>修改</p>
+<ul>
+<li>修改数据库的字符集<ul>
+<li>ALTER DATABASE 数据库名称 character set 字符集名；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>删除</p>
+<ul>
+<li>删除数据库<ul>
+<li>DROP DATABASE 数据库名称；</li>
+</ul>
+</li>
+<li>判断数据库存在，再删除<ul>
+<li>DROP DATABASE IF EXISTS 数据库名称；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>使用数据库</p>
+<ul>
+<li>查询当前正在使用的数据库名称<ul>
+<li>SELECT DATABASE();</li>
+</ul>
+</li>
+<li>使用数据库<ul>
+<li>USE 数据库名称；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p><strong>操作表</strong></p>
+<ol>
+<li><p>创建</p>
+<ul>
+<li><p>创建表</p>
+<ul>
+<li><p>CREATE TABLE 表名称(</p>
+<p>  列名1，数据类型1，</p>
+<p>  列名2，数据类型2，</p>
+<p>  列名3，数据类型3，</p>
+<p>  …….</p>
+<p>  列名n，数据类型n</p>
+<p>)；</p>
+</li>
+<li><p><em>注意最后一列后面不用加逗号*</em></p>
+</li>
+<li><p>SQL中常用的数据类型</p>
+<ol>
+<li>int：整数类型</li>
+<li>double：小数类型</li>
+<li>date：日期，只包含年月日，yyyy-MM-dd</li>
+<li>datetime：日期，包含年月日时分秒，yyyy-MM-dd HH:mm:ss</li>
+<li>timestamp：时间戳类型，包含年月日时分秒，不赋值时可以默认添加当前系统时间</li>
+<li>varchar：字符串</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>复制表</p>
+<ul>
+<li>CREATE TABLE 表名 LIKE 被复制的表名；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>查询</p>
+<ul>
+<li>查询某个数据库中所有表的名称<ul>
+<li>SHOW TABLES；</li>
+</ul>
+</li>
+<li>查询表结构<ul>
+<li>DESC 表名称；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>修改</p>
+<ul>
+<li>修改表名<ul>
+<li>ALTER TABLE 表名称 RENAME TO 新的表名；</li>
+</ul>
+</li>
+<li>修改表的字符集<ul>
+<li>ALTER TABLE 表名称 character set 字符集名；</li>
+</ul>
+</li>
+<li>添加一列<ul>
+<li>ALTER TABLE 表名称 ADD 列名 数据类型；</li>
+</ul>
+</li>
+<li>修改列名和类型<ul>
+<li>ALTER TABLE 表名称 CHANGE 列名 新列名 新数据类型；</li>
+<li>ALTER TABLE 表名称 MODIFY 列名 新数据类型；</li>
+</ul>
+</li>
+<li>删除列<ul>
+<li>ALTER TABLE 表名称 DROP 列名；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>删除</p>
+<ul>
+<li>删除表<ul>
+<li>DROP TABLE 表名称；</li>
+</ul>
+</li>
+<li>判断表存在，再删除<ul>
+<li>DROP TABLE IF EXISTS 表名称；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h2><p>DML是增删改数据库的表中的数据的SQL语句。</p>
+<ol>
+<li><p>添加数据</p>
+<ul>
+<li><p>INSERT INTO 表名(列名1，列名2，列名3，…..列名n) VALUES(值1，值2，值3，…..值n);</p>
+</li>
+<li><p><em>注意：*</em></p>
+</li>
+</ul>
+<ol>
+<li><p>列名和值要一一对应。</p>
+</li>
+<li><p>如果表名后，不定义列名，则默认给所有列添加值。</p>
+<ul>
+<li>INSERT INTO 表名VALUES(值1，值2，值3，…..值n);</li>
+</ul>
+</li>
+<li><p>除了数字类型，其他类型需要使用引号（单双引号都可以）引起来。</p>
+</li>
+</ol>
+</li>
+<li><p>删除数据</p>
+<ul>
+<li><p>DELETE FROM 表名 [WHERE 条件]；</p>
+</li>
+<li><p><em>注意：如果不加条件，则删除表中所有记录。*</em></p>
+</li>
+<li><p><strong>如果要删除表中所有记录，不推荐使用<code>DELETE FROM 表名；</code>，可以使用<code>TRUNCATE TABLE 表名；</code>。*</strong></p>
+</li>
+</ul>
+</li>
+<li><p>修改数据</p>
+<ul>
+<li><p>UPDATE 表名 SET 列名1=值1， 列名2=值2，….列名n=值n [WHERE 条件]；</p>
+</li>
+<li><p><em>注意：如果不加任何条件，则会将表中所有记录修改。*</em></p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="DQL"><a href="#DQL" class="headerlink" title="DQL"></a>DQL</h2><p>DQL是查询表中记录的SQL语句。</p>
+<ul>
+<li>SELECT * FROM 表名；</li>
+</ul>
+<p>语法：</p>
+<pre><code>SELECT
+    字段列表
+FROM
+    表名列表
+WHERE
+    条件列表
+GROUP BY
+    分组字段
+HAVING
+    分组之后的条件
+ORDER BY
+    排序
+LIMIT
+    分页限定</code></pre><ol>
+<li><p>基础查询</p>
+<ol>
+<li>多个字段的查询<ul>
+<li>SELECT 字段名1，字段名2… FROM 表名；</li>
+</ul>
+</li>
+<li>去除重复<ul>
+<li>SELECT DISTINCT 字段名1，字段名2… FROM 表名；</li>
+</ul>
+</li>
+<li>计算列<ul>
+<li>一般可以使用四则运算计算一些列的值。（一般只会进行数值型的计算）</li>
+<li>IFNULL（表达式1，表达式2）：NULL参与的运算，计算结果都为NULL。<ul>
+<li>表达式1：哪个字段需要判断是否为NULL。</li>
+<li>表达式2：如果该字段为NULL后的替换值。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>起别名<ul>
+<li>SELECT 字段名1 AS 别名 FROM 表名；</li>
+<li><em>注意：AS也可以省略，用一个空格代替。*</em></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>条件查询</p>
+<ol>
+<li>WHERE子句后跟条件。</li>
+<li>运算符<ul>
+<li>&lt; &gt; &gt;= &lt;= &lt;&gt; =</li>
+<li>BETWEEN…AND</li>
+<li>IN(集合)</li>
+<li>LIKE：模糊查询<ul>
+<li>占位符：<ul>
+<li>_：单个任意字符。</li>
+<li>%：多个任意字符。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>IS NULL</li>
+<li>AND 或 &amp;&amp;</li>
+<li>OR 或 ||</li>
+<li>NOT 或 ！</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>SQL语句</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>杂谈：权限修饰符，匿名内部类....</title>
     <url>/2020/04/15/Inner/</url>
     <content><![CDATA[<h2 id="权限修饰符"><a href="#权限修饰符" class="headerlink" title="权限修饰符"></a>权限修饰符</h2><p><strong>JAVA中有四种权限修饰符：public，protected，（default），private。</strong></p>

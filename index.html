@@ -269,6 +269,7 @@
 </ol>
 </li>
 </ol>
+<hr>
 <h2 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h2><p>DML是增删改数据库的表中的数据的SQL语句。</p>
 <ol>
 <li><p><strong>添加数据</strong></p>
@@ -309,6 +310,7 @@
 </ul>
 </li>
 </ol>
+<hr>
 <h2 id="DQL"><a href="#DQL" class="headerlink" title="DQL"></a>DQL</h2><p>DQL是查询表中记录的SQL语句。</p>
 <ul>
 <li>SELECT * FROM 表名；</li>
@@ -457,6 +459,121 @@ LIMIT
 </ul>
 </li>
 </ol>
+<hr>
+<h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><p>对表中的数据进行限定，保证数据的正确性、有效性和完整性。</p>
+<p>分类：</p>
+<ol>
+<li>主键约束：primary key</li>
+<li>非空约束：not null</li>
+<li>唯一约束：unique</li>
+<li>外键约束：foreign key</li>
+</ol>
+<p><strong>1.非空约束</strong></p>
+<p>某一列的值不能为NULL。</p>
+<ul>
+<li><p>创建表时添加非空约束</p>
+<pre><code>CREATE TABLE 表名(
+    字段名1 数据类型1，
+    字段名2 数据类型2 NOT NULL，
+    .....
+);</code></pre></li>
+<li><p>创建表完后添加非空约束</p>
+<p>  <code>ALTER TABLE 表名 MODIFY 字段名 数据类型 NOT NULL；</code></p>
+</li>
+<li><p>删除非空约束</p>
+<p>  <code>ALTER TABLE 表名 字段名 数据类型；</code></p>
+</li>
+</ul>
+<p><strong>2.唯一约束</strong></p>
+<p>某一列的值不能重复。</p>
+<ul>
+<li><p>创建表时，添加唯一约束</p>
+<pre><code>CREATE TABLE 表名(
+    字段名1 数据类型1，
+    字段名2 数据类型2 UNIQUE，
+    .....
+);</code></pre></li>
+<li><p>删除唯一约束</p>
+<p>  <code>ALTER TABLE 表名 DROP INDEX 字段名；</code></p>
+</li>
+<li><p>在表创建完后，添加唯一约束</p>
+<p>  <code>ALTER TABLE 表名 MODIFY 字段名 数据类型 UNIQUE；</code></p>
+</li>
+</ul>
+<p><strong>3.主键约束</strong></p>
+<p>某一列的值非空且唯一，一张表只能有一个字段为主键，就是表中记里的唯一标识。</p>
+<ul>
+<li><p>创建表时，添加主键约束</p>
+<pre><code>CREATE TABLE 表名(
+    字段名1 数据类型1，
+    字段名2 数据类型2 PRIMARY KEY，
+    .....
+);</code></pre></li>
+<li><p>删除主键</p>
+<p>  <code>ALTER TABLE 表名 DROP PRIMARY KEY；</code></p>
+</li>
+<li><p>创建完表后，添加主键</p>
+<p>  <code>ALTER TABLE 表名 MODIFY 字段名 数据类型 PRMARY KEY；</code></p>
+</li>
+<li><p>自动增长</p>
+<ul>
+<li><p>如果某一列是数值类型，使用AUTO_INCREMENT可以完成值自动增长，一般可以配合数值类型的主键使用。</p>
+</li>
+<li><p><em>注意：自动增长的值为最后一条记录自动增长字段的值加一*</em></p>
+</li>
+<li><p>创建表时，添加主键，并且完成自动增长</p>
+<pre><code>CREATE TABLE 表名(
+字段名1 数据类型1，
+字段名2 数据类型2 PRIMARY KEY AUTO_INCREMENT，
+.....</code></pre><p>  );</p>
+</li>
+<li><p>删除自动增长</p>
+<p><code>ALTER TABLE 表名 MODIFY 字段名 数据类型；</code></p>
+</li>
+<li><p>添加自动增长</p>
+<p><code>ALTER TABLE 表名 MODIFY 字段名 数据类型 AUTO_INCREMENT；</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>4.外键约束</strong></p>
+<p>让表与表产生关系，从而保证数据的正确性，外键可以为NULL，但是不能是主表中不存在的值。</p>
+<ul>
+<li><p>创建表时，添加外键</p>
+<pre><code>CREATE TABLE 表名(
+    字段名1 数据类型1，
+    字段名2 数据类型2，
+    .....
+    CONSTRAINT 外键名称 FOREIGN KEY (外键列名称) REFERENCES 主表名称(主表列名称)
+);</code></pre></li>
+<li><p>删除外键</p>
+<p>  <code>ALTER TABLE 表名称 DROP FOREIGN KEY 外键名称；</code></p>
+</li>
+<li><p>创建表之后，添加外键</p>
+<p>  <code>ALTER TABLE 表名称 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键列名称) REFERENCES 主表名称(主表列名称)；</code></p>
+</li>
+<li><p>级联操作</p>
+<p>  可以在外键关联的主表中的列进行操作时，外键中的值自动更新。</p>
+<ul>
+<li><p>级联更新</p>
+<ul>
+<li><p>在添加外键语句后加上ON UPDATE CASCADE</p>
+<p><code>ALTER TABLE 表名称 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键列名称) REFERENCES 主表名称(主表列名称) ON UPDATE CASCADE；</code></p>
+</li>
+</ul>
+</li>
+<li><p>级联删除</p>
+<ul>
+<li><p>在添加外键语句后加上ON DELETE CASCADE</p>
+<p><code>ALTER TABLE 表名称 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键列名称) REFERENCES 主表名称(主表列名称) ON DELETE CASCADE；</code></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong><em>级联更新与级联删除可以同时存在。</em></strong></p>
+<hr>
 
       
       <!-- reward -->

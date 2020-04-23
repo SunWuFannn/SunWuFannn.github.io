@@ -8,7 +8,7 @@
 <ol>
 <li><p><strong>操作数据库</strong></p>
 <ol>
-<li><p>创建</p>
+<li><p><strong>创建</strong></p>
 <ul>
 <li>创建数据库<ul>
 <li>CREATE DATABASE 数据库名称；</li>
@@ -28,7 +28,7 @@
 </li>
 </ul>
 </li>
-<li><p>查询</p>
+<li><p><strong>查询</strong></p>
 <ul>
 <li>查询所有数据库的名称<ul>
 <li>SHOW DATABASES；</li>
@@ -40,7 +40,7 @@
 </li>
 </ul>
 </li>
-<li><p>修改</p>
+<li><p><strong>修改</strong></p>
 <ul>
 <li>修改数据库的字符集<ul>
 <li>ALTER DATABASE 数据库名称 character set 字符集名；</li>
@@ -48,7 +48,7 @@
 </li>
 </ul>
 </li>
-<li><p>删除</p>
+<li><p><strong>删除</strong></p>
 <ul>
 <li>删除数据库<ul>
 <li>DROP DATABASE 数据库名称；</li>
@@ -60,7 +60,7 @@
 </li>
 </ul>
 </li>
-<li><p>使用数据库</p>
+<li><p><strong>使用数据库</strong></p>
 <ul>
 <li>查询当前正在使用的数据库名称<ul>
 <li>SELECT DATABASE();</li>
@@ -76,7 +76,7 @@
 </li>
 <li><p><strong>操作表</strong></p>
 <ol>
-<li><p>创建</p>
+<li><p><strong>创建</strong></p>
 <ul>
 <li><p>创建表</p>
 <ul>
@@ -109,7 +109,7 @@
 </li>
 </ul>
 </li>
-<li><p>查询</p>
+<li><p><strong>查询</strong></p>
 <ul>
 <li>查询某个数据库中所有表的名称<ul>
 <li>SHOW TABLES；</li>
@@ -121,7 +121,7 @@
 </li>
 </ul>
 </li>
-<li><p>修改</p>
+<li><p><strong>修改</strong></p>
 <ul>
 <li>修改表名<ul>
 <li>ALTER TABLE 表名称 RENAME TO 新的表名；</li>
@@ -146,7 +146,7 @@
 </li>
 </ul>
 </li>
-<li><p>删除</p>
+<li><p><strong>删除</strong></p>
 <ul>
 <li>删除表<ul>
 <li>DROP TABLE 表名称；</li>
@@ -163,7 +163,7 @@
 </ol>
 <h2 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h2><p>DML是增删改数据库的表中的数据的SQL语句。</p>
 <ol>
-<li><p>添加数据</p>
+<li><p><strong>添加数据</strong></p>
 <ul>
 <li><p>INSERT INTO 表名(列名1，列名2，列名3，…..列名n) VALUES(值1，值2，值3，…..值n);</p>
 </li>
@@ -182,7 +182,7 @@
 </li>
 </ol>
 </li>
-<li><p>删除数据</p>
+<li><p><strong>删除数据</strong></p>
 <ul>
 <li><p>DELETE FROM 表名 [WHERE 条件]；</p>
 </li>
@@ -192,7 +192,7 @@
 </li>
 </ul>
 </li>
-<li><p>修改数据</p>
+<li><p><strong>修改数据</strong></p>
 <ul>
 <li><p>UPDATE 表名 SET 列名1=值1， 列名2=值2，….列名n=值n [WHERE 条件]；</p>
 </li>
@@ -205,7 +205,7 @@
 <ul>
 <li>SELECT * FROM 表名；</li>
 </ul>
-<p>语法：</p>
+<p><strong>语法：</strong></p>
 <pre><code>SELECT
     字段列表
 FROM
@@ -220,7 +220,7 @@ ORDER BY
     排序
 LIMIT
     分页限定</code></pre><ol>
-<li><p>基础查询</p>
+<li><p><strong>基础查询</strong></p>
 <ol>
 <li><p>多个字段的查询</p>
 <ul>
@@ -252,7 +252,7 @@ LIMIT
 </li>
 </ol>
 </li>
-<li><p>条件查询</p>
+<li><p><strong>条件查询</strong></p>
 <ol>
 <li>WHERE子句后跟条件。</li>
 <li>运算符<ul>
@@ -274,6 +274,79 @@ LIMIT
 </ul>
 </li>
 </ol>
+</li>
+<li><p><strong>排序查询</strong></p>
+<ul>
+<li><p><strong>语法</strong></p>
+<ul>
+<li>ORDER BY 排序字段1 排序方式1，排序字段2 排序方式2….</li>
+</ul>
+</li>
+<li><p><strong>排序方式</strong></p>
+<ul>
+<li><p>ASC：升序，默认的。</p>
+</li>
+<li><p>DESC：降序。</p>
+</li>
+<li><p><em>注意：如果有多个排序条件，则当前边的条件值一样时，才会判断第二条件。*</em></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>聚合函数</strong></p>
+<blockquote>
+<p>将一列数据作为一个整体，进行纵向的计算。</p>
+</blockquote>
+<p> <strong><em>注意：聚合函数的计算会排除NULL值</em></strong></p>
+<p> <strong><em>解决方案：1.选择不包含空的列（主键）进行计算。2.IFNULL函数。</em></strong></p>
+<ol>
+<li>COUNT；计算个数。<ul>
+<li>SELECT COUNT(字段名) FROM 表名；</li>
+</ul>
+</li>
+<li>MAX；计算最大值。<ul>
+<li>SELECT MAX(字段名) FROM 表名；</li>
+</ul>
+</li>
+<li>MIN；计算最小值。<ul>
+<li>SELECT MIN(字段名) FROM 表名；</li>
+</ul>
+</li>
+<li>SUM：计算和。<ul>
+<li>SELECT SUM(字段名) FROM 表名；</li>
+</ul>
+</li>
+<li>AVG；计算平均值。<ul>
+<li>SELECT AVG(字段名) FROM 表名；</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p><strong>分组查询</strong></p>
+<ul>
+<li><p>语法：</p>
+<ul>
+<li>GROUP BY 分组字段；</li>
+<li>SELECT 分组字段, 聚合函数1，…. FROM 表名 GROUP BY 分组字段;</li>
+</ul>
+</li>
+<li><p><em>注意：1.分组之后查询的字段只能是分组字段或者聚合函数。2.在分组之前可以用WHERE进行条件限定且后面不可以跟聚合函数判断，如果要在分组之后进行条件限定需要用HAVING且后面可以跟聚合函数判断。*</em></p>
+<p><code>SELECT 分组字段, 聚合函数1，.... FROM 表名 WHERE 条件 GROUP BY 分组字段 HAVING 条件;</code></p>
+</li>
+</ul>
+</li>
+<li><p><strong>分页查询</strong></p>
+<ul>
+<li><p>语法：</p>
+<ul>
+<li>LIMIT 开始的索引，每页查询的条数；</li>
+<li>SELECT * FROM 表名 LIMIT 开始的索引, 每页查询的条数;</li>
+</ul>
+</li>
+<li><p><strong>LIMIT是一个“方言”，只能在MySQL中用。*</strong></p>
+</li>
+</ul>
 </li>
 </ol>
 ]]></content>

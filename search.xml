@@ -301,23 +301,23 @@ LIMIT
 <p> <strong><em>注意：聚合函数的计算会排除NULL值</em></strong></p>
 <p> <strong><em>解决方案：1.选择不包含空的列（主键）进行计算。2.IFNULL函数。</em></strong></p>
 <ol>
-<li>COUNT；计算个数。<ul>
+<li><strong>COUNT；计算个数。</strong><ul>
 <li>SELECT COUNT(字段名) FROM 表名；</li>
 </ul>
 </li>
-<li>MAX；计算最大值。<ul>
+<li><strong>MAX；计算最大值。</strong><ul>
 <li>SELECT MAX(字段名) FROM 表名；</li>
 </ul>
 </li>
-<li>MIN；计算最小值。<ul>
+<li><strong>MIN；计算最小值。</strong><ul>
 <li>SELECT MIN(字段名) FROM 表名；</li>
 </ul>
 </li>
-<li>SUM：计算和。<ul>
+<li><strong>SUM：计算和。</strong><ul>
 <li>SELECT SUM(字段名) FROM 表名；</li>
 </ul>
 </li>
-<li>AVG；计算平均值。<ul>
+<li><strong>AVG；计算平均值。</strong><ul>
 <li>SELECT AVG(字段名) FROM 表名；</li>
 </ul>
 </li>
@@ -325,20 +325,20 @@ LIMIT
 </li>
 <li><p><strong>分组查询</strong></p>
 <ul>
-<li><p>语法：</p>
+<li><p><strong>语法：</strong></p>
 <ul>
 <li>GROUP BY 分组字段；</li>
 <li>SELECT 分组字段, 聚合函数1，…. FROM 表名 GROUP BY 分组字段;</li>
 </ul>
 </li>
-<li><p><em>注意：1.分组之后查询的字段只能是分组字段或者聚合函数。2.在分组之前可以用WHERE进行条件限定且后面不可以跟聚合函数判断，如果要在分组之后进行条件限定需要用HAVING且后面可以跟聚合函数判断。*</em></p>
+<li><p><strong><em>注意：1.分组之后查询的字段只能是分组字段或者聚合函数。2.在分组之前可以用WHERE进行条件限定且后面不可以跟聚合函数判断，如果要在分组之后进行条件限定需要用HAVING且后面可以跟聚合函数判断。</em></strong></p>
 <p><code>SELECT 分组字段, 聚合函数1，.... FROM 表名 WHERE 条件 GROUP BY 分组字段 HAVING 条件;</code></p>
 </li>
 </ul>
 </li>
 <li><p><strong>分页查询</strong></p>
 <ul>
-<li><p>语法：</p>
+<li><p><strong>语法：</strong></p>
 <ul>
 <li>LIMIT 开始的索引，每页查询的条数；</li>
 <li>SELECT * FROM 表名 LIMIT 开始的索引, 每页查询的条数;</li>

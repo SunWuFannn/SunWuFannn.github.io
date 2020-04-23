@@ -330,15 +330,18 @@ LIMIT
     分页限定</code></pre><ol>
 <li><p>基础查询</p>
 <ol>
-<li>多个字段的查询<ul>
+<li><p>多个字段的查询</p>
+<ul>
 <li>SELECT 字段名1，字段名2… FROM 表名；</li>
 </ul>
 </li>
-<li>去除重复<ul>
+<li><p>去除重复</p>
+<ul>
 <li>SELECT DISTINCT 字段名1，字段名2… FROM 表名；</li>
 </ul>
 </li>
-<li>计算列<ul>
+<li><p>计算列</p>
+<ul>
 <li>一般可以使用四则运算计算一些列的值。（一般只会进行数值型的计算）</li>
 <li>IFNULL（表达式1，表达式2）：NULL参与的运算，计算结果都为NULL。<ul>
 <li>表达式1：哪个字段需要判断是否为NULL。</li>
@@ -347,9 +350,12 @@ LIMIT
 </li>
 </ul>
 </li>
-<li>起别名<ul>
-<li>SELECT 字段名1 AS 别名 FROM 表名；</li>
-<li><em>注意：AS也可以省略，用一个空格代替。*</em></li>
+<li><p>起别名</p>
+<ul>
+<li><p>SELECT 字段名1 AS 别名 FROM 表名；</p>
+</li>
+<li><p><em>注意：AS也可以省略，用一个空格代替。*</em></p>
+</li>
 </ul>
 </li>
 </ol>

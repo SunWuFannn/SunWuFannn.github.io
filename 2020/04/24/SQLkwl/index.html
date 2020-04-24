@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    常用的SQL语句 |  小张日记
+    SQL小知识杂谈 |  小张日记
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -34,7 +34,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-SQL" class="article article-type-post" itemscope
+  <article id="post-SQLkwl" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -42,7 +42,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  常用的SQL语句
+  SQL小知识杂谈
 </h1>
   
 
@@ -51,12 +51,12 @@
 
     
     <div class="article-meta">
-      <a href="/2020/04/23/SQL/" class="article-date">
-  <time datetime="2020-04-22T16:00:00.000Z" itemprop="datePublished">2020-04-23</time>
+      <a href="/2020/04/24/SQLkwl/" class="article-date">
+  <time datetime="2020-04-23T16:00:00.000Z" itemprop="datePublished">2020-04-24</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/SQL%E8%AF%AD%E5%8F%A5/">SQL语句</a>
+    <a class="article-category-link" href="/categories/SQL%E7%9F%A5%E8%AF%86/">SQL知识</a>
   </div>
 
       
@@ -66,7 +66,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">2.3k字</span>
+            <span class="post-count">719字</span>
         </span>
     </span>
 
@@ -75,7 +75,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">8分钟</span>
+            <span class="post-count">2分钟</span>
         </span>
     </span>
 </div>
@@ -102,382 +102,69 @@
       
 
       
-      <h1 id="常用的SQL语句"><a href="#常用的SQL语句" class="headerlink" title="常用的SQL语句"></a>常用的SQL语句</h1><hr>
-<h2 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h2><p>DDL是操作是数据库和表的SQL语句。</p>
-<h3 id="1-操作数据库"><a href="#1-操作数据库" class="headerlink" title="1. 操作数据库"></a>1. 操作数据库</h3><pre><code>1. **创建**
-    * 创建数据库
-        * CREATE DATABASE 数据库名称；
-    * 创建数据库，判断不存在，再创建
-        * CREATE DATABASE IF NOT EXISTS 数据库名称；
-    * 创建数据库，并指定字符集
-        * CREATE DATABASE 数据库名称 character set 字符集名；
-    * 创建数据库，判断不存在，再创建，并指定字符集
-        * CREATE DATABASE IF NOT EXISTS 数据库名称 character set 字符集名；
-
-2. **查询**
-    * 查询所有数据库的名称
-        * SHOW DATABASES；
-    * 查询某个数据库的字符集，查询某个数据库的查询语句
-        * SHOW CREATE DATABASE 数据库名称；
-
-3. **修改**
-    * 修改数据库的字符集
-        * ALTER DATABASE 数据库名称 character set 字符集名；
-
-4. **删除**
-    * 删除数据库
-        * DROP DATABASE 数据库名称；
-    * 判断数据库存在，再删除
-        * DROP DATABASE IF EXISTS 数据库名称；
-
-5. **使用数据库**
-    * 查询当前正在使用的数据库名称
-        * SELECT DATABASE();
-    * 使用数据库
-        * USE 数据库名称；</code></pre><h3 id="2-操作表"><a href="#2-操作表" class="headerlink" title="2. 操作表"></a>2. 操作表</h3><pre><code>1. **创建**
-    * 创建表
-        * CREATE TABLE 表名称(
-
-            列名1，数据类型1，
-
-            列名2，数据类型2，
-
-            列名3，数据类型3，
-
-            .......
-
-            列名n，数据类型n
-
-        )；
-
-        **注意最后一列后面不用加逗号**
-
-        * SQL中常用的数据类型
-            1. int：整数类型
-            2. double：小数类型
-            3. date：日期，只包含年月日，yyyy-MM-dd
-            4. datetime：日期，包含年月日时分秒，yyyy-MM-dd HH:mm:ss
-            5. timestamp：时间戳类型，包含年月日时分秒，不赋值时可以默认添加当前系统时间
-            6. varchar：字符串
-    * 复制表
-        * CREATE TABLE 表名 LIKE 被复制的表名；
-
-2. **查询**
-    * 查询某个数据库中所有表的名称
-        * SHOW TABLES；
-    * 查询表结构
-        * DESC 表名称；
-
-3. **修改**
-    * 修改表名
-        * ALTER TABLE 表名称 RENAME TO 新的表名；
-    * 修改表的字符集
-        * ALTER TABLE 表名称 character set 字符集名；
-    * 添加一列
-        * ALTER TABLE 表名称 ADD 列名 数据类型；
-    * 修改列名和类型
-        * ALTER TABLE 表名称 CHANGE 列名 新列名 新数据类型；
-        * ALTER TABLE 表名称 MODIFY 列名 新数据类型；
-    * 删除列
-        * ALTER TABLE 表名称 DROP 列名；
-
-4. **删除**
-    * 删除表
-        * DROP TABLE 表名称；
-    * 判断表存在，再删除
-        * DROP TABLE IF EXISTS 表名称；</code></pre><hr>
-<h2 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h2><p>DML是增删改数据库的表中的数据的SQL语句。</p>
-<ol>
-<li><p><strong>添加数据</strong></p>
+      <h1 id="SQL的一些小知识"><a href="#SQL的一些小知识" class="headerlink" title="SQL的一些小知识"></a>SQL的一些小知识</h1><hr>
+<h2 id="多表关系的实现"><a href="#多表关系的实现" class="headerlink" title="多表关系的实现"></a>多表关系的实现</h2><ol>
+<li><p><strong>一对多（多对一）</strong></p>
 <ul>
-<li><p>INSERT INTO 表名(列名1，列名2，列名3，…..列名n) VALUES(值1，值2，值3，…..值n);</p>
-</li>
-<li><p><em>注意：*</em></p>
-</li>
-</ul>
-<ol>
-<li><p>列名和值要一一对应。</p>
-</li>
-<li><p>如果表名后，不定义列名，则默认给所有列添加值。</p>
-<ul>
-<li>INSERT INTO 表名VALUES(值1，值2，值3，…..值n);</li>
+<li>实现方式：在多的一方建立外键，指向一的一方的主键。</li>
 </ul>
 </li>
-<li><p>除了数字类型，其他类型需要使用引号（单双引号都可以）引起来。</p>
-</li>
-</ol>
-</li>
-<li><p><strong>删除数据</strong></p>
+<li><p><strong>多对多</strong></p>
 <ul>
-<li><p>DELETE FROM 表名 [WHERE 条件]；</p>
+<li><p>实现方式：需要借助第三张中间表，中间表至少包含两个字段，这两个字段作为第三张表的外键，分别指向两张表的主键。</p>
 </li>
-<li><p><em>注意：如果不加条件，则删除表中所有记录。*</em></p>
-</li>
-<li><p><strong>如果要删除表中所有记录，不推荐使用<code>DELETE FROM 表名；</code>，可以使用<code>TRUNCATE TABLE 表名；</code>。*</strong></p>
+<li><p><em>联合主键：中间表的主键可以是指向另两张表主键的两个外键的联合。例：PRIMARY KEY(rid,uid)；*</em></p>
 </li>
 </ul>
 </li>
-<li><p><strong>修改数据</strong></p>
+<li><p><strong>一对一</strong></p>
 <ul>
-<li><p>UPDATE 表名 SET 列名1=值1， 列名2=值2，….列名n=值n [WHERE 条件]；</p>
-</li>
-<li><p><em>注意：如果不加任何条件，则会将表中所有记录修改。*</em></p>
-</li>
+<li>实现方式：可以在任意一方添加唯一外键指向另一方的主键（一对一关系不常用，如果是一对一，为何不把两张表拼在一起呢）。</li>
 </ul>
 </li>
 </ol>
 <hr>
-<h2 id="DQL"><a href="#DQL" class="headerlink" title="DQL"></a>DQL</h2><p>DQL是查询表中记录的SQL语句。</p>
+<h2 id="数据库设计范式"><a href="#数据库设计范式" class="headerlink" title="数据库设计范式"></a>数据库设计范式</h2><p>范式就是设计数据库时需要遵循的一些规范。</p>
+<p>范式有六种范式：第一范式（1NF），第二范式（2NF），第三范式（3NF），巴斯-科德范式（BCNF），第四范式（4NF），第五范式（5NF，又称完美范式）。</p>
+<p>各种范式呈递次规范，越高的范式，数据库冗余越小。一般设计数据库时满足前三范式就可以了。</p>
+<h3 id="第一范式（1NF）"><a href="#第一范式（1NF）" class="headerlink" title="第一范式（1NF）"></a>第一范式（1NF）</h3><p>每一列都是不可分割的原子数据项。</p>
+<h3 id="第二范式（2NF）"><a href="#第二范式（2NF）" class="headerlink" title="第二范式（2NF）"></a>第二范式（2NF）</h3><p>在1NF的基础上，非码属性必须完全依赖于候选码（在1NF基础上消除非主属性对主码的部分函数依赖）。</p>
+<p><strong>就是消除部分依赖。</strong></p>
 <ul>
-<li>SELECT * FROM 表名；</li>
-</ul>
-<p><strong>语法：</strong></p>
-<pre><code>SELECT
-    字段列表
-FROM
-    表名列表
-WHERE
-    条件列表
-GROUP BY
-    分组字段
-HAVING
-    分组之后的条件
-ORDER BY
-    排序
-LIMIT
-    分页限定</code></pre><h3 id="1-基础查询"><a href="#1-基础查询" class="headerlink" title="1. 基础查询"></a>1. 基础查询</h3><ol>
-<li><p>多个字段的查询</p>
-<pre><code>* SELECT 字段名1，字段名2... FROM 表名；</code></pre></li>
-<li><p>去除重复</p>
-<pre><code>* SELECT DISTINCT 字段名1，字段名2... FROM 表名；</code></pre></li>
-<li><p>计算列</p>
-<ul>
-<li>一般可以使用四则运算计算一些列的值。（一般只会进行数值型的计算）</li>
-<li>IFNULL（表达式1，表达式2）：NULL参与的运算，计算结果都为NULL。<ul>
-<li>表达式1：哪个字段需要判断是否为NULL。</li>
-<li>表达式2：如果该字段为NULL后的替换值。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>起别名</p>
-<ul>
-<li><p>SELECT 字段名1 AS 别名 FROM 表名；</p>
-</li>
-<li><p><em>注意：AS也可以省略，用一个空格代替。*</em></p>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="2-条件查询"><a href="#2-条件查询" class="headerlink" title="2. 条件查询"></a>2. 条件查询</h3><ol>
-<li><p>WHERE子句后跟条件。</p>
-</li>
-<li><p>运算符</p>
-<ul>
-<li>&lt; &gt; &gt;= &lt;= &lt;&gt; =</li>
-<li>BETWEEN…AND</li>
-<li>IN(集合)</li>
-<li>LIKE：模糊查询<ul>
-<li>占位符：<ul>
-<li>_：单个任意字符。</li>
-<li>%：多个任意字符。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>IS NULL</li>
-<li>AND 或 &amp;&amp;</li>
-<li>OR 或 ||</li>
-<li>NOT 或 ！</li>
-</ul>
-</li>
-</ol>
-<h3 id="3-排序查询"><a href="#3-排序查询" class="headerlink" title="3. 排序查询"></a>3. 排序查询</h3><ul>
-<li><p><strong>语法</strong></p>
-<ul>
-<li>ORDER BY 排序字段1 排序方式1，排序字段2 排序方式2….</li>
-</ul>
-</li>
-<li><p><strong>排序方式</strong></p>
-<ul>
-<li><p>ASC：升序，默认的。</p>
-</li>
-<li><p>DESC：降序。</p>
-</li>
-<li><p><em>注意：如果有多个排序条件，则当前边的条件值一样时，才会判断第二条件。*</em></p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="4-聚合函数"><a href="#4-聚合函数" class="headerlink" title="4. 聚合函数"></a>4. 聚合函数</h3><blockquote>
-<p>将一列数据作为一个整体，进行纵向的计算。</p>
-</blockquote>
-<p><strong><em>注意：聚合函数的计算会排除NULL值</em></strong></p>
-<p><strong><em>解决方案：1.选择不包含空的列（主键）进行计算。2.IFNULL函数。</em></strong></p>
+<li><p>几个概念</p>
 <ol>
-<li><strong>COUNT；计算个数。</strong><ul>
-<li>SELECT COUNT(字段名) FROM 表名；</li>
+<li><p>函数依赖：A –&gt;B,如果通过A属性（属性组）的值，可以确定唯一B属性的值，则B依赖于A。</p>
+<ul>
+<li>例：学号 –&gt;姓名   （学号，课程名称） –&gt;分数</li>
 </ul>
 </li>
-<li><strong>MAX；计算最大值。</strong><ul>
-<li>SELECT MAX(字段名) FROM 表名；</li>
+<li><p>完全函数依赖：A –&gt;B,如果A是一个属性组，则B属性值的确定需要依赖于A属性组中所有的属性值。</p>
+<ul>
+<li>例：（学号，课程名称） –&gt;分数</li>
 </ul>
 </li>
-<li><strong>MIN；计算最小值。</strong><ul>
-<li>SELECT MIN(字段名) FROM 表名；</li>
+<li><p>部分函数依赖：A –&gt;B,如果A是一个属性组，则B属性值的确定需要依赖于A属性组中某一些属性值即可。</p>
+<ul>
+<li>例：（学号，课程名称） –&gt;姓名</li>
 </ul>
 </li>
-<li><strong>SUM：计算和。</strong><ul>
-<li>SELECT SUM(字段名) FROM 表名；</li>
+<li><p>传递函数依赖：A –&gt;B, B –&gt;C，如果通过A属性（属性组）的值，可以确定唯一B属性的值，再通过B属性的值可以确定唯一C属性的值，则称C传递函数依赖于A。</p>
+<ul>
+<li>例：学号 –&gt;姓名，姓名 –&gt;系主任</li>
 </ul>
 </li>
-<li><strong>AVG；计算平均值。</strong><ul>
-<li>SELECT AVG(字段名) FROM 表名；</li>
+<li><p>码：如果在一张表中，一个属性或属性组，被其他所有属性完全依赖，则称这个属性（属性组）为该表的码。</p>
+<ul>
+<li>例：（学号，课程名称）</li>
+<li>主属性：码属性组中的所有属性</li>
+<li>非主属性：去除码属性组中的属性</li>
 </ul>
 </li>
 </ol>
-<h3 id="5-分组查询"><a href="#5-分组查询" class="headerlink" title="5. 分组查询"></a>5. 分组查询</h3><ul>
-<li><p><strong>语法：</strong></p>
-<ul>
-<li>GROUP BY 分组字段；</li>
-<li>SELECT 分组字段, 聚合函数1，…. FROM 表名 GROUP BY 分组字段;</li>
-</ul>
-</li>
-<li><p><strong><em>注意：1.分组之后查询的字段只能是分组字段或者聚合函数。2.在分组之前可以用WHERE进行条件限定且后面不可以跟聚合函数判断，如果要在分组之后进行条件限定需要用HAVING且后面可以跟聚合函数判断。</em></strong></p>
-<p>  <code>SELECT 分组字段, 聚合函数1，.... FROM 表名 WHERE 条件 GROUP BY 分组字段 HAVING 条件;</code></p>
 </li>
 </ul>
-<h3 id="6-分页查询"><a href="#6-分页查询" class="headerlink" title="6. 分页查询"></a>6. 分页查询</h3><ul>
-<li><strong>语法：</strong><ul>
-<li>LIMIT 开始的索引，每页查询的条数；</li>
-<li>SELECT * FROM 表名 LIMIT 开始的索引, 每页查询的条数;</li>
-</ul>
-</li>
-</ul>
-<p><strong><em>LIMIT是一个“方言”，只能在MySQL中用。</em></strong></p>
-<hr>
-<h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><p>对表中的数据进行限定，保证数据的正确性、有效性和完整性。</p>
-<p>分类：</p>
-<ol>
-<li>主键约束：primary key</li>
-<li>非空约束：not null</li>
-<li>唯一约束：unique</li>
-<li>外键约束：foreign key</li>
-</ol>
-<h3 id="1-非空约束"><a href="#1-非空约束" class="headerlink" title="1.非空约束"></a>1.非空约束</h3><p>某一列的值不能为NULL。</p>
-<ul>
-<li><p>创建表时添加非空约束</p>
-<pre><code>CREATE TABLE 表名(
-    字段名1 数据类型1，
-    字段名2 数据类型2 NOT NULL，
-    .....
-);</code></pre></li>
-<li><p>创建表完后添加非空约束</p>
-<p>  <code>ALTER TABLE 表名 MODIFY 字段名 数据类型 NOT NULL；</code></p>
-</li>
-<li><p>删除非空约束</p>
-<p>  <code>ALTER TABLE 表名 字段名 数据类型；</code></p>
-</li>
-</ul>
-<h3 id="2-唯一约束"><a href="#2-唯一约束" class="headerlink" title="2.唯一约束"></a>2.唯一约束</h3><p>某一列的值不能重复。</p>
-<ul>
-<li><p>创建表时，添加唯一约束</p>
-<pre><code>CREATE TABLE 表名(
-    字段名1 数据类型1，
-    字段名2 数据类型2 UNIQUE，
-    .....
-);</code></pre></li>
-<li><p>删除唯一约束</p>
-<p>  <code>ALTER TABLE 表名 DROP INDEX 字段名；</code></p>
-</li>
-<li><p>在表创建完后，添加唯一约束</p>
-<p>  <code>ALTER TABLE 表名 MODIFY 字段名 数据类型 UNIQUE；</code></p>
-</li>
-</ul>
-<h3 id="3-主键约束"><a href="#3-主键约束" class="headerlink" title="3.主键约束"></a>3.主键约束</h3><p>某一列的值非空且唯一，一张表只能有一个字段为主键，就是表中记里的唯一标识。</p>
-<ul>
-<li><p>创建表时，添加主键约束</p>
-<pre><code>CREATE TABLE 表名(
-    字段名1 数据类型1，
-    字段名2 数据类型2 PRIMARY KEY，
-    .....
-);</code></pre></li>
-<li><p>删除主键</p>
-<p>  <code>ALTER TABLE 表名 DROP PRIMARY KEY；</code></p>
-</li>
-<li><p>创建完表后，添加主键</p>
-<p>  <code>ALTER TABLE 表名 MODIFY 字段名 数据类型 PRMARY KEY；</code></p>
-</li>
-<li><p>自动增长</p>
-<ul>
-<li><p>如果某一列是数值类型，使用AUTO_INCREMENT可以完成值自动增长，一般可以配合数值类型的主键使用。</p>
-</li>
-<li><p><em>注意：自动增长的值为最后一条记录自动增长字段的值加一*</em></p>
-</li>
-<li><p>创建表时，添加主键，并且完成自动增长</p>
-<pre><code>CREATE TABLE 表名(
-字段名1 数据类型1，
-字段名2 数据类型2 PRIMARY KEY AUTO_INCREMENT，
-.....</code></pre><p>  );</p>
-</li>
-<li><p>删除自动增长</p>
-<p><code>ALTER TABLE 表名 MODIFY 字段名 数据类型；</code></p>
-</li>
-<li><p>添加自动增长</p>
-<p><code>ALTER TABLE 表名 MODIFY 字段名 数据类型 AUTO_INCREMENT；</code></p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="4-外键约束"><a href="#4-外键约束" class="headerlink" title="4.外键约束"></a>4.外键约束</h3><p>让表与表产生关系，从而保证数据的正确性，外键可以为NULL，但是不能是主表中不存在的值。</p>
-<ul>
-<li><p>创建表时，添加外键</p>
-<pre><code>CREATE TABLE 表名(
-    字段名1 数据类型1，
-    字段名2 数据类型2，
-    .....
-    CONSTRAINT 外键名称 FOREIGN KEY (外键列名称) REFERENCES 主表名称(主表列名称)
-);</code></pre></li>
-<li><p>删除外键</p>
-<p>  <code>ALTER TABLE 表名称 DROP FOREIGN KEY 外键名称；</code></p>
-</li>
-<li><p>创建表之后，添加外键</p>
-<p>  <code>ALTER TABLE 表名称 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键列名称) REFERENCES 主表名称(主表列名称)；</code></p>
-</li>
-<li><p>级联操作</p>
-<p>  可以在外键关联的主表中的列进行操作时，外键中的值自动更新。</p>
-<ul>
-<li><p>级联更新</p>
-<ul>
-<li><p>在添加外键语句后加上ON UPDATE CASCADE</p>
-<p><code>ALTER TABLE 表名称 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键列名称) REFERENCES 主表名称(主表列名称) ON UPDATE CASCADE；</code></p>
-</li>
-</ul>
-</li>
-<li><p>级联删除</p>
-<ul>
-<li><p>在添加外键语句后加上ON DELETE CASCADE</p>
-<p><code>ALTER TABLE 表名称 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键列名称) REFERENCES 主表名称(主表列名称) ON DELETE CASCADE；</code></p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong><em>级联更新与级联删除可以同时存在。</em></strong></p>
-<hr>
-<h2 id="命令行操作数据库备份和还原"><a href="#命令行操作数据库备份和还原" class="headerlink" title="命令行操作数据库备份和还原"></a>命令行操作数据库备份和还原</h2><ul>
-<li><p>备份：MYSQLDUMP -u用户名 -p密码 数据库名称 &gt; 保存的路径；</p>
-</li>
-<li><p>还原：</p>
-<ol>
-<li>登录数据库</li>
-<li>创建数据库</li>
-<li>使用数据库</li>
-<li>使用文件。SOURCE 文件路径</li>
-</ol>
-</li>
-</ul>
+<h3 id="第三范式（3NF）"><a href="#第三范式（3NF）" class="headerlink" title="第三范式（3NF）"></a>第三范式（3NF）</h3><p>在2NF基础上，任何非主属性不依赖于其它非主属性（在2NF基础上消除传递依赖）。</p>
+<p><strong>就是消除传递依赖。</strong></p>
 <hr>
 
       
@@ -548,7 +235,7 @@ LIMIT
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/23/SQL/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/24/SQLkwl/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -566,19 +253,10 @@ LIMIT
   
   <nav class="article-nav">
     
-      <a href="/2020/04/24/SQLkwl/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            SQL小知识杂谈
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/04/15/Inner/" class="article-nav-link">
+      <a href="/2020/04/23/SQL/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">杂谈：权限修饰符，匿名内部类....</div>
+        <div class="article-nav-title">常用的SQL语句</div>
       </a>
     
   </nav>

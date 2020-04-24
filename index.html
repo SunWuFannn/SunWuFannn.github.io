@@ -113,163 +113,88 @@
       
       <h1 id="常用的SQL语句"><a href="#常用的SQL语句" class="headerlink" title="常用的SQL语句"></a>常用的SQL语句</h1><hr>
 <h2 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h2><p>DDL是操作是数据库和表的SQL语句。</p>
-<ol>
-<li><p><strong>操作数据库</strong></p>
-<ol>
-<li><p><strong>创建</strong></p>
-<ul>
-<li>创建数据库<ul>
-<li>CREATE DATABASE 数据库名称；</li>
-</ul>
-</li>
-<li>创建数据库，判断不存在，再创建<ul>
-<li>CREATE DATABASE IF NOT EXISTS 数据库名称；</li>
-</ul>
-</li>
-<li>创建数据库，并指定字符集<ul>
-<li>CREATE DATABASE 数据库名称 character set 字符集名；</li>
-</ul>
-</li>
-<li>创建数据库，判断不存在，再创建，并指定字符集<ul>
-<li>CREATE DATABASE IF NOT EXISTS 数据库名称 character set 字符集名；</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>查询</strong></p>
-<ul>
-<li>查询所有数据库的名称<ul>
-<li>SHOW DATABASES；</li>
-</ul>
-</li>
-<li>查询某个数据库的字符集，查询某个数据库的查询语句<ul>
-<li>SHOW CREATE DATABASE 数据库名称；</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>修改</strong></p>
-<ul>
-<li>修改数据库的字符集<ul>
-<li>ALTER DATABASE 数据库名称 character set 字符集名；</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>删除</strong></p>
-<ul>
-<li>删除数据库<ul>
-<li>DROP DATABASE 数据库名称；</li>
-</ul>
-</li>
-<li>判断数据库存在，再删除<ul>
-<li>DROP DATABASE IF EXISTS 数据库名称；</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>使用数据库</strong></p>
-<ul>
-<li>查询当前正在使用的数据库名称<ul>
-<li>SELECT DATABASE();</li>
-</ul>
-</li>
-<li>使用数据库<ul>
-<li>USE 数据库名称；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p><strong>操作表</strong></p>
-<ol>
-<li><p><strong>创建</strong></p>
-<ul>
-<li><p>创建表</p>
-<ul>
-<li><p>CREATE TABLE 表名称(</p>
-<p>  列名1，数据类型1，</p>
-<p>  列名2，数据类型2，</p>
-<p>  列名3，数据类型3，</p>
-<p>  …….</p>
-<p>  列名n，数据类型n</p>
-<p>)；</p>
-</li>
-<li><p><em>注意最后一列后面不用加逗号*</em></p>
-</li>
-<li><p>SQL中常用的数据类型</p>
-<ol>
-<li>int：整数类型</li>
-<li>double：小数类型</li>
-<li>date：日期，只包含年月日，yyyy-MM-dd</li>
-<li>datetime：日期，包含年月日时分秒，yyyy-MM-dd HH:mm:ss</li>
-<li>timestamp：时间戳类型，包含年月日时分秒，不赋值时可以默认添加当前系统时间</li>
-<li>varchar：字符串</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>复制表</p>
-<ul>
-<li>CREATE TABLE 表名 LIKE 被复制的表名；</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>查询</strong></p>
-<ul>
-<li>查询某个数据库中所有表的名称<ul>
-<li>SHOW TABLES；</li>
-</ul>
-</li>
-<li>查询表结构<ul>
-<li>DESC 表名称；</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>修改</strong></p>
-<ul>
-<li>修改表名<ul>
-<li>ALTER TABLE 表名称 RENAME TO 新的表名；</li>
-</ul>
-</li>
-<li>修改表的字符集<ul>
-<li>ALTER TABLE 表名称 character set 字符集名；</li>
-</ul>
-</li>
-<li>添加一列<ul>
-<li>ALTER TABLE 表名称 ADD 列名 数据类型；</li>
-</ul>
-</li>
-<li>修改列名和类型<ul>
-<li>ALTER TABLE 表名称 CHANGE 列名 新列名 新数据类型；</li>
-<li>ALTER TABLE 表名称 MODIFY 列名 新数据类型；</li>
-</ul>
-</li>
-<li>删除列<ul>
-<li>ALTER TABLE 表名称 DROP 列名；</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>删除</strong></p>
-<ul>
-<li>删除表<ul>
-<li>DROP TABLE 表名称；</li>
-</ul>
-</li>
-<li>判断表存在，再删除<ul>
-<li>DROP TABLE IF EXISTS 表名称；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-<hr>
+<h3 id="1-操作数据库"><a href="#1-操作数据库" class="headerlink" title="1. 操作数据库"></a>1. 操作数据库</h3><pre><code>1. **创建**
+    * 创建数据库
+        * CREATE DATABASE 数据库名称；
+    * 创建数据库，判断不存在，再创建
+        * CREATE DATABASE IF NOT EXISTS 数据库名称；
+    * 创建数据库，并指定字符集
+        * CREATE DATABASE 数据库名称 character set 字符集名；
+    * 创建数据库，判断不存在，再创建，并指定字符集
+        * CREATE DATABASE IF NOT EXISTS 数据库名称 character set 字符集名；
+
+2. **查询**
+    * 查询所有数据库的名称
+        * SHOW DATABASES；
+    * 查询某个数据库的字符集，查询某个数据库的查询语句
+        * SHOW CREATE DATABASE 数据库名称；
+
+3. **修改**
+    * 修改数据库的字符集
+        * ALTER DATABASE 数据库名称 character set 字符集名；
+
+4. **删除**
+    * 删除数据库
+        * DROP DATABASE 数据库名称；
+    * 判断数据库存在，再删除
+        * DROP DATABASE IF EXISTS 数据库名称；
+
+5. **使用数据库**
+    * 查询当前正在使用的数据库名称
+        * SELECT DATABASE();
+    * 使用数据库
+        * USE 数据库名称；</code></pre><h3 id="2-操作表"><a href="#2-操作表" class="headerlink" title="2. 操作表"></a>2. 操作表</h3><pre><code>1. **创建**
+    * 创建表
+        * CREATE TABLE 表名称(
+
+            列名1，数据类型1，
+
+            列名2，数据类型2，
+
+            列名3，数据类型3，
+
+            .......
+
+            列名n，数据类型n
+
+        )；
+
+        **注意最后一列后面不用加逗号**
+
+        * SQL中常用的数据类型
+            1. int：整数类型
+            2. double：小数类型
+            3. date：日期，只包含年月日，yyyy-MM-dd
+            4. datetime：日期，包含年月日时分秒，yyyy-MM-dd HH:mm:ss
+            5. timestamp：时间戳类型，包含年月日时分秒，不赋值时可以默认添加当前系统时间
+            6. varchar：字符串
+    * 复制表
+        * CREATE TABLE 表名 LIKE 被复制的表名；
+
+2. **查询**
+    * 查询某个数据库中所有表的名称
+        * SHOW TABLES；
+    * 查询表结构
+        * DESC 表名称；
+
+3. **修改**
+    * 修改表名
+        * ALTER TABLE 表名称 RENAME TO 新的表名；
+    * 修改表的字符集
+        * ALTER TABLE 表名称 character set 字符集名；
+    * 添加一列
+        * ALTER TABLE 表名称 ADD 列名 数据类型；
+    * 修改列名和类型
+        * ALTER TABLE 表名称 CHANGE 列名 新列名 新数据类型；
+        * ALTER TABLE 表名称 MODIFY 列名 新数据类型；
+    * 删除列
+        * ALTER TABLE 表名称 DROP 列名；
+
+4. **删除**
+    * 删除表
+        * DROP TABLE 表名称；
+    * 判断表存在，再删除
+        * DROP TABLE IF EXISTS 表名称；</code></pre><hr>
 <h2 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h2><p>DML是增删改数据库的表中的数据的SQL语句。</p>
 <ol>
 <li><p><strong>添加数据</strong></p>
@@ -329,19 +254,11 @@ HAVING
 ORDER BY
     排序
 LIMIT
-    分页限定</code></pre><ol>
-<li><p><strong>基础查询</strong></p>
-<ol>
+    分页限定</code></pre><h3 id="1-基础查询"><a href="#1-基础查询" class="headerlink" title="1. 基础查询"></a>1. 基础查询</h3><ol>
 <li><p>多个字段的查询</p>
-<ul>
-<li>SELECT 字段名1，字段名2… FROM 表名；</li>
-</ul>
-</li>
+<pre><code>* SELECT 字段名1，字段名2... FROM 表名；</code></pre></li>
 <li><p>去除重复</p>
-<ul>
-<li>SELECT DISTINCT 字段名1，字段名2… FROM 表名；</li>
-</ul>
-</li>
+<pre><code>* SELECT DISTINCT 字段名1，字段名2... FROM 表名；</code></pre></li>
 <li><p>计算列</p>
 <ul>
 <li>一般可以使用四则运算计算一些列的值。（一般只会进行数值型的计算）</li>
@@ -361,11 +278,11 @@ LIMIT
 </ul>
 </li>
 </ol>
+<h3 id="2-条件查询"><a href="#2-条件查询" class="headerlink" title="2. 条件查询"></a>2. 条件查询</h3><ol>
+<li><p>WHERE子句后跟条件。</p>
 </li>
-<li><p><strong>条件查询</strong></p>
-<ol>
-<li>WHERE子句后跟条件。</li>
-<li>运算符<ul>
+<li><p>运算符</p>
+<ul>
 <li>&lt; &gt; &gt;= &lt;= &lt;&gt; =</li>
 <li>BETWEEN…AND</li>
 <li>IN(集合)</li>
@@ -384,9 +301,7 @@ LIMIT
 </ul>
 </li>
 </ol>
-</li>
-<li><p><strong>排序查询</strong></p>
-<ul>
+<h3 id="3-排序查询"><a href="#3-排序查询" class="headerlink" title="3. 排序查询"></a>3. 排序查询</h3><ul>
 <li><p><strong>语法</strong></p>
 <ul>
 <li>ORDER BY 排序字段1 排序方式1，排序字段2 排序方式2….</li>
@@ -403,13 +318,11 @@ LIMIT
 </ul>
 </li>
 </ul>
-</li>
-<li><p><strong>聚合函数</strong></p>
-<blockquote>
+<h3 id="4-聚合函数"><a href="#4-聚合函数" class="headerlink" title="4. 聚合函数"></a>4. 聚合函数</h3><blockquote>
 <p>将一列数据作为一个整体，进行纵向的计算。</p>
 </blockquote>
-<p> <strong><em>注意：聚合函数的计算会排除NULL值</em></strong></p>
-<p> <strong><em>解决方案：1.选择不包含空的列（主键）进行计算。2.IFNULL函数。</em></strong></p>
+<p><strong><em>注意：聚合函数的计算会排除NULL值</em></strong></p>
+<p><strong><em>解决方案：1.选择不包含空的列（主键）进行计算。2.IFNULL函数。</em></strong></p>
 <ol>
 <li><strong>COUNT；计算个数。</strong><ul>
 <li>SELECT COUNT(字段名) FROM 表名；</li>
@@ -432,9 +345,7 @@ LIMIT
 </ul>
 </li>
 </ol>
-</li>
-<li><p><strong>分组查询</strong></p>
-<ul>
+<h3 id="5-分组查询"><a href="#5-分组查询" class="headerlink" title="5. 分组查询"></a>5. 分组查询</h3><ul>
 <li><p><strong>语法：</strong></p>
 <ul>
 <li>GROUP BY 分组字段；</li>
@@ -442,23 +353,17 @@ LIMIT
 </ul>
 </li>
 <li><p><strong><em>注意：1.分组之后查询的字段只能是分组字段或者聚合函数。2.在分组之前可以用WHERE进行条件限定且后面不可以跟聚合函数判断，如果要在分组之后进行条件限定需要用HAVING且后面可以跟聚合函数判断。</em></strong></p>
-<p><code>SELECT 分组字段, 聚合函数1，.... FROM 表名 WHERE 条件 GROUP BY 分组字段 HAVING 条件;</code></p>
+<p>  <code>SELECT 分组字段, 聚合函数1，.... FROM 表名 WHERE 条件 GROUP BY 分组字段 HAVING 条件;</code></p>
 </li>
 </ul>
-</li>
-<li><p><strong>分页查询</strong></p>
-<ul>
-<li><p><strong>语法：</strong></p>
-<ul>
+<h3 id="6-分页查询"><a href="#6-分页查询" class="headerlink" title="6. 分页查询"></a>6. 分页查询</h3><ul>
+<li><strong>语法：</strong><ul>
 <li>LIMIT 开始的索引，每页查询的条数；</li>
 <li>SELECT * FROM 表名 LIMIT 开始的索引, 每页查询的条数;</li>
 </ul>
 </li>
-<li><p><strong>LIMIT是一个“方言”，只能在MySQL中用。*</strong></p>
-</li>
 </ul>
-</li>
-</ol>
+<p><strong><em>LIMIT是一个“方言”，只能在MySQL中用。</em></strong></p>
 <hr>
 <h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><p>对表中的数据进行限定，保证数据的正确性、有效性和完整性。</p>
 <p>分类：</p>
@@ -468,8 +373,7 @@ LIMIT
 <li>唯一约束：unique</li>
 <li>外键约束：foreign key</li>
 </ol>
-<p><strong>1.非空约束</strong></p>
-<p>某一列的值不能为NULL。</p>
+<h3 id="1-非空约束"><a href="#1-非空约束" class="headerlink" title="1.非空约束"></a>1.非空约束</h3><p>某一列的值不能为NULL。</p>
 <ul>
 <li><p>创建表时添加非空约束</p>
 <pre><code>CREATE TABLE 表名(
@@ -484,8 +388,7 @@ LIMIT
 <p>  <code>ALTER TABLE 表名 字段名 数据类型；</code></p>
 </li>
 </ul>
-<p><strong>2.唯一约束</strong></p>
-<p>某一列的值不能重复。</p>
+<h3 id="2-唯一约束"><a href="#2-唯一约束" class="headerlink" title="2.唯一约束"></a>2.唯一约束</h3><p>某一列的值不能重复。</p>
 <ul>
 <li><p>创建表时，添加唯一约束</p>
 <pre><code>CREATE TABLE 表名(
@@ -500,8 +403,7 @@ LIMIT
 <p>  <code>ALTER TABLE 表名 MODIFY 字段名 数据类型 UNIQUE；</code></p>
 </li>
 </ul>
-<p><strong>3.主键约束</strong></p>
-<p>某一列的值非空且唯一，一张表只能有一个字段为主键，就是表中记里的唯一标识。</p>
+<h3 id="3-主键约束"><a href="#3-主键约束" class="headerlink" title="3.主键约束"></a>3.主键约束</h3><p>某一列的值非空且唯一，一张表只能有一个字段为主键，就是表中记里的唯一标识。</p>
 <ul>
 <li><p>创建表时，添加主键约束</p>
 <pre><code>CREATE TABLE 表名(
@@ -536,8 +438,7 @@ LIMIT
 </ul>
 </li>
 </ul>
-<p><strong>4.外键约束</strong></p>
-<p>让表与表产生关系，从而保证数据的正确性，外键可以为NULL，但是不能是主表中不存在的值。</p>
+<h3 id="4-外键约束"><a href="#4-外键约束" class="headerlink" title="4.外键约束"></a>4.外键约束</h3><p>让表与表产生关系，从而保证数据的正确性，外键可以为NULL，但是不能是主表中不存在的值。</p>
 <ul>
 <li><p>创建表时，添加外键</p>
 <pre><code>CREATE TABLE 表名(

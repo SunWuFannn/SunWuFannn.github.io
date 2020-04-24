@@ -104,88 +104,176 @@
       
       <h1 id="常用的SQL语句"><a href="#常用的SQL语句" class="headerlink" title="常用的SQL语句"></a>常用的SQL语句</h1><hr>
 <h2 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h2><p>DDL是操作是数据库和表的SQL语句。</p>
-<h3 id="1-操作数据库"><a href="#1-操作数据库" class="headerlink" title="1. 操作数据库"></a>1. 操作数据库</h3><pre><code>1. **创建**
-    * 创建数据库
-        * CREATE DATABASE 数据库名称；
-    * 创建数据库，判断不存在，再创建
-        * CREATE DATABASE IF NOT EXISTS 数据库名称；
-    * 创建数据库，并指定字符集
-        * CREATE DATABASE 数据库名称 character set 字符集名；
-    * 创建数据库，判断不存在，再创建，并指定字符集
-        * CREATE DATABASE IF NOT EXISTS 数据库名称 character set 字符集名；
+<h3 id="1-操作数据库"><a href="#1-操作数据库" class="headerlink" title="1. 操作数据库"></a>1. 操作数据库</h3><ol>
+<li><p><strong>创建</strong></p>
+<ul>
+<li><p>创建数据库</p>
+<ul>
+<li>CREATE DATABASE 数据库名称；</li>
+</ul>
+</li>
+<li><p>创建数据库，判断不存在，再创建</p>
+<ul>
+<li>CREATE DATABASE IF NOT EXISTS 数据库名称；</li>
+</ul>
+</li>
+<li><p>创建数据库，并指定字符集</p>
+<ul>
+<li>CREATE DATABASE 数据库名称 character set 字符集名；</li>
+</ul>
+</li>
+<li><p>创建数据库，判断不存在，再创建，并指定字符集</p>
+<ul>
+<li>CREATE DATABASE IF NOT EXISTS 数据库名称 character set 字符集名；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>查询</strong></p>
+<ul>
+<li><p>查询所有数据库的名称</p>
+<ul>
+<li>SHOW DATABASES；</li>
+</ul>
+</li>
+<li><p>查询某个数据库的字符集，查询某个数据库的查询语句</p>
+<ul>
+<li>SHOW CREATE DATABASE 数据库名称；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>修改</strong></p>
+<ul>
+<li>修改数据库的字符集<ul>
+<li>ALTER DATABASE 数据库名称 character set 字符集名；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>删除</strong></p>
+<ul>
+<li><p>删除数据库</p>
+<ul>
+<li>DROP DATABASE 数据库名称；</li>
+</ul>
+</li>
+<li><p>判断数据库存在，再删除</p>
+<ul>
+<li>DROP DATABASE IF EXISTS 数据库名称；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>使用数据库</strong></p>
+<ul>
+<li><p>查询当前正在使用的数据库名称</p>
+<ul>
+<li>SELECT DATABASE();</li>
+</ul>
+</li>
+<li><p>使用数据库</p>
+<ul>
+<li>USE 数据库名称；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-操作表"><a href="#2-操作表" class="headerlink" title="2. 操作表"></a>2. 操作表</h3><ol>
+<li><p><strong>创建</strong></p>
+<ul>
+<li><p>创建表</p>
+<pre><code>CREATE TABLE 表名称(
 
-2. **查询**
-    * 查询所有数据库的名称
-        * SHOW DATABASES；
-    * 查询某个数据库的字符集，查询某个数据库的查询语句
-        * SHOW CREATE DATABASE 数据库名称；
+    列名1，数据类型1，
 
-3. **修改**
-    * 修改数据库的字符集
-        * ALTER DATABASE 数据库名称 character set 字符集名；
+    列名2，数据类型2，
 
-4. **删除**
-    * 删除数据库
-        * DROP DATABASE 数据库名称；
-    * 判断数据库存在，再删除
-        * DROP DATABASE IF EXISTS 数据库名称；
+    列名3，数据类型3，
 
-5. **使用数据库**
-    * 查询当前正在使用的数据库名称
-        * SELECT DATABASE();
-    * 使用数据库
-        * USE 数据库名称；</code></pre><h3 id="2-操作表"><a href="#2-操作表" class="headerlink" title="2. 操作表"></a>2. 操作表</h3><pre><code>1. **创建**
-    * 创建表
-        * CREATE TABLE 表名称(
+    .......
 
-            列名1，数据类型1，
+    列名n，数据类型n
 
-            列名2，数据类型2，
-
-            列名3，数据类型3，
-
-            .......
-
-            列名n，数据类型n
-
-        )；
-
-        **注意最后一列后面不用加逗号**
-
-        * SQL中常用的数据类型
-            1. int：整数类型
-            2. double：小数类型
-            3. date：日期，只包含年月日，yyyy-MM-dd
-            4. datetime：日期，包含年月日时分秒，yyyy-MM-dd HH:mm:ss
-            5. timestamp：时间戳类型，包含年月日时分秒，不赋值时可以默认添加当前系统时间
-            6. varchar：字符串
-    * 复制表
-        * CREATE TABLE 表名 LIKE 被复制的表名；
-
-2. **查询**
-    * 查询某个数据库中所有表的名称
-        * SHOW TABLES；
-    * 查询表结构
-        * DESC 表名称；
-
-3. **修改**
-    * 修改表名
-        * ALTER TABLE 表名称 RENAME TO 新的表名；
-    * 修改表的字符集
-        * ALTER TABLE 表名称 character set 字符集名；
-    * 添加一列
-        * ALTER TABLE 表名称 ADD 列名 数据类型；
-    * 修改列名和类型
-        * ALTER TABLE 表名称 CHANGE 列名 新列名 新数据类型；
-        * ALTER TABLE 表名称 MODIFY 列名 新数据类型；
-    * 删除列
-        * ALTER TABLE 表名称 DROP 列名；
-
-4. **删除**
-    * 删除表
-        * DROP TABLE 表名称；
-    * 判断表存在，再删除
-        * DROP TABLE IF EXISTS 表名称；</code></pre><hr>
+)；</code></pre></li>
+<li><p><em>注意最后一列后面不用加逗号*</em></p>
+</li>
+<li><p>SQL中常用的数据类型</p>
+<ol>
+<li>int：整数类型</li>
+<li>double：小数类型</li>
+<li>date：日期，只包含年月日，yyyy-MM-dd</li>
+<li>datetime：日期，包含年月日时分秒，yyyy-MM-dd HH:mm:ss</li>
+<li>timestamp：时间戳类型，包含年月日时分秒，不赋值时可以默认添加当前系统时间</li>
+<li>varchar：字符串</li>
+</ol>
+</li>
+<li><p>复制表</p>
+<ul>
+<li>CREATE TABLE 表名 LIKE 被复制的表名；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>查询</strong></p>
+<ul>
+<li>查询某个数据库中所有表的名称<ul>
+<li>SHOW TABLES；</li>
+</ul>
+</li>
+<li>查询表结构<ul>
+<li>DESC 表名称；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>修改</strong></p>
+<ul>
+<li><p>修改表名</p>
+<ul>
+<li>ALTER TABLE 表名称 RENAME TO 新的表名；</li>
+</ul>
+</li>
+<li><p>修改表的字符集</p>
+<ul>
+<li>ALTER TABLE 表名称 character set 字符集名；</li>
+</ul>
+</li>
+<li><p>添加一列</p>
+<ul>
+<li>ALTER TABLE 表名称 ADD 列名 数据类型；</li>
+</ul>
+</li>
+<li><p>修改列名和类型</p>
+<ul>
+<li>ALTER TABLE 表名称 CHANGE 列名 新列名 新数据类型；</li>
+<li>ALTER TABLE 表名称 MODIFY 列名 新数据类型；</li>
+</ul>
+</li>
+<li><p>删除列</p>
+<ul>
+<li>ALTER TABLE 表名称 DROP 列名；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>删除</strong></p>
+<ul>
+<li><p>删除表</p>
+<ul>
+<li>DROP TABLE 表名称；</li>
+</ul>
+</li>
+<li><p>判断表存在，再删除</p>
+<ul>
+<li>DROP TABLE IF EXISTS 表名称；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
 <h2 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h2><p>DML是增删改数据库的表中的数据的SQL语句。</p>
 <ol>
 <li><p><strong>添加数据</strong></p>

@@ -330,19 +330,13 @@
 <ul>
 <li><p>创建表</p>
 <pre><code>CREATE TABLE 表名称(
-
     列名1，数据类型1，
-
     列名2，数据类型2，
-
     列名3，数据类型3，
-
     .......
-
     列名n，数据类型n
-
 )；</code></pre></li>
-<li><p><em>注意最后一列后面不用加逗号*</em></p>
+<li><p><strong>注意最后一列后面不用加逗号</strong></p>
 </li>
 <li><p>SQL中常用的数据类型</p>
 <ol>
@@ -425,7 +419,7 @@
 <ul>
 <li><p>INSERT INTO 表名(列名1，列名2，列名3，…..列名n) VALUES(值1，值2，值3，…..值n);</p>
 </li>
-<li><p><em>注意：*</em></p>
+<li><p><strong>注意：</strong></p>
 </li>
 </ul>
 <ol>
@@ -444,9 +438,9 @@
 <ul>
 <li><p>DELETE FROM 表名 [WHERE 条件]；</p>
 </li>
-<li><p><em>注意：如果不加条件，则删除表中所有记录。*</em></p>
+<li><p><strong>注意：如果不加条件，则删除表中所有记录。</strong></p>
 </li>
-<li><p><strong>如果要删除表中所有记录，不推荐使用<code>DELETE FROM 表名；</code>，可以使用<code>TRUNCATE TABLE 表名；</code>。*</strong></p>
+<li><p><strong>如果要删除表中所有记录，不推荐使用<code>DELETE FROM 表名；</code>，可以使用<code>TRUNCATE TABLE 表名；</code>。</strong></p>
 </li>
 </ul>
 </li>
@@ -454,7 +448,7 @@
 <ul>
 <li><p>UPDATE 表名 SET 列名1=值1， 列名2=值2，….列名n=值n [WHERE 条件]；</p>
 </li>
-<li><p><em>注意：如果不加任何条件，则会将表中所有记录修改。*</em></p>
+<li><p><strong>注意：如果不加任何条件，则会将表中所有记录修改。</strong></p>
 </li>
 </ul>
 </li>
@@ -480,9 +474,15 @@ ORDER BY
 LIMIT
     分页限定</code></pre><h3 id="1-基础查询"><a href="#1-基础查询" class="headerlink" title="1. 基础查询"></a>1. 基础查询</h3><ol>
 <li><p>多个字段的查询</p>
-<pre><code>* SELECT 字段名1，字段名2... FROM 表名；</code></pre></li>
+<ul>
+<li>SELECT 字段名1，字段名2… FROM 表名；</li>
+</ul>
+</li>
 <li><p>去除重复</p>
-<pre><code>* SELECT DISTINCT 字段名1，字段名2... FROM 表名；</code></pre></li>
+<ul>
+<li>SELECT DISTINCT 字段名1，字段名2… FROM 表名；</li>
+</ul>
+</li>
 <li><p>计算列</p>
 <ul>
 <li>一般可以使用四则运算计算一些列的值。（一般只会进行数值型的计算）</li>
@@ -497,7 +497,7 @@ LIMIT
 <ul>
 <li><p>SELECT 字段名1 AS 别名 FROM 表名；</p>
 </li>
-<li><p><em>注意：AS也可以省略，用一个空格代替。*</em></p>
+<li><p><strong>注意：AS也可以省略，用一个空格代替。</strong></p>
 </li>
 </ul>
 </li>
@@ -537,7 +537,7 @@ LIMIT
 </li>
 <li><p>DESC：降序。</p>
 </li>
-<li><p><em>注意：如果有多个排序条件，则当前边的条件值一样时，才会判断第二条件。*</em></p>
+<li><p><strong>注意：如果有多个排序条件，则当前边的条件值一样时，才会判断第二条件。</strong></p>
 </li>
 </ul>
 </li>
@@ -645,14 +645,14 @@ LIMIT
 <ul>
 <li><p>如果某一列是数值类型，使用AUTO_INCREMENT可以完成值自动增长，一般可以配合数值类型的主键使用。</p>
 </li>
-<li><p><em>注意：自动增长的值为最后一条记录自动增长字段的值加一*</em></p>
+<li><p><strong>注意：自动增长的值为最后一条记录自动增长字段的值加一</strong></p>
 </li>
 <li><p>创建表时，添加主键，并且完成自动增长</p>
 <pre><code>CREATE TABLE 表名(
-字段名1 数据类型1，
-字段名2 数据类型2 PRIMARY KEY AUTO_INCREMENT，
-.....</code></pre><p>  );</p>
-</li>
+    字段名1 数据类型1，
+    字段名2 数据类型2 PRIMARY KEY AUTO_INCREMENT，
+    .....
+);</code></pre></li>
 <li><p>删除自动增长</p>
 <p><code>ALTER TABLE 表名 MODIFY 字段名 数据类型；</code></p>
 </li>

@@ -214,16 +214,13 @@
 </li>
 </ul>
 </li>
-<li><p>子查询</p>
-<ul>
-<li><p>就是查询中嵌套查询，被嵌套的查询称为子查询。</p>
-</li>
-<li><p>例：</p>
+</ol>
+<h3 id="3-子查询"><a href="#3-子查询" class="headerlink" title="3.子查询"></a>3.子查询</h3><p>就是查询中嵌套查询，被嵌套的查询称为子查询。<br>例：</p>
 <pre><code>1. SELECT MAX(salary) FROM emp;
 2. SELECT * FROM emp WHERE salary = 9000;
 
 可以替换为子查询
-SELECT * FROM emp WHERE salary = (SELECT MAX(salary) FROM emp);</code></pre></li>
+SELECT * FROM emp WHERE salary = (SELECT MAX(salary) FROM emp);</code></pre><ul>
 <li><p>子查询的不同情况</p>
 <ol>
 <li><p>子查询结果是单行单列：</p>
@@ -247,8 +244,6 @@ SELECT * FROM emp WHERE salary = (SELECT MAX(salary) FROM emp);</code></pre></li
 </ol>
 </li>
 </ul>
-</li>
-</ol>
 <hr>
 
       

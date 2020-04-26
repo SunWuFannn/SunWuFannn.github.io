@@ -66,7 +66,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">2.3k字</span>
+            <span class="post-count">2.6k字</span>
         </span>
     </span>
 
@@ -75,7 +75,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">8分钟</span>
+            <span class="post-count">9分钟</span>
         </span>
     </span>
 </div>
@@ -443,6 +443,67 @@ LIMIT
 </li>
 </ul>
 <p><strong><em>LIMIT是一个“方言”，只能在MySQL中用。</em></strong></p>
+<hr>
+<h2 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h2><h3 id="1-管理用户"><a href="#1-管理用户" class="headerlink" title="1.管理用户"></a>1.管理用户</h3><ol>
+<li><p>添加用户：</p>
+<ul>
+<li>CREATE USER ‘用户名‘@’主机名’ IDENTIFIED BY ‘密码’；</li>
+</ul>
+</li>
+<li><p>删除用户：</p>
+<ul>
+<li>DROP USER ‘用户名‘@’主机名’；</li>
+</ul>
+</li>
+<li><p>修改用户密码：</p>
+<ul>
+<li><p>UPDATE USER SET PASSWORD = PASSWORD(‘新密码’) WHERE USER = ‘用户名’；</p>
+</li>
+<li><p>SET PASSWORD FOR ‘用户名‘@’主机名’ = PASSWORD(‘新密码’)；</p>
+</li>
+<li><p><strong>MySQL中忘记了root用户的密码怎么办？</strong></p>
+<ol>
+<li>cmd –&gt; net stop mysql80 停止mysql服务</li>
+<li>使用无验证方式启动mysql服务：mysqld –skip-grant-tables</li>
+<li>打开新的cmd窗口，直接输入mysql命令，敲回车，就可以登陆成功</li>
+<li>USE mysql；</li>
+<li>UPDATE USER SET PASSWORD = PASSWORD(‘新密码’) WHERE USER = ‘root’；</li>
+<li>关闭两个窗口</li>
+<li>打开任务管理器，手动关闭mysqld.exe的进程</li>
+<li>启动mysql服务</li>
+<li>使用新密码登录</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>查询用户：</p>
+<ol>
+<li>切换到mysql数据库。<code>USE mysql;</code></li>
+<li>查询user表。<code>SELECT * FROM user;</code></li>
+</ol>
+<ul>
+<li>通配符：%表示可以在任意主机使用用户登录数据库。</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-权限管理"><a href="#2-权限管理" class="headerlink" title="2.权限管理"></a>2.权限管理</h3><ol>
+<li><p>查询权限：</p>
+<ul>
+<li>SHOW GRANTS FOR ‘用户名‘@’主机名’;</li>
+</ul>
+</li>
+<li><p>授予权限</p>
+<ul>
+<li>GRANT 权限列表 ON 数据库名.表名 TO ‘用户名‘@’主机名’;</li>
+<li>GRANT ALL ON <em>.</em> TO ‘用户名‘@’主机名’; 给一个用户授予对任意数据库中任意表进行任意操作的权限。</li>
+</ul>
+</li>
+<li><p>撤销权限</p>
+<ul>
+<li>REVOKE 权限列表 ON 数据库名.表名 FROM ‘用户名‘@’主机名’;</li>
+</ul>
+</li>
+</ol>
 <hr>
 <h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><p>对表中的数据进行限定，保证数据的正确性、有效性和完整性。</p>
 <p>分类：</p>

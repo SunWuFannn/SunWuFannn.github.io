@@ -137,6 +137,100 @@ SELECT * FROM emp WHERE salary = (SELECT MAX(salary) FROM emp);</code></pre><ul>
 </li>
 </ul>
 <hr>
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><ol>
+<li><p>基本介绍</p>
+<ol>
+<li><p>概念：</p>
+<ul>
+<li>如果一个包含多个步骤的业务操作，被事务处理，那么这些操作要么同时成功，要么同时失败。</li>
+</ul>
+</li>
+<li><p>操作：</p>
+<ol>
+<li>开启事务：START TRANSACTION；</li>
+<li>回滚：ROLLBACK；</li>
+<li>提交：COMMIT；</li>
+</ol>
+</li>
+<li><p>MySQL数据库中事务默认自动提交</p>
+<ul>
+<li><p>事务提交的两种方式：</p>
+<ul>
+<li>自动提交：<ul>
+<li>MySQL就是自动提交的。</li>
+<li>一条DML语句会自动提交一次事务。</li>
+</ul>
+</li>
+<li>手动提交：<ul>
+<li>Oracle默认是手动提交的。</li>
+<li>需要先开启事务，再提交。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>修改事务的默认提交方式：</p>
+<ul>
+<li>查看事务的默认提交方式：<code>SELECT @@AUTOCOMMIT；</code></li>
+<li>修改默认提交方式：<code>SET @@AUTOCOMMIT = 0；</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>事务的四大特征</p>
+<ol>
+<li>原子性：是不可分割的最小操作单位，要么同时成功，要么同时失败。</li>
+<li>持久性：当事务提交或者回滚后，数据库将会持保存数据。</li>
+<li>隔离性：多个事务之间，相互独立。</li>
+<li>一致性：事务操作前后数据总量不变。</li>
+</ol>
+</li>
+<li><p>事务的隔离级别</p>
+<ul>
+<li><p>概念：多个事务之间，相互独立的。但是如果多个事务操作同一批数据，则会引发一些问题，设置不同的隔离级别就可以解决这些问题。</p>
+</li>
+<li><p>存在问题：</p>
+<ol>
+<li>脏读：一个事务读取到另一个事务中没有提交的数据。</li>
+<li>不可重复读（虚读）：在同一个事务中两次读取到的数据不一样。</li>
+<li>幻读： 一个事务操作(DML)数据表中所有的记录，另一个事务添加了一条数据，则第一个事务查询不到自己的修改。</li>
+</ol>
+</li>
+<li><p>隔离级别</p>
+<ol>
+<li>read uncommited：读未提交<ul>
+<li>产生的问题：脏读，不可重复读，幻读。</li>
+</ul>
+</li>
+<li>read commited：读已提交（Oracle）<ul>
+<li>产生的问题：不可重复读，幻读。</li>
+</ul>
+</li>
+<li>repeatable read：可重复读 （MySQL）<ul>
+<li>产生的问题：幻读。</li>
+</ul>
+</li>
+<li>serializable：串行化<ul>
+<li>可以解决所有 的问题。</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>注意：隔离级别从小到大安全性越来越高，但是效率越来越低。</li>
+<li>数据库查询隔离级别：<ul>
+<li>SELECT @@TX_ISOLATION；</li>
+</ul>
+</li>
+<li>数据库设置隔离级别：<ul>
+<li>SET GLOBAL TRANSACTION ISOLATION LEVEL 级别字符串；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>SQL知识</category>
@@ -490,6 +584,67 @@ LIMIT
 </li>
 </ul>
 <p><strong><em>LIMIT是一个“方言”，只能在MySQL中用。</em></strong></p>
+<hr>
+<h2 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h2><h3 id="1-管理用户"><a href="#1-管理用户" class="headerlink" title="1.管理用户"></a>1.管理用户</h3><ol>
+<li><p>添加用户：</p>
+<ul>
+<li>CREATE USER ‘用户名‘@’主机名’ IDENTIFIED BY ‘密码’；</li>
+</ul>
+</li>
+<li><p>删除用户：</p>
+<ul>
+<li>DROP USER ‘用户名‘@’主机名’；</li>
+</ul>
+</li>
+<li><p>修改用户密码：</p>
+<ul>
+<li><p>UPDATE USER SET PASSWORD = PASSWORD(‘新密码’) WHERE USER = ‘用户名’；</p>
+</li>
+<li><p>SET PASSWORD FOR ‘用户名‘@’主机名’ = PASSWORD(‘新密码’)；</p>
+</li>
+<li><p><strong>MySQL中忘记了root用户的密码怎么办？</strong></p>
+<ol>
+<li>cmd –&gt; net stop mysql80 停止mysql服务</li>
+<li>使用无验证方式启动mysql服务：mysqld –skip-grant-tables</li>
+<li>打开新的cmd窗口，直接输入mysql命令，敲回车，就可以登陆成功</li>
+<li>USE mysql；</li>
+<li>UPDATE USER SET PASSWORD = PASSWORD(‘新密码’) WHERE USER = ‘root’；</li>
+<li>关闭两个窗口</li>
+<li>打开任务管理器，手动关闭mysqld.exe的进程</li>
+<li>启动mysql服务</li>
+<li>使用新密码登录</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>查询用户：</p>
+<ol>
+<li>切换到mysql数据库。<code>USE mysql;</code></li>
+<li>查询user表。<code>SELECT * FROM user;</code></li>
+</ol>
+<ul>
+<li>通配符：%表示可以在任意主机使用用户登录数据库。</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-权限管理"><a href="#2-权限管理" class="headerlink" title="2.权限管理"></a>2.权限管理</h3><ol>
+<li><p>查询权限：</p>
+<ul>
+<li>SHOW GRANTS FOR ‘用户名‘@’主机名’;</li>
+</ul>
+</li>
+<li><p>授予权限</p>
+<ul>
+<li>GRANT 权限列表 ON 数据库名.表名 TO ‘用户名‘@’主机名’;</li>
+<li>GRANT ALL ON <em>.</em> TO ‘用户名‘@’主机名’; 给一个用户授予对任意数据库中任意表进行任意操作的权限。</li>
+</ul>
+</li>
+<li><p>撤销权限</p>
+<ul>
+<li>REVOKE 权限列表 ON 数据库名.表名 FROM ‘用户名‘@’主机名’;</li>
+</ul>
+</li>
+</ol>
 <hr>
 <h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><p>对表中的数据进行限定，保证数据的正确性、有效性和完整性。</p>
 <p>分类：</p>

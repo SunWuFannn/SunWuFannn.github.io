@@ -624,6 +624,127 @@ LIMIT
       </tags>
   </entry>
   <entry>
+    <title>杂谈：权限修饰符，匿名内部类....</title>
+    <url>/2020/04/15/Inner/</url>
+    <content><![CDATA[<h2 id="权限修饰符"><a href="#权限修饰符" class="headerlink" title="权限修饰符"></a>权限修饰符</h2><p><strong>JAVA中有四种权限修饰符：public，protected，（default），private。</strong></p>
+<p><strong>四种权限修饰符权限大小：public &gt; protected &gt; （default） &gt; private</strong></p>
+<p><strong><em>注意：（default）代表什么也不加，例：class person。</em></strong></p>
+<blockquote>
+<p>权限修饰符在不同范围的权限</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="center">public</th>
+<th align="center">protected</th>
+<th align="center">(default)</th>
+<th align="center">private</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">同一个类</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+</tr>
+<tr>
+<td align="left">同一个包</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+<td align="center">No</td>
+</tr>
+<tr>
+<td align="left">不同包子类</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+<td align="center">No</td>
+<td align="center">No</td>
+</tr>
+<tr>
+<td align="left">不同包非子类</td>
+<td align="center">Yes</td>
+<td align="center">No</td>
+<td align="center">No</td>
+<td align="center">No</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h2><p>如果一个事物内部包含另一个事物，那么这就是一个类包含另一个类。</p>
+<p>如：身体和心脏的关系，汽车和发动机的关系</p>
+<p>分类：</p>
+<ol>
+<li>成员内部类</li>
+<li>局部内部类（其中包含匿名内部类）</li>
+</ol>
+<hr>
+<h3 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h3><p>成员内部类的定义格式：</p>
+<pre><code>修饰符 class 外部类名称{
+    修饰符 class 内部类名称{
+        ....
+    }
+    .....
+}</code></pre><p><strong><em>注意：内用外，可以随意访问；外用内，需要借助内部类对象。</em></strong></p>
+<p>如何使用成员内部类？</p>
+<ol>
+<li><p>间接方式：在外部类的成员方法中，使用内部类，然后main只是调用外部类的方法。</p>
+</li>
+<li><p>直接方式：公式</p>
+</li>
+</ol>
+<p><strong>外部类名称.内部类名称 对象名 = new 外部类名称（）.new 内部类名称（）；</strong>。</p>
+<p>注意：内部类访问重名的外部类成员变量：<strong>外部类名称.this.成员变量名称</strong>。</p>
+<hr>
+<h3 id="局部内部类（匿名内部类）"><a href="#局部内部类（匿名内部类）" class="headerlink" title="局部内部类（匿名内部类）"></a>局部内部类（匿名内部类）</h3><p>如果<strong>一个类定义在一个方法内部</strong>，那么这就是一个局部内部类。</p>
+<p>“局部”：只有当前所属的方法能使用它，出了这个方法外面就不能用了。</p>
+<p>定义格式：</p>
+<pre><code>修饰符 class 外部类名称 {
+    修饰符 返回值类型 外部类方法名称（参数列表） {
+        class 局部内部类名称 {
+            ....
+        }
+    }
+    .....
+}</code></pre><blockquote>
+<p>定义一个类的时候，权限修饰符规则：</p>
+</blockquote>
+<ol>
+<li>外部类：public/（default）</li>
+<li>成员内部类：public/protected/（default）/private</li>
+<li>局部内部类：什么也不写</li>
+</ol>
+<p>局部内部类：如果希望<strong>访问所在方法的局部变量</strong>，那么这个局部变量必须是<strong>有效final的</strong>。</p>
+<p><strong><em>备注：从java8开始，只要局部变量事实不变，那么final关键字可以省略。</em></strong></p>
+<blockquote>
+<p>原因：</p>
+</blockquote>
+<ol>
+<li>new出来的对象在堆内存当中。</li>
+<li>局部变量跟着方法走，在栈内存当中。</li>
+<li>方法运行结束之后，立刻出栈，局部变量就会消失。</li>
+<li>但是new出来的对象会在堆当中持续存在，直到垃圾回收消失。</li>
+</ol>
+<h3 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h3><p>匿名内部类也是一种局部内部类。</p>
+<p>如果接口的实现类（或者是父类的子类）<strong>只需使用唯一的一次，</strong> 那么这种情况下就可以省略掉这类的定义，而改为使用<strong>匿名内部类</strong>。</p>
+<p>匿名内部类的定义格式：</p>
+<pre><code>接口名称 对象名 = new 接口名称（） {
+    //覆盖重写所有抽象方法
+}</code></pre><p><strong><em>注意：匿名内部类，在创建对象的时候，只能使用唯一一次。</em></strong></p>
+<p>如果希望多次创建对象，而且类的内容一样的话，那么就必须使用单独定义的实现类了。</p>
+<hr>
+<p>以上就是关于内部类的一些简要描述，如需知道更多请自己查询。</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JAVA中关于时间的一些类</title>
     <url>/2020/04/15/Date/</url>
     <content><![CDATA[<h2 id="Calendar日历类"><a href="#Calendar日历类" class="headerlink" title="Calendar日历类"></a>Calendar日历类</h2><p>java.util.Calendar:日历类</p>
@@ -746,127 +867,6 @@ s  秒</code></pre><p>写对应的模式，会把模式替换为对应的日期�
       </tags>
   </entry>
   <entry>
-    <title>杂谈：权限修饰符，匿名内部类....</title>
-    <url>/2020/04/15/Inner/</url>
-    <content><![CDATA[<h2 id="权限修饰符"><a href="#权限修饰符" class="headerlink" title="权限修饰符"></a>权限修饰符</h2><p><strong>JAVA中有四种权限修饰符：public，protected，（default），private。</strong></p>
-<p><strong>四种权限修饰符权限大小：public &gt; protected &gt; （default） &gt; private</strong></p>
-<p><strong><em>注意：（default）代表什么也不加，例：class person。</em></strong></p>
-<blockquote>
-<p>权限修饰符在不同范围的权限</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th align="left"></th>
-<th align="center">public</th>
-<th align="center">protected</th>
-<th align="center">(default)</th>
-<th align="center">private</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">同一个类</td>
-<td align="center">Yes</td>
-<td align="center">Yes</td>
-<td align="center">Yes</td>
-<td align="center">Yes</td>
-</tr>
-<tr>
-<td align="left">同一个包</td>
-<td align="center">Yes</td>
-<td align="center">Yes</td>
-<td align="center">Yes</td>
-<td align="center">No</td>
-</tr>
-<tr>
-<td align="left">不同包子类</td>
-<td align="center">Yes</td>
-<td align="center">Yes</td>
-<td align="center">No</td>
-<td align="center">No</td>
-</tr>
-<tr>
-<td align="left">不同包非子类</td>
-<td align="center">Yes</td>
-<td align="center">No</td>
-<td align="center">No</td>
-<td align="center">No</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h2><p>如果一个事物内部包含另一个事物，那么这就是一个类包含另一个类。</p>
-<p>如：身体和心脏的关系，汽车和发动机的关系</p>
-<p>分类：</p>
-<ol>
-<li>成员内部类</li>
-<li>局部内部类（其中包含匿名内部类）</li>
-</ol>
-<hr>
-<h3 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h3><p>成员内部类的定义格式：</p>
-<pre><code>修饰符 class 外部类名称{
-    修饰符 class 内部类名称{
-        ....
-    }
-    .....
-}</code></pre><p><strong><em>注意：内用外，可以随意访问；外用内，需要借助内部类对象。</em></strong></p>
-<p>如何使用成员内部类？</p>
-<ol>
-<li><p>间接方式：在外部类的成员方法中，使用内部类，然后main只是调用外部类的方法。</p>
-</li>
-<li><p>直接方式：公式</p>
-</li>
-</ol>
-<p><strong>外部类名称.内部类名称 对象名 = new 外部类名称（）.new 内部类名称（）；</strong>。</p>
-<p>注意：内部类访问重名的外部类成员变量：<strong>外部类名称.this.成员变量名称</strong>。</p>
-<hr>
-<h3 id="局部内部类（匿名内部类）"><a href="#局部内部类（匿名内部类）" class="headerlink" title="局部内部类（匿名内部类）"></a>局部内部类（匿名内部类）</h3><p>如果<strong>一个类定义在一个方法内部</strong>，那么这就是一个局部内部类。</p>
-<p>“局部”：只有当前所属的方法能使用它，出了这个方法外面就不能用了。</p>
-<p>定义格式：</p>
-<pre><code>修饰符 class 外部类名称 {
-    修饰符 返回值类型 外部类方法名称（参数列表） {
-        class 局部内部类名称 {
-            ....
-        }
-    }
-    .....
-}</code></pre><blockquote>
-<p>定义一个类的时候，权限修饰符规则：</p>
-</blockquote>
-<ol>
-<li>外部类：public/（default）</li>
-<li>成员内部类：public/protected/（default）/private</li>
-<li>局部内部类：什么也不写</li>
-</ol>
-<p>局部内部类：如果希望<strong>访问所在方法的局部变量</strong>，那么这个局部变量必须是<strong>有效final的</strong>。</p>
-<p><strong><em>备注：从java8开始，只要局部变量事实不变，那么final关键字可以省略。</em></strong></p>
-<blockquote>
-<p>原因：</p>
-</blockquote>
-<ol>
-<li>new出来的对象在堆内存当中。</li>
-<li>局部变量跟着方法走，在栈内存当中。</li>
-<li>方法运行结束之后，立刻出栈，局部变量就会消失。</li>
-<li>但是new出来的对象会在堆当中持续存在，直到垃圾回收消失。</li>
-</ol>
-<h3 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h3><p>匿名内部类也是一种局部内部类。</p>
-<p>如果接口的实现类（或者是父类的子类）<strong>只需使用唯一的一次，</strong> 那么这种情况下就可以省略掉这类的定义，而改为使用<strong>匿名内部类</strong>。</p>
-<p>匿名内部类的定义格式：</p>
-<pre><code>接口名称 对象名 = new 接口名称（） {
-    //覆盖重写所有抽象方法
-}</code></pre><p><strong><em>注意：匿名内部类，在创建对象的时候，只能使用唯一一次。</em></strong></p>
-<p>如果希望多次创建对象，而且类的内容一样的话，那么就必须使用单独定义的实现类了。</p>
-<hr>
-<p>以上就是关于内部类的一些简要描述，如需知道更多请自己查询。</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>JAVA</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JAVA中的System类与StringBuilder类</title>
     <url>/2020/04/15/SystemStringBuilder/</url>
     <content><![CDATA[<h2 id="System类"><a href="#System类" class="headerlink" title="System类"></a>System类</h2><p>java.lang.System类中提供了大量的<strong>静态方法</strong>，可以获取与系统相关的信息或系统级操作。</p>
@@ -958,6 +958,37 @@ s  秒</code></pre><p>写对应的模式，会把模式替换为对应的日期�
       </tags>
   </entry>
   <entry>
+    <title>工具类：Arrays与Math</title>
+    <url>/2020/04/04/ArraysAndMath/</url>
+    <content><![CDATA[<h2 id="JAVA中的两个工具类：Arrays与Math"><a href="#JAVA中的两个工具类：Arrays与Math" class="headerlink" title="JAVA中的两个工具类：Arrays与Math"></a>JAVA中的两个工具类：Arrays与Math</h2><h3 id="1-Arrays"><a href="#1-Arrays" class="headerlink" title="1. Arrays"></a>1. Arrays</h3><p>  java.util.Arrays是一个与<strong>数组相关</strong>的工具类。里面提供了大量静态方法，用来实现<strong>数组</strong>常见的操作。</p>
+<p>  <strong>其中比较常用的方法</strong></p>
+<p>  <code>public static String toString(数组)</code></p>
+<p>  作用：将参数数组变成字符串（按默认格式：{元素1，元素2，元素3…….}）。</p>
+<p>  <code>public static void sort(数组)</code></p>
+<p>  作用：按照默认升序对数组进行排序。</p>
+<p>  &nbsp; &nbsp;</p>
+<h3 id="2-Math"><a href="#2-Math" class="headerlink" title="2. Math"></a>2. Math</h3><p>  java.lang.Math类是数学相关的工具类，里面提供了大量的静态方法，完成与数学相关运算的操作。</p>
+<p>  <strong>其中比较常用的方法</strong></p>
+<p>  <code>public static double abs(double num);</code>：获取绝对值。</p>
+<p>  <code>public static double ceil(double num);</code>：向上取整。</p>
+<p>  <code>public static double floor(double num);</code>：向下取整。</p>
+<p>  <code>public static long round(double num);</code>：四舍五入。</p>
+<p>  tips： <strong><em>Math.PI代表近似圆周率常量（double）</em></strong></p>
+<p>  &nbsp; &nbsp;</p>
+<hr>
+<p>  &nbsp; &nbsp;</p>
+<p>  关于这两个工具类的常用方法简单粗略了写了一下，如过想要了解知道更多，请咨询查找有关信息，<strong>重点记住Arrays是操作数组的工具类，而Math是和数学有关的工具类</strong>。</p>
+]]></content>
+      <categories>
+        <category>工具类</category>
+      </categories>
+      <tags>
+        <tag>工具类</tag>
+        <tag>JAVA</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JAVA当中的继承</title>
     <url>/2020/04/04/Extends/</url>
     <content><![CDATA[<h2 id="关于继承"><a href="#关于继承" class="headerlink" title="关于继承"></a>关于继承</h2><p>  在继承的关系中，一个子类就是一个父类，也就是说，子类可以被当作父类看待。</p>
@@ -1028,71 +1059,6 @@ s  秒</code></pre><p>写对应的模式，会把模式替换为对应的日期�
 </ol>
 <hr>
 <p>以上就是有关于继承的一些知识的简要概述，如需知道更多请自己查询相关资料。</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>JAVA</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>工具类：Arrays与Math</title>
-    <url>/2020/04/04/ArraysAndMath/</url>
-    <content><![CDATA[<h2 id="JAVA中的两个工具类：Arrays与Math"><a href="#JAVA中的两个工具类：Arrays与Math" class="headerlink" title="JAVA中的两个工具类：Arrays与Math"></a>JAVA中的两个工具类：Arrays与Math</h2><h3 id="1-Arrays"><a href="#1-Arrays" class="headerlink" title="1. Arrays"></a>1. Arrays</h3><p>  java.util.Arrays是一个与<strong>数组相关</strong>的工具类。里面提供了大量静态方法，用来实现<strong>数组</strong>常见的操作。</p>
-<p>  <strong>其中比较常用的方法</strong></p>
-<p>  <code>public static String toString(数组)</code></p>
-<p>  作用：将参数数组变成字符串（按默认格式：{元素1，元素2，元素3…….}）。</p>
-<p>  <code>public static void sort(数组)</code></p>
-<p>  作用：按照默认升序对数组进行排序。</p>
-<p>  &nbsp; &nbsp;</p>
-<h3 id="2-Math"><a href="#2-Math" class="headerlink" title="2. Math"></a>2. Math</h3><p>  java.lang.Math类是数学相关的工具类，里面提供了大量的静态方法，完成与数学相关运算的操作。</p>
-<p>  <strong>其中比较常用的方法</strong></p>
-<p>  <code>public static double abs(double num);</code>：获取绝对值。</p>
-<p>  <code>public static double ceil(double num);</code>：向上取整。</p>
-<p>  <code>public static double floor(double num);</code>：向下取整。</p>
-<p>  <code>public static long round(double num);</code>：四舍五入。</p>
-<p>  tips： <strong><em>Math.PI代表近似圆周率常量（double）</em></strong></p>
-<p>  &nbsp; &nbsp;</p>
-<hr>
-<p>  &nbsp; &nbsp;</p>
-<p>  关于这两个工具类的常用方法简单粗略了写了一下，如过想要了解知道更多，请咨询查找有关信息，<strong>重点记住Arrays是操作数组的工具类，而Math是和数学有关的工具类</strong>。</p>
-]]></content>
-      <categories>
-        <category>工具类</category>
-      </categories>
-      <tags>
-        <tag>JAVA</tag>
-        <tag>学习笔记</tag>
-        <tag>工具类</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Static静态</title>
-    <url>/2020/04/04/Static/</url>
-    <content><![CDATA[<h2 id="JAVA中Static的相关内容"><a href="#JAVA中Static的相关内容" class="headerlink" title="JAVA中Static的相关内容"></a>JAVA中Static的相关内容</h2><h3 id="Static的中文意思是静态，什么是静态？"><a href="#Static的中文意思是静态，什么是静态？" class="headerlink" title="Static的中文意思是静态，什么是静态？"></a>Static的中文意思是静态，什么是静态？</h3><p>  <strong>静态就是：</strong></p>
-<p>  &nbsp; &nbsp; &nbsp; 如果一个成员变量使用了static关键字，那么这个变量不再属于对象自己，而是属于所在的类，多个对象共享同一份数据，这就是类的<strong>静态变量</strong>。</p>
-<p>  &nbsp; &nbsp; &nbsp; 用static修饰的成员方法同理这就是类的<strong>静态方法</strong>。</p>
-<blockquote>
-<p>注意事项</p>
-</blockquote>
-<ol>
-<li><p><strong><em>静态只能访问静态，静态不能访问非静态。</em></strong> 因为在内存当中，先有的静态内容，后有的非静态内容，先人不知道后人，后人知道先人。</p>
-</li>
-<li><p><strong><em>静态方法中不能用this。</em></strong> 因为this代表当前对象，通过谁调用的方法，谁就是当前对象，但是静态和对象没关系。</p>
-</li>
-</ol>
-<p>  <strong>关于静态有一种特殊使用方法：静态代码块</strong></p>
-<pre><code>public class 类名称 {
-    static {
-        // 静态代码块的内容
-    }
-} </code></pre><p>  特点：当第一次用到本类时，静态代码块执行<strong>唯一一次</strong>。当类中某一些只会用到唯一一次的代码，就可以使用静态代码块，无需再将这些代码写成一个方法，然后调用方法执行，静态代码块自己会执行。</p>
-<p>  &nbsp; </p>
-<hr>
-<p>  &nbsp;</p>
-<p>  关于静态还有很多需要深入了解的知识，这里只是浅显的讲了一下常用的东西，静态最主要的就是<strong>属于类而和创建的对象无关</strong>。</p>
 ]]></content>
       <categories>
         <category>笔记</category>
@@ -1184,6 +1150,40 @@ s  秒</code></pre><p>写对应的模式，会把模式替换为对应的日期�
 <p><img src="https://s1.ax1x.com/2020/04/04/G0Yb9O.png" alt="Principle"></p>
 <hr>
 <p><br>以上是对String字符串类型有关内容的一些小小整理，想要了解更多请自己查询有关知识。</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Static静态</title>
+    <url>/2020/04/04/Static/</url>
+    <content><![CDATA[<h2 id="JAVA中Static的相关内容"><a href="#JAVA中Static的相关内容" class="headerlink" title="JAVA中Static的相关内容"></a>JAVA中Static的相关内容</h2><h3 id="Static的中文意思是静态，什么是静态？"><a href="#Static的中文意思是静态，什么是静态？" class="headerlink" title="Static的中文意思是静态，什么是静态？"></a>Static的中文意思是静态，什么是静态？</h3><p>  <strong>静态就是：</strong></p>
+<p>  &nbsp; &nbsp; &nbsp; 如果一个成员变量使用了static关键字，那么这个变量不再属于对象自己，而是属于所在的类，多个对象共享同一份数据，这就是类的<strong>静态变量</strong>。</p>
+<p>  &nbsp; &nbsp; &nbsp; 用static修饰的成员方法同理这就是类的<strong>静态方法</strong>。</p>
+<blockquote>
+<p>注意事项</p>
+</blockquote>
+<ol>
+<li><p><strong><em>静态只能访问静态，静态不能访问非静态。</em></strong> 因为在内存当中，先有的静态内容，后有的非静态内容，先人不知道后人，后人知道先人。</p>
+</li>
+<li><p><strong><em>静态方法中不能用this。</em></strong> 因为this代表当前对象，通过谁调用的方法，谁就是当前对象，但是静态和对象没关系。</p>
+</li>
+</ol>
+<p>  <strong>关于静态有一种特殊使用方法：静态代码块</strong></p>
+<pre><code>public class 类名称 {
+    static {
+        // 静态代码块的内容
+    }
+} </code></pre><p>  特点：当第一次用到本类时，静态代码块执行<strong>唯一一次</strong>。当类中某一些只会用到唯一一次的代码，就可以使用静态代码块，无需再将这些代码写成一个方法，然后调用方法执行，静态代码块自己会执行。</p>
+<p>  &nbsp; </p>
+<hr>
+<p>  &nbsp;</p>
+<p>  关于静态还有很多需要深入了解的知识，这里只是浅显的讲了一下常用的东西，静态最主要的就是<strong>属于类而和创建的对象无关</strong>。</p>
 ]]></content>
       <categories>
         <category>笔记</category>
@@ -1325,32 +1325,6 @@ s  秒</code></pre><p>写对应的模式，会把模式替换为对应的日期�
       </tags>
   </entry>
   <entry>
-    <title>Scanner</title>
-    <url>/2020/03/06/Scanner/</url>
-    <content><![CDATA[<h2 id="关于Scanner"><a href="#关于Scanner" class="headerlink" title="关于Scanner"></a>关于Scanner</h2><p>  Scanner的作用类似于输入函数，可以把键盘的输入传递给需要用的变量。</p>
-<blockquote>
-<p>Scanner的使用步骤</p>
-</blockquote>
-<h4 id="1-导包"><a href="#1-导包" class="headerlink" title="1.导包"></a>1.导包</h4><p>  <code>import java.util.Scanner;</code></p>
-<h4 id="2-创建"><a href="#2-创建" class="headerlink" title="2.创建"></a>2.创建</h4><p>  <code>Scanner sc = new Scanner(System.in);</code></p>
-<p>tips：System.in表示从键盘输入。</p>
-<h4 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h4><p><code>String str = sc.next();</code></p>
-<p><code>String str = sc.nextLine();</code></p>
-<p>对于字符串，有上述两种常用用法，对于第一种，遇到空格就结束，对于第二种遇到回车才结束。</p>
-<p><code>String str = sc.nextInt();</code></p>
-<p>对于int类型，常用用法如上所写。</p>
-<hr>
-<p><em>更多详细用法请查询API</em></p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>JAVA</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Random</title>
     <url>/2020/03/06/Random/</url>
     <content><![CDATA[<h2 id="关于Random"><a href="#关于Random" class="headerlink" title="关于Random"></a>关于Random</h2><p>Random类位于java.util.Random包下，可以用来生成随机序列。</p>
@@ -1369,6 +1343,32 @@ int a = nextInt(10);</code></pre><p><strong>10代表产生的随机序在0到10�
 int a = nextInt(10);</code></pre><p><strong>每次产生的随机序列都相同。</strong></p>
 <hr>
 <p><em>具体更多用法可以查询API</em></p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Scanner</title>
+    <url>/2020/03/06/Scanner/</url>
+    <content><![CDATA[<h2 id="关于Scanner"><a href="#关于Scanner" class="headerlink" title="关于Scanner"></a>关于Scanner</h2><p>  Scanner的作用类似于输入函数，可以把键盘的输入传递给需要用的变量。</p>
+<blockquote>
+<p>Scanner的使用步骤</p>
+</blockquote>
+<h4 id="1-导包"><a href="#1-导包" class="headerlink" title="1.导包"></a>1.导包</h4><p>  <code>import java.util.Scanner;</code></p>
+<h4 id="2-创建"><a href="#2-创建" class="headerlink" title="2.创建"></a>2.创建</h4><p>  <code>Scanner sc = new Scanner(System.in);</code></p>
+<p>tips：System.in表示从键盘输入。</p>
+<h4 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h4><p><code>String str = sc.next();</code></p>
+<p><code>String str = sc.nextLine();</code></p>
+<p>对于字符串，有上述两种常用用法，对于第一种，遇到空格就结束，对于第二种遇到回车才结束。</p>
+<p><code>String str = sc.nextInt();</code></p>
+<p>对于int类型，常用用法如上所写。</p>
+<hr>
+<p><em>更多详细用法请查询API</em></p>
 ]]></content>
       <categories>
         <category>笔记</category>

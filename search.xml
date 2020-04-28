@@ -1,6 +1,277 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>JDBC</title>
+    <url>/2020/04/27/JDBC/</url>
+    <content><![CDATA[<h1 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h1><ul>
+<li><p><strong>概念：</strong> Java DataBase Connectivity Java 数据库连接，Java语言操作数据库。</p>
+</li>
+<li><p><strong>JDBC本质：</strong> 其实是官方（sun公司）定义的一套操作所有关系型数据库的规则，即接口。各个数据库厂商去实现这套接口，提供数据库驱动jar包。我们可以使用这套接口（JDBC）编程，真正执行的代码是驱动jar包中的实现类。</p>
+</li>
+</ul>
+<h2 id="1-快速入门"><a href="#1-快速入门" class="headerlink" title="1.快速入门"></a>1.快速入门</h2><ul>
+<li>步骤：<ol>
+<li>导入驱动jar包<ol>
+<li>复制mysql-connector-java-8.0.20.jar到项目中自己创建的文件夹下，用于存放各种所需要用到的jar包的文件夹。</li>
+<li>右键 –&gt; Add As Library</li>
+</ol>
+</li>
+<li>注册驱动</li>
+<li>获取数据库连接对象 Connection<ul>
+<li><strong>注意：新版本的jdbc需要在url后边加上?serverTimezone=GMT，否则会报错，因为数据库和系统时区差异。</strong></li>
+</ul>
+</li>
+<li>定义sql</li>
+<li>获取执行sql语句执行对象 Statement</li>
+<li>执行sql，接收返回结果</li>
+<li>处理结果</li>
+<li>释放资源</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h2 id="2-详解各个对象"><a href="#2-详解各个对象" class="headerlink" title="2.详解各个对象"></a>2.详解各个对象</h2><h3 id="1-DriverManager：驱动管理对象"><a href="#1-DriverManager：驱动管理对象" class="headerlink" title="1.DriverManager：驱动管理对象"></a>1.DriverManager：驱动管理对象</h3><ul>
+<li><p>功能</p>
+<ol>
+<li><p>注册驱动：告诉程序该使用哪一个数据库驱动jar包</p>
+<ul>
+<li><p><code>static void registerDriver​(Driver driver)</code> 使用 DriverManager注册给定的驱动程序。</p>
+</li>
+<li><p>写代码使用：<code>Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);</code></p>
+</li>
+<li><p>通过查看源码发现，com.mysql.cj.jdbc.Driver类中包含一个静态代码块，其中静态代码块包含的内容中就是<code>static void registerDriver​(Driver driver)</code>。</p>
+</li>
+<li><p><strong>注意：mysql5之后的驱动jar包可以省略注册驱动的步骤。</strong></p>
+</li>
+</ul>
+</li>
+<li><p>获取数据库连接</p>
+<ul>
+<li>方法：<code>static Connection getConnection​(String url, String user, String password)</code></li>
+<li>参数：<ul>
+<li>url：指定连接的路径<ul>
+<li>语法：jdbc:mysql://ip地址（域名）:端口号/数据库名称?serverTimezone=GMT</li>
+<li><strong>如果连接的是本机的一个mysql服务器，并且mysql服务的端口默认是3306，则这个url的ip和端口可以不写。</strong></li>
+</ul>
+</li>
+<li>user：用户名</li>
+<li>password：密码</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="2-Connection：数据库连接对象"><a href="#2-Connection：数据库连接对象" class="headerlink" title="2.Connection：数据库连接对象"></a>2.Connection：数据库连接对象</h3><ul>
+<li><p>功能</p>
+<ol>
+<li><p>获取执行sql的对象</p>
+<ul>
+<li><code>Statement createStatement​()</code></li>
+<li><code>PreparedStatement prepareStatement​(String sql)</code></li>
+</ul>
+</li>
+<li><p>管理事务</p>
+<ul>
+<li>开启事务 <code>void setAutoCommit​(boolean autoCommit)</code> 参数为false，则为开启事务。</li>
+<li>提交事务 <code>void commit​()</code></li>
+<li>回滚事务 <code>void rollback​()</code></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="3-Statement：执行sql的对象"><a href="#3-Statement：执行sql的对象" class="headerlink" title="3.Statement：执行sql的对象"></a>3.Statement：执行sql的对象</h3><ul>
+<li>功能：执行sql<ol>
+<li><code>boolean execute​(String sql)</code> 可以执行任意sql语句。</li>
+<li><code>int executeUpdate​(String sql)</code> 可以执行DML（insert，update，delete）与DDL（create，alter，drop）语句。<ul>
+<li>返回值：影响的行数，可以通过这个影响的行数判断DML语句是否执行成功，返回值大于0则执行成功，反之，失败。</li>
+</ul>
+</li>
+<li><code>ResultSet executeQuery​(String sql)</code> 可以执行DQL（select）语句。</li>
+</ol>
+</li>
+</ul>
+<h3 id="4-ResultSet：结果集对象"><a href="#4-ResultSet：结果集对象" class="headerlink" title="4.ResultSet：结果集对象"></a>4.ResultSet：结果集对象</h3><ul>
+<li>boolean next()：游标向下移动一行。</li>
+<li>getXxx(参数)：获取数据。<ul>
+<li>Xxx：代表数据类型</li>
+<li>参数：<ol>
+<li>int：代表列的编号，从1开始。</li>
+<li>String：代表列名称。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-PreparedStatement：执行sql的对象，功能比Statement更强大"><a href="#5-PreparedStatement：执行sql的对象，功能比Statement更强大" class="headerlink" title="5.PreparedStatement：执行sql的对象，功能比Statement更强大"></a>5.PreparedStatement：执行sql的对象，功能比Statement更强大</h3><ol>
+<li><p>SQL注入问题：在拼接sql时，有一些sql的特殊关键字参与字符串的拼接。会造成安全性问题。</p>
+<ol>
+<li>输入用户名随便，输入密码：a’ or “a” = ‘a</li>
+<li>sql: select * from user where username=’dsadsdcz’ and password=’a’ or ‘a’=’a’;</li>
+</ol>
+</li>
+<li><p>解决SQL注入问题：使用PreparedStatement对象来解决。</p>
+</li>
+<li><p>预编译的SQL：参数使用？作为占位符。</p>
+</li>
+<li><p>步骤</p>
+<ol>
+<li>导入驱动jar包</li>
+<li>注册驱动</li>
+<li>获取数据库连接对象 Connection</li>
+<li>定义sql<ul>
+<li><strong>注意：sql的参数使用？作为占位符。如<code>select * from user where username=? and password=?;</code></strong></li>
+</ul>
+</li>
+<li>获取执行sql语句的对象PreparedStatement。<code>Connection.PreparedStatement(String sql)</code></li>
+<li>给？赋值<ul>
+<li>方法：setXxx(参数1，参数2)<ul>
+<li>参数1：？的位置编号，从1开始。</li>
+<li>参数2：？的值。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>执行sql，接收返回结果，不需要传递sql语句</li>
+<li>处理结果</li>
+<li>释放资源</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li><strong>注意：后期都会使用PreparedStatement来完成增删改查的所有操作。因为可以防止SQL注入而且效率更高。</strong></li>
+</ul>
+<hr>
+<h2 id="JDBC工具类：JDBCUtils"><a href="#JDBC工具类：JDBCUtils" class="headerlink" title="JDBC工具类：JDBCUtils"></a>JDBC工具类：JDBCUtils</h2><ul>
+<li>目的：简化书写</li>
+<li>分析：<ol>
+<li>注册驱动。</li>
+<li>抽取一个方法获取连接对象。</li>
+<li>抽取一个方法释放资源。<ul>
+<li>可以不用传递参数，还能保证工具类的通用性，可以使用一个properties配置文件。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="代码实现示例："><a href="#代码实现示例：" class="headerlink" title="代码实现示例："></a>代码实现示例：</h3><ol>
+<li><p>properties配置文件：</p>
+<pre><code>url= jdbc:mysql://localhost:3306/db2?serverTimezone=GMT
+user=root
+password=000000
+driver=com.mysql.cj.jdbc.Driver</code></pre></li>
+<li><p>代码</p>
+<pre><code>public class JDBCUtils {
+
+private static String url = null;
+private static String user = null;
+private static String password = null;
+private static String driver = null;
+
+//静态代码块，只执行一次，用于注册驱动和变量的初始化
+static {
+    try {
+        Properties prop = new Properties();
+        ClassLoader classLoader = JDBCUtils.class.getClassLoader();
+        URL res = classLoader.getResource(&quot;jdbc.properties&quot;);
+        String path = res.getPath();
+        // 因为我的路径中存在中文，所以需要对其进行编码的处理
+        path = URLDecoder.decode(path, StandardCharsets.UTF_8);
+        System.out.println(path);
+        prop.load(new FileReader(path));
+        url = prop.getProperty(&quot;url&quot;);
+        user = prop.getProperty(&quot;user&quot;);
+        password = prop.getProperty(&quot;password&quot;);
+        driver = prop.getProperty(&quot;driver&quot;);
+        Class.forName(driver);
+    } catch (IOException | ClassNotFoundException e) {
+        e.printStackTrace();
+    }
+}
+
+/**
+* 获取连接的方法
+* @return Connection对象
+* @throws SQLException
+*/
+public static Connection getConnection() throws SQLException {
+    return DriverManager.getConnection(url, user, password);
+}
+
+/**
+* 资源释放
+* @param st
+* @param conn
+*/
+public static void close(Statement st, Connection conn) {
+    if (st != null) {
+        try {
+            st.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    if (conn != null) {
+        try {
+            conn.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+}
+
+/**
+* 资源释放
+* @param st
+* @param conn
+* @param rs
+*/
+public static void close(Statement st, Connection conn, ResultSet rs) {
+    if (rs != null) {
+        try {
+            rs.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    if (st != null) {
+        try {
+            st.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    if (conn != null) {
+        try {
+            conn.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+} 
+}</code></pre></li>
+</ol>
+<hr>
+<h2 id="JDBC控制事务"><a href="#JDBC控制事务" class="headerlink" title="JDBC控制事务"></a>JDBC控制事务</h2><ol>
+<li>使用Connection对象来管理事务<ul>
+<li>开启事务 <code>void setAutoCommit​(boolean autoCommit)</code> 参数为false，则为开启事务。在sql执行前开启。</li>
+<li>提交事务 <code>void commit​()</code>当所有sql执行完提交事务。</li>
+<li>回滚事务 <code>void rollback​()</code>在catch中回滚事务。</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>JDBC</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>JDBC</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SQL小知识杂谈</title>
     <url>/2020/04/24/SQLkwl/</url>
     <content><![CDATA[<h1 id="SQL的一些小知识"><a href="#SQL的一些小知识" class="headerlink" title="SQL的一些小知识"></a>SQL的一些小知识</h1><hr>

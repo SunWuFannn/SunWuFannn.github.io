@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    JDBC |  小张日记
+    数据库连接池 |  小张日记
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -34,7 +34,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-JDBC" class="article article-type-post" itemscope
+  <article id="post-ConnPool" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -42,7 +42,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  JDBC
+  数据库连接池
 </h1>
   
 
@@ -51,12 +51,12 @@
 
     
     <div class="article-meta">
-      <a href="/2020/04/27/JDBC/" class="article-date">
-  <time datetime="2020-04-26T16:00:00.000Z" itemprop="datePublished">2020-04-27</time>
+      <a href="/2020/04/28/ConnPool/" class="article-date">
+  <time datetime="2020-04-27T16:00:00.000Z" itemprop="datePublished">2020-04-28</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/JDBC/">JDBC</a>
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
   </div>
 
       
@@ -66,7 +66,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.4k字</span>
+            <span class="post-count">816字</span>
         </span>
     </span>
 
@@ -75,7 +75,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">5分钟</span>
+            <span class="post-count">3分钟</span>
         </span>
     </span>
 </div>
@@ -102,265 +102,166 @@
       
 
       
-      <h1 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h1><ul>
-<li><p><strong>概念：</strong> Java DataBase Connectivity Java 数据库连接，Java语言操作数据库。</p>
+      <h1 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h1><ul>
+<li><p><strong>概念：</strong> 其实就是一个容器（集合），存放数据库连接的容器。当系统初始化好后，容器被创建，容器中会申请一些连接对象，当用户来访问数据库时，从容器中获取连接对象，用户访问完之后，会将连接对象归还给容器。</p>
 </li>
-<li><p><strong>JDBC本质：</strong> 其实是官方（sun公司）定义的一套操作所有关系型数据库的规则，即接口。各个数据库厂商去实现这套接口，提供数据库驱动jar包。我们可以使用这套接口（JDBC）编程，真正执行的代码是驱动jar包中的实现类。</p>
+<li><p><strong>好处：</strong> </p>
+<ol>
+<li>节约资源</li>
+<li>用户访问高效</li>
+</ol>
+</li>
+<li><p><strong>实现：</strong></p>
+<ol>
+<li><p>标准接口：DataSource</p>
+<ol>
+<li>方法：<ul>
+<li>获取连接：getConnection()</li>
+<li>归还连接：Connection.close()。如果连接对象Connection是从连接池中获取的，那么调用Connection.close()方法，则不会再关闭连接了，而是归还连接。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>一般我们不去实现它，有数据库厂商来实现</p>
+<ol>
+<li>C3P0：数据库连接池技术。</li>
+<li>Druid：数据库连接池技术，由阿里巴巴提供。</li>
+</ol>
+</li>
+</ol>
 </li>
 </ul>
-<h2 id="1-快速入门"><a href="#1-快速入门" class="headerlink" title="1.快速入门"></a>1.快速入门</h2><ul>
+<h2 id="C3P0：数据库连接池技术"><a href="#C3P0：数据库连接池技术" class="headerlink" title="C3P0：数据库连接池技术"></a>C3P0：数据库连接池技术</h2><ul>
 <li>步骤：<ol>
-<li>导入驱动jar包<ol>
-<li>复制mysql-connector-java-8.0.20.jar到项目中自己创建的文件夹下，用于存放各种所需要用到的jar包的文件夹。</li>
-<li>右键 –&gt; Add As Library</li>
-</ol>
-</li>
-<li>注册驱动</li>
-<li>获取数据库连接对象 Connection<ul>
-<li><strong>注意：新版本的jdbc需要在url后边加上?serverTimezone=GMT，否则会报错，因为数据库和系统时区差异。</strong></li>
+<li>导入jar包（两个） c3p0-0.9.5.5-sources.jar和mchange-commons-java-0.2.19-sources.jar</li>
+<li>定义配置文件：<ul>
+<li>名称：c3p0.properties或者c3p0-config.xml</li>
+<li>路径：直接将文件放在src目录下即可</li>
 </ul>
 </li>
-<li>定义sql</li>
-<li>获取执行sql语句执行对象 Statement</li>
-<li>执行sql，接收返回结果</li>
-<li>处理结果</li>
+<li>创建核心对象：数据库连接池对象 ComboPooledDataSource</li>
+<li>获取连接：getConnection</li>
+</ol>
+</li>
+</ul>
+<h2 id="Druid：数据库连接池技术，由阿里巴巴提供"><a href="#Druid：数据库连接池技术，由阿里巴巴提供" class="headerlink" title="Druid：数据库连接池技术，由阿里巴巴提供"></a>Druid：数据库连接池技术，由阿里巴巴提供</h2><ul>
+<li><p>步骤：</p>
+<ol>
+<li>导入jar包 druid-1.1.22.jar</li>
+<li>定义配置文件：<ul>
+<li>是properties形式的</li>
+<li>可以叫任意名称，可以放在任意目录下</li>
+</ul>
+</li>
+<li>获取数据库连接池对象：加载配置文件，然后通过工厂来获取 DruidDataSourceFactory</li>
+<li>获取连接：getConnection</li>
+</ol>
+</li>
+<li><p>定义工具类</p>
+<ol>
+<li>定义一个类 JDBCUtils</li>
+<li>提供静态代码块加载配置文件，初始化连接池对象</li>
+<li>提供方法：<ol>
+<li>获取连接方法：通过数据库连接池获取连接</li>
 <li>释放资源</li>
-</ol>
-</li>
-</ul>
-<hr>
-<h2 id="2-详解各个对象"><a href="#2-详解各个对象" class="headerlink" title="2.详解各个对象"></a>2.详解各个对象</h2><h3 id="1-DriverManager：驱动管理对象"><a href="#1-DriverManager：驱动管理对象" class="headerlink" title="1.DriverManager：驱动管理对象"></a>1.DriverManager：驱动管理对象</h3><ul>
-<li><p>功能</p>
-<ol>
-<li><p>注册驱动：告诉程序该使用哪一个数据库驱动jar包</p>
-<ul>
-<li><p><code>static void registerDriver​(Driver driver)</code> 使用 DriverManager注册给定的驱动程序。</p>
-</li>
-<li><p>写代码使用：<code>Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);</code></p>
-</li>
-<li><p>通过查看源码发现，com.mysql.cj.jdbc.Driver类中包含一个静态代码块，其中静态代码块包含的内容中就是<code>static void registerDriver​(Driver driver)</code>。</p>
-</li>
-<li><p><strong>注意：mysql5之后的驱动jar包可以省略注册驱动的步骤。</strong></p>
-</li>
-</ul>
-</li>
-<li><p>获取数据库连接</p>
-<ul>
-<li>方法：<code>static Connection getConnection​(String url, String user, String password)</code></li>
-<li>参数：<ul>
-<li>url：指定连接的路径<ul>
-<li>语法：jdbc:mysql://ip地址（域名）:端口号/数据库名称?serverTimezone=GMT</li>
-<li><strong>如果连接的是本机的一个mysql服务器，并且mysql服务的端口默认是3306，则这个url的ip和端口可以不写。</strong></li>
-</ul>
-</li>
-<li>user：用户名</li>
-<li>password：密码</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="2-Connection：数据库连接对象"><a href="#2-Connection：数据库连接对象" class="headerlink" title="2.Connection：数据库连接对象"></a>2.Connection：数据库连接对象</h3><ul>
-<li><p>功能</p>
-<ol>
-<li><p>获取执行sql的对象</p>
-<ul>
-<li><code>Statement createStatement​()</code></li>
-<li><code>PreparedStatement prepareStatement​(String sql)</code></li>
-</ul>
-</li>
-<li><p>管理事务</p>
-<ul>
-<li>开启事务 <code>void setAutoCommit​(boolean autoCommit)</code> 参数为false，则为开启事务。</li>
-<li>提交事务 <code>void commit​()</code></li>
-<li>回滚事务 <code>void rollback​()</code></li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="3-Statement：执行sql的对象"><a href="#3-Statement：执行sql的对象" class="headerlink" title="3.Statement：执行sql的对象"></a>3.Statement：执行sql的对象</h3><ul>
-<li>功能：执行sql<ol>
-<li><code>boolean execute​(String sql)</code> 可以执行任意sql语句。</li>
-<li><code>int executeUpdate​(String sql)</code> 可以执行DML（insert，update，delete）与DDL（create，alter，drop）语句。<ul>
-<li>返回值：影响的行数，可以通过这个影响的行数判断DML语句是否执行成功，返回值大于0则执行成功，反之，失败。</li>
-</ul>
-</li>
-<li><code>ResultSet executeQuery​(String sql)</code> 可以执行DQL（select）语句。</li>
-</ol>
-</li>
-</ul>
-<h3 id="4-ResultSet：结果集对象"><a href="#4-ResultSet：结果集对象" class="headerlink" title="4.ResultSet：结果集对象"></a>4.ResultSet：结果集对象</h3><ul>
-<li>boolean next()：游标向下移动一行。</li>
-<li>getXxx(参数)：获取数据。<ul>
-<li>Xxx：代表数据类型</li>
-<li>参数：<ol>
-<li>int：代表列的编号，从1开始。</li>
-<li>String：代表列名称。</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="5-PreparedStatement：执行sql的对象，功能比Statement更强大"><a href="#5-PreparedStatement：执行sql的对象，功能比Statement更强大" class="headerlink" title="5.PreparedStatement：执行sql的对象，功能比Statement更强大"></a>5.PreparedStatement：执行sql的对象，功能比Statement更强大</h3><ol>
-<li><p>SQL注入问题：在拼接sql时，有一些sql的特殊关键字参与字符串的拼接。会造成安全性问题。</p>
-<ol>
-<li>输入用户名随便，输入密码：a’ or “a” = ‘a</li>
-<li>sql: select * from user where username=’dsadsdcz’ and password=’a’ or ‘a’=’a’;</li>
-</ol>
-</li>
-<li><p>解决SQL注入问题：使用PreparedStatement对象来解决。</p>
-</li>
-<li><p>预编译的SQL：参数使用？作为占位符。</p>
-</li>
-<li><p>步骤</p>
-<ol>
-<li>导入驱动jar包</li>
-<li>注册驱动</li>
-<li>获取数据库连接对象 Connection</li>
-<li>定义sql<ul>
-<li><strong>注意：sql的参数使用？作为占位符。如<code>select * from user where username=? and password=?;</code></strong></li>
-</ul>
-</li>
-<li>获取执行sql语句的对象PreparedStatement。<code>Connection.PreparedStatement(String sql)</code></li>
-<li>给？赋值<ul>
-<li>方法：setXxx(参数1，参数2)<ul>
-<li>参数1：？的位置编号，从1开始。</li>
-<li>参数2：？的值。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>执行sql，接收返回结果，不需要传递sql语句</li>
-<li>处理结果</li>
-<li>释放资源</li>
+<li>获取连接池对象的方法</li>
 </ol>
 </li>
 </ol>
-<ul>
-<li><strong>注意：后期都会使用PreparedStatement来完成增删改查的所有操作。因为可以防止SQL注入而且效率更高。</strong></li>
-</ul>
-<hr>
-<h2 id="JDBC工具类：JDBCUtils"><a href="#JDBC工具类：JDBCUtils" class="headerlink" title="JDBC工具类：JDBCUtils"></a>JDBC工具类：JDBCUtils</h2><ul>
-<li>目的：简化书写</li>
-<li>分析：<ol>
-<li>注册驱动。</li>
-<li>抽取一个方法获取连接对象。</li>
-<li>抽取一个方法释放资源。<ul>
-<li>可以不用传递参数，还能保证工具类的通用性，可以使用一个properties配置文件。</li>
-</ul>
 </li>
-</ol>
-</li>
-</ul>
-<h3 id="代码实现示例："><a href="#代码实现示例：" class="headerlink" title="代码实现示例："></a>代码实现示例：</h3><ol>
-<li><p>properties配置文件：</p>
-<pre><code>url= jdbc:mysql://localhost:3306/db2?serverTimezone=GMT
-user=root
-password=000000
-driver=com.mysql.cj.jdbc.Driver</code></pre></li>
-<li><p>代码</p>
-<pre><code>public class JDBCUtils {
+<li><p><strong>代码实现示例</strong></p>
+<pre><code>    public class JDBCUtils {
 
-private static String url = null;
-private static String user = null;
-private static String password = null;
-private static String driver = null;
+    private static DataSource ds;
 
-//静态代码块，只执行一次，用于注册驱动和变量的初始化
-static {
-    try {
-        Properties prop = new Properties();
-        ClassLoader classLoader = JDBCUtils.class.getClassLoader();
-        URL res = classLoader.getResource(&quot;jdbc.properties&quot;);
-        String path = res.getPath();
-        // 因为我的路径中存在中文，所以需要对其进行编码的处理
-        path = URLDecoder.decode(path, StandardCharsets.UTF_8);
-        System.out.println(path);
-        prop.load(new FileReader(path));
-        url = prop.getProperty(&quot;url&quot;);
-        user = prop.getProperty(&quot;user&quot;);
-        password = prop.getProperty(&quot;password&quot;);
-        driver = prop.getProperty(&quot;driver&quot;);
-        Class.forName(driver);
-    } catch (IOException | ClassNotFoundException e) {
-        e.printStackTrace();
-    }
-}
-
-/**
-* 获取连接的方法
-* @return Connection对象
-* @throws SQLException
-*/
-public static Connection getConnection() throws SQLException {
-    return DriverManager.getConnection(url, user, password);
-}
-
-/**
-* 资源释放
-* @param st
-* @param conn
-*/
-public static void close(Statement st, Connection conn) {
-    if (st != null) {
+    //数据库连接池的初始化
+    static {
         try {
-            st.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            Properties prop = new Properties();
+            prop.load(JDBCUtils.class.getClassLoader().getResourceAsStream(&quot;druid.properties&quot;));
+            ds = DruidDataSourceFactory.createDataSource(prop);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
-    if (conn != null) {
-        try {
-            conn.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }
-}
 
-/**
-* 资源释放
-* @param st
-* @param conn
-* @param rs
-*/
-public static void close(Statement st, Connection conn, ResultSet rs) {
-    if (rs != null) {
-        try {
-            rs.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+    //获取连接的方法
+    public static Connection getConnection() throws SQLException {
+        return ds.getConnection();
+    }
+
+    //释放资源的方法
+    public static void close(Connection conn, Statement st, ResultSet rs) {
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        if (st != null) {
+            try {
+                st.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
     }
-    if (st != null) {
-        try {
-            st.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+
+    //释放资源的方法
+    public static void close(Connection conn, Statement st) {
+        close(conn, st, null);
     }
-    if (conn != null) {
-        try {
-            conn.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+
+    //获取连接池对象的方法
+    public static DataSource getDataSource() {
+        return ds;
     }
-} 
+
 }</code></pre></li>
-</ol>
-<hr>
-<h2 id="JDBC控制事务"><a href="#JDBC控制事务" class="headerlink" title="JDBC控制事务"></a>JDBC控制事务</h2><ol>
-<li>使用Connection对象来管理事务<ul>
-<li>开启事务 <code>void setAutoCommit​(boolean autoCommit)</code> 参数为false，则为开启事务。在sql执行前开启。</li>
-<li>提交事务 <code>void commit​()</code>当所有sql执行完提交事务。</li>
-<li>回滚事务 <code>void rollback​()</code>在catch中回滚事务。</li>
+</ul>
+<h1 id="Spring-JDBC"><a href="#Spring-JDBC" class="headerlink" title="Spring JDBC"></a>Spring JDBC</h1><ul>
+<li><p>Spring框架对JDBC的简单封装。提供了一个JDBCTemplate对象简化JDBC的开发。</p>
+</li>
+<li><p>步骤：</p>
+<ol>
+<li>导入jar包。</li>
+<li>创建JDBCTemplate对象。依赖于数据源DataSource。</li>
+<li>调用DBCTemplate来完成增删改查的操作。<ul>
+<li>update()：执行DML语句。</li>
+<li>queryForMap()：查询结果将结果集封装为Map集合，将一条记录封装为Map集合。<ul>
+<li>注意：这个方法查询的结果集长度只能是1。</li>
+</ul>
+</li>
+<li>queryForList()：查询结果将结果集封装为List集合。<ul>
+<li>注意：将每一条记录封装为Map集合，再将map集合装载到List集合中。</li>
+</ul>
+</li>
+<li>query()：查询结果将结果封装为JavaBean对象。<ul>
+<li>参数：RowMapper<ul>
+<li>一般我们使用BeanPropertyRowMapper实现类。可以完成数据到JavaBean的自动封装</li>
+<li>new BeanPropertyRowMapper&lt;类型&gt;（类型.class）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>queryForObject()：查询结果将结果封装为对象。<ul>
+<li>一般用于聚合函数的查询。</li>
+<li>queryForObject(sql语句, 返回值类型.class);</li>
+</ul>
+</li>
 </ul>
 </li>
 </ol>
+</li>
+</ul>
 
       
       <!-- reward -->
@@ -430,14 +331,14 @@ public static void close(Statement st, Connection conn, ResultSet rs) {
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/27/JDBC/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/28/ConnPool/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JDBC/" rel="tag">JDBC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
 
 
     </footer>
@@ -448,19 +349,10 @@ public static void close(Statement st, Connection conn, ResultSet rs) {
   
   <nav class="article-nav">
     
-      <a href="/2020/04/28/ConnPool/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            数据库连接池
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/04/24/SQLkwl/" class="article-nav-link">
+      <a href="/2020/04/27/JDBC/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">SQL小知识杂谈</div>
+        <div class="article-nav-title">JDBC</div>
       </a>
     
   </nav>

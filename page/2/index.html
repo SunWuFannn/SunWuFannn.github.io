@@ -68,6 +68,97 @@
     
     
     
+    <article id="post-拆箱装箱" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/15/%E6%8B%86%E7%AE%B1%E8%A3%85%E7%AE%B1/"
+    >JAVA中的拆装箱</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/15/%E6%8B%86%E7%AE%B1%E8%A3%85%E7%AE%B1/" class="article-date">
+  <time datetime="2020-04-14T16:00:00.000Z" itemprop="datePublished">2020-04-15</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="装箱（拿int类型与Integer类型为例）"><a href="#装箱（拿int类型与Integer类型为例）" class="headerlink" title="装箱（拿int类型与Integer类型为例）"></a>装箱（拿int类型与Integer类型为例）</h2><p>装箱：把基本的数据类型包装到包装类中。</p>
+<p><strong>构造方法：</strong></p>
+<p><code>Integer(int value)；</code>构造一个新分配的 Integer 对象，它表示指定的 int 值。</p>
+<p><code>Integer(String s)；</code>构造一个新分配的 Integer 对象，它表示 String 参数所指示的 int 值。</p>
+<p><strong><em>注意：传递的字符串必须是与此包装类相同的基本类型字符串，否则会抛出异常。</em></strong></p>
+<p><strong>成员方法：</strong></p>
+<p><code>static Integer valueOf(int i)；</code>返回一个表示指定的 int 值的 Integer 实例。</p>
+<p><code>static Integer valueOf(String s)</code>；返回保存指定的 String 的值的 Integer 对象。</p>
+<hr>
+<h2 id="拆箱（拿int类型与Integer类型为例）"><a href="#拆箱（拿int类型与Integer类型为例）" class="headerlink" title="拆箱（拿int类型与Integer类型为例）"></a>拆箱（拿int类型与Integer类型为例）</h2><p>拆箱：在包装类中取出基本类型的数据。</p>
+<p><strong>成员方法：</strong><br><code>int intValue()；</code>以 int 类型返回该 Integer 的值。</p>
+<hr>
+<p>自动装箱与自动拆箱，如：</p>
+<p>自动装箱   Integer integer = 1；</p>
+<p>自动拆箱   integer = integer + 2;</p>
+<p><strong>integer是包装类，无法进行计算，所以自动拆箱了，然后又赋值给integer，自动装箱了。</strong></p>
+<p>其他基本类型与包装类之间的装箱拆箱也与此差不多。</p>
+<hr>
+<p>有关拆箱装箱简要描述，如需知道更多自己查询。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-ArraysAndMath" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 

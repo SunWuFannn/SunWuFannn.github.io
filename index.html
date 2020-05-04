@@ -68,6 +68,844 @@
     
     
     
+    <article id="post-JavaScript" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/01/JavaScript/"
+    >JavaScript</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/01/JavaScript/" class="article-date">
+  <time datetime="2020-04-30T16:00:00.000Z" itemprop="datePublished">2020-05-01</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><h2 id="ECMAScript：客户端脚本语言的标准"><a href="#ECMAScript：客户端脚本语言的标准" class="headerlink" title="ECMAScript：客户端脚本语言的标准"></a>ECMAScript：客户端脚本语言的标准</h2><h3 id="1-基本语法"><a href="#1-基本语法" class="headerlink" title="1.基本语法"></a>1.基本语法</h3><ol>
+<li>与html结合方式<ol>
+<li>内部js：定义&lt; script&gt;js代码&lt; script/&gt;</li>
+<li>外部js：定义&lt; script src属性引入外部js文件&gt;js代码&lt; script/&gt;</li>
+</ol>
+<ul>
+<li><strong>注意：&lt; script&gt;可以定义在html页面的任何地方，但是定义的位置会影响执行的顺序。&lt; script&gt;标签可以定义多个。</strong></li>
+</ul>
+</li>
+<li>注释<ul>
+<li>和java中注释规则一样。</li>
+</ul>
+</li>
+<li>数据类型<ol>
+<li>原始数据类型：<ol>
+<li>number：数字。整数/小数/NaN（not a number 一个不是数字的数字类型）</li>
+<li>string：字符串</li>
+<li>boolean：true/false</li>
+<li>null：空</li>
+<li>undefined：未定义。如果一个对象没有给初始化值，则会被默认赋值为undefined</li>
+</ol>
+</li>
+<li>引用数据类型：对象</li>
+</ol>
+</li>
+<li>变量<ul>
+<li>Java是强类型语言，而JavaScript是弱类型语言。<ul>
+<li>强类型：在开辟变量存储空间时，定义了空间将来存储的数据的数据类型，只能存储固定的数据类型。</li>
+<li>弱类型：在开辟变量存储空间时，不定义空间将来存储的数据的数据类型，可以存放任意的数据类型。</li>
+</ul>
+</li>
+<li>语法：var 变量名=变量值；</li>
+</ul>
+</li>
+<li>运算符<ul>
+<li>一元运算符：只有一个运算数的运算符<ul>
+<li>++，–，+（正号），-（负号），等</li>
+<li><strong>注意：在JS中，如果运算数不是运算符所要求的类型，那么js引擎会自动的将运算数进行类型转换。</strong><ul>
+<li><strong>其他类型转number：</strong><ul>
+<li><strong>string转number，按照字面值转换，如果字面值不是数字，则转为NaN（不是数字的数字）</strong></li>
+<li><strong>boolean转number，true转为1，false转为0</strong></li>
+<li><strong>其他两种类型转为NaN</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>算数运算符：数学运算<ul>
+<li>+，-，*，/，%等</li>
+</ul>
+</li>
+<li>赋值运算符<ul>
+<li>=，+=，-=等</li>
+</ul>
+</li>
+<li>比较运算符<ul>
+<li>&lt;，&gt;，&gt;=，&lt;=，==，===（全等于）</li>
+<li>比较方式：<ol>
+<li>类型相同：直接比较。</li>
+<li>类型不同：先进行类型转换再进行比较。</li>
+</ol>
+</li>
+<li>===（全等于）：在比较之前，先判断类型，如果类型不一样，则直接返回false。</li>
+</ul>
+</li>
+<li>逻辑运算符<ul>
+<li>&amp;&amp;，||，！</li>
+<li>其他类型转为boolean类型：<ul>
+<li>number：0或NaN为false，其他都是true</li>
+<li>string：除了空字符串（“”），其他都是true</li>
+<li>null与undefined：都是false</li>
+<li>对象：所有对象都为true</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>三元运算符<ul>
+<li>?:表达式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>流程控制语句<ul>
+<li>if…else…</li>
+<li>switch<ul>
+<li>在JS中，switch可以接收任意原始数据类型</li>
+</ul>
+</li>
+<li>while</li>
+<li>do…while</li>
+<li>for</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="2-基本对象"><a href="#2-基本对象" class="headerlink" title="2.基本对象"></a>2.基本对象</h3><ul>
+<li>Function：函数对象<ol>
+<li>创建<ol>
+<li><code>var fun = new Function(形参列表，方法体)</code></li>
+<li><code>function 方法名称(形参列表){方法体}</code></li>
+<li><code>var 方法名 = function(形参列表){方法体}</code></li>
+</ol>
+</li>
+<li>方法</li>
+<li>属性<ul>
+<li>length：代表形参的个数</li>
+</ul>
+</li>
+<li>特点<ol>
+<li>方法定义时，形参的类型可以不用写，返回值类型也bu’xie</li>
+<li>方法是一个对象，如果定义一个名称相同的方法，会覆盖之前的方法</li>
+<li>在JS中，方法的调用只与方法的名称有关，和参数列表无关</li>
+<li>在方法声明中有一个隐藏的内置对象（数组），arguments，封装所有的实际参数</li>
+</ol>
+</li>
+<li>调用：<ul>
+<li>方法名称(参数列表)；</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>Array：数组对象<ol>
+<li>创建<ol>
+<li><code>var arr = new Array(元素列表)；</code></li>
+<li><code>var arr = new Array(数组长度)；</code></li>
+<li><code>var arr = [元素列表]；</code></li>
+</ol>
+</li>
+<li>方法<ul>
+<li>join(参数)：将数组的元素按照指定的分隔符拼接为字符串</li>
+<li>push()：向数组中的末尾添加一个元素，并返回新的长度</li>
+</ul>
+</li>
+<li>属性<ul>
+<li>length：数组的长度</li>
+</ul>
+</li>
+<li>特点<ol>
+<li>JS中，数组元素的类型是可变的</li>
+<li>JS中，数组的长度是可变的</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Boolean</li>
+<li>Date<ol>
+<li>创建<ol>
+<li><code>var date = new Date()；</code></li>
+</ol>
+</li>
+<li>方法<ul>
+<li>toLocalString()：返回本地时间字符串格式</li>
+<li>getTime()：获取毫秒值，返回当前日期对象描述的时间到970年1月1日0点的差</li>
+</ul>
+</li>
+<li>属性</li>
+<li>特点</li>
+</ol>
+</li>
+<li>Math<ol>
+<li>创建<ul>
+<li>不用创建，直接使用</li>
+</ul>
+</li>
+<li>方法<ul>
+<li>random()：返回0到1之间的随机数，包含0不包含1</li>
+<li>cell(x)：向上取整</li>
+<li>floor(x)：向下取整</li>
+<li>round(x)：四舍五入</li>
+</ul>
+</li>
+<li>属性<ul>
+<li>PI：圆周率</li>
+</ul>
+</li>
+<li>特点</li>
+</ol>
+</li>
+<li>Number</li>
+<li>String</li>
+<li>RegExp：正则表达式对象<ul>
+<li>正则表达式：定义字符串的组成规则<ol>
+<li>单个字符：[]</li>
+</ol>
+<ul>
+<li>如：[a] [ab] [a-zA-Z0-9_]</li>
+<li>特殊符号代表特殊含义的单个字符：<ul>
+<li>\d：单个数字字符 [0-9]</li>
+<li>\w：单个单词字符 [a-zA-Z0-9_]</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>量词符号：<ul>
+<li>?：表示出现0次或1次</li>
+<li>*：表示出现0次或多次</li>
+<li>+：表示出现1次或多次</li>
+<li>{m,n}：表示出现次数在m与n之中，包括m和n<ul>
+<li>{m,}：至少出现m次</li>
+<li>{,n}：至多出现n次</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>开始结束符号：<ul>
+<li>^：开始</li>
+<li>$：结束</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>正则对象<ol>
+<li>创建<ul>
+<li><code>var reg = new RegExp(&quot;正则表达式&quot;)；</code><ul>
+<li><strong>注意：正则表达式中的\应该写两个，因为在双引号中会被转义</strong></li>
+</ul>
+</li>
+<li><code>var reg = /正则表达式/；</code></li>
+</ul>
+</li>
+<li>方法<ul>
+<li>test(参数)：验证指定的字符串是否符合正则表达式</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Global<ol>
+<li>特点：全局对象，这个Global对象中封装的方法可以不需要对象就直接调用。 方法名();</li>
+<li>方法：<ul>
+<li>encodeURI()：url编码</li>
+<li>decodeURI()：url解码</li>
+<li>encodeURIComponent()：url编码，会进行编码的字符更多</li>
+<li>decodeURIComponent()：url解码</li>
+<li>parseInt()：将字符串转为数字<ul>
+<li>逐一判断每个字符是不是是否是数字，直到不是数字为止，将前变数字部分转换为number</li>
+</ul>
+</li>
+<li>isNaN()：判断一个字符是不是NaN</li>
+<li>eval()：将JavaScript字符串，转成脚本来执行</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="3-BOM对象"><a href="#3-BOM对象" class="headerlink" title="3.BOM对象"></a>3.BOM对象</h3><ul>
+<li><p>概念：Browser object Model 浏览器对象模型</p>
+<ul>
+<li>将浏览器的各个组成部分封装成对象。</li>
+</ul>
+</li>
+<li><p>组成：</p>
+<ol>
+<li>Window：窗口对象<ul>
+<li>创建</li>
+<li>方法：<ol>
+<li>与弹出框有关的方法<ul>
+<li>alert()：显示带有一段消息和一个确认按钮的警告框。</li>
+<li>confirm()：显示带有一段信息以及确认按钮和取消按钮的对话框。<ul>
+<li>用户点击确认按钮，则返回true</li>
+<li>用户点击取消按钮，则返回false</li>
+</ul>
+</li>
+<li>prompt()：显示可提示用户输入的对话框。<ul>
+<li>返回值。获取用户输入的值。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>与打开关闭有关的方法：<ul>
+<li>open()：打开一个新的浏览器窗口</li>
+<li>close()：关闭浏览器窗口</li>
+</ul>
+</li>
+<li>与定时器有关的方法<ul>
+<li>setTimeout()：在指定的毫秒数后调用函数或计算表达式。<ul>
+<li>参数：<ul>
+<li>参数1：js代码或者方法对象</li>
+<li>参数2：毫秒值</li>
+</ul>
+</li>
+<li>返回值：唯一标识</li>
+</ul>
+</li>
+<li>clearTimeout()：取消由setTimeout()方法设置的timeout。</li>
+<li>setInterval()：按照指定的周期（以毫秒计）来调用函数或表达式。<ul>
+<li>参数：<ul>
+<li>参数1：js代码或者方法对象</li>
+<li>参数2：毫秒值</li>
+</ul>
+</li>
+<li>返回值：唯一标识</li>
+</ul>
+</li>
+<li>clearInterval()：取消seItnterval()设置的timeout。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>属性<ul>
+<li>获取其他BOM对象：<ul>
+<li>history</li>
+<li>location</li>
+<li>Navigator</li>
+<li>Screen</li>
+</ul>
+</li>
+<li>获取DOM对象<ul>
+<li>document</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>特点：<ol>
+<li>不需要创建，可以直接使用window使用。window.方法名()；</li>
+<li>window引用可以省略。方法名()；</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Navigator：浏览器对象</li>
+<li>Screen：显示器屏幕对象</li>
+<li>History：历史记录对象<ul>
+<li>创建(获取)<ol>
+<li>window.history</li>
+<li>history</li>
+</ol>
+</li>
+<li>方法<ul>
+<li>back() 加载history列表中的前一个URL</li>
+<li>forward() 加载history列表中的下一个URL</li>
+<li>go() 加载history列表中的某个具体页面<ul>
+<li>参数：<ul>
+<li>正数：前进几个历史记录</li>
+<li>负数：后退几个历史记录</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>属性<ul>
+<li>length：返回当前窗口历史记录列表中的URL数量</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Location：地址栏对象<ol>
+<li>创建(获取)<ul>
+<li>window.location</li>
+<li>location</li>
+</ul>
+</li>
+<li>方法<ul>
+<li>reload() 重新加载当前文档。刷新</li>
+</ul>
+</li>
+<li>属性<ul>
+<li>href 设置或返回完整的URL</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="4-DOM对象"><a href="#4-DOM对象" class="headerlink" title="4.DOM对象"></a>4.DOM对象</h3><ul>
+<li><p>概念：Document Object Model 文档对象模型</p>
+<ul>
+<li>将标记语言文档的各个组成部分封装为对象。可以使用这些个对象，对标记语言文档进行CRUD的动态操作。</li>
+</ul>
+</li>
+<li><p>功能：控制html文档的内容</p>
+</li>
+<li><p>W3C DOM标准被分为3个不同的部分</p>
+<ul>
+<li>核心DOM：针对任何结构化文档的标准模型<ul>
+<li>Document对象：文档对象</li>
+<li>Element：元素对象</li>
+<li>Attribute：属性对象</li>
+<li>Text：文本对象</li>
+<li>Comment：注释对象</li>
+<li>Node：节点对象，其他五个的父对象</li>
+</ul>
+</li>
+<li>XML DOM：针对XML文档的标准模型</li>
+<li>HTML DOM：针对HTML文档的标准模型</li>
+</ul>
+</li>
+<li><p>核心DOM模型：</p>
+<ul>
+<li>Document对象：文档对象<ol>
+<li>创建(获取)：在htnl模型中可以使用window对象来获取<ol>
+<li>window.document</li>
+<li>document</li>
+</ol>
+</li>
+<li>方法：<ul>
+<li>获取Element对象：<ul>
+<li>getElementById() 根据id属性值获取元素对象。</li>
+<li>getElementsByTagName() 根据元素名称获取元素对象们，返回值是一个数组</li>
+<li>getElementsByClassName() 根据class的属性值来获取元素对象们</li>
+<li>getElementsByName() 根据Name属性值获取元素对象们</li>
+</ul>
+</li>
+<li>创建其他DOM对象：<ul>
+<li>createAttribute(Name)</li>
+<li>createComment()</li>
+<li>createElement()</li>
+<li>createTextNode()</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>属性：<ul>
+<li>parentNode：获取父节点</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>Element：元素对象<ol>
+<li>获取：通过Document对象来获取和创建</li>
+<li>方法：<ul>
+<li>removeAttribute()：删除属性</li>
+<li>setAttribute()：设置属性</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>Node：节点对象，其他五个的父对象<ul>
+<li>特点：所有DOM对象都可以被认为是一个节点</li>
+<li>方法：<ul>
+<li>COUR DOM树：<ul>
+<li>appendChild()：向节点的子节点列表的结尾添加新的子节点。</li>
+<li>removeChild()：删除(并返回)当前节点的指定子节点。</li>
+<li>replaceChild()：用新的节点替换一个子节点</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>属性：</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>HTML DOM</li>
+</ul>
+<ol>
+<li><p>标签体的设置和获取：innerHTML</p>
+</li>
+<li><p>使用html元素对象的属性：查询API文档</p>
+</li>
+<li><p>控制元素样式：</p>
+<ol>
+<li>使用元素的style属性来设置</li>
+<li>提前定义好类选择器的样式，通过元素的className属性来设置类属性值。</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li><p>操作Element对象</p>
+<ol>
+<li>修改属性值<ol>
+<li>明确获取的对象是哪一个？</li>
+<li>查看API文档，看其中有哪些属性值可以设置</li>
+</ol>
+</li>
+<li>修改标签体内容<ul>
+<li>属性：innerHTML</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>事件简单学习</p>
+<ul>
+<li>功能：某些组件被执行了某些操作后触发某些代码的执行</li>
+<li>如何绑定事件：<ol>
+<li>直接在html标签上，指定事件的属性，属性值就是js代码</li>
+<li>通过js获取元素对象，指定事件属性</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>事件</p>
+<ul>
+<li>常见的事件：<ol>
+<li>点击事件：<ol>
+<li>onclick：当用户点击某个对象时调用的事件句柄。</li>
+<li>ondblclick：双击事件</li>
+</ol>
+</li>
+<li>焦点事件：<ol>
+<li>onblur：失去焦点<ul>
+<li>可以用于表单验证</li>
+</ul>
+</li>
+<li>onfocus：元素获得焦点</li>
+</ol>
+</li>
+<li>加载事件：<ol>
+<li>onload：一张页面或一张图片完成加载</li>
+</ol>
+</li>
+<li>鼠标事件：<ol>
+<li>onmousedown：鼠标按钮被按下<ul>
+<li>定义方法时，定义一个形参，接受event对象</li>
+<li>event对象的button属性可以获取哪个鼠标按钮键被点击了</li>
+</ul>
+</li>
+<li>onmouseup：鼠标按键被松开</li>
+<li>onmousemove：鼠标被移动</li>
+<li>onmouseover：鼠标移到某元素之上</li>
+<li>onmouseout：鼠标从某元素移开</li>
+</ol>
+</li>
+<li>键盘事件：<ol>
+<li>onkeydown：键盘某个按键被按下</li>
+<li>onkeyup：键盘某个按键被松开</li>
+<li>onkeypress：键盘按下并松开</li>
+</ol>
+</li>
+<li>选中和改变：<ol>
+<li>onchange：域的内容被改变</li>
+<li>onselect：文本被选中</li>
+</ol>
+</li>
+<li>表单事件：<ol>
+<li>onsubmit：确认按钮被点击<ul>
+<li>可以阻止表单的提交，方法返回true则提交，返回false则不提交</li>
+</ul>
+</li>
+<li>onreset：重置按钮被点击</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-CSS" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/01/CSS/"
+    >CSS</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/01/CSS/" class="article-date">
+  <time datetime="2020-04-30T16:00:00.000Z" itemprop="datePublished">2020-05-01</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><p>页面美化和布局控制</p>
+<ul>
+<li><p>概念：Cascading Style Sheets 层叠样式表</p>
+<ul>
+<li>层叠：多个样式可以作用在同一个html的元素上，同时生效</li>
+</ul>
+</li>
+<li><p>好处</p>
+<ol>
+<li>功能强大</li>
+<li>将内容的展示和样式控制分离<ul>
+<li>降低耦合度</li>
+<li>让分工协作更容易</li>
+<li>提高开发效率</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="CSS的使用：CSS与html结合方式"><a href="#CSS的使用：CSS与html结合方式" class="headerlink" title="CSS的使用：CSS与html结合方式"></a>CSS的使用：CSS与html结合方式</h2><ol>
+<li><p>内联样式：在标签内使用style属性指定css代码</p>
+<ul>
+<li>如：&lt; div style=”color:red;”&gt;hello&lt; /div&gt;</li>
+</ul>
+</li>
+<li><p>内部样式：在head标签内，定义style标签，style标签的内容就是css代码</p>
+<ul>
+<li><p>如</p>
+<pre><code>&lt;head&gt;
+    &lt;style&gt;
+        div{
+            color:blue;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;div&gt;hello&lt;/div&gt;</code></pre></li>
+</ul>
+</li>
+<li><p>外部样式:定义css资源文件，在head标签内，定义link标签，引入外部资源文件。</p>
+</li>
+</ol>
+<ul>
+<li><p>如</p>
+<pre><code>&lt;head&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/a.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;div&gt;hello&lt;/div&gt;</code></pre></li>
+</ul>
+<h2 id="CSS基本语法"><a href="#CSS基本语法" class="headerlink" title="CSS基本语法"></a>CSS基本语法</h2><ul>
+<li><p>格式：</p>
+<pre><code>选择器{
+    属性名1：属性值1；
+    属性名2：属性值2；
+    .....
+}</code></pre></li>
+<li><p>选择器：筛选具有相似特征的元素</p>
+</li>
+</ul>
+<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><ul>
+<li><p>分类：</p>
+<ol>
+<li><p>基础选择器</p>
+<ol>
+<li>id选择器：选择具体的id属性值的元素。<ul>
+<li>语法：#id属性值{}</li>
+<li><strong>优先级最高</strong></li>
+</ul>
+</li>
+<li>元素选择器：选择具有相同标签名称的元素。<ul>
+<li>语法：标签名称{}</li>
+<li><strong>优先级低于id选择器和类选择器</strong></li>
+</ul>
+</li>
+<li>类选择器：选择具有相同的class属性值的元素。<ul>
+<li>语法：.class属性值{}</li>
+<li><strong>优先级低于id选择器</strong></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>扩展选择器</p>
+<ol>
+<li>*：表示选择所有元素<ul>
+<li>语法：*{}</li>
+</ul>
+</li>
+<li>并集选择器：筛选选择器1下和选择器2共有的元素<ul>
+<li>语法：选择器1，选择器2{}</li>
+</ul>
+</li>
+<li>子选择器：筛选选择器1下的选择器2的元素<ul>
+<li>语法：选择器1 选择器2{}</li>
+</ul>
+</li>
+<li>父选择器：：筛选选择器2的父元素选择器1<ul>
+<li>语法：选择器1&gt;选择器2{}</li>
+</ul>
+</li>
+<li>属性选择器：选择元素名称，属性名=属性值的元素<ul>
+<li>语法：元素名称[ 属性名=”属性值” ]{}</li>
+</ul>
+</li>
+<li>伪类选择器：选择一些元素所具有的状态<ul>
+<li>语法：元素:状态{}</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><ol>
+<li><p>字体、文本</p>
+<ul>
+<li>font-size：字体大小</li>
+<li>color：文本颜色</li>
+<li>text-align：文本对齐方式</li>
+<li>line-height：行高</li>
+</ul>
+</li>
+<li><p>背景</p>
+<ul>
+<li>background：复合属性。</li>
+</ul>
+</li>
+<li><p>边框</p>
+<ul>
+<li>border：设置边框，复合属性。</li>
+</ul>
+</li>
+<li><p>尺寸</p>
+<ul>
+<li>width：宽度</li>
+<li>height：高度</li>
+</ul>
+</li>
+<li><p>盒子模型：控制布局</p>
+<ul>
+<li>margin：外边距</li>
+<li>padding：内边距<ul>
+<li>默认情况下内边距会影响整个盒子的大小，可以使用box-sizing：boder-box，让width和height就是盒子最终大小。</li>
+</ul>
+</li>
+<li>float：浮动</li>
+</ul>
+</li>
+</ol>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-ConnPool" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -2225,193 +3063,13 @@ s  秒</code></pre><p>写对应的模式，会把模式替换为对应的日期�
 
 </article>
     
-    <article id="post-SystemStringBuilder" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/15/SystemStringBuilder/"
-    >JAVA中的System类与StringBuilder类</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/15/SystemStringBuilder/" class="article-date">
-  <time datetime="2020-04-14T16:00:00.000Z" itemprop="datePublished">2020-04-15</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <h2 id="System类"><a href="#System类" class="headerlink" title="System类"></a>System类</h2><p>java.lang.System类中提供了大量的<strong>静态方法</strong>，可以获取与系统相关的信息或系统级操作。</p>
-<p>在System类的API文档中，<strong>常用的方法有：</strong></p>
-<p><code>public static long currentTimeMillis();</code> 返回以毫秒为单位的当前时间。</p>
-<p><code>public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length);</code>将数组中指定数据拷贝到另一个数组中。</p>
-<pre><code>public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)方法
-参数：
-    src - 源数组。
-    srcPos - 源数组中的起始位置。
-    dest - 目标数组。
-    destPos - 目标数据中的起始位置。
-    length - 要复制的数组元素的数量。</code></pre><hr>
-<h2 id="StringBuilder类"><a href="#StringBuilder类" class="headerlink" title="StringBuilder类"></a>StringBuilder类</h2><p>java.lang.StringBuilder类：字符串缓冲区，可以提高字符串的效率。</p>
-<p>构造方法：<br><code>StringBuilder()；</code>构造一个不带任何字符的字符串生成器，其初始容量为 16 个字符。</p>
-<p><code>StringBuilder(String str)；</code>构造一个字符串生成器，并初始化为指定的字符串内容。</p>
-<p><strong>常用的成员方法：</strong><br><code>public StringBuilder append(...)；</code>添加任意类型数据的字符串形式，并返回当前对象自身。</p>
-<p><code>public String toString()；</code>将当前的StringBuilder对象转换为String对象。</p>
-<p><strong>StingBuilder与String的区别</strong></p>
-<p><strong>StringBuilder对象中的内容可以改变，而String不行。</strong></p>
-<hr>
-<p>以上是关于这两个类的简要描述，如需知道更多请自己查询。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-toString" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/15/toString/"
-    >一些自定义类中的方法重写：toString.....</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/15/toString/" class="article-date">
-  <time datetime="2020-04-14T16:00:00.000Z" itemprop="datePublished">2020-04-15</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <p>Object类中为我们提供了一些方法，当我们创建自定义类的对象后，想要使用这些方法，可能无法实现我们想要的需求，因此需要我们对Object类的一些方法进行重写。</p>
-<h2 id="toString方法"><a href="#toString方法" class="headerlink" title="toString方法"></a>toString方法</h2><p>如果不重写此方法，直接打印输出时，toString是将其中的地址值转换为字符串，也就是打印出来的是对象的<strong>地址值</strong>，因此需要重写，才能将其中的内容转换为字符串，才能把对象中的内容打印出来。</p>
-<h2 id="equals方法"><a href="#equals方法" class="headerlink" title="equals方法"></a>equals方法</h2><p>Object类的equals方法，<strong>默认比较的是两个对象的地址值</strong>，没有意义，所以要重写equals方法，<strong>比较两个对象的属性</strong>。</p>
-<p>问题：</p>
-<ul>
-<li>隐含着一个多态</li>
-</ul>
-<p><strong><em>多态的弊端：无法使用子类的特有内容（属性和方法）</em></strong></p>
-<blockquote>
-<p>Object obj = p2 = new Person(“古力娜扎”，19);</p>
-</blockquote>
-<ul>
-<li>解决：可以使用向下转型，把obj类型转换为Person。</li>
-</ul>
-<hr>
-<p><strong><em>这些方法都可以用IDEA的自动代码生成，不用手写</em></strong></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
   </nav>
   
 </section>

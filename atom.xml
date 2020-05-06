@@ -46,6 +46,36 @@
   </entry>
   
   <entry>
+    <title>XML</title>
+    <link href="http://yoursite.com/2020/05/05/xml/"/>
+    <id>http://yoursite.com/2020/05/05/xml/</id>
+    <published>2020-05-04T16:00:00.000Z</published>
+    <updated>2020-05-06T19:27:31.466Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;XML&quot;&gt;&lt;a href=&quot;#XML&quot; class=&quot;headerlink&quot; title=&quot;XML&quot;&gt;&lt;/a&gt;XML&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;概念：Extersible Markup Language
+        
+      
+    
+    </summary>
+    
+    
+      <category term="XML" scheme="http://yoursite.com/categories/XML/"/>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="XML" scheme="http://yoursite.com/tags/XML/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaScript</title>
     <link href="http://yoursite.com/2020/05/01/JavaScript/"/>
     <id>http://yoursite.com/2020/05/01/JavaScript/</id>
@@ -567,35 +597,6 @@
         
           &lt;h2 id=&quot;关于接口&quot;&gt;&lt;a href=&quot;#关于接口&quot; class=&quot;headerlink&quot; title=&quot;关于接口&quot;&gt;&lt;/a&gt;关于接口&lt;/h2&gt;&lt;p&gt;  接口就是多个类的公共规范。&lt;/p&gt;
 &lt;p&gt; 
-        
-      
-    
-    </summary>
-    
-    
-      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="JAVA" scheme="http://yoursite.com/tags/JAVA/"/>
-    
-      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ArrayList</title>
-    <link href="http://yoursite.com/2020/03/06/JavaArrayList/"/>
-    <id>http://yoursite.com/2020/03/06/JavaArrayList/</id>
-    <published>2020-03-05T16:00:00.000Z</published>
-    <updated>2020-03-06T08:16:15.023Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Array与ArrayList的区别&quot;&gt;&lt;a href=&quot;#Array与ArrayList的区别&quot; class=&quot;headerlink&quot; title=&quot;Array与ArrayList的区别&quot;&gt;&lt;/a&gt;Array与ArrayList的区别&lt;/h2&gt;&lt;p&gt;
         
       
     

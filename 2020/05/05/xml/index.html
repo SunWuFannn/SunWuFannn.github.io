@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Bootstrap |  小张日记
+    XML |  小张日记
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -34,7 +34,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-Bootstrap" class="article article-type-post" itemscope
+  <article id="post-xml" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -42,7 +42,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Bootstrap
+  XML
 </h1>
   
 
@@ -51,12 +51,12 @@
 
     
     <div class="article-meta">
-      <a href="/2020/05/05/Bootstrap/" class="article-date">
+      <a href="/2020/05/05/xml/" class="article-date">
   <time datetime="2020-05-04T16:00:00.000Z" itemprop="datePublished">2020-05-05</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Bootstrap/">Bootstrap</a>
+    <a class="article-category-link" href="/categories/XML/">XML</a>
   </div>
 
       
@@ -66,7 +66,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">522字</span>
+            <span class="post-count">1.1k字</span>
         </span>
     </span>
 
@@ -75,7 +75,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1分钟</span>
+            <span class="post-count">4分钟</span>
         </span>
     </span>
 </div>
@@ -102,86 +102,220 @@
       
 
       
-      <h1 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h1><ul>
-<li><p>概念：一个前端开发的框架。Bootstrap是美国Twitter公司的设计师Mark Otto和Jacob Thornton合作基于HTML、CSS、JavaScript 开发的简洁、直观、强悍的前端开发框架，使得 Web 开发更加快捷。</p>
+      <h1 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h1><ul>
+<li><p><strong>概念：Extersible Markup Language 可扩展标记语言</strong></p>
 <ul>
-<li>框架：一个半成品软件。开发人员可以在框架基础上再进行开发，简化编码。</li>
-<li>好处：<ol>
-<li>定义了很多的css样式和js插件。我们开发人员可以直接使用这些样式和插件得到丰富的页面效果。</li>
-<li>响应式布局。<ul>
-<li>同一套页面可以兼容不同分辨率的设备。</li>
+<li>可扩展：标签都是自定义的。</li>
 </ul>
 </li>
+<li><p><strong>功能：</strong></p>
+<ul>
+<li>存储数据：<ol>
+<li>配置文件</li>
+<li>在网络中传输</li>
 </ol>
 </li>
 </ul>
 </li>
-</ul>
-<h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><ol>
-<li>下载Bootstrap</li>
-<li>在项目中将下载解压完的文件中的三个文件夹复制</li>
-<li>创建html页面，引入必要的资源文件</li>
-</ol>
-<h2 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h2><ul>
-<li><p><strong>实现</strong>：依赖于栅格系统。</p>
-<ul>
-<li>栅格系统：将一行平均分割成12个格子，可以指定元素占几个格子。</li>
-</ul>
-</li>
-<li><p><strong>步骤</strong>：</p>
+<li><p><strong>与html的区别：</strong></p>
 <ol>
-<li>定义容器<ul>
-<li>容器分类：<ol>
-<li>container：固定宽度。每一种设备的宽度都是一个不同的固定值</li>
-<li>container-fluid：每一种设备都是100%宽度</li>
+<li>xml标签都是自定义的，html是预定义的</li>
+<li>xml语法严格，html语法松散</li>
+<li>xml存储数据，html展示数据</li>
 </ol>
 </li>
-</ul>
-</li>
-<li>定义行 样式：row</li>
-<li>定义元素。指定该元素在不同的设备上占用的格子数目 样式：col-设备代号-格子数目<ul>
-<li>设备代号：<ol>
-<li>xs：超小屏幕 手机(&lt;768px)</li>
-<li>sm：小屏幕 平板(&gt;=768px)</li>
-<li>md：中等屏幕 桌面显示器(&gt;=992px)</li>
-<li>lg：大屏幕 大桌面显示器(&gt;=1200px)</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li><strong>注意：</strong><ol>
-<li>一行中如果格子数目超过12，则超出部分自动换行</li>
-<li>栅格类属性可以向上兼容</li>
-<li>如果真实设备的宽度小于了设置的栅格类属性的设备代码的最小值，会一个元素占满一整行</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="CSS样式和JS插件"><a href="#CSS样式和JS插件" class="headerlink" title="CSS样式和JS插件"></a>CSS样式和JS插件</h2><p>全局CSS样式：</p>
-<ul>
-<li>按钮：例如 <code>btn btn-default</code></li>
-<li>图片：<ul>
-<li>响应式图片 <code>class=&quot;img-responsive&quot;</code></li>
-<li>图片形状例如 <code>class=&quot;img-rounded&quot;</code></li>
-</ul>
-</li>
-<li>表格：查看文档</li>
-<li>表单：查看文档</li>
-</ul>
-<p>组件：</p>
-<ul>
-<li>导航条：navbar</li>
-<li>分页条：pagination</li>
-</ul>
-<p>插件：</p>
-<ul>
-<li>轮播图：Carousel</li>
 </ul>
 <hr>
-<p>Bootstrap更多用法请自询查找文档，上面很详细。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="基本语法："><a href="#基本语法：" class="headerlink" title="基本语法："></a>基本语法：</h3><ol>
+<li>xml第一行必须定义为文档声明</li>
+<li>xml文档中有且仅有一个根标签</li>
+<li>属性值必须使用引号引起来</li>
+<li>标签必须正确关闭</li>
+<li>xml标签名称区分大小写</li>
+</ol>
+<h3 id="组成部分："><a href="#组成部分：" class="headerlink" title="组成部分："></a>组成部分：</h3><ol>
+<li><p>文档声明</p>
+<ol>
+<li>格式<code>&lt;?xml 属性列表 ?&gt;</code></li>
+<li>属性列表：<ul>
+<li>version：版本号，必须的属性</li>
+<li>encoding：编码格式，告知解析引擎当前文档使用的字符集，默认值：ISO-8859-1</li>
+<li>standalone：是否独立，是否依赖其他文件</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>指令：结合css的，了解即可。</p>
+</li>
+<li><p>标签：标签名称自定义的。</p>
+<ul>
+<li>规则：<ol>
+<li>数字或者标点符号不能开头</li>
+<li>名称不能以字母xml或者XML开头</li>
+<li>名称中不能包含空格</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>属性：id值唯一。</p>
+</li>
+<li><p>文本内容：</p>
+<ul>
+<li><p>CDATA区：在该区域的文字会被原样展示。</p>
+<pre><code>&lt;![CDATA[
+    文本内容
+]]&gt;</code></pre></li>
+</ul>
+</li>
+</ol>
+<h3 id="约束：规定xml文档的编写规则"><a href="#约束：规定xml文档的编写规则" class="headerlink" title="约束：规定xml文档的编写规则"></a>约束：规定xml文档的编写规则</h3><ul>
+<li><p>分类：</p>
+<ol>
+<li>DTD：一种简单的约束技术</li>
+<li>Schemea：一种复杂的约束技术</li>
+</ol>
+</li>
+<li><p>DTD：</p>
+<ul>
+<li>引入dtd文档到xml文档中<ol>
+<li>内部dtd：<ul>
+<li><code>&lt;!DOCTYPE 根标签名 [dtd文件中具体内容]&gt;</code></li>
+</ul>
+</li>
+<li>外部dtd：<ul>
+<li>本地：<code>&lt;!DOCTYPE 根标签名 SYSTEM &quot;dtd文件的位置&quot;&gt;</code></li>
+<li>外部：<code>&lt;!DOCTYPE 根标签名 PUBLIC &quot;随便取个文件名&quot; &quot;dtd文件的位置URL&quot;&gt;</code></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>Schema：</p>
+<ul>
+<li>引入：<ol>
+<li>填写xml文档的根元素</li>
+<li>引入xsi前缀 xmlns:xsi=”…”</li>
+<li>引入xsd文件命名空间 xsi:schemaLocation=”….”</li>
+<li>为每一个xsd约束声明一个前缀，作为标识 xmlns:…=”….”</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="解析：操作xml文档，将文档中数据读取到内存中"><a href="#解析：操作xml文档，将文档中数据读取到内存中" class="headerlink" title="解析：操作xml文档，将文档中数据读取到内存中"></a>解析：操作xml文档，将文档中数据读取到内存中</h3><ul>
+<li><p>操作xml文档：</p>
+<ol>
+<li>解析（读取）</li>
+<li>写入：将内存中的数据保存到xml文档中，持久化的存储</li>
+</ol>
+</li>
+<li><p>解析xml的方式：</p>
+<ol>
+<li>DOM：将标记语言文档一次性加载进内存，在内存中形成一颗dom树<ul>
+<li>优点：操作方便，可以对文档进行CRUD的操作</li>
+<li>缺点：占内存</li>
+</ul>
+</li>
+<li>SAX：逐行读取，基于事件驱动的<ul>
+<li>优点：不占内存</li>
+<li>缺点：只能读取不能增删改</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>xml常见的解析器：</p>
+<ol>
+<li>JAXP：sun公司提供的解析器，支持DOM和SAX</li>
+<li>DOM4J：一款非常优秀的解析器，DOM方式</li>
+<li>Jsoup：是一款HTML解析器，但是比较好用，也可以用于解析XML，DOM方式</li>
+<li>PULL：Andriod操作系统内置的解析器，SAX方式</li>
+</ol>
+</li>
+</ul>
+<h3 id="Jsoup"><a href="#Jsoup" class="headerlink" title="Jsoup"></a>Jsoup</h3><ul>
+<li><p>快速入门：</p>
+<ul>
+<li>步骤：<ol>
+<li>导入jar包</li>
+<li>获取Document对象</li>
+<li>获取对应的标签Element对象</li>
+<li>获取数据</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>对象的使用：</p>
+<ol>
+<li><p>Jsoup：工具类，可以解析html文或xml文档，返回Document</p>
+<ul>
+<li>parse：解析html文或xml文档，返回Document对象<ul>
+<li>parse(File in, String charsetName)：解析xml或html文件</li>
+<li>parse(String html)：解析xml或html字符串</li>
+<li>parse(URL url, int timeoustMillis)：通过网络路径获取指定的html或xml的文档对象</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Document：文档对象，代表内存中得到DOM树</p>
+<ul>
+<li>获取Element对象：<ul>
+<li>getElementsByTag(String tagName)：根据标签名称获取元素对象集合</li>
+<li>getElementsByAttribute(String key)：根据属性名称获取元素对象集合</li>
+<li>getElementsByAttributeValue(String key，String value)：根据对应的属性名称和属性值获取元素对象集合</li>
+<li>getElementsById(String id)：根据id属性值获取唯一Element对象</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Elements：元素Element对象的集合。可以当做ArrayList&lt; Element&gt;来使用</p>
+</li>
+<li><p>Element：元素对象</p>
+<ol>
+<li>获取子元素对象：<ul>
+<li>getElementsByTag(String tagName)：根据标签名称获取元素对象集合</li>
+<li>getElementsByAttribute(String key)：根据属性名称获取元素对象集合</li>
+<li>getElementsByAttributeValue(String key，String value)：根据对应的属性名称和属性值获取元素对象集合</li>
+<li>getElementsById(String id)：根据id属性值获取唯一Element对象</li>
+</ul>
+</li>
+<li>获取属性值：<ul>
+<li>String attr(String key)：根据属性名称获取属性值</li>
+</ul>
+</li>
+<li>获取文本：<ul>
+<li>String text()；纯文本内容</li>
+<li>String html()：包括子标签的内容</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>Node：节点对象</p>
+<ul>
+<li>是Document和Element的父类</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>快速查询方式：</p>
+<ol>
+<li><p>selector：选择器</p>
+<ul>
+<li>使用的方法：Elements select(String cssQuery)<ul>
+<li>语法：参考selector类中定义的语法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>XPath：XML路径语言，用来确定XML文档中某部分位置的语言</p>
+<ul>
+<li>使用Jsoup的Xpath需要额外导入jar包</li>
+<li>查询XPath语法完成查询</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
 
       
       <!-- reward -->
@@ -251,14 +385,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/05/Bootstrap/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/05/xml/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bootstrap/" rel="tag">Bootstrap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XML/" rel="tag">XML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
 
 
     </footer>
@@ -269,10 +403,19 @@
   
   <nav class="article-nav">
     
+      <a href="/2020/05/05/Bootstrap/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Bootstrap
+          
+        </div>
+      </a>
     
-      <a href="/2020/05/05/xml/" class="article-nav-link">
+    
+      <a href="/2020/05/01/JavaScript/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">XML</div>
+        <div class="article-nav-title">JavaScript</div>
       </a>
     
   </nav>

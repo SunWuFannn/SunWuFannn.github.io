@@ -76,11 +76,11 @@
   </entry>
   
   <entry>
-    <title>Tomcat</title>
+    <title>Tomcat和Servlet</title>
     <link href="http://yoursite.com/2020/05/05/Tomcat/"/>
     <id>http://yoursite.com/2020/05/05/Tomcat/</id>
     <published>2020-05-04T16:00:00.000Z</published>
-    <updated>2020-05-07T18:48:02.358Z</updated>
+    <updated>2020-05-07T18:49:46.467Z</updated>
     
     <summary type="html">
     
@@ -95,12 +95,14 @@
     </summary>
     
     
-      <category term="Tomcat" scheme="http://yoursite.com/categories/Tomcat/"/>
+      <category term="JavaWeb" scheme="http://yoursite.com/categories/JavaWeb/"/>
     
     
       <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
       <category term="Tomcat" scheme="http://yoursite.com/tags/Tomcat/"/>
+    
+      <category term="Servlet" scheme="http://yoursite.com/tags/Servlet/"/>
     
   </entry>
   

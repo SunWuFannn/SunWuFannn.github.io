@@ -319,7 +319,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Tomcat</title>
+    <title>Tomcat和Servlet</title>
     <url>/2020/05/05/Tomcat/</url>
     <content><![CDATA[<h1 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h1><p>web服务器软件。</p>
 <ul>
@@ -476,11 +476,12 @@
 </ol>
 ]]></content>
       <categories>
-        <category>Tomcat</category>
+        <category>JavaWeb</category>
       </categories>
       <tags>
         <tag>学习笔记</tag>
         <tag>Tomcat</tag>
+        <tag>Servlet</tag>
       </tags>
   </entry>
   <entry>

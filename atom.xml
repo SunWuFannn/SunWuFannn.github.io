@@ -76,6 +76,35 @@
   </entry>
   
   <entry>
+    <title>Tomcat</title>
+    <link href="http://yoursite.com/2020/05/05/Tomcat/"/>
+    <id>http://yoursite.com/2020/05/05/Tomcat/</id>
+    <published>2020-05-04T16:00:00.000Z</published>
+    <updated>2020-05-07T18:48:02.358Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Tomcat&quot;&gt;&lt;a href=&quot;#Tomcat&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tomcat" scheme="http://yoursite.com/categories/Tomcat/"/>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Tomcat" scheme="http://yoursite.com/tags/Tomcat/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaScript</title>
     <link href="http://yoursite.com/2020/05/01/JavaScript/"/>
     <id>http://yoursite.com/2020/05/01/JavaScript/</id>
@@ -567,36 +596,6 @@
         
         
           &lt;h2 id=&quot;JAVA中Static的相关内容&quot;&gt;&lt;a href=&quot;#JAVA中Static的相关内容&quot; class=&quot;headerlink&quot; title=&quot;JAVA中Static的相关内容&quot;&gt;&lt;/a&gt;JAVA中Static的相关内容&lt;/h2&gt;&lt;h3
-        
-      
-    
-    </summary>
-    
-    
-      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="JAVA" scheme="http://yoursite.com/tags/JAVA/"/>
-    
-      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java中的接口</title>
-    <link href="http://yoursite.com/2020/03/07/JavaInterface/"/>
-    <id>http://yoursite.com/2020/03/07/JavaInterface/</id>
-    <published>2020-03-06T16:00:00.000Z</published>
-    <updated>2020-03-07T10:49:51.403Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;关于接口&quot;&gt;&lt;a href=&quot;#关于接口&quot; class=&quot;headerlink&quot; title=&quot;关于接口&quot;&gt;&lt;/a&gt;关于接口&lt;/h2&gt;&lt;p&gt;  接口就是多个类的公共规范。&lt;/p&gt;
-&lt;p&gt; 
         
       
     

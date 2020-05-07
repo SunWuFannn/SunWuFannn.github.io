@@ -319,6 +319,171 @@
       </tags>
   </entry>
   <entry>
+    <title>Tomcat</title>
+    <url>/2020/05/05/Tomcat/</url>
+    <content><![CDATA[<h1 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h1><p>web服务器软件。</p>
+<ul>
+<li>服务器：安装了服务器软件的计算机。</li>
+<li>服务器软件：接收用户请求，处理请求，做出响应。</li>
+<li>web服务器软件：接收用户请求，处理请求，做出响应。<ul>
+<li>在web服务器软件中可以部署web项目，让用户通过浏览器访问这些项目。</li>
+<li>web容器</li>
+</ul>
+</li>
+</ul>
+<p>常见的java相关的web服务器软件：</p>
+<ul>
+<li>webLogic：Oracle公司，大型javaEE服务器，支持所有的javaEE规范，收费。</li>
+<li>webSphere：IBM公司，大型javaEE服务器，支持所有的javaEE规范，收费。</li>
+<li>JBOSS：JBOSS公司，大型javaEE服务器，支持所有的javaEE规范，收费。</li>
+<li>Tomcat：Apache基金组织，中小型javaEE服务器，仅仅支持少量javaEE规范，开源免费。</li>
+</ul>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
+<li>部署项目的方式：<ol>
+<li>直接将项目放在webapps文件夹下。<ul>
+<li>简化部署：将项目打包成一个war包，再将war包放到webapps目录下，war包会自动解压缩。</li>
+</ul>
+</li>
+<li>配置conf/server.xml文件，在&lt; host&gt;标签体中配置<code>&lt;Context docBase=&quot;项目存放路径&quot; path=&quot;/虚拟目录&quot; /&gt;</code></li>
+<li>在conf/Catalina/localhost创建任意名称的xml文件，在文件中编写<code>&lt;Context docBase=&quot;项目存放路径&quot; /&gt;</code>，虚拟目录就是xml文件的名称。</li>
+</ol>
+</li>
+</ul>
+<h1 id="Servlet简单学习"><a href="#Servlet简单学习" class="headerlink" title="Servlet简单学习"></a>Servlet简单学习</h1><p>运行在服务器端的小程序。</p>
+<ul>
+<li>Servlet就是一个接口，定义了java类被浏览器访问到(tomcat识别)的规则。</li>
+<li>将来我们自定义一个类，实现Servlet接口，复写方法。</li>
+</ul>
+<h2 id="Servlet快速入门"><a href="#Servlet快速入门" class="headerlink" title="Servlet快速入门"></a>Servlet快速入门</h2><ol>
+<li><p>创建javaEE的项目</p>
+</li>
+<li><p>定义一个类，必须实现Servlet接口</p>
+</li>
+<li><p>实现接口中的抽象方法</p>
+</li>
+<li><p>配置Servlet</p>
+<ul>
+<li><p>web.xml中配置：</p>
+<pre><code>&lt;servlet&gt;
+    &lt;servlet-name&gt;demo01&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;web.servlet.ServletDemo01&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+
+&lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;demo01&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/demo01&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;</code></pre></li>
+</ul>
+</li>
+</ol>
+<h2 id="执行原理"><a href="#执行原理" class="headerlink" title="执行原理"></a>执行原理</h2><ol>
+<li>当服务器接收到客户端浏览器的请求后，会解析请求的URL路径，获取访问的servlet的资源路径。</li>
+<li>查找web.xml文件是否有对应的<code>&lt;url-pattern&gt;</code>标签体内容。</li>
+<li>如果有则在找到对应的<code>&lt;servlet-class&gt;</code>全类名。</li>
+<li>tomcat会将字节码文件加载进内存，并且创建其对象。</li>
+<li>调用其方法。</li>
+</ol>
+<h2 id="ervlet的生命周期："><a href="#ervlet的生命周期：" class="headerlink" title="ervlet的生命周期："></a>ervlet的生命周期：</h2><ol>
+<li><p>被创建：执行init方法，只执行一次。</p>
+<ul>
+<li><p>servlet什么时候被创建？</p>
+<ul>
+<li>默认情况下，第一次访问时，servlet被创建</li>
+<li>可以配置执行servlet的创建时机<ul>
+<li>在<code>&lt;servlet&gt;</code>标签下配置<ol>
+<li>第一次被访问时，创建<ul>
+<li><code>&lt;load-on-startup&gt;</code>的值为负数</li>
+</ul>
+</li>
+<li>在服务器启动时，创建<ul>
+<li><code>&lt;load-on-startup&gt;</code>的值为0或正数</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>servlet的init方法只执行一次，说明一个servlet在内存中只存在一个对象，servlet是单例的。</p>
+<ul>
+<li>多个用户同时访问时，可能存在线程安全问题。<ul>
+<li>解决：尽量不要在servlet中定义成员变量。即使定义了成员变量，也不要对其修改值。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>提供服务：执行service方法，可以执行多次。</p>
+<ul>
+<li>每次访问servlet时都会执行一次。</li>
+</ul>
+</li>
+<li><p>被销毁：执行destroy方法，只执行一次。</p>
+<ul>
+<li>servlet被销毁时执行一次，服务器正常关闭时。</li>
+</ul>
+</li>
+</ol>
+<h2 id="Servlet3-0及以上："><a href="#Servlet3-0及以上：" class="headerlink" title="Servlet3.0及以上："></a>Servlet3.0及以上：</h2><ul>
+<li>好处：<ul>
+<li>支持注解配置。可以不需要web.xml。</li>
+</ul>
+</li>
+<li>步骤：<ol>
+<li>创建javaEE项目，选择servlet版本3.0以上，可以不创建web.xml。</li>
+<li>定义一个类实现Servlet接口。</li>
+<li>复写方法。<ol start="4">
+<li>在类上使用@WebServlet(“资源路径”)注解进行配置。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="Servlet的体系结构："><a href="#Servlet的体系结构：" class="headerlink" title="Servlet的体系结构："></a>Servlet的体系结构：</h2><ul>
+<li>Servlet，GenericServlet，HttpServlet<ol>
+<li>GenericServlet继承自Servlet，将Servlet接口中除service方法都进行了默认空实现，只将service方法作为抽象方法，定义时只需实现service方法即可。</li>
+<li>HttpServlet继承自GenericServlet，是对http协议的一种封装，简化操作。定义时可以复写doGet/doPost方法。</li>
+</ol>
+</li>
+</ul>
+<h2 id="Servlet相关配置："><a href="#Servlet相关配置：" class="headerlink" title="Servlet相关配置："></a>Servlet相关配置：</h2><ol>
+<li>urlpartten：Servlet访问路径<ol>
+<li>一个Servlet可以定义多个访问路径：@WebServlet({“/路径1”，”/路径2”，”/路径3”})。</li>
+<li>路径定义规则：<ol>
+<li>/xxx</li>
+<li>/xxxx/xx/xxx：多层路径，目录结构。</li>
+<li>*.后缀名</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="IDEA与Tomcat的相关配置"><a href="#IDEA与Tomcat的相关配置" class="headerlink" title="IDEA与Tomcat的相关配置"></a>IDEA与Tomcat的相关配置</h1><ol>
+<li><p>IDEA会为每一个Tomacat部署的项目单独建立一份配置文件。</p>
+<ul>
+<li>查看控制台的log中的CATALINA_BASE。</li>
+</ul>
+</li>
+<li><p>工作空间项目和Tomacat部署的web项目是两个存在。</p>
+<ul>
+<li>Tomcat真正访问的是“Tomacat部署的web项目”，“Tomacat部署的web项目”对应着的是“工作空间项目”的web目录下的所有资源。</li>
+<li>WEB-INF目录下的资源不能被浏览器直接访问。</li>
+<li>断点调试：使用Debug启动而不是Run。</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Tomcat</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>Tomcat</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript</title>
     <url>/2020/05/01/JavaScript/</url>
     <content><![CDATA[<h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><h2 id="ECMAScript：客户端脚本语言的标准"><a href="#ECMAScript：客户端脚本语言的标准" class="headerlink" title="ECMAScript：客户端脚本语言的标准"></a>ECMAScript：客户端脚本语言的标准</h2><h3 id="1-基本语法"><a href="#1-基本语法" class="headerlink" title="1.基本语法"></a>1.基本语法</h3><ol>

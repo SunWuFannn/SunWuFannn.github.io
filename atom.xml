@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-05T18:50:33.752Z</updated>
+  <updated>2020-05-09T17:40:48.896Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,69 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaWeb中HTTP相关的粗略描述</title>
+    <link href="http://yoursite.com/2020/05/08/javaweb_HTTP/"/>
+    <id>http://yoursite.com/2020/05/08/javaweb_HTTP/</id>
+    <published>2020-05-07T16:00:00.000Z</published>
+    <updated>2020-05-09T17:40:48.896Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Http&quot;&gt;&lt;a href=&quot;#Http&quot; class=&quot;headerlink&quot; title=&quot;Http&quot;&gt;&lt;/a&gt;Http&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;概念：Hyper Text Transfer Protocol
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JavaWeb" scheme="http://yoursite.com/categories/JavaWeb/"/>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="HTTP" scheme="http://yoursite.com/tags/HTTP/"/>
+    
+      <category term="JavaWeb" scheme="http://yoursite.com/tags/JavaWeb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Request</title>
+    <link href="http://yoursite.com/2020/05/08/Request/"/>
+    <id>http://yoursite.com/2020/05/08/Request/</id>
+    <published>2020-05-07T16:00:00.000Z</published>
+    <updated>2020-05-09T16:55:07.264Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Request&quot;&gt;&lt;a href=&quot;#Request&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JavaWeb" scheme="http://yoursite.com/categories/JavaWeb/"/>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JavaWeb" scheme="http://yoursite.com/tags/JavaWeb/"/>
+    
+      <category term="Request" scheme="http://yoursite.com/tags/Request/"/>
+    
+  </entry>
   
   <entry>
     <title>Bootstrap</title>
@@ -540,64 +603,6 @@
         
           &lt;h2 id=&quot;关于继承&quot;&gt;&lt;a href=&quot;#关于继承&quot; class=&quot;headerlink&quot; title=&quot;关于继承&quot;&gt;&lt;/a&gt;关于继承&lt;/h2&gt;&lt;p&gt;  在继承的关系中，一个子类就是一个父类，也就是说，子类可以被当作父类看待。&lt;/p&gt;
 &lt;p&gt; 
-        
-      
-    
-    </summary>
-    
-    
-      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="JAVA" scheme="http://yoursite.com/tags/JAVA/"/>
-    
-      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>String字符串</title>
-    <link href="http://yoursite.com/2020/04/04/String/"/>
-    <id>http://yoursite.com/2020/04/04/String/</id>
-    <published>2020-04-03T16:00:00.000Z</published>
-    <updated>2020-04-15T12:22:58.120Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;String字符串&quot;&gt;&lt;a href=&quot;#String字符串&quot; class=&quot;headerlink&quot; title=&quot;String字符串&quot;&gt;&lt;/a&gt;String字符串&lt;/h2&gt;&lt;h3 id=&quot;String字符串的特点&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="JAVA" scheme="http://yoursite.com/tags/JAVA/"/>
-    
-      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Static静态</title>
-    <link href="http://yoursite.com/2020/04/04/Static/"/>
-    <id>http://yoursite.com/2020/04/04/Static/</id>
-    <published>2020-04-03T16:00:00.000Z</published>
-    <updated>2020-04-04T09:57:41.172Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;JAVA中Static的相关内容&quot;&gt;&lt;a href=&quot;#JAVA中Static的相关内容&quot; class=&quot;headerlink&quot; title=&quot;JAVA中Static的相关内容&quot;&gt;&lt;/a&gt;JAVA中Static的相关内容&lt;/h2&gt;&lt;h3
         
       
     

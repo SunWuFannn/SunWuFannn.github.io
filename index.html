@@ -68,6 +68,384 @@
     
     
     
+    <article id="post-javaweb_HTTP" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/08/javaweb_HTTP/"
+    >JavaWeb中HTTP相关的粗略描述</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/08/javaweb_HTTP/" class="article-date">
+  <time datetime="2020-05-07T16:00:00.000Z" itemprop="datePublished">2020-05-08</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaWeb/">JavaWeb</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="Http"><a href="#Http" class="headerlink" title="Http"></a>Http</h1><ul>
+<li><p>概念：Hyper Text Transfer Protocol 超文本传输协议</p>
+<ul>
+<li>传输协议：定义了客户端和服务器通信时，发送数据的格式。</li>
+<li>特点：<ol>
+<li>基于TCP/IP的高级协议</li>
+<li>默认端口号：80</li>
+<li>基于请求/响应模型的：一次请求对应一次响应</li>
+<li>无状态的：每次请求之间相互独立，不能交互数据</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>历史版本：</p>
+<ul>
+<li>1.0：每次请求响应都会建立新的连接</li>
+<li>1.1：复用连接</li>
+</ul>
+</li>
+</ul>
+<h3 id="请求消息数据格式"><a href="#请求消息数据格式" class="headerlink" title="请求消息数据格式"></a>请求消息数据格式</h3><ol>
+<li><p>请求行</p>
+<ul>
+<li>请求方式 请求url 请求协议/版本</li>
+<li>如：GET /login.html HTTP/1.1</li>
+<li>请求方式：<ul>
+<li>HTTP有7种请求方式，常见的有两种：<ul>
+<li>GET：请求参数在请求行中，在url后。请求的url长度是有限制的。不太安全。</li>
+<li>POST：请求参数在请求体中。请求的url长度是无限制的。相对安全。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>请求头：客户端浏览器告诉服务器一些信息</p>
+<ul>
+<li>请求头名：请求头值</li>
+<li>常见的请求头：<ol>
+<li>Host: 主机</li>
+<li>User-Agent: 浏览器告诉服务器，我访问你使用的浏览器版本信息<ul>
+<li>可以在服务器端获取该头的信息，解决浏览器的兼容性问题</li>
+</ul>
+</li>
+<li>Referer: 告诉服务器，当前请求从哪里来<ul>
+<li>作用：<ol>
+<li>防盗链：</li>
+<li>统计工作：</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>请求空行：空行，用于分割post请求头和请求体的</p>
+</li>
+<li><p>请求体（正文）</p>
+<ul>
+<li>封装post请求消息的请求参数的</li>
+</ul>
+</li>
+</ol>
+<h3 id="响应消息数据格式"><a href="#响应消息数据格式" class="headerlink" title="响应消息数据格式"></a>响应消息数据格式</h3><ol>
+<li>响应行：<ul>
+<li>组成：协议/版本 响应状态码 状态码描述</li>
+<li>响应状态码：服务器告诉客户端浏览器本次请求和响应的状态，状态码都是三位数字<ul>
+<li>状态分类：<ol>
+<li>1xx：服务器接收客户端消息，但没有接收完成，等待一段时间后发送1xx的状态码</li>
+<li>2xx：成功。代表：200</li>
+<li>3xx：重定向。代表：302（重定向），304（访问缓存）</li>
+<li>4xx：客户端错误。代表：404（请求路径没有对应的资源），405（请求方式没有对应的方法）</li>
+<li>5xx：服务器端错误。代表：500（服务器内部出现异常）</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>响应头<ul>
+<li>格式：头名称:值</li>
+<li>常见的响应头：<ol>
+<li>Content-Type：服务器告诉客户端浏览器本次响应体的数据格式及编码格式</li>
+<li>Content-disposition：服务器告诉客户端以什么格式打开响应体数据。默认值是<code>in-line 在当前页面内打开</code>，可以设置为<code>attachment;filename=xxx 以附件形式打开响应体</code></li>
+</ol>
+</li>
+</ul>
+</li>
+<li>响应空行</li>
+<li>响应体：传输的数据</li>
+</ol>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Request" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/08/Request/"
+    >Request</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/08/Request/" class="article-date">
+  <time datetime="2020-05-07T16:00:00.000Z" itemprop="datePublished">2020-05-08</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaWeb/">JavaWeb</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h1><p>Request和Response对象的原理：</p>
+<ol>
+<li>Request和Response对象是由服务器创建的。我们来使用它们。</li>
+<li>Request对象来获取请求消息，Response对象来设置响应消息。</li>
+</ol>
+<h3 id="Request对象继承体系结构"><a href="#Request对象继承体系结构" class="headerlink" title="Request对象继承体系结构"></a>Request对象继承体系结构</h3><p>HttpServletRequest接口继承ServletRequest接口。<br>org.apache.catalina.connector.RequestFacade类（tomcat实现）实现HttpServletRequest接口。</p>
+<h3 id="Request功能："><a href="#Request功能：" class="headerlink" title="Request功能："></a>Request功能：</h3><ol>
+<li><p>获取请求消息数据：</p>
+<ol>
+<li>获取请求行数据：<ul>
+<li>方法：<ol>
+<li>获取请求方式：String getMethod()</li>
+<li>获取虚拟目录：String getContextPath()</li>
+<li>获取Servlet路径：String getServletPath()</li>
+<li>获取<strong>GET方式请求参数：String getQueryString()</strong></li>
+<li>获取请求URI：<ul>
+<li>String getRequestURI()：返回虚拟目录加servlet路径</li>
+<li>String getRequestURI()：返回浏览器地址栏中的地址，即http://…….形式的</li>
+</ul>
+</li>
+<li>获取协议及版本：String getProtocol()</li>
+<li>获取客户机ip地址：String getRemoteAddr()</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>获取请求头数据：<ul>
+<li>方法：<ul>
+<li>String getHeader(String name)：通过请求头的名称获取请求头的值</li>
+<li>Enmueration&lt; string&gt; getHeaderNames()：获取所有请求头的名称</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>获取请求体数据：<ul>
+<li>请求体只有在POST请求方式中才有，请求体中封装了POST请求的参数</li>
+<li>步骤：<ol>
+<li>获取流对象<ul>
+<li>BufferedReader getReader()：获取字符输入流，只能操作字符数据</li>
+<li>ServletInputStream getInputStream()：获取字节输入流，可以操作所有数据类型数据</li>
+</ul>
+</li>
+<li>再从流对象中拿数据</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>其他功能：</p>
+<ol>
+<li><p>获取请求参数通用方式：</p>
+<ol>
+<li>String getParameter(String name)：根据参数名称获取参数值</li>
+<li>String[] getParameterValues(String name)：根据参数名称获取参数值的数组</li>
+<li>Enmueration&lt; string&gt; getParameterNames()：获取所有请求的参数名称</li>
+<li>Map&lt; String, String[]&gt; getParameterMap()：获取所有参数的Map集合</li>
+</ol>
+<ul>
+<li>中文乱码问题：<ul>
+<li>get方式：tomcat8已经将get方式乱码问题解决了</li>
+<li>post方式：在获取参数前，设置request的编码<code>request.setCharacterEncoding(&quot;utf-8&quot;)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>请求转发：一种在服务器内部的资源跳转方式</p>
+<ul>
+<li>步骤：<ol>
+<li>通过request对象获取请求转发对象：RequestDispatcher getRequestDispatcher(String path)</li>
+<li>使用RequestDispatcher对象来进行转发：forward(ServletRequest request, ServletResponse response)</li>
+</ol>
+</li>
+<li>特点：<ol>
+<li>浏览器地址栏路径不发生变化</li>
+<li>只能转发到当前服务器内部资源中</li>
+<li>转发是一次请求</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>共享数据：</p>
+<ul>
+<li>域对象：一个有作用范围的对象，可以在范围内共享数据</li>
+<li>request域：代表一次请求的范围，一般用于请求转发中的多个资源中共享数据</li>
+<li>方法：<ol>
+<li>void setAttribute(String name, Object obj)：存储数据</li>
+<li>Object getAttribute(String name)：通过键获取值</li>
+<li>void removeAttribute(String name)：通过键移除键值对</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>获取ServletContext：</p>
+<ul>
+<li>ServletContext getServletContext()</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="BeanUtils工具类，简化数据封装"><a href="#BeanUtils工具类，简化数据封装" class="headerlink" title="BeanUtils工具类，简化数据封装"></a>BeanUtils工具类，简化数据封装</h3><ul>
+<li><p>用于封装JavaBean的</p>
+</li>
+<li><p><strong>JavaBean：标准的java类</strong></p>
+<ul>
+<li><p>要求：</p>
+<ol>
+<li>类必须被public修饰</li>
+<li>必须提供空参的构造器</li>
+<li>成员变量必须使用private修饰</li>
+<li>提供public修饰的getter和setter</li>
+</ol>
+</li>
+<li><p>功能：封装数据</p>
+</li>
+</ul>
+</li>
+<li><p>概念：</p>
+<ul>
+<li><p>成员变量</p>
+</li>
+<li><p>属性：setter和getter方法截取后的产物</p>
+<ul>
+<li><p>如</p>
+<pre><code>public void setHehe(String gender){
+     this.gender = gender;
+}</code></pre></li>
+<li><p>其中成员变量是gender，属性是hehe</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>方法：</p>
+<ol>
+<li>setProperty()：设置JavaBean对象属性值</li>
+<li>getProperty()：获取JavaBean对象属性值</li>
+<li>populate(Object obj，Map map)：将map集合的键值对信息封装到对于的JavaBean对象中</li>
+</ol>
+</li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Request/" rel="tag">Request</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-Bootstrap" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -2389,904 +2767,6 @@ public static void close(Statement st, Connection conn, ResultSet rs) {
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JDBC/" rel="tag">JDBC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-SQLkwl" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/24/SQLkwl/"
-    >SQL小知识杂谈</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/24/SQLkwl/" class="article-date">
-  <time datetime="2020-04-23T16:00:00.000Z" itemprop="datePublished">2020-04-24</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/SQL%E7%9F%A5%E8%AF%86/">SQL知识</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <h1 id="SQL的一些小知识"><a href="#SQL的一些小知识" class="headerlink" title="SQL的一些小知识"></a>SQL的一些小知识</h1><hr>
-<h2 id="多表关系的实现"><a href="#多表关系的实现" class="headerlink" title="多表关系的实现"></a>多表关系的实现</h2><ol>
-<li><p><strong>一对多（多对一）</strong></p>
-<ul>
-<li>实现方式：在多的一方建立外键，指向一的一方的主键。</li>
-</ul>
-</li>
-<li><p><strong>多对多</strong></p>
-<ul>
-<li><p>实现方式：需要借助第三张中间表，中间表至少包含两个字段，这两个字段作为第三张表的外键，分别指向两张表的主键。</p>
-</li>
-<li><p><em>联合主键：中间表的主键可以是指向另两张表主键的两个外键的联合。例：PRIMARY KEY(rid,uid)；*</em></p>
-</li>
-</ul>
-</li>
-<li><p><strong>一对一</strong></p>
-<ul>
-<li>实现方式：可以在任意一方添加唯一外键指向另一方的主键（一对一关系不常用，如果是一对一，为何不把两张表拼在一起呢）。</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h2 id="数据库设计范式"><a href="#数据库设计范式" class="headerlink" title="数据库设计范式"></a>数据库设计范式</h2><p>范式就是设计数据库时需要遵循的一些规范。</p>
-<p>范式有<strong>六种</strong>范式：第一范式（1NF），第二范式（2NF），第三范式（3NF），巴斯-科德范式（BCNF），第四范式（4NF），第五范式（5NF，又称完美范式）。</p>
-<p><strong>各种范式呈递次规范，越高的范式，数据库冗余越小。一般设计数据库时满足前三范式就可以了。</strong></p>
-<h3 id="第一范式（1NF）"><a href="#第一范式（1NF）" class="headerlink" title="第一范式（1NF）"></a>第一范式（1NF）</h3><p>每一列都是不可分割的原子数据项。</p>
-<h3 id="第二范式（2NF）"><a href="#第二范式（2NF）" class="headerlink" title="第二范式（2NF）"></a>第二范式（2NF）</h3><p>在1NF的基础上，非码属性必须完全依赖于候选码（在1NF基础上消除非主属性对主码的部分函数依赖）。</p>
-<p><strong>就是消除部分依赖。</strong></p>
-<ul>
-<li><p>几个概念</p>
-<ol>
-<li><p><strong>函数依赖：</strong>A –&gt;B,如果通过A属性（属性组）的值，可以确定唯一B属性的值，则B依赖于A。</p>
-<ul>
-<li>例：学号 –&gt;姓名   （学号，课程名称） –&gt;分数</li>
-</ul>
-</li>
-<li><p><strong>完全函数依赖：</strong>A –&gt;B,如果A是一个属性组，则B属性值的确定需要依赖于A属性组中所有的属性值。</p>
-<ul>
-<li>例：（学号，课程名称） –&gt;分数</li>
-</ul>
-</li>
-<li><p><strong>部分函数依赖：</strong>A –&gt;B,如果A是一个属性组，则B属性值的确定需要依赖于A属性组中某一些属性值即可。</p>
-<ul>
-<li>例：（学号，课程名称） –&gt;姓名</li>
-</ul>
-</li>
-<li><p><strong>传递函数依赖：</strong>A –&gt;B, B –&gt;C，如果通过A属性（属性组）的值，可以确定唯一B属性的值，再通过B属性的值可以确定唯一C属性的值，则称C传递函数依赖于A。</p>
-<ul>
-<li>例：学号 –&gt;姓名，姓名 –&gt;系主任</li>
-</ul>
-</li>
-<li><p><strong>码：</strong>如果在一张表中，一个属性或属性组，被其他所有属性完全依赖，则称这个属性（属性组）为该表的码。</p>
-<ul>
-<li>例：（学号，课程名称）</li>
-<li>主属性：码属性组中的所有属性</li>
-<li>非主属性：去除码属性组中的属性</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="第三范式（3NF）"><a href="#第三范式（3NF）" class="headerlink" title="第三范式（3NF）"></a>第三范式（3NF）</h3><p>在2NF基础上，任何非主属性不依赖于其它非主属性（在2NF基础上消除传递依赖）。</p>
-<p><strong>就是消除传递依赖。</strong></p>
-<hr>
-<h2 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h2><h3 id="1-内连接查询"><a href="#1-内连接查询" class="headerlink" title="1.内连接查询"></a>1.内连接查询</h3><ol>
-<li><p>隐式内连接：使用WHERE条件消除无用数据</p>
-<ul>
-<li>例：SELECT * FROM emp,dept WHERE emp.id=dept.id;</li>
-</ul>
-</li>
-<li><p>显式内连接：</p>
-<ul>
-<li>语法<ul>
-<li><code>SELECT 字段列表 FROM 表名1 [INNER] JOIN 表名2 ON 条件列表；</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>内连接查询：</p>
-<ol>
-<li>从哪些表中查数据。</li>
-<li>条件是什么。</li>
-<li>查询哪些字段。</li>
-</ol>
-</li>
-</ol>
-<h3 id="2-外连接查询"><a href="#2-外连接查询" class="headerlink" title="2.外连接查询"></a>2.外连接查询</h3><ol>
-<li><p>左外连接：</p>
-<ul>
-<li><p>语法：<code>SELECT 字段名 FROM 表名1 LEFT [OUTER] JOIN 表名2 ON 条件列表；</code></p>
-</li>
-<li><p>查询的是左表（表名1的表）所有数据以及其符合查询条件的交集部分。</p>
-</li>
-</ul>
-</li>
-<li><p>右外连接：</p>
-<ul>
-<li><p>语法：<code>SELECT 字段名 FROM 表名1 RIGHT [OUTER] JOIN 表名2 ON 条件列表；</code></p>
-</li>
-<li><p>查询的是右表（表名2的表）所有数据以及其符合查询条件的交集部分。</p>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="3-子查询"><a href="#3-子查询" class="headerlink" title="3.子查询"></a>3.子查询</h3><p>就是查询中嵌套查询，被嵌套的查询称为子查询。<br>例：</p>
-<pre><code>1. SELECT MAX(salary) FROM emp;
-2. SELECT * FROM emp WHERE salary = 9000;
-
-可以替换为子查询
-SELECT * FROM emp WHERE salary = (SELECT MAX(salary) FROM emp);</code></pre><ul>
-<li><p>子查询的不同情况</p>
-<ol>
-<li><p>子查询结果是单行单列：</p>
-<ul>
-<li>子查询可以作为条件，使用运算符去判断。</li>
-<li><code>SELECT * FROM emp WHERE salary &lt; (SELECT AVG(salary) FROM emp);</code></li>
-</ul>
-</li>
-<li><p>子查询结果是多行单列：</p>
-<ul>
-<li>子查询可以作为条件，使用运算符IN去判断。</li>
-<li><code>SELECT * FROM emp WHERE dept_id IN (SELECT id FROM dept WHERE NAME = &#39;财务部&#39; OR NAME = &#39;市场部&#39;);</code></li>
-</ul>
-</li>
-<li><p>子查询结果是多行多列：</p>
-<ul>
-<li>子查询可以作为一张虚拟表参与查询。</li>
-<li><code>SELECT * FROM dept t1, (SELECT * FROM emp WHERE join_date &gt; &#39;2011-11-11&#39;) t2 WHERE t1.id = t2.dept_id;</code></li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<hr>
-<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><ol>
-<li><p>基本介绍</p>
-<ol>
-<li><p>概念：</p>
-<ul>
-<li>如果一个包含多个步骤的业务操作，被事务处理，那么这些操作要么同时成功，要么同时失败。</li>
-</ul>
-</li>
-<li><p>操作：</p>
-<ol>
-<li>开启事务：START TRANSACTION；</li>
-<li>回滚：ROLLBACK；</li>
-<li>提交：COMMIT；</li>
-</ol>
-</li>
-<li><p>MySQL数据库中事务默认自动提交</p>
-<ul>
-<li><p>事务提交的两种方式：</p>
-<ul>
-<li>自动提交：<ul>
-<li>MySQL就是自动提交的。</li>
-<li>一条DML语句会自动提交一次事务。</li>
-</ul>
-</li>
-<li>手动提交：<ul>
-<li>Oracle默认是手动提交的。</li>
-<li>需要先开启事务，再提交。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>修改事务的默认提交方式：</p>
-<ul>
-<li>查看事务的默认提交方式：<code>SELECT @@AUTOCOMMIT；</code></li>
-<li>修改默认提交方式：<code>SET @@AUTOCOMMIT = 0；</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>事务的四大特征</p>
-<ol>
-<li>原子性：是不可分割的最小操作单位，要么同时成功，要么同时失败。</li>
-<li>持久性：当事务提交或者回滚后，数据库将会持保存数据。</li>
-<li>隔离性：多个事务之间，相互独立。</li>
-<li>一致性：事务操作前后数据总量不变。</li>
-</ol>
-</li>
-<li><p>事务的隔离级别</p>
-<ul>
-<li><p>概念：多个事务之间，相互独立的。但是如果多个事务操作同一批数据，则会引发一些问题，设置不同的隔离级别就可以解决这些问题。</p>
-</li>
-<li><p>存在问题：</p>
-<ol>
-<li>脏读：一个事务读取到另一个事务中没有提交的数据。</li>
-<li>不可重复读（虚读）：在同一个事务中两次读取到的数据不一样。</li>
-<li>幻读： 一个事务操作(DML)数据表中所有的记录，另一个事务添加了一条数据，则第一个事务查询不到自己的修改。</li>
-</ol>
-</li>
-<li><p>隔离级别</p>
-<ol>
-<li>read uncommited：读未提交<ul>
-<li>产生的问题：脏读，不可重复读，幻读。</li>
-</ul>
-</li>
-<li>read commited：读已提交（Oracle）<ul>
-<li>产生的问题：不可重复读，幻读。</li>
-</ul>
-</li>
-<li>repeatable read：可重复读 （MySQL）<ul>
-<li>产生的问题：幻读。</li>
-</ul>
-</li>
-<li>serializable：串行化<ul>
-<li>可以解决所有 的问题。</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>注意：隔离级别从小到大安全性越来越高，但是效率越来越低。</li>
-<li>数据库查询隔离级别：<ul>
-<li>SELECT @@TX_ISOLATION；</li>
-</ul>
-</li>
-<li>数据库设置隔离级别：<ul>
-<li>SET GLOBAL TRANSACTION ISOLATION LEVEL 级别字符串；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-SQL" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/23/SQL/"
-    >常用的SQL语句</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/23/SQL/" class="article-date">
-  <time datetime="2020-04-22T16:00:00.000Z" itemprop="datePublished">2020-04-23</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/SQL%E8%AF%AD%E5%8F%A5/">SQL语句</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <h1 id="常用的SQL语句"><a href="#常用的SQL语句" class="headerlink" title="常用的SQL语句"></a>常用的SQL语句</h1><hr>
-<h2 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h2><p>DDL是操作是数据库和表的SQL语句。</p>
-<h3 id="1-操作数据库"><a href="#1-操作数据库" class="headerlink" title="1. 操作数据库"></a>1. 操作数据库</h3><ol>
-<li><p><strong>创建</strong></p>
-<ul>
-<li><p>创建数据库</p>
-<ul>
-<li>CREATE DATABASE 数据库名称；</li>
-</ul>
-</li>
-<li><p>创建数据库，判断不存在，再创建</p>
-<ul>
-<li>CREATE DATABASE IF NOT EXISTS 数据库名称；</li>
-</ul>
-</li>
-<li><p>创建数据库，并指定字符集</p>
-<ul>
-<li>CREATE DATABASE 数据库名称 character set 字符集名；</li>
-</ul>
-</li>
-<li><p>创建数据库，判断不存在，再创建，并指定字符集</p>
-<ul>
-<li>CREATE DATABASE IF NOT EXISTS 数据库名称 character set 字符集名；</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>查询</strong></p>
-<ul>
-<li><p>查询所有数据库的名称</p>
-<ul>
-<li>SHOW DATABASES；</li>
-</ul>
-</li>
-<li><p>查询某个数据库的字符集，查询某个数据库的查询语句</p>
-<ul>
-<li>SHOW CREATE DATABASE 数据库名称；</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>修改</strong></p>
-<ul>
-<li>修改数据库的字符集<ul>
-<li>ALTER DATABASE 数据库名称 character set 字符集名；</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>删除</strong></p>
-<ul>
-<li><p>删除数据库</p>
-<ul>
-<li>DROP DATABASE 数据库名称；</li>
-</ul>
-</li>
-<li><p>判断数据库存在，再删除</p>
-<ul>
-<li>DROP DATABASE IF EXISTS 数据库名称；</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>使用数据库</strong></p>
-<ul>
-<li><p>查询当前正在使用的数据库名称</p>
-<ul>
-<li>SELECT DATABASE();</li>
-</ul>
-</li>
-<li><p>使用数据库</p>
-<ul>
-<li>USE 数据库名称；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="2-操作表"><a href="#2-操作表" class="headerlink" title="2. 操作表"></a>2. 操作表</h3><ol>
-<li><p><strong>创建</strong></p>
-<ul>
-<li><p>创建表</p>
-<pre><code>CREATE TABLE 表名称(
-    列名1，数据类型1，
-    列名2，数据类型2，
-    列名3，数据类型3，
-    .......
-    列名n，数据类型n
-)；</code></pre></li>
-<li><p><strong>注意最后一列后面不用加逗号</strong></p>
-</li>
-<li><p>SQL中常用的数据类型</p>
-<ol>
-<li>int：整数类型</li>
-<li>double：小数类型</li>
-<li>date：日期，只包含年月日，yyyy-MM-dd</li>
-<li>datetime：日期，包含年月日时分秒，yyyy-MM-dd HH:mm:ss</li>
-<li>timestamp：时间戳类型，包含年月日时分秒，不赋值时可以默认添加当前系统时间</li>
-<li>varchar：字符串</li>
-</ol>
-</li>
-<li><p>复制表</p>
-<ul>
-<li>CREATE TABLE 表名 LIKE 被复制的表名；</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>查询</strong></p>
-<ul>
-<li>查询某个数据库中所有表的名称<ul>
-<li>SHOW TABLES；</li>
-</ul>
-</li>
-<li>查询表结构<ul>
-<li>DESC 表名称；</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>修改</strong></p>
-<ul>
-<li><p>修改表名</p>
-<ul>
-<li>ALTER TABLE 表名称 RENAME TO 新的表名；</li>
-</ul>
-</li>
-<li><p>修改表的字符集</p>
-<ul>
-<li>ALTER TABLE 表名称 character set 字符集名；</li>
-</ul>
-</li>
-<li><p>添加一列</p>
-<ul>
-<li>ALTER TABLE 表名称 ADD 列名 数据类型；</li>
-</ul>
-</li>
-<li><p>修改列名和类型</p>
-<ul>
-<li>ALTER TABLE 表名称 CHANGE 列名 新列名 新数据类型；</li>
-<li>ALTER TABLE 表名称 MODIFY 列名 新数据类型；</li>
-</ul>
-</li>
-<li><p>删除列</p>
-<ul>
-<li>ALTER TABLE 表名称 DROP 列名；</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>删除</strong></p>
-<ul>
-<li><p>删除表</p>
-<ul>
-<li>DROP TABLE 表名称；</li>
-</ul>
-</li>
-<li><p>判断表存在，再删除</p>
-<ul>
-<li>DROP TABLE IF EXISTS 表名称；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h2 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h2><p>DML是增删改数据库的表中的数据的SQL语句。</p>
-<ol>
-<li><p><strong>添加数据</strong></p>
-<ul>
-<li><p>INSERT INTO 表名(列名1，列名2，列名3，…..列名n) VALUES(值1，值2，值3，…..值n);</p>
-</li>
-<li><p><strong>注意：</strong></p>
-</li>
-</ul>
-<ol>
-<li><p>列名和值要一一对应。</p>
-</li>
-<li><p>如果表名后，不定义列名，则默认给所有列添加值。</p>
-<ul>
-<li>INSERT INTO 表名VALUES(值1，值2，值3，…..值n);</li>
-</ul>
-</li>
-<li><p>除了数字类型，其他类型需要使用引号（单双引号都可以）引起来。</p>
-</li>
-</ol>
-</li>
-<li><p><strong>删除数据</strong></p>
-<ul>
-<li><p>DELETE FROM 表名 [WHERE 条件]；</p>
-</li>
-<li><p><strong>注意：如果不加条件，则删除表中所有记录。</strong></p>
-</li>
-<li><p><strong>如果要删除表中所有记录，不推荐使用<code>DELETE FROM 表名；</code>，可以使用<code>TRUNCATE TABLE 表名；</code>。</strong></p>
-</li>
-</ul>
-</li>
-<li><p><strong>修改数据</strong></p>
-<ul>
-<li><p>UPDATE 表名 SET 列名1=值1， 列名2=值2，….列名n=值n [WHERE 条件]；</p>
-</li>
-<li><p><strong>注意：如果不加任何条件，则会将表中所有记录修改。</strong></p>
-</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h2 id="DQL"><a href="#DQL" class="headerlink" title="DQL"></a>DQL</h2><p>DQL是查询表中记录的SQL语句。</p>
-<ul>
-<li>SELECT * FROM 表名；</li>
-</ul>
-<p><strong>语法：</strong></p>
-<pre><code>SELECT
-    字段列表
-FROM
-    表名列表
-WHERE
-    条件列表
-GROUP BY
-    分组字段
-HAVING
-    分组之后的条件
-ORDER BY
-    排序
-LIMIT
-    分页限定</code></pre><h3 id="1-基础查询"><a href="#1-基础查询" class="headerlink" title="1. 基础查询"></a>1. 基础查询</h3><ol>
-<li><p>多个字段的查询</p>
-<ul>
-<li>SELECT 字段名1，字段名2… FROM 表名；</li>
-</ul>
-</li>
-<li><p>去除重复</p>
-<ul>
-<li>SELECT DISTINCT 字段名1，字段名2… FROM 表名；</li>
-</ul>
-</li>
-<li><p>计算列</p>
-<ul>
-<li>一般可以使用四则运算计算一些列的值。（一般只会进行数值型的计算）</li>
-<li>IFNULL（表达式1，表达式2）：NULL参与的运算，计算结果都为NULL。<ul>
-<li>表达式1：哪个字段需要判断是否为NULL。</li>
-<li>表达式2：如果该字段为NULL后的替换值。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>起别名</p>
-<ul>
-<li><p>SELECT 字段名1 AS 别名 FROM 表名；</p>
-</li>
-<li><p><strong>注意：AS也可以省略，用一个空格代替。</strong></p>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="2-条件查询"><a href="#2-条件查询" class="headerlink" title="2. 条件查询"></a>2. 条件查询</h3><ol>
-<li><p>WHERE子句后跟条件。</p>
-</li>
-<li><p>运算符</p>
-<ul>
-<li>&lt; &gt; &gt;= &lt;= &lt;&gt; =</li>
-<li>BETWEEN…AND</li>
-<li>IN(集合)</li>
-<li>LIKE：模糊查询<ul>
-<li>占位符：<ul>
-<li>_：单个任意字符。</li>
-<li>%：多个任意字符。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>IS NULL</li>
-<li>AND 或 &amp;&amp;</li>
-<li>OR 或 ||</li>
-<li>NOT 或 ！</li>
-</ul>
-</li>
-</ol>
-<h3 id="3-排序查询"><a href="#3-排序查询" class="headerlink" title="3. 排序查询"></a>3. 排序查询</h3><ul>
-<li><p><strong>语法</strong></p>
-<ul>
-<li>ORDER BY 排序字段1 排序方式1，排序字段2 排序方式2….</li>
-</ul>
-</li>
-<li><p><strong>排序方式</strong></p>
-<ul>
-<li><p>ASC：升序，默认的。</p>
-</li>
-<li><p>DESC：降序。</p>
-</li>
-<li><p><strong>注意：如果有多个排序条件，则当前边的条件值一样时，才会判断第二条件。</strong></p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="4-聚合函数"><a href="#4-聚合函数" class="headerlink" title="4. 聚合函数"></a>4. 聚合函数</h3><blockquote>
-<p>将一列数据作为一个整体，进行纵向的计算。</p>
-</blockquote>
-<p><strong><em>注意：聚合函数的计算会排除NULL值</em></strong></p>
-<p><strong><em>解决方案：1.选择不包含空的列（主键）进行计算。2.IFNULL函数。</em></strong></p>
-<ol>
-<li><strong>COUNT；计算个数。</strong><ul>
-<li>SELECT COUNT(字段名) FROM 表名；</li>
-</ul>
-</li>
-<li><strong>MAX；计算最大值。</strong><ul>
-<li>SELECT MAX(字段名) FROM 表名；</li>
-</ul>
-</li>
-<li><strong>MIN；计算最小值。</strong><ul>
-<li>SELECT MIN(字段名) FROM 表名；</li>
-</ul>
-</li>
-<li><strong>SUM：计算和。</strong><ul>
-<li>SELECT SUM(字段名) FROM 表名；</li>
-</ul>
-</li>
-<li><strong>AVG；计算平均值。</strong><ul>
-<li>SELECT AVG(字段名) FROM 表名；</li>
-</ul>
-</li>
-</ol>
-<h3 id="5-分组查询"><a href="#5-分组查询" class="headerlink" title="5. 分组查询"></a>5. 分组查询</h3><ul>
-<li><p><strong>语法：</strong></p>
-<ul>
-<li>GROUP BY 分组字段；</li>
-<li>SELECT 分组字段, 聚合函数1，…. FROM 表名 GROUP BY 分组字段;</li>
-</ul>
-</li>
-<li><p><strong><em>注意：1.分组之后查询的字段只能是分组字段或者聚合函数。2.在分组之前可以用WHERE进行条件限定且后面不可以跟聚合函数判断，如果要在分组之后进行条件限定需要用HAVING且后面可以跟聚合函数判断。</em></strong></p>
-<p>  <code>SELECT 分组字段, 聚合函数1，.... FROM 表名 WHERE 条件 GROUP BY 分组字段 HAVING 条件;</code></p>
-</li>
-</ul>
-<h3 id="6-分页查询"><a href="#6-分页查询" class="headerlink" title="6. 分页查询"></a>6. 分页查询</h3><ul>
-<li><strong>语法：</strong><ul>
-<li>LIMIT 开始的索引，每页查询的条数；</li>
-<li>SELECT * FROM 表名 LIMIT 开始的索引, 每页查询的条数;</li>
-</ul>
-</li>
-</ul>
-<p><strong><em>LIMIT是一个“方言”，只能在MySQL中用。</em></strong></p>
-<hr>
-<h2 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h2><h3 id="1-管理用户"><a href="#1-管理用户" class="headerlink" title="1.管理用户"></a>1.管理用户</h3><ol>
-<li><p>添加用户：</p>
-<ul>
-<li>CREATE USER ‘用户名‘@’主机名’ IDENTIFIED BY ‘密码’；</li>
-</ul>
-</li>
-<li><p>删除用户：</p>
-<ul>
-<li>DROP USER ‘用户名‘@’主机名’；</li>
-</ul>
-</li>
-<li><p>修改用户密码：</p>
-<ul>
-<li><p>UPDATE USER SET PASSWORD = PASSWORD(‘新密码’) WHERE USER = ‘用户名’；</p>
-</li>
-<li><p>SET PASSWORD FOR ‘用户名‘@’主机名’ = PASSWORD(‘新密码’)；</p>
-</li>
-<li><p><strong>MySQL中忘记了root用户的密码怎么办？</strong></p>
-<ol>
-<li>cmd –&gt; net stop mysql80 停止mysql服务</li>
-<li>使用无验证方式启动mysql服务：mysqld –skip-grant-tables</li>
-<li>打开新的cmd窗口，直接输入mysql命令，敲回车，就可以登陆成功</li>
-<li>USE mysql；</li>
-<li>UPDATE USER SET PASSWORD = PASSWORD(‘新密码’) WHERE USER = ‘root’；</li>
-<li>关闭两个窗口</li>
-<li>打开任务管理器，手动关闭mysqld.exe的进程</li>
-<li>启动mysql服务</li>
-<li>使用新密码登录</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>查询用户：</p>
-<ol>
-<li>切换到mysql数据库。<code>USE mysql;</code></li>
-<li>查询user表。<code>SELECT * FROM user;</code></li>
-</ol>
-<ul>
-<li>通配符：%表示可以在任意主机使用用户登录数据库。</li>
-</ul>
-</li>
-</ol>
-<h3 id="2-权限管理"><a href="#2-权限管理" class="headerlink" title="2.权限管理"></a>2.权限管理</h3><ol>
-<li><p>查询权限：</p>
-<ul>
-<li>SHOW GRANTS FOR ‘用户名‘@’主机名’;</li>
-</ul>
-</li>
-<li><p>授予权限</p>
-<ul>
-<li>GRANT 权限列表 ON 数据库名.表名 TO ‘用户名‘@’主机名’;</li>
-<li>GRANT ALL ON <em>.</em> TO ‘用户名‘@’主机名’; 给一个用户授予对任意数据库中任意表进行任意操作的权限。</li>
-</ul>
-</li>
-<li><p>撤销权限</p>
-<ul>
-<li>REVOKE 权限列表 ON 数据库名.表名 FROM ‘用户名‘@’主机名’;</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><p>对表中的数据进行限定，保证数据的正确性、有效性和完整性。</p>
-<p>分类：</p>
-<ol>
-<li>主键约束：primary key</li>
-<li>非空约束：not null</li>
-<li>唯一约束：unique</li>
-<li>外键约束：foreign key</li>
-</ol>
-<h3 id="1-非空约束"><a href="#1-非空约束" class="headerlink" title="1.非空约束"></a>1.非空约束</h3><p>某一列的值不能为NULL。</p>
-<ul>
-<li><p>创建表时添加非空约束</p>
-<pre><code>CREATE TABLE 表名(
-    字段名1 数据类型1，
-    字段名2 数据类型2 NOT NULL，
-    .....
-);</code></pre></li>
-<li><p>创建表完后添加非空约束</p>
-<p>  <code>ALTER TABLE 表名 MODIFY 字段名 数据类型 NOT NULL；</code></p>
-</li>
-<li><p>删除非空约束</p>
-<p>  <code>ALTER TABLE 表名 字段名 数据类型；</code></p>
-</li>
-</ul>
-<h3 id="2-唯一约束"><a href="#2-唯一约束" class="headerlink" title="2.唯一约束"></a>2.唯一约束</h3><p>某一列的值不能重复。</p>
-<ul>
-<li><p>创建表时，添加唯一约束</p>
-<pre><code>CREATE TABLE 表名(
-    字段名1 数据类型1，
-    字段名2 数据类型2 UNIQUE，
-    .....
-);</code></pre></li>
-<li><p>删除唯一约束</p>
-<p>  <code>ALTER TABLE 表名 DROP INDEX 字段名；</code></p>
-</li>
-<li><p>在表创建完后，添加唯一约束</p>
-<p>  <code>ALTER TABLE 表名 MODIFY 字段名 数据类型 UNIQUE；</code></p>
-</li>
-</ul>
-<h3 id="3-主键约束"><a href="#3-主键约束" class="headerlink" title="3.主键约束"></a>3.主键约束</h3><p>某一列的值非空且唯一，一张表只能有一个字段为主键，就是表中记里的唯一标识。</p>
-<ul>
-<li><p>创建表时，添加主键约束</p>
-<pre><code>CREATE TABLE 表名(
-    字段名1 数据类型1，
-    字段名2 数据类型2 PRIMARY KEY，
-    .....
-);</code></pre></li>
-<li><p>删除主键</p>
-<p>  <code>ALTER TABLE 表名 DROP PRIMARY KEY；</code></p>
-</li>
-<li><p>创建完表后，添加主键</p>
-<p>  <code>ALTER TABLE 表名 MODIFY 字段名 数据类型 PRMARY KEY；</code></p>
-</li>
-<li><p>自动增长</p>
-<ul>
-<li><p>如果某一列是数值类型，使用AUTO_INCREMENT可以完成值自动增长，一般可以配合数值类型的主键使用。</p>
-</li>
-<li><p><strong>注意：自动增长的值为最后一条记录自动增长字段的值加一</strong></p>
-</li>
-<li><p>创建表时，添加主键，并且完成自动增长</p>
-<pre><code>CREATE TABLE 表名(
-    字段名1 数据类型1，
-    字段名2 数据类型2 PRIMARY KEY AUTO_INCREMENT，
-    .....
-);</code></pre></li>
-<li><p>删除自动增长</p>
-<p><code>ALTER TABLE 表名 MODIFY 字段名 数据类型；</code></p>
-</li>
-<li><p>添加自动增长</p>
-<p><code>ALTER TABLE 表名 MODIFY 字段名 数据类型 AUTO_INCREMENT；</code></p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="4-外键约束"><a href="#4-外键约束" class="headerlink" title="4.外键约束"></a>4.外键约束</h3><p>让表与表产生关系，从而保证数据的正确性，外键可以为NULL，但是不能是主表中不存在的值。</p>
-<ul>
-<li><p>创建表时，添加外键</p>
-<pre><code>CREATE TABLE 表名(
-    字段名1 数据类型1，
-    字段名2 数据类型2，
-    .....
-    CONSTRAINT 外键名称 FOREIGN KEY (外键列名称) REFERENCES 主表名称(主表列名称)
-);</code></pre></li>
-<li><p>删除外键</p>
-<p>  <code>ALTER TABLE 表名称 DROP FOREIGN KEY 外键名称；</code></p>
-</li>
-<li><p>创建表之后，添加外键</p>
-<p>  <code>ALTER TABLE 表名称 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键列名称) REFERENCES 主表名称(主表列名称)；</code></p>
-</li>
-<li><p>级联操作</p>
-<p>  可以在外键关联的主表中的列进行操作时，外键中的值自动更新。</p>
-<ul>
-<li><p>级联更新</p>
-<ul>
-<li><p>在添加外键语句后加上ON UPDATE CASCADE</p>
-<p><code>ALTER TABLE 表名称 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键列名称) REFERENCES 主表名称(主表列名称) ON UPDATE CASCADE；</code></p>
-</li>
-</ul>
-</li>
-<li><p>级联删除</p>
-<ul>
-<li><p>在添加外键语句后加上ON DELETE CASCADE</p>
-<p><code>ALTER TABLE 表名称 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键列名称) REFERENCES 主表名称(主表列名称) ON DELETE CASCADE；</code></p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong><em>级联更新与级联删除可以同时存在。</em></strong></p>
-<hr>
-<h2 id="命令行操作数据库备份和还原"><a href="#命令行操作数据库备份和还原" class="headerlink" title="命令行操作数据库备份和还原"></a>命令行操作数据库备份和还原</h2><ul>
-<li><p>备份：MYSQLDUMP -u用户名 -p密码 数据库名称 &gt; 保存的路径；</p>
-</li>
-<li><p>还原：</p>
-<ol>
-<li>登录数据库</li>
-<li>创建数据库</li>
-<li>使用数据库</li>
-<li>使用文件。SOURCE 文件路径</li>
-</ol>
-</li>
-</ul>
-<hr>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
 
 
     </footer>

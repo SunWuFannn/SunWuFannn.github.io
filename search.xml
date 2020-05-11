@@ -23,6 +23,7 @@
 </ul>
 </li>
 </ul>
+<hr>
 <h3 id="请求消息数据格式"><a href="#请求消息数据格式" class="headerlink" title="请求消息数据格式"></a>请求消息数据格式</h3><ol>
 <li><p>请求行</p>
 <ul>
@@ -67,6 +68,7 @@
 </ul>
 </li>
 </ol>
+<hr>
 <h3 id="响应消息数据格式"><a href="#响应消息数据格式" class="headerlink" title="响应消息数据格式"></a>响应消息数据格式</h3><ol>
 <li>响应行：<ul>
 <li>组成：协议/版本 响应状态码 状态码描述</li>
@@ -258,6 +260,159 @@
         <tag>学习笔记</tag>
         <tag>JavaWeb</tag>
         <tag>Request</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Response</title>
+    <url>/2020/05/08/Response/</url>
+    <content><![CDATA[<h1 id="Response"><a href="#Response" class="headerlink" title="Response"></a>Response</h1><ul>
+<li><strong>设置响应消息：</strong><ol>
+<li>设置响应行<ul>
+<li>设置状态码：setStatus(int sc)</li>
+</ul>
+</li>
+<li>设置响应头<ul>
+<li>setHeader(Sting name, Sring value)</li>
+</ul>
+</li>
+<li>设置响应体：<ul>
+<li>使用步骤：<ol>
+<li>获取输出流</li>
+<li>使用输出流将数据输出到客户端浏览器</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="案例："><a href="#案例：" class="headerlink" title="案例："></a>案例：</h2><ol>
+<li>完成重定向</li>
+</ol>
+<ul>
+<li><p>重定向：资源跳转的方式</p>
+</li>
+<li><p>代码：</p>
+<pre><code>//设置状态码
+resp.setStatus(302);
+//设置重定向资源location路径
+resp.setHeader(&quot;location&quot;,&quot;/javaweb_tomcat_war_exploded/ResponseDemo02&quot;);</code></pre></li>
+<li><p>简化写法：<code>resp.sendRedirect(&quot;/javaweb_tomcat_war_exploded/ResponseDemo02&quot;);</code></p>
+</li>
+<li><p>重定向的特点：</p>
+<ol>
+<li>浏览器地址栏发生变化</li>
+<li>重定向可以访问其他站点（服务器）的资源</li>
+<li>重定向是两次请求，不能使用request对象共享数据</li>
+</ol>
+</li>
+<li><p>路径写法：</p>
+<ol>
+<li>路径分类：<ol>
+<li>相对路径：通过相对路径不可以确定唯一资源<ul>
+<li>如：./index.html</li>
+<li>不以/开业，以.开头的路径</li>
+<li>规则：找到当前资源和目标资源之间的关系<ul>
+<li>./：当前目录</li>
+<li>../：后退一级目录</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>绝对路径：通过相对路径可以确定唯一资源<ul>
+<li>如：<a href="http://localhost/day15/responseDemo2" target="_blank" rel="noopener">http://localhost/day15/responseDemo2</a></li>
+<li>以/开头的路径</li>
+<li>规则：判断定义的路径给谁用<ul>
+<li>给客户端浏览器使用：需要加虚拟目录（项目的访问路径）<ul>
+<li>建议虚拟目录动态获取：<code>request.getContextPath()</code></li>
+</ul>
+</li>
+<li>给服务使用：不需要加虚拟目录</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<ol start="2">
+<li><p>服务器输出字符数据到浏览器</p>
+<ul>
+<li>步骤：<ol>
+<li>获取字符输出流</li>
+<li>输出数据</li>
+</ol>
+</li>
+<li><strong>注意：乱码问题</strong><ul>
+<li>获取的流的默认编码格式是ISO-8859-1，需要设置该流的默认编码，告诉浏览器响应体使用的编码。</li>
+<li><code>resp.setContentType(&quot;text/html;charset=utf-8&quot;);</code>在获取流之前设置</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>服务器输出字节数据到浏览器</p>
+<ul>
+<li>步骤：<ol>
+<li>获取字节输出流</li>
+<li>输出数据</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>验证码</p>
+<pre><code>public class CheckCodeServlet extends HttpServlet {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    int width = 100;
+    int height = 50;
+
+    //创建对象，在内存中和代表图片（验证码图片对象）
+    BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+    //美化图片
+    //获取画笔对象
+    Graphics graphics = bufferedImage.getGraphics();
+    //设置填充的背景色
+    graphics.setColor(Color.PINK);
+    //设置填充开始的坐标以及宽度高度，填充一个矩形
+    graphics.fillRect(0, 0, width, height);
+    //设置边框的颜色
+    graphics.setColor(Color.BLUE);
+    //从坐标处画一个边框，因为边框的有1px的宽度，所有宽度和高度要减去1
+    graphics.drawRect(0, 0, width - 1, height - 1);
+    //设置验证码的颜色
+    graphics.setColor(new Color(214, 24, 215));
+    //随机生成4个验证码，放入图中
+    String str = &quot;QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm0123456789&quot;;
+    Random random = new Random();
+    for (int i = 1; i &lt;= 4; i++) {
+        int index = random.nextInt(str.length());
+        char ch = str.charAt(index);
+        graphics.drawString(ch + &quot;&quot;, width / 5 * i, height / 2);
+    }
+    //设置干扰线的颜色
+    graphics.setColor(Color.RED);
+    //随机生成10条干扰线放入图中
+    for (int i = 0; i &lt; 10; i++) {
+        int x1 = random.nextInt(width);
+        int y1 = random.nextInt(height);
+        int x2 = random.nextInt(width);
+        int y2 = random.nextInt(height);
+        graphics.drawLine(x1, y1, x2, y2);
+    }
+    //将图片输出到页面
+    ImageIO.write(bufferedImage, &quot;jpg&quot;, resp.getOutputStream());
+}</code></pre></li>
+</ol>
+]]></content>
+      <categories>
+        <category>JavaWeb</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>JavaWeb</tag>
+        <tag>Response</tag>
       </tags>
   </entry>
   <entry>

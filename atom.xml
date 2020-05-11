@@ -111,6 +111,37 @@
   </entry>
   
   <entry>
+    <title>ServletContext</title>
+    <link href="http://yoursite.com/2020/05/08/ServletContext/"/>
+    <id>http://yoursite.com/2020/05/08/ServletContext/</id>
+    <published>2020-05-07T16:00:00.000Z</published>
+    <updated>2020-05-11T18:47:11.144Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;ServletContext&quot;&gt;&lt;a href=&quot;#ServletContext&quot; class=&quot;headerlink&quot; title=&quot;ServletContext&quot;&gt;&lt;/a&gt;ServletContext&lt;/h1&gt;&lt;h3
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JavaWeb" scheme="http://yoursite.com/categories/JavaWeb/"/>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JavaWeb" scheme="http://yoursite.com/tags/JavaWeb/"/>
+    
+      <category term="ServletContext" scheme="http://yoursite.com/tags/ServletContext/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Bootstrap</title>
     <link href="http://yoursite.com/2020/05/05/Bootstrap/"/>
     <id>http://yoursite.com/2020/05/05/Bootstrap/</id>
@@ -581,37 +612,6 @@
     
       <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
     
-    
-      <category term="JAVA" scheme="http://yoursite.com/tags/JAVA/"/>
-    
-      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>工具类：Arrays与Math</title>
-    <link href="http://yoursite.com/2020/04/04/ArraysAndMath/"/>
-    <id>http://yoursite.com/2020/04/04/ArraysAndMath/</id>
-    <published>2020-04-03T16:00:00.000Z</published>
-    <updated>2020-04-04T09:40:57.802Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;JAVA中的两个工具类：Arrays与Math&quot;&gt;&lt;a href=&quot;#JAVA中的两个工具类：Arrays与Math&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="工具类" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
-    
-    
-      <category term="工具类" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
     
       <category term="JAVA" scheme="http://yoursite.com/tags/JAVA/"/>
     

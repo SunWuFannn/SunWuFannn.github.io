@@ -416,6 +416,90 @@ resp.setHeader(&quot;location&quot;,&quot;/javaweb_tomcat_war_exploded/ResponseD
       </tags>
   </entry>
   <entry>
+    <title>ServletContext</title>
+    <url>/2020/05/08/ServletContext/</url>
+    <content><![CDATA[<h1 id="ServletContext"><a href="#ServletContext" class="headerlink" title="ServletContext"></a>ServletContext</h1><h3 id="概念：代表整个web应用，可以和程序的容器（服务器）来通信"><a href="#概念：代表整个web应用，可以和程序的容器（服务器）来通信" class="headerlink" title="概念：代表整个web应用，可以和程序的容器（服务器）来通信"></a>概念：代表整个web应用，可以和程序的容器（服务器）来通信</h3><h3 id="获取："><a href="#获取：" class="headerlink" title="获取："></a>获取：</h3><ol>
+<li>通过request对象来获取<ul>
+<li>request.getServletContext()</li>
+</ul>
+</li>
+<li>通过HttpServlet获取<ul>
+<li>this.getServletContext()</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><strong>两种方法获取只能获取一个，获取的是同一个</strong></li>
+</ul>
+<h3 id="功能："><a href="#功能：" class="headerlink" title="功能："></a>功能：</h3><ol>
+<li><p>获取MIME类型</p>
+<ul>
+<li>MIME类型：在互联网通信过程中定义的一种文件数据类型<ul>
+<li>格式：大类型/小类型 text/html image/jpeg</li>
+</ul>
+</li>
+<li>获取：String getMimeType(String file)</li>
+</ul>
+</li>
+<li><p>域对象，共享数据</p>
+<ol>
+<li>setAttribute(String name, Object value)</li>
+<li>getAttribute(String name)</li>
+<li>removeAttribute(String name)</li>
+</ol>
+<ul>
+<li><strong>这个域的范围：所有用户所有请求的数据</strong></li>
+</ul>
+</li>
+<li><p>获取文件的真实（服务器）路径</p>
+<ol>
+<li>方法：String getRealPath(String Path)<ul>
+<li>web目录下获取，直接<code>/a.txt</code></li>
+<li>WEB-INF目录下获取，<code>/WEB-INF/a.txt</code></li>
+<li>src目录下获取，<code>/WEB-INF/classes/a.txt</code></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="文件下载案例"><a href="#文件下载案例" class="headerlink" title="文件下载案例"></a>文件下载案例</h3><pre><code>protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    //通过传递的参数获取要下载的文件的文件名
+    String filename = req.getParameter(&quot;filename&quot;);
+    ServletContext servletContext = this.getServletContext();
+    //通过ServletContext获取要下载文件的真实路径
+    String realPath = servletContext.getRealPath(&quot;/img/&quot; + filename);
+    //创建字节输入流，用于读取文件
+    FileInputStream fis = new FileInputStream(realPath);
+    //获取发送文件的MIME数据类型
+    String mimeType = servletContext.getMimeType(filename);
+    //设置content-type响应头
+    resp.setHeader(&quot;content-type&quot;, mimeType);
+    //设置content-disposition响应头，设置成附件打开
+    resp.setHeader(&quot;content-disposition&quot;, &quot;attachment;filename=&quot; + filename);
+    //获取字节输出流
+    ServletOutputStream os = resp.getOutputStream();
+    byte[] bytes = new byte[1024];
+    int len = 0;
+    //下载文件
+    while ((len = fis.read(bytes)) != -1) {
+        os.write(bytes, 0, len);
+    }
+    //释放资源
+    fis.close();
+}</code></pre><ul>
+<li><strong>注意：在弹出的下载框中会遇到中文文件名乱码问题，需要针对不同浏览器进行解决，可以先获取浏览器的版本信息，然后设置编码，网上有很多解决这个问题的工具类，可以咨询查找。</strong></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaWeb</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>JavaWeb</tag>
+        <tag>ServletContext</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Bootstrap</title>
     <url>/2020/05/05/Bootstrap/</url>
     <content><![CDATA[<h1 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h1><ul>

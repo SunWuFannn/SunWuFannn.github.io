@@ -68,6 +68,277 @@
     
     
     
+    <article id="post-SystemStringBuilder" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/15/SystemStringBuilder/"
+    >JAVA中的System类与StringBuilder类</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/15/SystemStringBuilder/" class="article-date">
+  <time datetime="2020-04-14T16:00:00.000Z" itemprop="datePublished">2020-04-15</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="System类"><a href="#System类" class="headerlink" title="System类"></a>System类</h2><p>java.lang.System类中提供了大量的<strong>静态方法</strong>，可以获取与系统相关的信息或系统级操作。</p>
+<p>在System类的API文档中，<strong>常用的方法有：</strong></p>
+<p><code>public static long currentTimeMillis();</code> 返回以毫秒为单位的当前时间。</p>
+<p><code>public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length);</code>将数组中指定数据拷贝到另一个数组中。</p>
+<pre><code>public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)方法
+参数：
+    src - 源数组。
+    srcPos - 源数组中的起始位置。
+    dest - 目标数组。
+    destPos - 目标数据中的起始位置。
+    length - 要复制的数组元素的数量。</code></pre><hr>
+<h2 id="StringBuilder类"><a href="#StringBuilder类" class="headerlink" title="StringBuilder类"></a>StringBuilder类</h2><p>java.lang.StringBuilder类：字符串缓冲区，可以提高字符串的效率。</p>
+<p>构造方法：<br><code>StringBuilder()；</code>构造一个不带任何字符的字符串生成器，其初始容量为 16 个字符。</p>
+<p><code>StringBuilder(String str)；</code>构造一个字符串生成器，并初始化为指定的字符串内容。</p>
+<p><strong>常用的成员方法：</strong><br><code>public StringBuilder append(...)；</code>添加任意类型数据的字符串形式，并返回当前对象自身。</p>
+<p><code>public String toString()；</code>将当前的StringBuilder对象转换为String对象。</p>
+<p><strong>StingBuilder与String的区别</strong></p>
+<p><strong>StringBuilder对象中的内容可以改变，而String不行。</strong></p>
+<hr>
+<p>以上是关于这两个类的简要描述，如需知道更多请自己查询。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-toString" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/15/toString/"
+    >一些自定义类中的方法重写：toString.....</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/15/toString/" class="article-date">
+  <time datetime="2020-04-14T16:00:00.000Z" itemprop="datePublished">2020-04-15</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <p>Object类中为我们提供了一些方法，当我们创建自定义类的对象后，想要使用这些方法，可能无法实现我们想要的需求，因此需要我们对Object类的一些方法进行重写。</p>
+<h2 id="toString方法"><a href="#toString方法" class="headerlink" title="toString方法"></a>toString方法</h2><p>如果不重写此方法，直接打印输出时，toString是将其中的地址值转换为字符串，也就是打印出来的是对象的<strong>地址值</strong>，因此需要重写，才能将其中的内容转换为字符串，才能把对象中的内容打印出来。</p>
+<h2 id="equals方法"><a href="#equals方法" class="headerlink" title="equals方法"></a>equals方法</h2><p>Object类的equals方法，<strong>默认比较的是两个对象的地址值</strong>，没有意义，所以要重写equals方法，<strong>比较两个对象的属性</strong>。</p>
+<p>问题：</p>
+<ul>
+<li>隐含着一个多态</li>
+</ul>
+<p><strong><em>多态的弊端：无法使用子类的特有内容（属性和方法）</em></strong></p>
+<blockquote>
+<p>Object obj = p2 = new Person(“古力娜扎”，19);</p>
+</blockquote>
+<ul>
+<li>解决：可以使用向下转型，把obj类型转换为Person。</li>
+</ul>
+<hr>
+<p><strong><em>这些方法都可以用IDEA的自动代码生成，不用手写</em></strong></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-拆箱装箱" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/15/%E6%8B%86%E7%AE%B1%E8%A3%85%E7%AE%B1/"
+    >JAVA中的拆装箱</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/15/%E6%8B%86%E7%AE%B1%E8%A3%85%E7%AE%B1/" class="article-date">
+  <time datetime="2020-04-14T16:00:00.000Z" itemprop="datePublished">2020-04-15</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="装箱（拿int类型与Integer类型为例）"><a href="#装箱（拿int类型与Integer类型为例）" class="headerlink" title="装箱（拿int类型与Integer类型为例）"></a>装箱（拿int类型与Integer类型为例）</h2><p>装箱：把基本的数据类型包装到包装类中。</p>
+<p><strong>构造方法：</strong></p>
+<p><code>Integer(int value)；</code>构造一个新分配的 Integer 对象，它表示指定的 int 值。</p>
+<p><code>Integer(String s)；</code>构造一个新分配的 Integer 对象，它表示 String 参数所指示的 int 值。</p>
+<p><strong><em>注意：传递的字符串必须是与此包装类相同的基本类型字符串，否则会抛出异常。</em></strong></p>
+<p><strong>成员方法：</strong></p>
+<p><code>static Integer valueOf(int i)；</code>返回一个表示指定的 int 值的 Integer 实例。</p>
+<p><code>static Integer valueOf(String s)</code>；返回保存指定的 String 的值的 Integer 对象。</p>
+<hr>
+<h2 id="拆箱（拿int类型与Integer类型为例）"><a href="#拆箱（拿int类型与Integer类型为例）" class="headerlink" title="拆箱（拿int类型与Integer类型为例）"></a>拆箱（拿int类型与Integer类型为例）</h2><p>拆箱：在包装类中取出基本类型的数据。</p>
+<p><strong>成员方法：</strong><br><code>int intValue()；</code>以 int 类型返回该 Integer 的值。</p>
+<hr>
+<p>自动装箱与自动拆箱，如：</p>
+<p>自动装箱   Integer integer = 1；</p>
+<p>自动拆箱   integer = integer + 2;</p>
+<p><strong>integer是包装类，无法进行计算，所以自动拆箱了，然后又赋值给integer，自动装箱了。</strong></p>
+<p>其他基本类型与包装类之间的装箱拆箱也与此差不多。</p>
+<hr>
+<p>有关拆箱装箱简要描述，如需知道更多自己查询。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-ArraysAndMath" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -882,184 +1153,13 @@ int a = nextInt(10);</code></pre><p><strong>每次产生的随机序列都相同
 
 </article>
     
-    <article id="post-Scanner" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/06/Scanner/"
-    >Scanner</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/03/06/Scanner/" class="article-date">
-  <time datetime="2020-03-05T16:00:00.000Z" itemprop="datePublished">2020-03-06</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <h2 id="关于Scanner"><a href="#关于Scanner" class="headerlink" title="关于Scanner"></a>关于Scanner</h2><p>  Scanner的作用类似于输入函数，可以把键盘的输入传递给需要用的变量。</p>
-<blockquote>
-<p>Scanner的使用步骤</p>
-</blockquote>
-<h4 id="1-导包"><a href="#1-导包" class="headerlink" title="1.导包"></a>1.导包</h4><p>  <code>import java.util.Scanner;</code></p>
-<h4 id="2-创建"><a href="#2-创建" class="headerlink" title="2.创建"></a>2.创建</h4><p>  <code>Scanner sc = new Scanner(System.in);</code></p>
-<p>tips：System.in表示从键盘输入。</p>
-<h4 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h4><p><code>String str = sc.next();</code></p>
-<p><code>String str = sc.nextLine();</code></p>
-<p>对于字符串，有上述两种常用用法，对于第一种，遇到空格就结束，对于第二种遇到回车才结束。</p>
-<p><code>String str = sc.nextInt();</code></p>
-<p>对于int类型，常用用法如上所写。</p>
-<hr>
-<p><em>更多详细用法请查询API</em></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-hello-world" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/05/hello-world/"
-    >Hello World</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/03/05/hello-world/" class="article-date">
-  <time datetime="2020-03-05T06:35:18.247Z" itemprop="datePublished">2020-03-05</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%B5%8B%E8%AF%951/">测试1</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
   </nav>
   
 </section>

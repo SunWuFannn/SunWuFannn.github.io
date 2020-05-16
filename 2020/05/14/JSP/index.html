@@ -66,7 +66,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">224字</span>
+            <span class="post-count">1.6k字</span>
         </span>
     </span>
 
@@ -75,7 +75,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1分钟</span>
+            <span class="post-count">5分钟</span>
         </span>
     </span>
 </div>
@@ -116,8 +116,236 @@
 </ol>
 <h3 id="JSP的内置对象"><a href="#JSP的内置对象" class="headerlink" title="JSP的内置对象"></a>JSP的内置对象</h3><ul>
 <li>在JSP页面中不需要获取和创建，可以直接使用的对象</li>
-<li>jsp一共有9个内置对象</li>
+<li>jsp一共有9个内置对象：<ol>
+<li>pageContext，真实类型是pageContext，作用是在当前页面共享数据，还可以获取其他8个内置对象</li>
+<li>request：真实类型是HttpServletRequest，作用是一次请求访问的多个资源间共享数据</li>
+<li>session：真实类型是HttpSession，作用是一次会话的多个请求间共享数据</li>
+<li>application：真实类型是ServletContext，作用是所有用户共享数据</li>
+<li>response：真实类型是HttpServletResponse，响应对象</li>
+<li>page：真实类型是Object，作用是当前页面（servlet）的对象</li>
+<li>out：真实类型是JspWriter，作用是输出对象，数据输出到页面上</li>
+<li>config：真实类型是ServletConfig，servlet的配置对象</li>
+<li>exception：真实类型是Throwable，异常对象</li>
+</ol>
+</li>
 </ul>
+<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><ul>
+<li>作用：用于配置JSP页面，导入资源文件</li>
+<li>格式：<code>&lt;%@ 指令名称 属性名1=属性值1 属性名2=属性值2 ... &amp;&gt;</code></li>
+<li>指令名称分类：<ol>
+<li>page：配置JSP页面<ul>
+<li>ContentType：等同于response.setContentType()<ol>
+<li>设置响应体的mime类型以及字符集</li>
+<li>设置当前jsp页面的编码（只能是高级的IDE中生效，如果使用低级工具，则需要设置pageEncoding属性设置当前页面的字符集）</li>
+</ol>
+</li>
+<li>import：导包</li>
+<li>errorpage：当前页面发送异常后，会自动跳转到指定的错误页面</li>
+<li>isErrorpage：标识当前页面是否是错误页面<ul>
+<li>true：是，可以使用内置对象exception</li>
+<li>false：否。默认值，不能使用内置对象exception</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>include：页面包含的。导入页面的资源文件，就是一个页面包含另一个页面。<ul>
+<li>&lt;%@include file=”top.jsp” %&gt;</li>
+</ul>
+</li>
+<li>taglib：导入资源，可以导入标签库<ul>
+<li>&lt;%@taglib prefix=”” uri=”” %&gt;</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><ol>
+<li>html注释：<code>&lt;!-- --&gt;</code>，只能注释html代码片段</li>
+<li>jsp注释：<code>&lt;%-- --%&gt;</code>，可以注释所有</li>
+</ol>
+<hr>
+<h2 id="MVC开发模式"><a href="#MVC开发模式" class="headerlink" title="MVC开发模式"></a>MVC开发模式</h2><ol>
+<li>M：Model，模型。JavaBean<ul>
+<li>完成具体的业务操作，如查询数据库，封装对象等</li>
+</ul>
+</li>
+<li>V：View，视图。JSP<ul>
+<li>展示数据</li>
+</ul>
+</li>
+<li>C：Controller，控制器。Servlet<ul>
+<li>获取用户的输入</li>
+<li>调用模型</li>
+<li>将返回回来的数据交给视图进行展示</li>
+</ul>
+</li>
+</ol>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>耦合性低，方便维护，可以利于分工协作</li>
+<li>重用性高，</li>
+</ol>
+<h3 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h3><ol>
+<li>使得项目架构变得复杂，对开发人员要求高</li>
+</ol>
+<hr>
+<h2 id="EL表达式"><a href="#EL表达式" class="headerlink" title="EL表达式"></a>EL表达式</h2><ol>
+<li><p>概念：Expression Language 表达式语言</p>
+</li>
+<li><p>作用：替换和简化jsp页面中java代码的编写</p>
+</li>
+<li><p>语法：${表达式}</p>
+</li>
+<li><p>注意：</p>
+<ul>
+<li>jsp默认支持el表达式的。如果要忽略el表达式<ol>
+<li>设置jsp中的page指令：isELIgnored=“true” 忽略当前jsp页面中所有的el表达式</li>
+<li>${表达式}：忽略当前这个el表达式</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>使用：</p>
+<ol>
+<li>运算<ul>
+<li>运算符：算数运算符，比较运算符，逻辑运算符，空运算符<ul>
+<li>空运算符：empty<ul>
+<li>功能：用于判断字符串，集合，数组是否为null长度是否为0</li>
+<li>${empty list}</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>获取值<ol>
+<li>el表达式只能从域对象中获取值</li>
+<li>语法<ol>
+<li>${域名称.键的名称}：从指定域中获取指定键的值<ul>
+<li>域名称：<ol>
+<li>pageScope：从pageContext中获取</li>
+<li>requestScope：从request中获取</li>
+<li>sessionScope：从session中获取</li>
+<li>applicationScope：从application中获取</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>${键名}：依次从最小的域中去查找是否有该键对应的值，直到找到为止<ul>
+<li>pageContext &lt; request &lt; session &lt; application</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>获取对象中的值<ul>
+<li>${域名称.键的名称.属性名称}：属性名称就是JavaBean中属性差不多意思，get方法去掉get剩下的字符串首字母小写就是属性名称</li>
+</ul>
+</li>
+<li>获取List集合中的值<ul>
+<li>${ 域名称.键的名称[ 索引值] }：如果下标越界了，也不会报异常，会显示一个空字符串</li>
+</ul>
+</li>
+<li>获取Map集合中的值<ul>
+<li>${ 域名称.键的名称.key的名称 }</li>
+<li>${ 域名称.键的名称[ “key的名称” ] }</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>隐式对象</p>
+<ul>
+<li>el表达式中有11个隐式对象</li>
+<li>pageContext为一个常用的隐式对象<ol>
+<li>获取jsp其他八个内置对象 ${pageContext.内置对象名称}</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="JSTL"><a href="#JSTL" class="headerlink" title="JSTL"></a>JSTL</h2><ul>
+<li><p>概念：JavaServer Page Tag Library JSP标准标签库</p>
+<ul>
+<li>是由Apache组织提供的开源的免费的jsp标签</li>
+</ul>
+</li>
+<li><p>作用：用于简化和替换jsp页面上的java代码</p>
+</li>
+<li><p>使用步骤：</p>
+<ol>
+<li>导入jstl相关jar包</li>
+<li>引入标签库：taglib指令</li>
+<li>使用标签</li>
+</ol>
+</li>
+<li><p>常用的jstl标签</p>
+<ol>
+<li><p>if：相当于if语句</p>
+<ul>
+<li>属性：<ul>
+<li>test 必须属性，接受boolean表达式<ul>
+<li>如果表达式为true，则显示if标签体内容，如果为false，则不显示</li>
+<li>一般情况下，结合el表达式一起使用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>注意：if标签没有else情况，如果想有，就再写一个if标签</strong></li>
+</ul>
+</li>
+<li><p>choose：相当于switch语句</p>
+<ol>
+<li>使用choose标签声明</li>
+<li>使用when标签判断</li>
+<li>使用otherwise标签做其他情况的声明</li>
+</ol>
+<ul>
+<li><p>如：</p>
+<pre><code>&lt;c:choose&gt;
+    &lt;c:when ....&gt;....&lt;/c:when&gt;
+    &lt;c:when ....&gt;....&lt;/c:when&gt;
+    &lt;c:when ....&gt;....&lt;/c:when&gt;
+    &lt;c:otherwise&gt;....&lt;/c:otherwise&gt;
+&lt;/c:choose&gt;</code></pre></li>
+</ul>
+</li>
+<li><p>foreach：相当于for语句</p>
+<ul>
+<li>普通for循环：<ul>
+<li>属性：<ul>
+<li>begin：开始值</li>
+<li>end：结束值</li>
+<li>var：临时变量</li>
+<li>step：步长</li>
+<li>varStatus：循环状态对象<ul>
+<li>index：容器中元素的索引，从0开始</li>
+<li>count：循环次数，从1开始</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>遍历容器<ul>
+<li>属性<ul>
+<li>item：容器对象</li>
+<li>var：容器中元素的临时变量</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h2 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h2><ol>
+<li>界面层（表示层）：用户看的界面。用户可以通过界面上的组件和服务器进行交互</li>
+<li>业务逻辑层：处理业务逻辑的</li>
+<li>数据访问层：操作数据存储文件的</li>
+</ol>
 
       
       <!-- reward -->

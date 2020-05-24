@@ -1,6 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Filter</title>
+    <url>/2020/05/24/Filter/</url>
+    <content><![CDATA[<h1 id="Filter：过滤器"><a href="#Filter：过滤器" class="headerlink" title="Filter：过滤器"></a>Filter：过滤器</h1><p><strong>web中的过滤器：</strong> 当访问服务器的资源时，过滤器可以将请求拦截下来，完成一些特殊的功能。</p>
+<p><strong>过滤器的作用：</strong> 一般用于完成通用的操作。如：登录验证、统一编码处理、敏感字符过滤…..</p>
+<h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><h3 id="1-步骤"><a href="#1-步骤" class="headerlink" title="1.步骤"></a>1.步骤</h3><ol>
+<li><p>定义一个类，实现接口Filter</p>
+</li>
+<li><p>复写方法</p>
+</li>
+<li><p>配置拦截路径</p>
+<ol>
+<li><p>web.xml</p>
+<pre><code>&lt;filter&gt;
+    &lt;filter-name&gt;demo01&lt;/filter-name&gt;
+    &lt;filter-class&gt;web.filter.FilterDemo01&lt;/filter-class&gt;
+&lt;/filter&gt;
+
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;demo01&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;   //这里是拦截路径
+&lt;/filter-mapping&gt;</code></pre></li>
+<li><p>注解WebFilter</p>
+<ul>
+<li>和Servlet注解差不多，只不过参数中是拦截路径</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h2><ol>
+<li><p>过滤器执行流程：</p>
+<ul>
+<li>放行之前的代码先执行，然后放行，最后执行放行之后的代码。</li>
+</ul>
+</li>
+<li><p>过滤器生命周期方法：</p>
+<ul>
+<li>与Servlet类似，init和destory是创建和销毁时执行，doFilter是拦截请求资源时执行。</li>
+</ul>
+</li>
+<li><p>过滤器配置详解</p>
+<ul>
+<li>拦截路径配置：<ol>
+<li>具体资源路径： /index.jsp 只有访问此资源时过滤器才会被执行。</li>
+<li>目录拦截：/user/* 访问/user下的所有资源时过滤器都会被执行。</li>
+<li>后缀名拦截：*.jsp 访问所有后缀名为jsp资源时过滤器都会被执行。</li>
+<li>拦截所有资源：/* 访问所有资源时过滤器都会被执行。</li>
+</ol>
+</li>
+<li>拦截方式配置：<ul>
+<li>注解配置<ul>
+<li>设置dispatcherTypes属性<ol>
+<li>REQUEST：默认值。浏览器直接请求资源。</li>
+<li>FORWARD：转发访问资源。</li>
+<li>INCLUDE：包含访问资源。</li>
+<li>ERROR：错误跳转资源。</li>
+<li>ASYNC：异步访问资源</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>web.xml配置<ul>
+<li>设置<code>&lt;dispatcher&gt;&lt;/dispatcher&gt;</code>标签即可</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>过滤器链</p>
+<ul>
+<li>过滤器先后顺序问题：<ol>
+<li>注解配置：按照类名的字符串比较规则比较，值小的先执行<ul>
+<li>如：AFilter和Bfilter，AFilter先执行</li>
+</ul>
+</li>
+<li>web.xml配置：<code>&lt;filter-mapping&gt;</code>谁定义在上边谁先执行</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><p><strong>设计模式：</strong> 一些通用的解决固定问题的方式。</p>
+<p><strong>可以增强对象功能的设计模式：</strong> 装饰模式，代理模式。</p>
+<p><strong>代理模式：</strong></p>
+<ol>
+<li><p>概念：</p>
+<ul>
+<li>真实对象：被代理的对象</li>
+<li>代理对象</li>
+<li>代理模式：代理对象代理真实对象，达到增强真实对象的目的。</li>
+</ul>
+</li>
+<li><p>实现方式：</p>
+<ul>
+<li><p>静态代理：有一个类文件描述代理模式。</p>
+</li>
+<li><p>动态代理：在内存中形成代理类。</p>
+<ul>
+<li><p>实现步骤：</p>
+<ol>
+<li>代理对象和真实对象实现相同的接口。</li>
+<li>通过Proxy.newProxyInstance()方法创建代理对象。第一个参数为真实对象classloader，第二个参数为相同的接口，第三个参数为new一个InvocationHandler。</li>
+<li>使用代理对象调用方法。</li>
+<li>增强方法。</li>
+</ol>
+</li>
+<li><p>增强方式：</p>
+<ol>
+<li>增强参数列表。</li>
+<li>增强返回值类型。</li>
+<li>增强方法体执行逻辑。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Filter</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>JavaWeb</tag>
+        <tag>Filter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Listener</title>
+    <url>/2020/05/24/Listener/</url>
+    <content><![CDATA[<h1 id="Listener：监听器"><a href="#Listener：监听器" class="headerlink" title="Listener：监听器"></a>Listener：监听器</h1><ul>
+<li><p><strong>概念:</strong> web的三大组件之一。</p>
+<ul>
+<li><strong>事件监听机制：</strong> <ul>
+<li>事件：一件事情</li>
+<li>事件源：事件发送的地方</li>
+<li>监听器：一个对象</li>
+<li>注册监听：把事件，事件源，监听器绑定在一起。当事件源上发生某个事件后，执行监听器代码</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ServletContextListener：监听ServletContext对象的创建和销毁</p>
+<ul>
+<li><p>方法：</p>
+<ul>
+<li>void contextDestroyed(ServletContextEvent sce)：ServletContext对象被销毁之前会调用此方法，服务器销毁后自动调用</li>
+<li>void contextInitialized(ServletContextEvent sce)：ServletContext对象被创建之后会调用此方法，服务器启动后自动被调用</li>
+</ul>
+</li>
+<li><p>步骤：</p>
+<ol>
+<li>定义一个类实现ServletContextListener接口</li>
+<li>复写方法</li>
+<li>配置<ul>
+<li>web.xml</li>
+<li>注解</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Listener</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>JavaWeb</tag>
+        <tag>Listener</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Session</title>
     <url>/2020/05/15/Session/</url>
     <content><![CDATA[<h1 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h1><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>服务器端会话技术，在一次会话的多次请求间共享数据，将数据保存在服务器端的对象中。HttpSession。</p>
@@ -1294,7 +1471,7 @@ resp.setHeader(&quot;location&quot;,&quot;/javaweb_tomcat_war_exploded/ResponseD
 <li>tomcat会将字节码文件加载进内存，并且创建其对象。</li>
 <li>调用其方法。</li>
 </ol>
-<h2 id="ervlet的生命周期："><a href="#ervlet的生命周期：" class="headerlink" title="ervlet的生命周期："></a>ervlet的生命周期：</h2><ol>
+<h2 id="Servlet的生命周期："><a href="#Servlet的生命周期：" class="headerlink" title="Servlet的生命周期："></a>Servlet的生命周期：</h2><ol>
 <li><p>被创建：执行init方法，只执行一次。</p>
 <ul>
 <li><p>servlet什么时候被创建？</p>

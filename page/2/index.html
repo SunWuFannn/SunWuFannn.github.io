@@ -68,6 +68,517 @@
     
     
     
+    <article id="post-xml" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/05/xml/"
+    >XML</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/05/xml/" class="article-date">
+  <time datetime="2020-05-04T16:00:00.000Z" itemprop="datePublished">2020-05-05</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/XML/">XML</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h1><ul>
+<li><p><strong>概念：Extersible Markup Language 可扩展标记语言</strong></p>
+<ul>
+<li>可扩展：标签都是自定义的。</li>
+</ul>
+</li>
+<li><p><strong>功能：</strong></p>
+<ul>
+<li>存储数据：<ol>
+<li>配置文件</li>
+<li>在网络中传输</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><strong>与html的区别：</strong></p>
+<ol>
+<li>xml标签都是自定义的，html是预定义的</li>
+<li>xml语法严格，html语法松散</li>
+<li>xml存储数据，html展示数据</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="基本语法："><a href="#基本语法：" class="headerlink" title="基本语法："></a>基本语法：</h3><ol>
+<li>xml第一行必须定义为文档声明</li>
+<li>xml文档中有且仅有一个根标签</li>
+<li>属性值必须使用引号引起来</li>
+<li>标签必须正确关闭</li>
+<li>xml标签名称区分大小写</li>
+</ol>
+<h3 id="组成部分："><a href="#组成部分：" class="headerlink" title="组成部分："></a>组成部分：</h3><ol>
+<li><p>文档声明</p>
+<ol>
+<li>格式<code>&lt;?xml 属性列表 ?&gt;</code></li>
+<li>属性列表：<ul>
+<li>version：版本号，必须的属性</li>
+<li>encoding：编码格式，告知解析引擎当前文档使用的字符集，默认值：ISO-8859-1</li>
+<li>standalone：是否独立，是否依赖其他文件</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>指令：结合css的，了解即可。</p>
+</li>
+<li><p>标签：标签名称自定义的。</p>
+<ul>
+<li>规则：<ol>
+<li>数字或者标点符号不能开头</li>
+<li>名称不能以字母xml或者XML开头</li>
+<li>名称中不能包含空格</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>属性：id值唯一。</p>
+</li>
+<li><p>文本内容：</p>
+<ul>
+<li><p>CDATA区：在该区域的文字会被原样展示。</p>
+<pre><code>&lt;![CDATA[
+    文本内容
+]]&gt;</code></pre></li>
+</ul>
+</li>
+</ol>
+<h3 id="约束：规定xml文档的编写规则"><a href="#约束：规定xml文档的编写规则" class="headerlink" title="约束：规定xml文档的编写规则"></a>约束：规定xml文档的编写规则</h3><ul>
+<li><p>分类：</p>
+<ol>
+<li>DTD：一种简单的约束技术</li>
+<li>Schemea：一种复杂的约束技术</li>
+</ol>
+</li>
+<li><p>DTD：</p>
+<ul>
+<li>引入dtd文档到xml文档中<ol>
+<li>内部dtd：<ul>
+<li><code>&lt;!DOCTYPE 根标签名 [dtd文件中具体内容]&gt;</code></li>
+</ul>
+</li>
+<li>外部dtd：<ul>
+<li>本地：<code>&lt;!DOCTYPE 根标签名 SYSTEM &quot;dtd文件的位置&quot;&gt;</code></li>
+<li>外部：<code>&lt;!DOCTYPE 根标签名 PUBLIC &quot;随便取个文件名&quot; &quot;dtd文件的位置URL&quot;&gt;</code></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>Schema：</p>
+<ul>
+<li>引入：<ol>
+<li>填写xml文档的根元素</li>
+<li>引入xsi前缀 xmlns:xsi=”…”</li>
+<li>引入xsd文件命名空间 xsi:schemaLocation=”….”</li>
+<li>为每一个xsd约束声明一个前缀，作为标识 xmlns:…=”….”</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="解析：操作xml文档，将文档中数据读取到内存中"><a href="#解析：操作xml文档，将文档中数据读取到内存中" class="headerlink" title="解析：操作xml文档，将文档中数据读取到内存中"></a>解析：操作xml文档，将文档中数据读取到内存中</h3><ul>
+<li><p>操作xml文档：</p>
+<ol>
+<li>解析（读取）</li>
+<li>写入：将内存中的数据保存到xml文档中，持久化的存储</li>
+</ol>
+</li>
+<li><p>解析xml的方式：</p>
+<ol>
+<li>DOM：将标记语言文档一次性加载进内存，在内存中形成一颗dom树<ul>
+<li>优点：操作方便，可以对文档进行CRUD的操作</li>
+<li>缺点：占内存</li>
+</ul>
+</li>
+<li>SAX：逐行读取，基于事件驱动的<ul>
+<li>优点：不占内存</li>
+<li>缺点：只能读取不能增删改</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>xml常见的解析器：</p>
+<ol>
+<li>JAXP：sun公司提供的解析器，支持DOM和SAX</li>
+<li>DOM4J：一款非常优秀的解析器，DOM方式</li>
+<li>Jsoup：是一款HTML解析器，但是比较好用，也可以用于解析XML，DOM方式</li>
+<li>PULL：Andriod操作系统内置的解析器，SAX方式</li>
+</ol>
+</li>
+</ul>
+<h3 id="Jsoup"><a href="#Jsoup" class="headerlink" title="Jsoup"></a>Jsoup</h3><ul>
+<li><p>快速入门：</p>
+<ul>
+<li>步骤：<ol>
+<li>导入jar包</li>
+<li>获取Document对象</li>
+<li>获取对应的标签Element对象</li>
+<li>获取数据</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>对象的使用：</p>
+<ol>
+<li><p>Jsoup：工具类，可以解析html文或xml文档，返回Document</p>
+<ul>
+<li>parse：解析html文或xml文档，返回Document对象<ul>
+<li>parse(File in, String charsetName)：解析xml或html文件</li>
+<li>parse(String html)：解析xml或html字符串</li>
+<li>parse(URL url, int timeoustMillis)：通过网络路径获取指定的html或xml的文档对象</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Document：文档对象，代表内存中得到DOM树</p>
+<ul>
+<li>获取Element对象：<ul>
+<li>getElementsByTag(String tagName)：根据标签名称获取元素对象集合</li>
+<li>getElementsByAttribute(String key)：根据属性名称获取元素对象集合</li>
+<li>getElementsByAttributeValue(String key，String value)：根据对应的属性名称和属性值获取元素对象集合</li>
+<li>getElementsById(String id)：根据id属性值获取唯一Element对象</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Elements：元素Element对象的集合。可以当做ArrayList&lt; Element&gt;来使用</p>
+</li>
+<li><p>Element：元素对象</p>
+<ol>
+<li>获取子元素对象：<ul>
+<li>getElementsByTag(String tagName)：根据标签名称获取元素对象集合</li>
+<li>getElementsByAttribute(String key)：根据属性名称获取元素对象集合</li>
+<li>getElementsByAttributeValue(String key，String value)：根据对应的属性名称和属性值获取元素对象集合</li>
+<li>getElementsById(String id)：根据id属性值获取唯一Element对象</li>
+</ul>
+</li>
+<li>获取属性值：<ul>
+<li>String attr(String key)：根据属性名称获取属性值</li>
+</ul>
+</li>
+<li>获取文本：<ul>
+<li>String text()；纯文本内容</li>
+<li>String html()：包括子标签的内容</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>Node：节点对象</p>
+<ul>
+<li>是Document和Element的父类</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>快速查询方式：</p>
+<ol>
+<li><p>selector：选择器</p>
+<ul>
+<li>使用的方法：Elements select(String cssQuery)<ul>
+<li>语法：参考selector类中定义的语法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>XPath：XML路径语言，用来确定XML文档中某部分位置的语言</p>
+<ul>
+<li>使用Jsoup的Xpath需要额外导入jar包</li>
+<li>查询XPath语法完成查询</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XML/" rel="tag">XML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Tomcat" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/05/Tomcat/"
+    >Tomcat和Servlet</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/05/Tomcat/" class="article-date">
+  <time datetime="2020-05-04T16:00:00.000Z" itemprop="datePublished">2020-05-05</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaWeb/">JavaWeb</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h1><p>web服务器软件。</p>
+<ul>
+<li>服务器：安装了服务器软件的计算机。</li>
+<li>服务器软件：接收用户请求，处理请求，做出响应。</li>
+<li>web服务器软件：接收用户请求，处理请求，做出响应。<ul>
+<li>在web服务器软件中可以部署web项目，让用户通过浏览器访问这些项目。</li>
+<li>web容器</li>
+</ul>
+</li>
+</ul>
+<p>常见的java相关的web服务器软件：</p>
+<ul>
+<li>webLogic：Oracle公司，大型javaEE服务器，支持所有的javaEE规范，收费。</li>
+<li>webSphere：IBM公司，大型javaEE服务器，支持所有的javaEE规范，收费。</li>
+<li>JBOSS：JBOSS公司，大型javaEE服务器，支持所有的javaEE规范，收费。</li>
+<li>Tomcat：Apache基金组织，中小型javaEE服务器，仅仅支持少量javaEE规范，开源免费。</li>
+</ul>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
+<li>部署项目的方式：<ol>
+<li>直接将项目放在webapps文件夹下。<ul>
+<li>简化部署：将项目打包成一个war包，再将war包放到webapps目录下，war包会自动解压缩。</li>
+</ul>
+</li>
+<li>配置conf/server.xml文件，在&lt; host&gt;标签体中配置<code>&lt;Context docBase=&quot;项目存放路径&quot; path=&quot;/虚拟目录&quot; /&gt;</code></li>
+<li>在conf/Catalina/localhost创建任意名称的xml文件，在文件中编写<code>&lt;Context docBase=&quot;项目存放路径&quot; /&gt;</code>，虚拟目录就是xml文件的名称。</li>
+</ol>
+</li>
+</ul>
+<h1 id="Servlet简单学习"><a href="#Servlet简单学习" class="headerlink" title="Servlet简单学习"></a>Servlet简单学习</h1><p>运行在服务器端的小程序。</p>
+<ul>
+<li>Servlet就是一个接口，定义了java类被浏览器访问到(tomcat识别)的规则。</li>
+<li>将来我们自定义一个类，实现Servlet接口，复写方法。</li>
+</ul>
+<h2 id="Servlet快速入门"><a href="#Servlet快速入门" class="headerlink" title="Servlet快速入门"></a>Servlet快速入门</h2><ol>
+<li><p>创建javaEE的项目</p>
+</li>
+<li><p>定义一个类，必须实现Servlet接口</p>
+</li>
+<li><p>实现接口中的抽象方法</p>
+</li>
+<li><p>配置Servlet</p>
+<ul>
+<li><p>web.xml中配置：</p>
+<pre><code>&lt;servlet&gt;
+    &lt;servlet-name&gt;demo01&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;web.servlet.ServletDemo01&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+
+&lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;demo01&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/demo01&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;</code></pre></li>
+</ul>
+</li>
+</ol>
+<h2 id="执行原理"><a href="#执行原理" class="headerlink" title="执行原理"></a>执行原理</h2><ol>
+<li>当服务器接收到客户端浏览器的请求后，会解析请求的URL路径，获取访问的servlet的资源路径。</li>
+<li>查找web.xml文件是否有对应的<code>&lt;url-pattern&gt;</code>标签体内容。</li>
+<li>如果有则在找到对应的<code>&lt;servlet-class&gt;</code>全类名。</li>
+<li>tomcat会将字节码文件加载进内存，并且创建其对象。</li>
+<li>调用其方法。</li>
+</ol>
+<h2 id="Servlet的生命周期："><a href="#Servlet的生命周期：" class="headerlink" title="Servlet的生命周期："></a>Servlet的生命周期：</h2><ol>
+<li><p>被创建：执行init方法，只执行一次。</p>
+<ul>
+<li><p>servlet什么时候被创建？</p>
+<ul>
+<li>默认情况下，第一次访问时，servlet被创建</li>
+<li>可以配置执行servlet的创建时机<ul>
+<li>在<code>&lt;servlet&gt;</code>标签下配置<ol>
+<li>第一次被访问时，创建<ul>
+<li><code>&lt;load-on-startup&gt;</code>的值为负数</li>
+</ul>
+</li>
+<li>在服务器启动时，创建<ul>
+<li><code>&lt;load-on-startup&gt;</code>的值为0或正数</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>servlet的init方法只执行一次，说明一个servlet在内存中只存在一个对象，servlet是单例的。</p>
+<ul>
+<li>多个用户同时访问时，可能存在线程安全问题。<ul>
+<li>解决：尽量不要在servlet中定义成员变量。即使定义了成员变量，也不要对其修改值。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>提供服务：执行service方法，可以执行多次。</p>
+<ul>
+<li>每次访问servlet时都会执行一次。</li>
+</ul>
+</li>
+<li><p>被销毁：执行destroy方法，只执行一次。</p>
+<ul>
+<li>servlet被销毁时执行一次，服务器正常关闭时。</li>
+</ul>
+</li>
+</ol>
+<h2 id="Servlet3-0及以上："><a href="#Servlet3-0及以上：" class="headerlink" title="Servlet3.0及以上："></a>Servlet3.0及以上：</h2><ul>
+<li>好处：<ul>
+<li>支持注解配置。可以不需要web.xml。</li>
+</ul>
+</li>
+<li>步骤：<ol>
+<li>创建javaEE项目，选择servlet版本3.0以上，可以不创建web.xml。</li>
+<li>定义一个类实现Servlet接口。</li>
+<li>复写方法。<ol start="4">
+<li>在类上使用@WebServlet(“资源路径”)注解进行配置。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="Servlet的体系结构："><a href="#Servlet的体系结构：" class="headerlink" title="Servlet的体系结构："></a>Servlet的体系结构：</h2><ul>
+<li>Servlet，GenericServlet，HttpServlet<ol>
+<li>GenericServlet继承自Servlet，将Servlet接口中除service方法都进行了默认空实现，只将service方法作为抽象方法，定义时只需实现service方法即可。</li>
+<li>HttpServlet继承自GenericServlet，是对http协议的一种封装，简化操作。定义时可以复写doGet/doPost方法。</li>
+</ol>
+</li>
+</ul>
+<h2 id="Servlet相关配置："><a href="#Servlet相关配置：" class="headerlink" title="Servlet相关配置："></a>Servlet相关配置：</h2><ol>
+<li>urlpartten：Servlet访问路径<ol>
+<li>一个Servlet可以定义多个访问路径：@WebServlet({“/路径1”，”/路径2”，”/路径3”})。</li>
+<li>路径定义规则：<ol>
+<li>/xxx</li>
+<li>/xxxx/xx/xxx：多层路径，目录结构。</li>
+<li>*.后缀名</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="IDEA与Tomcat的相关配置"><a href="#IDEA与Tomcat的相关配置" class="headerlink" title="IDEA与Tomcat的相关配置"></a>IDEA与Tomcat的相关配置</h1><ol>
+<li><p>IDEA会为每一个Tomacat部署的项目单独建立一份配置文件。</p>
+<ul>
+<li>查看控制台的log中的CATALINA_BASE。</li>
+</ul>
+</li>
+<li><p>工作空间项目和Tomacat部署的web项目是两个存在。</p>
+<ul>
+<li>Tomcat真正访问的是“Tomacat部署的web项目”，“Tomacat部署的web项目”对应着的是“工作空间项目”的web目录下的所有资源。</li>
+<li>WEB-INF目录下的资源不能被浏览器直接访问。</li>
+<li>断点调试：使用Debug启动而不是Run。</li>
+</ul>
+</li>
+</ol>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-JavaScript" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -2792,248 +3303,6 @@ LIMIT
 <p>如果希望多次创建对象，而且类的内容一样的话，那么就必须使用单独定义的实现类了。</p>
 <hr>
 <p>以上就是关于内部类的一些简要描述，如需知道更多请自己查询。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Date" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/15/Date/"
-    >JAVA中关于时间的一些类</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/15/Date/" class="article-date">
-  <time datetime="2020-04-14T16:00:00.000Z" itemprop="datePublished">2020-04-15</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <h2 id="Calendar日历类"><a href="#Calendar日历类" class="headerlink" title="Calendar日历类"></a>Calendar日历类</h2><p>java.util.Calendar:日历类</p>
-<p>Calendar类是一个抽象类，里面提供了很多操作<strong>日历字段</strong>的方法：（YEAR,MONTH,DAY_OF_MONTH,HOUR）。</p>
-<p>Calendar类是<strong>无法直接创建对象使用的</strong>，里面有一个<strong>静态方法</strong>叫<strong>getInstance（）</strong>，该方法返回了Calendar类的<strong>子类对象</strong>。</p>
-<p><code>static Calendar getInstance()</code>：使用默认时区和语言环境获得一个日历。</p>
-<p><strong>Calendar类的常用成员方法：</strong></p>
-<ol>
-<li><p><code>public int get(int field)</code>：返回给定日历字段的值。</p>
-</li>
-<li><p><code>public void set(int field, int value)</code>：将给定的日历字段设置为给定值。</p>
-</li>
-<li><p><code>public abstract void add(int field, int amount)</code>：根据日历的规则，为给定的日历字段添加或减去指定的时间量。</p>
-</li>
-<li><p><code>public Date getTime()</code>：返回一个表示此Calendar时间值（从历元到现在的毫秒偏移量）的Date对象。</p>
-</li>
-</ol>
-<p><strong>成员方法的参数：</strong></p>
-<pre><code>int field：日历类的字段，可以使用Calendar类的静态成员变量获取。
-public static final int YEAR = 1;           年
-public static final int MONTH = 2;          月
-public static final int DATE = 5;           月中的某一天
-public static final int DAY_OF_MONTH = 5;   月中的某一天
-public static final int HOUR = 10;          时
-public static final int MINUTE = 12;        分
-public static final int SECOND = 13;        秒</code></pre><hr>
-<h2 id="Date日期类"><a href="#Date日期类" class="headerlink" title="Date日期类"></a>Date日期类</h2><p>java.util.Date:表示日期和时间的类</p>
-<p>类Date表示特定的瞬间，精确到毫秒。</p>
-<blockquote>
-<p>毫秒：千分之一秒  1000毫秒等于一秒。</p>
-</blockquote>
-<blockquote>
-<p>特定的瞬间：一个时间点，一刹那时间。</p>
-</blockquote>
-<p>毫秒值的作用：可以对时间和日期进行计算。</p>
-<blockquote>
-<p>2088-01-05到20-99-03-05到底有多少天？<br>  可以日期转换为毫秒进行计算，计算完毕，再把毫秒转换为日期。</p>
-</blockquote>
-<p><strong>把日期转换为毫秒：</strong><br>当前的日期：2088-01-01</p>
-<p>时间原点（0毫秒）：1970年1月1日 00：00：00（英国格林威治）。</p>
-<p>就是计算当前日期到时间原点之间一共经历了多少毫秒。</p>
-<p><strong><em>注意：中国是东八区，所以会把时间增加八个小时，即从早上8点开始。</em></strong></p>
-<p><strong>把毫秒转换为日期：</strong><br>1 天 = 24 X 60 X 60 = 86400 秒 = 86400 X 1000 = 86400000毫秒。</p>
-<p><strong>Date类的构造方法</strong></p>
-<p><code>Date();</code>Date类的无参构造方法,获取当前系统的日期和时间。</p>
-<p><code>Date(long time);</code>Date类的有参构造方法，传递毫秒值（long类型），把毫秒值转换为日期。</p>
-<p><strong>Date类的常用成员方法</strong></p>
-<p><code>long getTime():</code>把日期转换为毫秒值，返回时间原点到现在系统时间之间的毫秒值（相当于System.currentTimeMillis（）；）。</p>
-<hr>
-<h2 id="DateFormat日期-时间格式化子类的抽象类"><a href="#DateFormat日期-时间格式化子类的抽象类" class="headerlink" title="DateFormat日期/时间格式化子类的抽象类"></a>DateFormat日期/时间格式化子类的抽象类</h2><p>java.text.DateFormat是日期/时间格式化子类的抽象类</p>
-<p><strong>作用</strong>：<strong>格式化</strong>（日期 -&gt; 文本）、<strong>解析</strong>（文本-&gt; 日期）。</p>
-<p><strong>成员方法：</strong></p>
-<pre><code>String format(Date date)：按照指定的模式，把Date日期，格式化为符合模式的字符串。
-Date parse(String source)：把符合模式的字符串，解析为一个Date日期。</code></pre><p>DateFormat类是一个<strong>抽象类，无法直接创建对象使用，可以使用DateFormat类的子类。</strong></p>
-<p>java.text.SimpleDateFormat <strong>extends DateFormat</strong></p>
-<p><strong>构造方法：</strong></p>
-<p><code>SimpleDateFormat(String pattern)</code>：用给定的模式和默认语言环境的日期格式符号构造 SimpleDateFormat。</p>
-<p><strong>参数：</strong>String pattern：传递指定的模式。</p>
-<p><strong><em>模式:区分大小写。</em></strong></p>
-<pre><code>y  年
-M  月
-d  日
-H  时
-m  分
-s  秒</code></pre><p>写对应的模式，会把模式替换为对应的日期和时间。</p>
-<blockquote>
-<p>“yyyy-MM-dd HH-mm-ss”</p>
-</blockquote>
-<p><strong>注意：</strong>模式中的字母不能更改，但是连接模式的符号可以改变。</p>
-<blockquote>
-<p>“yyyy年MM月dd日 HH时mm分ss秒”</p>
-</blockquote>
-<hr>
-<p>以上是三个关于时间和日期的类，如需了解更多请自己查询有关内容。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-JavaFinal" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/15/JavaFinal/"
-    >JAVA当中的final关键字</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/15/JavaFinal/" class="article-date">
-  <time datetime="2020-04-14T16:00:00.000Z" itemprop="datePublished">2020-04-15</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <h2 id="关于final关键字"><a href="#关于final关键字" class="headerlink" title="关于final关键字"></a>关于final关键字</h2><p><strong>final关键字代表最终，不可改变的。</strong></p>
-<p>final关键字有常见的四种用法：</p>
-<ul>
-<li>可以用来修饰一个类</li>
-<li>可以用来修饰一个方法</li>
-<li>可以用来修饰一个局部变量</li>
-<li>可以用来修饰一个成员变量</li>
-</ul>
-<hr>
-<h3 id="用final修饰一个类"><a href="#用final修饰一个类" class="headerlink" title="用final修饰一个类"></a>用final修饰一个类</h3><p>当final关键字用来修饰一个类的时候。</p>
-<p>格式：</p>
-<pre><code>public final class 类名称 {
-        //.....
-}</code></pre><p><strong>含义</strong>：当前这个类<strong>不能有任何的子类。（太监类）</strong></p>
-<p><strong><em>注意：</em></strong> 一个类如果是final的，那么其中所有的成员方法都无法进行覆盖重写（因为没儿子），但是可以对父类继承的方法覆盖重写。</p>
-<hr>
-<h3 id="用final修饰一个方法"><a href="#用final修饰一个方法" class="headerlink" title="用final修饰一个方法"></a>用final修饰一个方法</h3><p>当final关键字来修饰一个方法的时候，这个方法就是<strong>最终方法</strong>，也就是<strong>不能被覆盖重写</strong>。</p>
-<p>格式：</p>
-<pre><code>修饰符 final 返回值类型 方法名称（参数列表）{
-            方法体....
-}</code></pre><p><strong><em>注意事项：</em></strong> 对于类、方法来说，<strong>abstract关键字与final关键字不能同时使用，因为矛盾</strong>，</p>
-<hr>
-<h3 id="用final修饰一个局部变量"><a href="#用final修饰一个局部变量" class="headerlink" title="用final修饰一个局部变量"></a>用final修饰一个局部变量</h3><p><strong>用final修饰局部变量可以不对其进行赋值，那么这个局部变量将会是初始值不能再改变，当然也可以对其赋值，赋值后也不能再改变。</strong></p>
-<h3 id="用final修饰一个成员变量"><a href="#用final修饰一个成员变量" class="headerlink" title="用final修饰一个成员变量"></a>用final修饰一个成员变量</h3><p>对于成员变量来说，如果使用final关键字修饰，那么这个变量也照样是不可变。<strong>但是用final修饰的成员变量一定要对其手动赋值，不会再给默认值了。赋值方法有两种，妖媚直接赋值，要么通过构造方法赋值。</strong></p>
-<hr>
-<p>此为final关键字的一些粗略简介，更多详细信息请自己查询相关内容。</p>
 
       
       <!-- reward -->

@@ -68,6 +68,248 @@
     
     
     
+    <article id="post-Date" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/15/Date/"
+    >JAVA中关于时间的一些类</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/15/Date/" class="article-date">
+  <time datetime="2020-04-14T16:00:00.000Z" itemprop="datePublished">2020-04-15</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="Calendar日历类"><a href="#Calendar日历类" class="headerlink" title="Calendar日历类"></a>Calendar日历类</h2><p>java.util.Calendar:日历类</p>
+<p>Calendar类是一个抽象类，里面提供了很多操作<strong>日历字段</strong>的方法：（YEAR,MONTH,DAY_OF_MONTH,HOUR）。</p>
+<p>Calendar类是<strong>无法直接创建对象使用的</strong>，里面有一个<strong>静态方法</strong>叫<strong>getInstance（）</strong>，该方法返回了Calendar类的<strong>子类对象</strong>。</p>
+<p><code>static Calendar getInstance()</code>：使用默认时区和语言环境获得一个日历。</p>
+<p><strong>Calendar类的常用成员方法：</strong></p>
+<ol>
+<li><p><code>public int get(int field)</code>：返回给定日历字段的值。</p>
+</li>
+<li><p><code>public void set(int field, int value)</code>：将给定的日历字段设置为给定值。</p>
+</li>
+<li><p><code>public abstract void add(int field, int amount)</code>：根据日历的规则，为给定的日历字段添加或减去指定的时间量。</p>
+</li>
+<li><p><code>public Date getTime()</code>：返回一个表示此Calendar时间值（从历元到现在的毫秒偏移量）的Date对象。</p>
+</li>
+</ol>
+<p><strong>成员方法的参数：</strong></p>
+<pre><code>int field：日历类的字段，可以使用Calendar类的静态成员变量获取。
+public static final int YEAR = 1;           年
+public static final int MONTH = 2;          月
+public static final int DATE = 5;           月中的某一天
+public static final int DAY_OF_MONTH = 5;   月中的某一天
+public static final int HOUR = 10;          时
+public static final int MINUTE = 12;        分
+public static final int SECOND = 13;        秒</code></pre><hr>
+<h2 id="Date日期类"><a href="#Date日期类" class="headerlink" title="Date日期类"></a>Date日期类</h2><p>java.util.Date:表示日期和时间的类</p>
+<p>类Date表示特定的瞬间，精确到毫秒。</p>
+<blockquote>
+<p>毫秒：千分之一秒  1000毫秒等于一秒。</p>
+</blockquote>
+<blockquote>
+<p>特定的瞬间：一个时间点，一刹那时间。</p>
+</blockquote>
+<p>毫秒值的作用：可以对时间和日期进行计算。</p>
+<blockquote>
+<p>2088-01-05到20-99-03-05到底有多少天？<br>  可以日期转换为毫秒进行计算，计算完毕，再把毫秒转换为日期。</p>
+</blockquote>
+<p><strong>把日期转换为毫秒：</strong><br>当前的日期：2088-01-01</p>
+<p>时间原点（0毫秒）：1970年1月1日 00：00：00（英国格林威治）。</p>
+<p>就是计算当前日期到时间原点之间一共经历了多少毫秒。</p>
+<p><strong><em>注意：中国是东八区，所以会把时间增加八个小时，即从早上8点开始。</em></strong></p>
+<p><strong>把毫秒转换为日期：</strong><br>1 天 = 24 X 60 X 60 = 86400 秒 = 86400 X 1000 = 86400000毫秒。</p>
+<p><strong>Date类的构造方法</strong></p>
+<p><code>Date();</code>Date类的无参构造方法,获取当前系统的日期和时间。</p>
+<p><code>Date(long time);</code>Date类的有参构造方法，传递毫秒值（long类型），把毫秒值转换为日期。</p>
+<p><strong>Date类的常用成员方法</strong></p>
+<p><code>long getTime():</code>把日期转换为毫秒值，返回时间原点到现在系统时间之间的毫秒值（相当于System.currentTimeMillis（）；）。</p>
+<hr>
+<h2 id="DateFormat日期-时间格式化子类的抽象类"><a href="#DateFormat日期-时间格式化子类的抽象类" class="headerlink" title="DateFormat日期/时间格式化子类的抽象类"></a>DateFormat日期/时间格式化子类的抽象类</h2><p>java.text.DateFormat是日期/时间格式化子类的抽象类</p>
+<p><strong>作用</strong>：<strong>格式化</strong>（日期 -&gt; 文本）、<strong>解析</strong>（文本-&gt; 日期）。</p>
+<p><strong>成员方法：</strong></p>
+<pre><code>String format(Date date)：按照指定的模式，把Date日期，格式化为符合模式的字符串。
+Date parse(String source)：把符合模式的字符串，解析为一个Date日期。</code></pre><p>DateFormat类是一个<strong>抽象类，无法直接创建对象使用，可以使用DateFormat类的子类。</strong></p>
+<p>java.text.SimpleDateFormat <strong>extends DateFormat</strong></p>
+<p><strong>构造方法：</strong></p>
+<p><code>SimpleDateFormat(String pattern)</code>：用给定的模式和默认语言环境的日期格式符号构造 SimpleDateFormat。</p>
+<p><strong>参数：</strong>String pattern：传递指定的模式。</p>
+<p><strong><em>模式:区分大小写。</em></strong></p>
+<pre><code>y  年
+M  月
+d  日
+H  时
+m  分
+s  秒</code></pre><p>写对应的模式，会把模式替换为对应的日期和时间。</p>
+<blockquote>
+<p>“yyyy-MM-dd HH-mm-ss”</p>
+</blockquote>
+<p><strong>注意：</strong>模式中的字母不能更改，但是连接模式的符号可以改变。</p>
+<blockquote>
+<p>“yyyy年MM月dd日 HH时mm分ss秒”</p>
+</blockquote>
+<hr>
+<p>以上是三个关于时间和日期的类，如需了解更多请自己查询有关内容。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-JavaFinal" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/15/JavaFinal/"
+    >JAVA当中的final关键字</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/15/JavaFinal/" class="article-date">
+  <time datetime="2020-04-14T16:00:00.000Z" itemprop="datePublished">2020-04-15</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="关于final关键字"><a href="#关于final关键字" class="headerlink" title="关于final关键字"></a>关于final关键字</h2><p><strong>final关键字代表最终，不可改变的。</strong></p>
+<p>final关键字有常见的四种用法：</p>
+<ul>
+<li>可以用来修饰一个类</li>
+<li>可以用来修饰一个方法</li>
+<li>可以用来修饰一个局部变量</li>
+<li>可以用来修饰一个成员变量</li>
+</ul>
+<hr>
+<h3 id="用final修饰一个类"><a href="#用final修饰一个类" class="headerlink" title="用final修饰一个类"></a>用final修饰一个类</h3><p>当final关键字用来修饰一个类的时候。</p>
+<p>格式：</p>
+<pre><code>public final class 类名称 {
+        //.....
+}</code></pre><p><strong>含义</strong>：当前这个类<strong>不能有任何的子类。（太监类）</strong></p>
+<p><strong><em>注意：</em></strong> 一个类如果是final的，那么其中所有的成员方法都无法进行覆盖重写（因为没儿子），但是可以对父类继承的方法覆盖重写。</p>
+<hr>
+<h3 id="用final修饰一个方法"><a href="#用final修饰一个方法" class="headerlink" title="用final修饰一个方法"></a>用final修饰一个方法</h3><p>当final关键字来修饰一个方法的时候，这个方法就是<strong>最终方法</strong>，也就是<strong>不能被覆盖重写</strong>。</p>
+<p>格式：</p>
+<pre><code>修饰符 final 返回值类型 方法名称（参数列表）{
+            方法体....
+}</code></pre><p><strong><em>注意事项：</em></strong> 对于类、方法来说，<strong>abstract关键字与final关键字不能同时使用，因为矛盾</strong>，</p>
+<hr>
+<h3 id="用final修饰一个局部变量"><a href="#用final修饰一个局部变量" class="headerlink" title="用final修饰一个局部变量"></a>用final修饰一个局部变量</h3><p><strong>用final修饰局部变量可以不对其进行赋值，那么这个局部变量将会是初始值不能再改变，当然也可以对其赋值，赋值后也不能再改变。</strong></p>
+<h3 id="用final修饰一个成员变量"><a href="#用final修饰一个成员变量" class="headerlink" title="用final修饰一个成员变量"></a>用final修饰一个成员变量</h3><p>对于成员变量来说，如果使用final关键字修饰，那么这个变量也照样是不可变。<strong>但是用final修饰的成员变量一定要对其手动赋值，不会再给默认值了。赋值方法有两种，妖媚直接赋值，要么通过构造方法赋值。</strong></p>
+<hr>
+<p>此为final关键字的一些粗略简介，更多详细信息请自己查询相关内容。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-SystemStringBuilder" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -915,215 +1157,6 @@
 </ol>
 <hr>
 <p>更多接口的详细信息可以咨询查找。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-JavaArrayList" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/06/JavaArrayList/"
-    >ArrayList</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/03/06/JavaArrayList/" class="article-date">
-  <time datetime="2020-03-05T16:00:00.000Z" itemprop="datePublished">2020-03-06</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <h2 id="Array与ArrayList的区别"><a href="#Array与ArrayList的区别" class="headerlink" title="Array与ArrayList的区别"></a>Array与ArrayList的区别</h2><p> 数组的长度不可以发生改变，但是ArrayList的<strong>长度是可以随意变化的</strong>。</p>
-<h2 id="关于ArrayList"><a href="#关于ArrayList" class="headerlink" title="关于ArrayList"></a>关于ArrayList</h2><p>对于ArrayList来说，用一个尖括号<E>代表泛型。</p>
-<p><strong>泛型</strong>：就是装在集合当中的所有元素，全都是统一的一种类型。</p>
-<p><strong>注意</strong>：泛型 <strong>只能</strong> 是引用类型，<strong>不能</strong> 是基本类型（byte,short,int,long,float,double,boolean,char）</p>
-<h2 id="如果想创建一个基本类型的ArrayList"><a href="#如果想创建一个基本类型的ArrayList" class="headerlink" title="如果想创建一个基本类型的ArrayList"></a>如果想创建一个基本类型的ArrayList</h2><p>可以使用基本类型所对应的“包装类”</p>
-<table>
-<thead>
-<tr>
-<th>基本类型</th>
-<th>包装类（引用类型）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>byte</td>
-<td>Byte</td>
-</tr>
-<tr>
-<td>short</td>
-<td>Short</td>
-</tr>
-<tr>
-<td>int</td>
-<td><strong>Integer</strong></td>
-</tr>
-<tr>
-<td>Long</td>
-<td>Long</td>
-</tr>
-<tr>
-<td>float</td>
-<td>Float</td>
-</tr>
-<tr>
-<td>double</td>
-<td>Double</td>
-</tr>
-<tr>
-<td>Boolean</td>
-<td>Boolean</td>
-</tr>
-<tr>
-<td>char</td>
-<td><strong>Character</strong></td>
-</tr>
-</tbody></table>
-<h2 id="ArrayList的常用方法"><a href="#ArrayList的常用方法" class="headerlink" title="ArrayList的常用方法"></a>ArrayList的常用方法</h2><p><code>public boolean add(E e);</code>  向集合当中添加元素，参数的类型和泛型一致</p>
-<p><code>public E get(int index);</code>  从集合当中获取元素，参数是索引编号，返回值就是对应位置的元素</p>
-<p><code>public E remove(int index);</code>  从集合当中删除元素，参数是索引编号，返回值就是被删除的元素</p>
-<p><code>public int size();</code>  获取集合的尺寸长度，返回值就是集合当中包含的元素的个数</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Random" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/06/Random/"
-    >Random</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/03/06/Random/" class="article-date">
-  <time datetime="2020-03-05T16:00:00.000Z" itemprop="datePublished">2020-03-06</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <h2 id="关于Random"><a href="#关于Random" class="headerlink" title="关于Random"></a>关于Random</h2><p>Random类位于java.util.Random包下，可以用来生成随机序列。</p>
-<p>有两种常用用法：</p>
-<p><code>Random()</code> 用时间作为种子产生随机序列，随机性性强，一般产生的序列不相同。</p>
-<p><code>Random(seed)</code> seed是产生随机序列的种子，只要是同一种子，每次产生的随机序列都相同。</p>
-<blockquote>
-<p>代码举例</p>
-</blockquote>
-<p>1.第一种方法产生随机序列</p>
-<pre><code>Random r = new Random();
-int a = nextInt(10);</code></pre><p><strong>10代表产生的随机序在0到10之间（不包括10），即[0,10)。</strong></p>
-<hr>
-<p>2.第二种方法产生随机序列</p>
-<pre><code>Random r = new Random(10);
-int a = nextInt(10);</code></pre><p><strong>每次产生的随机序列都相同。</strong></p>
-<hr>
-<p><em>具体更多用法可以查询API</em></p>
 
       
       <!-- reward -->

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Filter |  小张日记
+    JQuery基础 |  小张日记
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -34,7 +34,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-Filter" class="article article-type-post" itemscope
+  <article id="post-JQuery" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -42,7 +42,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Filter
+  JQuery基础
 </h1>
   
 
@@ -51,12 +51,12 @@
 
     
     <div class="article-meta">
-      <a href="/2020/05/24/Filter/" class="article-date">
-  <time datetime="2020-05-23T16:00:00.000Z" itemprop="datePublished">2020-05-24</time>
+      <a href="/2020/05/25/JQuery/" class="article-date">
+  <time datetime="2020-05-24T16:00:00.000Z" itemprop="datePublished">2020-05-25</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Filter/">Filter</a>
+    <a class="article-category-link" href="/categories/JQuery/">JQuery</a>
   </div>
 
       
@@ -66,7 +66,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">717字</span>
+            <span class="post-count">1.2k字</span>
         </span>
     </span>
 
@@ -75,7 +75,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2分钟</span>
+            <span class="post-count">4分钟</span>
         </span>
     </span>
 </div>
@@ -102,121 +102,186 @@
       
 
       
-      <h1 id="Filter：过滤器"><a href="#Filter：过滤器" class="headerlink" title="Filter：过滤器"></a>Filter：过滤器</h1><p><strong>web中的过滤器：</strong> 当访问服务器的资源时，过滤器可以将请求拦截下来，完成一些特殊的功能。</p>
-<p><strong>过滤器的作用：</strong> 一般用于完成通用的操作。如：登录验证、统一编码处理、敏感字符过滤…..</p>
-<h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><h3 id="1-步骤"><a href="#1-步骤" class="headerlink" title="1.步骤"></a>1.步骤</h3><ol>
-<li><p>定义一个类，实现接口Filter</p>
+      <h1 id="JQuery基础"><a href="#JQuery基础" class="headerlink" title="JQuery基础"></a>JQuery基础</h1><h2 id="1-概念："><a href="#1-概念：" class="headerlink" title="1. 概念："></a>1. 概念：</h2><p>jQuery是一个快速、简洁的JavaScript框架，是继Prototype之后又一个优秀的JavaScript代码库（或JavaScript框架）。jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Ajax交互。</p>
+<p>JavaScript框架：本质上就是一些js文件，封装了js的原装代码而已。</p>
+<h2 id="2-快速入门："><a href="#2-快速入门：" class="headerlink" title="2. 快速入门："></a>2. 快速入门：</h2><ol>
+<li><p>下载JQuery</p>
+<ul>
+<li>目前JQuery有三个大版本：<ul>
+<li>1.x：兼容ie678，使用最为广泛的，官方只做bug维护，功能再新增。因此一般项目来说，使用这个版本就可以了。</li>
+<li>2.x：不兼容ie678，很少有人使用，官方只做bug维护，功能不再新增。如果不考虑兼容ie678，可以使用这个版本。</li>
+<li>3.x：不兼容ie678，只支持最新的浏览器。除非特殊要求，一般不会使用这个版本，很多老的JQuery插件不支持这个版本。</li>
+</ul>
 </li>
-<li><p>复写方法</p>
+</ul>
 </li>
-<li><p>配置拦截路径</p>
+<li><p>导入JQuery的js文件</p>
+</li>
+<li><p>使用</p>
+</li>
+</ol>
+<h2 id="3-JQuery对象和JS对象区别与转换"><a href="#3-JQuery对象和JS对象区别与转换" class="headerlink" title="3. JQuery对象和JS对象区别与转换"></a>3. JQuery对象和JS对象区别与转换</h2><ol>
+<li>JQuery对象在操作时，更加方便。</li>
+<li>JS对象和JQuery对象方法不通用。</li>
+<li>两者相互转换：<ul>
+<li>JQuery对象 –&gt; JS对象：JQuery对象[索引]或者JQuery对象.get(索引)。</li>
+<li>JS对象 –&gt; JQuery对象：$(JS对象)。</li>
+</ul>
+</li>
+</ol>
+<h2 id="4-选择器"><a href="#4-选择器" class="headerlink" title="4. 选择器"></a>4. 选择器</h2><ol>
+<li><p>基本选择器：</p>
 <ol>
-<li><p>web.xml</p>
-<pre><code>&lt;filter&gt;
-    &lt;filter-name&gt;demo01&lt;/filter-name&gt;
-    &lt;filter-class&gt;web.filter.FilterDemo01&lt;/filter-class&gt;
-&lt;/filter&gt;
-
-&lt;filter-mapping&gt;
-    &lt;filter-name&gt;demo01&lt;/filter-name&gt;
-    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;   //这里是拦截路径
-&lt;/filter-mapping&gt;</code></pre></li>
-<li><p>注解WebFilter</p>
-<ul>
-<li>和Servlet注解差不多，只不过参数中是拦截路径</li>
+<li>标签选择器（元素选择器）<ul>
+<li>语法：$(“html标签名”)获得所有匹配标签名称的元素。</li>
+</ul>
+</li>
+<li>id选择器<ul>
+<li>语法：$(“#id的属性值”)获得与指定id属性值匹配的元素</li>
+</ul>
+</li>
+<li>类选择器<ul>
+<li>语法：$(“.class的属性值”)获得与指定class属性值匹配的元素。</li>
+</ul>
+</li>
+<li>并集选择器<ul>
+<li>语法：$(“选择器1，选择器2…..”)获得多个选择器选中的所有元素。</li>
 </ul>
 </li>
 </ol>
 </li>
-</ol>
-<h2 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h2><ol>
-<li><p>过滤器执行流程：</p>
-<ul>
-<li>放行之前的代码先执行，然后放行，最后执行放行之后的代码。</li>
-</ul>
-</li>
-<li><p>过滤器生命周期方法：</p>
-<ul>
-<li>与Servlet类似，init和destory是创建和销毁时执行，doFilter是拦截请求资源时执行。</li>
-</ul>
-</li>
-<li><p>过滤器配置详解</p>
-<ul>
-<li>拦截路径配置：<ol>
-<li>具体资源路径： /index.jsp 只有访问此资源时过滤器才会被执行。</li>
-<li>目录拦截：/user/* 访问/user下的所有资源时过滤器都会被执行。</li>
-<li>后缀名拦截：*.jsp 访问所有后缀名为jsp资源时过滤器都会被执行。</li>
-<li>拦截所有资源：/* 访问所有资源时过滤器都会被执行。</li>
-</ol>
-</li>
-<li>拦截方式配置：<ul>
-<li>注解配置<ul>
-<li>设置dispatcherTypes属性<ol>
-<li>REQUEST：默认值。浏览器直接请求资源。</li>
-<li>FORWARD：转发访问资源。</li>
-<li>INCLUDE：包含访问资源。</li>
-<li>ERROR：错误跳转资源。</li>
-<li>ASYNC：异步访问资源</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>web.xml配置<ul>
-<li>设置<code>&lt;dispatcher&gt;&lt;/dispatcher&gt;</code>标签即可</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>过滤器链</p>
-<ul>
-<li>过滤器先后顺序问题：<ol>
-<li>注解配置：按照类名的字符串比较规则比较，值小的先执行<ul>
-<li>如：AFilter和Bfilter，AFilter先执行</li>
-</ul>
-</li>
-<li>web.xml配置：<code>&lt;filter-mapping&gt;</code>谁定义在上边谁先执行</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><p><strong>设计模式：</strong> 一些通用的解决固定问题的方式。</p>
-<p><strong>可以增强对象功能的设计模式：</strong> 装饰模式，代理模式。</p>
-<p><strong>代理模式：</strong></p>
+<li><p>层级选择器：</p>
 <ol>
-<li><p>概念：</p>
-<ul>
-<li>真实对象：被代理的对象</li>
-<li>代理对象</li>
-<li>代理模式：代理对象代理真实对象，达到增强真实对象的目的。</li>
+<li>后代选择器：<ul>
+<li>语法：$(“A B”)选择A元素内部的所有B元素，包括B元素下的B元素。</li>
 </ul>
 </li>
-<li><p>实现方式：</p>
-<ul>
-<li><p>静态代理：有一个类文件描述代理模式。</p>
+<li>子选择器：<ul>
+<li>语法：$(“A &gt; B”)选择A元素内部的所有B子元素，只包括B元素。</li>
+</ul>
 </li>
-<li><p>动态代理：在内存中形成代理类。</p>
-<ul>
-<li><p>实现步骤：</p>
-<ol>
-<li>代理对象和真实对象实现相同的接口。</li>
-<li>通过Proxy.newProxyInstance()方法创建代理对象。第一个参数为真实对象classloader，第二个参数为相同的接口，第三个参数为new一个InvocationHandler。</li>
-<li>使用代理对象调用方法。</li>
-<li>增强方法。</li>
 </ol>
 </li>
-<li><p>增强方式：</p>
+<li><p>属性选择器：</p>
 <ol>
-<li>增强参数列表。</li>
-<li>增强返回值类型。</li>
-<li>增强方法体执行逻辑。</li>
+<li>属性名称选择器<ul>
+<li>语法：$(“A[属性名]”)包含指定属性的选择器。</li>
+</ul>
+</li>
+<li>属性选择器<ul>
+<li>语法：$(“A[属性名=’值’]”)包含指定属性等于指定值的选择器。</li>
+</ul>
+</li>
+<li>复合属性选择器<ul>
+<li>语法：$(“A[属性名=’值’][]….”)包含多个属性条件的选择器。</li>
+</ul>
+</li>
 </ol>
 </li>
+<li><p>过滤选择器：</p>
+<ol>
+<li>首元素选择器：<ul>
+<li>语法：  :first 获得选择的元素中的第一个元素。</li>
 </ul>
 </li>
+<li>尾元素选择器：<ul>
+<li>语法：  :last 获得选择的元素中的最后一个元素。</li>
 </ul>
+</li>
+<li>非元素选择器：<ul>
+<li>语法：  :not(selector) 不包括指定内容的元素。</li>
+</ul>
+</li>
+<li>偶数选择器：<ul>
+<li>语法：  :even  偶数，从0开始计数。</li>
+</ul>
+</li>
+<li>奇数选择器：<ul>
+<li>语法：  :odd 奇数，从0开始计数。</li>
+</ul>
+</li>
+<li>等于索引选择器：<ul>
+<li>语法：  :eq(index) 指定索引元素。</li>
+</ul>
+</li>
+<li>大于索引选择器：<ul>
+<li>语法：  :gt(index) 大于指定索引元素。</li>
+</ul>
+</li>
+<li>小于索引选择器：<ul>
+<li>语法：  :lt(index) 小于指定索引元素。</li>
+</ul>
+</li>
+<li>标题选择器：<ul>
+<li>语法：  header 获得标题元素（h1~h6），固定写法。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>表单过滤选择器：</p>
+<ol>
+<li>可用元素选择器<ul>
+<li>语法：  :enabled 获得可用元素。</li>
+</ul>
+</li>
+<li>吧可用元素选择器<ul>
+<li>语法：  :disabled 获得不可用元素。</li>
+</ul>
+</li>
+<li>选中选择器<ul>
+<li>语法：  :checked 获得单选/复选框中的元素。</li>
+</ul>
+</li>
+<li>选中选择器<ul>
+<li>语法：  :selected 获得下拉框选中的元素。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="5-DOM操作"><a href="#5-DOM操作" class="headerlink" title="5. DOM操作"></a>5. DOM操作</h2><ol>
+<li><p>内容操作</p>
+<ol>
+<li>html()：获取/设置元素对象的标签体内容。</li>
+<li>text()：获取/设置元素对象的标签体纯文本内容。</li>
+<li>val()：获取/设置元素对象的value属性值。</li>
+</ol>
+</li>
+<li><p>属性操作</p>
+<ol>
+<li><p>通用属性操作</p>
+<ol>
+<li>attr()：获取/设置元素的属性。</li>
+<li>removeAttr()：删除属性。</li>
+<li>prop()：获取/设置元素的属性。</li>
+<li>removeProp()：删除属性。</li>
+</ol>
+<ul>
+<li><strong>如果操作的属性是固有的属性，建议使用prop，如果是自定义属性，则建议使用attr。</strong></li>
+</ul>
+</li>
+<li><p>对class属性操作</p>
+<ol>
+<li>addClass()：添加class属性值。</li>
+<li>removeClass()：删除class属性值。</li>
+<li>toggleClass()：切换class属性值。判断元素上是否有class，有就删除class，没有就添加class。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>CRUD操作</p>
+<ol>
+<li>append()：父元素将子元素追加到末尾。</li>
+<li>prepend()：父元素将子元素追加到开头。</li>
+<li>appendTo()：将对象添加到括号中对象内部末尾。</li>
+<li>prependTo()：将对象添加到括号中对象内部开头。</li>
+<li>after()：添加元素到对应的元素后边。</li>
+<li>before()：添加元素到对应的元素前边。</li>
+<li>insertAfter()：将对象添加到括号中元素的后边。</li>
+<li>insertBefore()：将对象添加到括号中元素的前边。</li>
+<li>remove()：删除元素。</li>
+<li>empty()：清空元素的所有后代元素。</li>
+</ol>
 </li>
 </ol>
 
@@ -288,14 +353,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/24/Filter/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/25/JQuery/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Filter/" rel="tag">Filter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
 
 
     </footer>
@@ -306,19 +371,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/05/25/JQuery/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            JQuery基础
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/05/24/Listener/" class="article-nav-link">
+      <a href="/2020/05/24/Filter/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Listener</div>
+        <div class="article-nav-title">Filter</div>
       </a>
     
   </nav>

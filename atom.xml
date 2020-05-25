@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-24T19:44:35.433Z</updated>
+  <updated>2020-05-25T19:07:28.794Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AJAX和Json</title>
+    <link href="http://yoursite.com/2020/05/26/AJAXandJson/"/>
+    <id>http://yoursite.com/2020/05/26/AJAXandJson/</id>
+    <published>2020-05-25T16:00:00.000Z</published>
+    <updated>2020-05-25T19:07:28.794Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;AJAX&quot;&gt;&lt;a href=&quot;#AJAX&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JavaWeb" scheme="http://yoursite.com/categories/JavaWeb/"/>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JavaWeb" scheme="http://yoursite.com/tags/JavaWeb/"/>
+    
+      <category term="AJAX" scheme="http://yoursite.com/tags/AJAX/"/>
+    
+      <category term="Json" scheme="http://yoursite.com/tags/Json/"/>
+    
+  </entry>
   
   <entry>
     <title>JQuery基础</title>
@@ -30,6 +63,37 @@
         
         
           &lt;h1 id=&quot;JQuery基础&quot;&gt;&lt;a href=&quot;#JQuery基础&quot; class=&quot;headerlink&quot; title=&quot;JQuery基础&quot;&gt;&lt;/a&gt;JQuery基础&lt;/h1&gt;&lt;h2 id=&quot;1-概念：&quot;&gt;&lt;a href=&quot;#1-概念：&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JQuery" scheme="http://yoursite.com/categories/JQuery/"/>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JavaWeb" scheme="http://yoursite.com/tags/JavaWeb/"/>
+    
+      <category term="JQuery" scheme="http://yoursite.com/tags/JQuery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JQuery进阶</title>
+    <link href="http://yoursite.com/2020/05/25/JQuery2/"/>
+    <id>http://yoursite.com/2020/05/25/JQuery2/</id>
+    <published>2020-05-24T16:00:00.000Z</published>
+    <updated>2020-05-25T18:46:14.823Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;JQuery进阶&quot;&gt;&lt;a href=&quot;#JQuery进阶&quot; class=&quot;headerlink&quot; title=&quot;JQuery进阶&quot;&gt;&lt;/a&gt;JQuery进阶&lt;/h1&gt;&lt;h2 id=&quot;1-动画&quot;&gt;&lt;a href=&quot;#1-动画&quot; class=&quot;headerlink&quot;
         
       
     
@@ -568,66 +632,6 @@
       <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
       <category term="JDBC" scheme="http://yoursite.com/tags/JDBC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SQL小知识杂谈</title>
-    <link href="http://yoursite.com/2020/04/24/SQLkwl/"/>
-    <id>http://yoursite.com/2020/04/24/SQLkwl/</id>
-    <published>2020-04-23T16:00:00.000Z</published>
-    <updated>2020-04-26T18:15:43.847Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;SQL的一些小知识&quot;&gt;&lt;a href=&quot;#SQL的一些小知识&quot; class=&quot;headerlink&quot; title=&quot;SQL的一些小知识&quot;&gt;&lt;/a&gt;SQL的一些小知识&lt;/h1&gt;&lt;hr&gt;
-&lt;h2 id=&quot;多表关系的实现&quot;&gt;&lt;a href=&quot;#多表关系的实现&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="SQL知识" scheme="http://yoursite.com/categories/SQL%E7%9F%A5%E8%AF%86/"/>
-    
-    
-      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="SQL" scheme="http://yoursite.com/tags/SQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>常用的SQL语句</title>
-    <link href="http://yoursite.com/2020/04/23/SQL/"/>
-    <id>http://yoursite.com/2020/04/23/SQL/</id>
-    <published>2020-04-22T16:00:00.000Z</published>
-    <updated>2020-04-26T18:56:16.673Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;常用的SQL语句&quot;&gt;&lt;a href=&quot;#常用的SQL语句&quot; class=&quot;headerlink&quot; title=&quot;常用的SQL语句&quot;&gt;&lt;/a&gt;常用的SQL语句&lt;/h1&gt;&lt;hr&gt;
-&lt;h2 id=&quot;DDL&quot;&gt;&lt;a href=&quot;#DDL&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="SQL语句" scheme="http://yoursite.com/categories/SQL%E8%AF%AD%E5%8F%A5/"/>
-    
-    
-      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="SQL" scheme="http://yoursite.com/tags/SQL/"/>
     
   </entry>
   

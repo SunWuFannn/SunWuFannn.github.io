@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>AJAX和Json</title>
+    <url>/2020/05/26/AJAXandJson/</url>
+    <content><![CDATA[<h1 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h1>]]></content>
+      <categories>
+        <category>JavaWeb</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>JavaWeb</tag>
+        <tag>AJAX</tag>
+        <tag>Json</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JQuery基础</title>
     <url>/2020/05/25/JQuery/</url>
     <content><![CDATA[<h1 id="JQuery基础"><a href="#JQuery基础" class="headerlink" title="JQuery基础"></a>JQuery基础</h1><h2 id="1-概念："><a href="#1-概念：" class="headerlink" title="1. 概念："></a>1. 概念：</h2><p>jQuery是一个快速、简洁的JavaScript框架，是继Prototype之后又一个优秀的JavaScript代码库（或JavaScript框架）。jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Ajax交互。</p>
@@ -185,6 +199,98 @@
 </ol>
 </li>
 </ol>
+]]></content>
+      <categories>
+        <category>JQuery</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>JavaWeb</tag>
+        <tag>JQuery</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JQuery进阶</title>
+    <url>/2020/05/25/JQuery2/</url>
+    <content><![CDATA[<h1 id="JQuery进阶"><a href="#JQuery进阶" class="headerlink" title="JQuery进阶"></a>JQuery进阶</h1><h2 id="1-动画"><a href="#1-动画" class="headerlink" title="1. 动画"></a>1. 动画</h2><p>三种方式显示和隐藏元素：</p>
+<ul>
+<li>参数：<ul>
+<li>speed：动画的速度。三个预定义的值(slow，normal，fast)之一或者毫秒值。</li>
+<li>easing：用来指定切换效果。默认是swing，可以设置为linear。swing是动画慢快慢，linear是匀速。</li>
+<li>fn：在动画完成时执行的函数，每个元素执行一次</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><p>默认显示和默认隐藏方式</p>
+<ol>
+<li>show([speed],[easing],[fn])</li>
+<li>hide([speed],[easing],[fn])</li>
+<li>toggle([speed],[easing],[fn])</li>
+</ol>
+</li>
+<li><p>滑动显示和隐藏方式</p>
+<ol>
+<li>slideDown([speed],[easing],[fn])</li>
+<li>slideUp([speed],[easing],[fn])</li>
+<li>slideToggle([speed],[easing],[fn])</li>
+</ol>
+</li>
+<li><p>淡入淡出显示和隐藏方式</p>
+<ol>
+<li>fadeIn([speed],[easing],[fn])</li>
+<li>fadeOut([speed],[easing],[fn])</li>
+<li>fadeToggle([speed],[easing],[fn])</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-遍历"><a href="#2-遍历" class="headerlink" title="2. 遍历"></a>2. 遍历</h2><ol>
+<li><p>JQuery对象.each(callback)</p>
+</li>
+<li><p>$.each(object, [callback])</p>
+</li>
+<li><p>for..of</p>
+</li>
+</ol>
+<ul>
+<li><strong>return false相当于break，return true相当于continue。</strong></li>
+</ul>
+<h2 id="3-事件绑定"><a href="#3-事件绑定" class="headerlink" title="3. 事件绑定"></a>3. 事件绑定</h2><ol>
+<li><p>标准绑定方式</p>
+<ul>
+<li>JQuery对象.事件方法(回调函数)</li>
+</ul>
+</li>
+<li><p>on绑定事件/off解除绑定</p>
+<ul>
+<li>JQuery对象.on(“事件名称”，回调函数)</li>
+<li>JQuery对象.off(“事件名称”)</li>
+</ul>
+</li>
+<li><p>事件切换</p>
+<ul>
+<li>JQuery对象.toggle(fn1，fn2…..)</li>
+<li><strong>1.9版本后此事件移除，可以用migrate插件恢复此功能。</strong></li>
+</ul>
+</li>
+</ol>
+<h2 id="4-插件"><a href="#4-插件" class="headerlink" title="4. 插件"></a>4. 插件</h2><p>增强JQuery的功能的。</p>
+<ul>
+<li><p>实现方式：</p>
+<ol>
+<li><p>$.fn.extend(object)</p>
+<ul>
+<li>增强通过JQuery获取的对象的功能</li>
+</ul>
+</li>
+<li><p>$.extend(object)</p>
+<ul>
+<li>增强JQuery对象自身的功能</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>JQuery</category>

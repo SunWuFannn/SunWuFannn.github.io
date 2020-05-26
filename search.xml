@@ -3,7 +3,166 @@
   <entry>
     <title>AJAX和Json</title>
     <url>/2020/05/26/AJAXandJson/</url>
-    <content><![CDATA[<h1 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h1>]]></content>
+    <content><![CDATA[<h1 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h1><h2 id="1-概念："><a href="#1-概念：" class="headerlink" title="1. 概念："></a>1. 概念：</h2><ul>
+<li>Asynchronous Javascript And XML， 异步的JavaScript 和XML。</li>
+<li>异步和同步：<ol>
+<li>同步：客户端等待服务器端的响应期间，不能做其他操作。</li>
+<li>异步：客户端等待服务器端的响应期间，在服务器处理请求的过程中，可以做其他操作。</li>
+</ol>
+</li>
+</ul>
+<p>是指一种创建交互式、快速动态网页应用的网页开发技术，无需重新加载整个网页的情况下，能够更新部分网页的技术。</p>
+<p>通过在后台与服务器进行少量数据交换，Ajax 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</p>
+<p>提升用户体验。</p>
+<h2 id="2-实现方式："><a href="#2-实现方式：" class="headerlink" title="2. 实现方式："></a>2. 实现方式：</h2><ol>
+<li><p>原生的JS实现方式</p>
+<ul>
+<li><ol>
+<li>创建核心对象</li>
+<li>建立连接<ul>
+<li><code>xmlhttp.open(&quot;GET&quot;,&quot;ajaxServlet?username=tom&quot;,true);</code></li>
+<li>三个参数分别为请求方式，请求路径，同步或异步请求，true为异步，false为同步。</li>
+<li>请求路径中，若是get方式，参数直接写在后面，send发送请求时参数为空，若为post，参数则在send发送请求时传递。</li>
+</ul>
+</li>
+<li>发送请求<ul>
+<li><code>xmlhttp.send();</code></li>
+</ul>
+</li>
+<li>接受并处理来自服务器的响应结果，服务器响应成功后再获取。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>JQuery的实现方式</p>
+<ol>
+<li><p>$.ajax()</p>
+<pre><code>    $.ajax({
+    url:&quot;/javaweb_AJAX_war_exploded/ajaxServlet&quot;,
+    type:&quot;POST&quot;,
+    //date:&quot;username=jack&amp;age=23&quot;,
+    data:{&quot;username&quot;:&quot;jack&quot;,age:23},
+    success:function (name) {
+        alert(name);
+    }
+})</code></pre><ul>
+<li>一些常用的键值对：<ul>
+<li>url：请求路径</li>
+<li>type：请求方式</li>
+<li>data：请求参数</li>
+<li>success：响应成功后的回调函数</li>
+<li>error：响应失败后的回调函数</li>
+<li>dataType：接收到的响应数据的格式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>$.get()：发送get请求</p>
+<ul>
+<li><p>$.get(url, [data], [callback], [type])</p>
+<ul>
+<li><p>url：请求路径</p>
+</li>
+<li><p>data：请求参数</p>
+</li>
+<li><p>callback：会调函数</p>
+</li>
+<li><p>type：响应结果的类型</p>
+<pre><code>        $.get(&quot;/javaweb_AJAX_war_exploded/ajaxServlet&quot;,{username:&quot;jack&quot;,age:23},function (name) {
+    alert(name);
+})</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>$.post()：发送post请求</p>
+<pre><code>    $.post(&quot;/javaweb_AJAX_war_exploded/ajaxServlet&quot;,{username:&quot;rose&quot;,age:23},function (name) {
+    alert(name);
+})</code></pre></li>
+</ol>
+</li>
+</ol>
+<hr>
+<h1 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h1><h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h2><p>Javascript Object Notation， Javascript对象表示法。</p>
+<ul>
+<li><p>var p = {“name”:”张三”,”age”:23,”gender”:”男”}</p>
+</li>
+<li><p>现在多用于存储和交换文本信息的语法</p>
+</li>
+<li><p>进行数据的传输</p>
+</li>
+<li><p>比xml更小，更快，更易解析</p>
+</li>
+</ul>
+<h2 id="2-语法"><a href="#2-语法" class="headerlink" title="2. 语法"></a>2. 语法</h2><ol>
+<li><p>基本规则：</p>
+<ol>
+<li><p>数据在名称/键值对中：json数据是由键值对构成</p>
+<ul>
+<li>键用引号引起来，也可以不使用引号</li>
+<li>值的取值类型：<ol>
+<li>数字（整数或浮点数）</li>
+<li>字符串（在双引号中）</li>
+<li>逻辑值</li>
+<li>数组（在方括号中）</li>
+<li>对象（在花括号中）</li>
+<li>null</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>数据由逗号分隔：多个键值对由逗号分割</p>
+</li>
+<li><p>花括号保存对象：使用大括号定义json格式</p>
+</li>
+<li><p>方括号保存数组：数据中可以有数组</p>
+</li>
+</ol>
+</li>
+<li><p>获取数据</p>
+<ol>
+<li>json对象.键名</li>
+<li>json对象[“键名”]</li>
+<li>数组对象[索引]</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h1 id="java对象转json"><a href="#java对象转json" class="headerlink" title="java对象转json"></a>java对象转json</h1><ul>
+<li><p>JSON解析器</p>
+<ul>
+<li>常见的解析器：Jsonlib，Gson，fastjson，jackson</li>
+</ul>
+</li>
+<li><p>jackson使用步骤：</p>
+<ol>
+<li>导入相关的jar包</li>
+<li>创建jackson核心对象ObjectMapper</li>
+<li>使用ObjectMapper的相关方法进行转换<ul>
+<li><code>objectMapper.writeValueAsString();</code>会将对象转换为一个json字符串</li>
+<li><code>objectMapper.writeValue(参数，Java对象);</code>会将java对象转换为json对象并且保存在参数中，参数可以是文件或者字节输出流或者字符输出流或者其他的</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>注解：</p>
+<ol>
+<li>@JsonIgnore：排除属性</li>
+<li>@JsonFormat：属性值格式化</li>
+</ol>
+</li>
+<li><p>复杂java对象转换</p>
+<ol>
+<li>list：数组</li>
+<li>map：和对象格式一致</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h1 id="json转java对象"><a href="#json转java对象" class="headerlink" title="json转java对象"></a>json转java对象</h1><ul>
+<li>方法：readValue(json字符串数据，Class类型)</li>
+</ul>
+]]></content>
       <categories>
         <category>JavaWeb</category>
       </categories>

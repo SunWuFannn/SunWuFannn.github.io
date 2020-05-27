@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    AJAX和Json |  小张日记
+    Redis |  小张日记
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -34,7 +34,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-AJAXandJson" class="article article-type-post" itemscope
+  <article id="post-Redis" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -42,7 +42,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  AJAX和Json
+  Redis
 </h1>
   
 
@@ -51,12 +51,12 @@
 
     
     <div class="article-meta">
-      <a href="/2020/05/26/AJAXandJson/" class="article-date">
-  <time datetime="2020-05-25T16:00:00.000Z" itemprop="datePublished">2020-05-26</time>
+      <a href="/2020/05/27/Redis/" class="article-date">
+  <time datetime="2020-05-26T16:00:00.000Z" itemprop="datePublished">2020-05-27</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/JavaWeb/">JavaWeb</a>
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
   </div>
 
       
@@ -66,7 +66,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">864字</span>
+            <span class="post-count">1.9k字</span>
         </span>
     </span>
 
@@ -75,7 +75,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3分钟</span>
+            <span class="post-count">6分钟</span>
         </span>
     </span>
 </div>
@@ -102,165 +102,209 @@
       
 
       
-      <h1 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h1><h2 id="1-概念："><a href="#1-概念：" class="headerlink" title="1. 概念："></a>1. 概念：</h2><ul>
-<li>Asynchronous Javascript And XML， 异步的JavaScript 和XML。</li>
-<li>异步和同步：<ol>
-<li>同步：客户端等待服务器端的响应期间，不能做其他操作。</li>
-<li>异步：客户端等待服务器端的响应期间，在服务器处理请求的过程中，可以做其他操作。</li>
-</ol>
-</li>
-</ul>
-<p>是指一种创建交互式、快速动态网页应用的网页开发技术，无需重新加载整个网页的情况下，能够更新部分网页的技术。</p>
-<p>通过在后台与服务器进行少量数据交换，Ajax 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</p>
-<p>提升用户体验。</p>
-<h2 id="2-实现方式："><a href="#2-实现方式：" class="headerlink" title="2. 实现方式："></a>2. 实现方式：</h2><ol>
-<li><p>原生的JS实现方式</p>
-<ul>
-<li><ol>
-<li>创建核心对象</li>
-<li>建立连接<ul>
-<li><code>xmlhttp.open(&quot;GET&quot;,&quot;ajaxServlet?username=tom&quot;,true);</code></li>
-<li>三个参数分别为请求方式，请求路径，同步或异步请求，true为异步，false为同步。</li>
-<li>请求路径中，若是get方式，参数直接写在后面，send发送请求时参数为空，若为post，参数则在send发送请求时传递。</li>
-</ul>
-</li>
-<li>发送请求<ul>
-<li><code>xmlhttp.send();</code></li>
-</ul>
-</li>
-<li>接受并处理来自服务器的响应结果，服务器响应成功后再获取。</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>JQuery的实现方式</p>
+      <h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h2><p>Redis是一款高性能的NOSQL系列的非关系型数据库。</p>
 <ol>
-<li><p>$.ajax()</p>
-<pre><code>    $.ajax({
-    url:&quot;/javaweb_AJAX_war_exploded/ajaxServlet&quot;,
-    type:&quot;POST&quot;,
-    //date:&quot;username=jack&amp;age=23&quot;,
-    data:{&quot;username&quot;:&quot;jack&quot;,age:23},
-    success:function (name) {
-        alert(name);
-    }
-})</code></pre><ul>
-<li>一些常用的键值对：<ul>
-<li>url：请求路径</li>
-<li>type：请求方式</li>
-<li>data：请求参数</li>
-<li>success：响应成功后的回调函数</li>
-<li>error：响应失败后的回调函数</li>
-<li>dataType：接收到的响应数据的格式</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>$.get()：发送get请求</p>
+<li><p>什么是NOSQL</p>
 <ul>
-<li><p>$.get(url, [data], [callback], [type])</p>
+<li>NoSQL(NoSQL = Not Only SQL)，意即“不仅仅是SQL”，是一项全新的数据库理念，泛指非关系型的数据库。</li>
+<li>随着互联网web2.0网站的兴起，传统的关系数据库在应付web2.0网站，特别是超大规模和高并发的SNS类型的web2.0纯动态网站已经显得力不从心，暴露了很多难以克服的问题，而非关系型的数据库则由于其本身的特点得到了非常迅速的发展。NoSQL数据库的产生就是为了解决大规模数据集合多重数据种类带来的挑战，尤其是大数据应用难题。</li>
+</ul>
+</li>
+<li><p>NOSQL和关系型数据库比较</p>
 <ul>
-<li><p>url：请求路径</p>
+<li><p>优点：</p>
+<ol>
+<li>成本：nosql数据库简单易部署，基本都是开源软件，不需要像使用oracle那样花费大量成本购买使用，相比关系型数据库价格便宜。</li>
+<li>查询速度：nosql数据库将数据存储于缓存之中，关系型数据库将数据存储在硬盘中，自然查询速度远不及nosql数据库。</li>
+<li>存储数据的格式：nosql的存储格式是key,value形式、文档形式、图片形式等等，所以可以存储基础类型以及对象或者是集合等各种格式，而数据库则只支持基础类型。</li>
+<li>扩展性：关系型数据库有类似join这样的多表查询机制的限制导致扩展很艰难。</li>
+</ol>
 </li>
-<li><p>data：请求参数</p>
+<li><p>缺点：</p>
+<ol>
+<li>维护的工具和资料有限，因为nosql是属于新的技术，不能和关系型数据库10几年的技术同日而语。</li>
+<li>不提供对sql的支持，如果不支持sql这样的工业标准，将产生一定用户的学习和使用成本。</li>
+<li>不提供关系型数据库对事务的处理。</li>
+</ol>
 </li>
-<li><p>callback：会调函数</p>
+</ul>
 </li>
-<li><p>type：响应结果的类型</p>
-<pre><code>        $.get(&quot;/javaweb_AJAX_war_exploded/ajaxServlet&quot;,{username:&quot;jack&quot;,age:23},function (name) {
-    alert(name);
-})</code></pre></li>
+<li><p>非关系型数据库的优势：</p>
+<ol>
+<li>性能NOSQL是基于键值对的，可以想象成表中的主键和值的对应关系，而且不需要经过SQL层的解析，所以性能非常高。</li>
+<li>可扩展性同样也是因为基于键值对，数据之间没有耦合性，所以非常容易水平扩展。</li>
+</ol>
+</li>
+<li><p>关系型数据库的优势：</p>
+<ol>
+<li>复杂查询可以用SQL语句方便的在一个表以及多个表之间做非常复杂的数据查询。</li>
+<li>事务支持使得对于安全性能很高的数据访问要求得以实现。对于这两类数据库，对方的优势就是自己的弱势，反之亦然。</li>
+</ol>
+</li>
+<li><p>总结</p>
+<ul>
+<li>关系型数据库与NoSQL数据库并非对立而是互补的关系，即通常情况下使用关系型数据库，在适合使用NoSQL的时候使用NoSQL数据库，</li>
+<li>让NoSQL数据库对关系型数据库的不足进行弥补。</li>
+<li>一般会将数据存储在关系型数据库中，在nosql数据库中备份存储关系型数据库的数据</li>
+</ul>
+</li>
+<li><p>主流的NOSQL产品</p>
+<ul>
+<li>键值(Key-Value)存储数据库<ul>
+<li>相关产品： Tokyo Cabinet/Tyrant、Redis、Voldemort、Berkeley DB</li>
+<li>典型应用： 内容缓存，主要用于处理大量数据的高访问负载。 </li>
+<li>数据模型： 一系列键值对</li>
+<li>优势： 快速查询</li>
+<li>劣势： 存储的数据缺少结构化</li>
+</ul>
+</li>
+<li>列存储数据库<ul>
+<li>相关产品：Cassandra, HBase, Riak</li>
+<li>典型应用：分布式的文件系统</li>
+<li>数据模型：以列簇式存储，将同一列数据存在一起</li>
+<li>优势：查找速度快，可扩展性强，更容易进行分布式扩展</li>
+<li>劣势：功能相对局限</li>
+</ul>
+</li>
+<li>文档型数据库<ul>
+<li>相关产品：CouchDB、MongoDB</li>
+<li>典型应用：Web应用（与Key-Value类似，Value是结构化的）</li>
+<li>数据模型： 一系列键值对</li>
+<li>优势：数据结构要求不严格</li>
+<li>劣势： 查询性能不高，而且缺乏统一的查询语法</li>
+</ul>
+</li>
+<li>图形(Graph)数据库<ul>
+<li>相关数据库：Neo4J、InfoGrid、Infinite Graph</li>
+<li>典型应用：社交网络</li>
+<li>数据模型：图结构</li>
+<li>优势：利用图结构相关算法。</li>
+<li>劣势：需要对整个图做计算才能得出结果，不容易做分布式的集群方案。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>$.post()：发送post请求</p>
-<pre><code>    $.post(&quot;/javaweb_AJAX_war_exploded/ajaxServlet&quot;,{username:&quot;rose&quot;,age:23},function (name) {
-    alert(name);
-})</code></pre></li>
+<li><p>什么是Redis</p>
+<ul>
+<li>Redis是用C语言开发的一个开源的高性能键值对（key-value）数据库，官方提供测试数据，50个并发执行100000个请求,读的速度是110000次/s,写的速度是81000次/s ，且Redis通过提供多种键值数据类型来适应不同场景下的存储需求，目前为止Redis支持的键值数据类型如下：<ol>
+<li>字符串类型 string</li>
+<li>哈希类型 hash</li>
+<li>列表类型 list</li>
+<li>集合类型 set</li>
+<li>有序集合类型 sortedset</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>redis的应用场景</p>
+<ul>
+<li>缓存（数据查询、短连接、新闻内容、商品内容等等）</li>
+<li>聊天室的在线好友列表</li>
+<li>任务队列。（秒杀、抢购、12306等等）</li>
+<li>应用排行榜</li>
+<li>网站访问统计</li>
+<li>数据过期处理（可以精确到毫秒</li>
+<li>分布式集群架构中的session分离</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="2-下载安装"><a href="#2-下载安装" class="headerlink" title="2. 下载安装"></a>2. 下载安装</h2><p>官网下载，官网下的linux版本，需要windows版本需要去github。</p>
+<ul>
+<li>redis.windows.conf：配置文件</li>
+<li>redis-cli.exe：redis的客户端</li>
+<li>redis-server.exe：redis的服务器端</li>
+</ul>
+<hr>
+<h2 id="3-命令操作"><a href="#3-命令操作" class="headerlink" title="3. 命令操作"></a>3. 命令操作</h2><ol>
+<li><p>redis的数据结构：</p>
+<ul>
+<li>redis存储的是：key，value格式的数据，其中key都是字符串，value值有5种不同的数据结构。<ul>
+<li>value的数据结构：<ol>
+<li>字符串类型 string</li>
+<li>哈希类型 hash：就是map格式的</li>
+<li>列表类型 list：链表，就是linkedlist格式的</li>
+<li>集合类型 set：不允许重复元素</li>
+<li>有序集合类型 sortedset：不允许重复元素，会自动排序。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>字符串类型 string</p>
+<ol>
+<li>存储：set key value</li>
+<li>获取：get key</li>
+<li>删除：del key</li>
+</ol>
+</li>
+<li><p>哈希类型 hash</p>
+<ol>
+<li>存储：hset key field value</li>
+<li>获取：hget key field获取key中指定的值，hgetall key获取key中所有的值</li>
+<li>删除：hdel key field</li>
+</ol>
+</li>
+<li><p>列表类型 list：可以添加一个元素到列表的头部或者尾部</p>
+<ol>
+<li>存储<ol>
+<li>lpush key value：添加至列表的头部</li>
+<li>rpush key value：添加至列表的尾部</li>
+</ol>
+</li>
+<li>获取：lrange key start end 范围获取</li>
+<li>删除<ul>
+<li>lpop key：删除头部元素并返回</li>
+<li>rpop key：删除尾部元素并返回</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>集合类型 set</p>
+<ol>
+<li>存储：sadd key value</li>
+<li>获取：smembers key获取集合中所有元素</li>
+<li>删除：srem key value删除某个元素</li>
+</ol>
+</li>
+<li><p>有序集合类型 sortedset</p>
+<ol>
+<li>存储：zadd key score value：给值指定score分数用于排序</li>
+<li>获取：zrange key start end</li>
+<li>删除：zrem key value</li>
+</ol>
+</li>
+<li><p>通用命令</p>
+<ol>
+<li>keys *：查询所有的键</li>
+<li>type key：获取键的数据类型</li>
+<li>del key：删除指定的key value</li>
 </ol>
 </li>
 </ol>
 <hr>
-<h1 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h1><h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h2><p>Javascript Object Notation， Javascript对象表示法。</p>
-<ul>
-<li><p>var p = {“name”:”张三”,”age”:23,”gender”:”男”}</p>
-</li>
-<li><p>现在多用于存储和交换文本信息的语法</p>
-</li>
-<li><p>进行数据的传输</p>
-</li>
-<li><p>比xml更小，更快，更易解析</p>
-</li>
-</ul>
-<h2 id="2-语法"><a href="#2-语法" class="headerlink" title="2. 语法"></a>2. 语法</h2><ol>
-<li><p>基本规则：</p>
-<ol>
-<li><p>数据在名称/键值对中：json数据是由键值对构成</p>
-<ul>
-<li>键用引号引起来，也可以不使用引号</li>
-<li>值的取值类型：<ol>
-<li>数字（整数或浮点数）</li>
-<li>字符串（在双引号中）</li>
-<li>逻辑值</li>
-<li>数组（在方括号中）</li>
-<li>对象（在花括号中）</li>
-<li>null</li>
+<h2 id="4-持久化操作"><a href="#4-持久化操作" class="headerlink" title="4. 持久化操作"></a>4. 持久化操作</h2><ol>
+<li>redis是一个内存数据库，当redis服务器重启后，或者电脑重启，数据会丢失，我们可以将redis内存中的数据持久化保存到硬盘的文件中。</li>
+<li>redis持久化机制：<ol>
+<li>RDB：默认方式，不需要进行配置，默认就使用这种机制，在一定的时间间隔内，检测key的变化情况，然后持久化数据。<ol>
+<li>编辑redis.conf文件中的save内容</li>
+<li>用命令行指定配置文件打开redis服务器<code>redis-server redis</code></li>
 </ol>
 </li>
-</ul>
-</li>
-<li><p>数据由逗号分隔：多个键值对由逗号分割</p>
-</li>
-<li><p>花括号保存对象：使用大括号定义json格式</p>
-</li>
-<li><p>方括号保存数组：数据中可以有数组</p>
-</li>
-</ol>
-</li>
-<li><p>获取数据</p>
-<ol>
-<li>json对象.键名</li>
-<li>json对象[“键名”]</li>
-<li>数组对象[索引]</li>
-</ol>
-</li>
-</ol>
-<hr>
-<h1 id="java对象转json"><a href="#java对象转json" class="headerlink" title="java对象转json"></a>java对象转json</h1><ul>
-<li><p>JSON解析器</p>
-<ul>
-<li>常见的解析器：Jsonlib，Gson，fastjson，jackson</li>
-</ul>
-</li>
-<li><p>jackson使用步骤：</p>
-<ol>
-<li>导入相关的jar包</li>
-<li>创建jackson核心对象ObjectMapper</li>
-<li>使用ObjectMapper的相关方法进行转换<ul>
-<li><code>objectMapper.writeValueAsString();</code>会将对象转换为一个json字符串</li>
-<li><code>objectMapper.writeValue(参数，Java对象);</code>会将java对象转换为json对象并且保存在参数中，参数可以是文件或者字节输出流或者字符输出流或者其他的</li>
+<li>AOF：日志记录的方式，可以记录每一条指令的操作。每一次命令操作后，持久化数据。<ol>
+<li>编辑redis.conf文件中的appendonly内容为yes</li>
+<li>然后进行相应的配置：<ul>
+<li>#appendfsync always：每一次操作都进行持久化</li>
+<li>appendfsync everysec：每隔一秒进行持久化，默认为这个</li>
+<li>#appendfsync no：不进行持久化</li>
 </ul>
 </li>
 </ol>
 </li>
-<li><p>注解：</p>
-<ol>
-<li>@JsonIgnore：排除属性</li>
-<li>@JsonFormat：属性值格式化</li>
 </ol>
 </li>
-<li><p>复杂java对象转换</p>
-<ol>
-<li>list：数组</li>
-<li>map：和对象格式一致</li>
 </ol>
-</li>
-</ul>
-<hr>
-<h1 id="json转java对象"><a href="#json转java对象" class="headerlink" title="json转java对象"></a>json转java对象</h1><ul>
-<li>方法：readValue(json字符串数据，Class类型)</li>
-</ul>
 
       
       <!-- reward -->
@@ -330,14 +374,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/26/AJAXandJson/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/27/Redis/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AJAX/" rel="tag">AJAX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Json/" rel="tag">Json</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javaweb/" rel="tag">javaweb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
 
 
     </footer>
@@ -348,19 +392,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/05/27/Redis/" class="article-nav-link">
+      <a href="/2020/05/28/Jedis/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            Redis
+            Jedis
           
         </div>
       </a>
     
     
-      <a href="/2020/05/25/JQuery/" class="article-nav-link">
+      <a href="/2020/05/26/AJAXandJson/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">JQuery基础</div>
+        <div class="article-nav-title">AJAX和Json</div>
       </a>
     
   </nav>

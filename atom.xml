@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-26T19:51:21.152Z</updated>
+  <updated>2020-05-27T18:47:49.434Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,72 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Jedis</title>
+    <link href="http://yoursite.com/2020/05/28/Jedis/"/>
+    <id>http://yoursite.com/2020/05/28/Jedis/</id>
+    <published>2020-05-27T16:00:00.000Z</published>
+    <updated>2020-05-27T18:47:49.434Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Jedis&quot;&gt;&lt;a href=&quot;#Jedis&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="javaweb" scheme="http://yoursite.com/tags/javaweb/"/>
+    
+      <category term="Jedis" scheme="http://yoursite.com/tags/Jedis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis</title>
+    <link href="http://yoursite.com/2020/05/27/Redis/"/>
+    <id>http://yoursite.com/2020/05/27/Redis/</id>
+    <published>2020-05-26T16:00:00.000Z</published>
+    <updated>2020-05-27T16:12:02.196Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Redis&quot;&gt;&lt;a href=&quot;#Redis&quot; class=&quot;headerlink&quot; title=&quot;Redis&quot;&gt;&lt;/a&gt;Redis&lt;/h1&gt;&lt;h2 id=&quot;1-概念&quot;&gt;&lt;a href=&quot;#1-概念&quot; class=&quot;headerlink&quot; title=&quot;1.
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="Redis" scheme="http://yoursite.com/tags/Redis/"/>
+    
+      <category term="javaweb" scheme="http://yoursite.com/tags/javaweb/"/>
+    
+  </entry>
   
   <entry>
     <title>AJAX和Json</title>
@@ -571,67 +637,6 @@
       <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
       <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HTML</title>
-    <link href="http://yoursite.com/2020/04/28/HTML/"/>
-    <id>http://yoursite.com/2020/04/28/HTML/</id>
-    <published>2020-04-27T16:00:00.000Z</published>
-    <updated>2020-04-30T18:28:46.017Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;HTML&quot;&gt;&lt;a href=&quot;#HTML&quot; class=&quot;headerlink&quot; title=&quot;HTML&quot;&gt;&lt;/a&gt;HTML&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;概念：是最基础的网页开发语言&lt;ul&gt;
-&lt;li&gt;Hyper Text Markup Language
-        
-      
-    
-    </summary>
-    
-    
-      <category term="HTML" scheme="http://yoursite.com/categories/HTML/"/>
-    
-    
-      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="HTML" scheme="http://yoursite.com/tags/HTML/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JDBC</title>
-    <link href="http://yoursite.com/2020/04/27/JDBC/"/>
-    <id>http://yoursite.com/2020/04/27/JDBC/</id>
-    <published>2020-04-26T16:00:00.000Z</published>
-    <updated>2020-04-28T10:01:52.100Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;JDBC&quot;&gt;&lt;a href=&quot;#JDBC&quot; class=&quot;headerlink&quot; title=&quot;JDBC&quot;&gt;&lt;/a&gt;JDBC&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;概念：&lt;/strong&gt; Java DataBase Connectivity Java
-        
-      
-    
-    </summary>
-    
-    
-      <category term="JDBC" scheme="http://yoursite.com/categories/JDBC/"/>
-    
-    
-      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="JDBC" scheme="http://yoursite.com/tags/JDBC/"/>
     
   </entry>
   

@@ -68,6 +68,428 @@
     
     
     
+    <article id="post-Jedis" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/28/Jedis/"
+    >Jedis</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/28/Jedis/" class="article-date">
+  <time datetime="2020-05-27T16:00:00.000Z" itemprop="datePublished">2020-05-28</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="Jedis"><a href="#Jedis" class="headerlink" title="Jedis"></a>Jedis</h1><p>一款java操作的redis数据库的工具。</p>
+<ul>
+<li>使用步骤：<ol>
+<li>下载jedis的jar包</li>
+<li>步骤<ol>
+<li>获取连接<code>Jedis jedis = new Jedis(ip地址,端口号)</code></li>
+<li>进行数据库操作</li>
+<li>关闭连接<code>jedis.close()</code></li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="Jedis操作各种数据类型"><a href="#Jedis操作各种数据类型" class="headerlink" title="Jedis操作各种数据类型"></a>Jedis操作各种数据类型</h2><p>操作各种数据类型的方法名字和命令行中的命令名基本一样</p>
+<ol>
+<li>字符串类型 string<ul>
+<li>set</li>
+<li>get</li>
+<li>setex：存储后指定时间过后会自动删除</li>
+</ul>
+</li>
+<li>哈希类型 hash：就是map格式的<ul>
+<li>hset</li>
+<li>hget</li>
+<li>hgetall</li>
+</ul>
+</li>
+<li>列表类型 list：链表，就是linkedlist格式的<ul>
+<li>lpush/rpush</li>
+<li>lpop/rpop</li>
+<li>lrange key start end 范围获取</li>
+</ul>
+</li>
+<li>集合类型 set：不允许重复元素<ul>
+<li>sadd</li>
+<li>smembers 获取所有元素</li>
+</ul>
+</li>
+<li>有序集合类型 sortedset：不允许重复元素，会自动排序。<ul>
+<li>zadd</li>
+<li>zrange key start end</li>
+</ul>
+</li>
+</ol>
+<h2 id="Jedis连接池：JedisPool"><a href="#Jedis连接池：JedisPool" class="headerlink" title="Jedis连接池：JedisPool"></a>Jedis连接池：JedisPool</h2><ul>
+<li>使用：<ol>
+<li>可以使用JedisPoolConfig方法创建配置对象然后配置连接池的参数</li>
+<li>创建JedisPool连接池对象，可以空参创建，也可以传入参数创建，比如传入配置对象</li>
+<li>调用方法getResource()方法获取Jedis连接</li>
+</ol>
+</li>
+</ul>
+<h2 id="Jedis连接池工具类"><a href="#Jedis连接池工具类" class="headerlink" title="Jedis连接池工具类"></a>Jedis连接池工具类</h2><pre><code>//JedisPool的工具类
+public class JedisPoolUtils {
+
+    private static JedisPool jedisPool;
+
+    static {
+        InputStream is = JedisPoolUtils.class.getClassLoader().getResourceAsStream(&quot;jedis.properties&quot;);
+        Properties prop = new Properties();
+        try {
+            prop.load(is);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
+        jedisPoolConfig.setMaxTotal(Integer.parseInt(prop.getProperty(&quot;maxTotal&quot;)));
+        jedisPoolConfig.setMaxIdle(Integer.parseInt(prop.getProperty(&quot;maxIdle&quot;)));
+        jedisPool = new JedisPool(jedisPoolConfig, prop.getProperty(&quot;host&quot;), Integer.parseInt(prop.getProperty(&quot;port&quot;)));
+    }
+
+    public static Jedis getJedis() {
+        return jedisPool.getResource();
+    }
+
+}</code></pre>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jedis/" rel="tag">Jedis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javaweb/" rel="tag">javaweb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Redis" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/27/Redis/"
+    >Redis</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/27/Redis/" class="article-date">
+  <time datetime="2020-05-26T16:00:00.000Z" itemprop="datePublished">2020-05-27</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h2><p>Redis是一款高性能的NOSQL系列的非关系型数据库。</p>
+<ol>
+<li><p>什么是NOSQL</p>
+<ul>
+<li>NoSQL(NoSQL = Not Only SQL)，意即“不仅仅是SQL”，是一项全新的数据库理念，泛指非关系型的数据库。</li>
+<li>随着互联网web2.0网站的兴起，传统的关系数据库在应付web2.0网站，特别是超大规模和高并发的SNS类型的web2.0纯动态网站已经显得力不从心，暴露了很多难以克服的问题，而非关系型的数据库则由于其本身的特点得到了非常迅速的发展。NoSQL数据库的产生就是为了解决大规模数据集合多重数据种类带来的挑战，尤其是大数据应用难题。</li>
+</ul>
+</li>
+<li><p>NOSQL和关系型数据库比较</p>
+<ul>
+<li><p>优点：</p>
+<ol>
+<li>成本：nosql数据库简单易部署，基本都是开源软件，不需要像使用oracle那样花费大量成本购买使用，相比关系型数据库价格便宜。</li>
+<li>查询速度：nosql数据库将数据存储于缓存之中，关系型数据库将数据存储在硬盘中，自然查询速度远不及nosql数据库。</li>
+<li>存储数据的格式：nosql的存储格式是key,value形式、文档形式、图片形式等等，所以可以存储基础类型以及对象或者是集合等各种格式，而数据库则只支持基础类型。</li>
+<li>扩展性：关系型数据库有类似join这样的多表查询机制的限制导致扩展很艰难。</li>
+</ol>
+</li>
+<li><p>缺点：</p>
+<ol>
+<li>维护的工具和资料有限，因为nosql是属于新的技术，不能和关系型数据库10几年的技术同日而语。</li>
+<li>不提供对sql的支持，如果不支持sql这样的工业标准，将产生一定用户的学习和使用成本。</li>
+<li>不提供关系型数据库对事务的处理。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>非关系型数据库的优势：</p>
+<ol>
+<li>性能NOSQL是基于键值对的，可以想象成表中的主键和值的对应关系，而且不需要经过SQL层的解析，所以性能非常高。</li>
+<li>可扩展性同样也是因为基于键值对，数据之间没有耦合性，所以非常容易水平扩展。</li>
+</ol>
+</li>
+<li><p>关系型数据库的优势：</p>
+<ol>
+<li>复杂查询可以用SQL语句方便的在一个表以及多个表之间做非常复杂的数据查询。</li>
+<li>事务支持使得对于安全性能很高的数据访问要求得以实现。对于这两类数据库，对方的优势就是自己的弱势，反之亦然。</li>
+</ol>
+</li>
+<li><p>总结</p>
+<ul>
+<li>关系型数据库与NoSQL数据库并非对立而是互补的关系，即通常情况下使用关系型数据库，在适合使用NoSQL的时候使用NoSQL数据库，</li>
+<li>让NoSQL数据库对关系型数据库的不足进行弥补。</li>
+<li>一般会将数据存储在关系型数据库中，在nosql数据库中备份存储关系型数据库的数据</li>
+</ul>
+</li>
+<li><p>主流的NOSQL产品</p>
+<ul>
+<li>键值(Key-Value)存储数据库<ul>
+<li>相关产品： Tokyo Cabinet/Tyrant、Redis、Voldemort、Berkeley DB</li>
+<li>典型应用： 内容缓存，主要用于处理大量数据的高访问负载。 </li>
+<li>数据模型： 一系列键值对</li>
+<li>优势： 快速查询</li>
+<li>劣势： 存储的数据缺少结构化</li>
+</ul>
+</li>
+<li>列存储数据库<ul>
+<li>相关产品：Cassandra, HBase, Riak</li>
+<li>典型应用：分布式的文件系统</li>
+<li>数据模型：以列簇式存储，将同一列数据存在一起</li>
+<li>优势：查找速度快，可扩展性强，更容易进行分布式扩展</li>
+<li>劣势：功能相对局限</li>
+</ul>
+</li>
+<li>文档型数据库<ul>
+<li>相关产品：CouchDB、MongoDB</li>
+<li>典型应用：Web应用（与Key-Value类似，Value是结构化的）</li>
+<li>数据模型： 一系列键值对</li>
+<li>优势：数据结构要求不严格</li>
+<li>劣势： 查询性能不高，而且缺乏统一的查询语法</li>
+</ul>
+</li>
+<li>图形(Graph)数据库<ul>
+<li>相关数据库：Neo4J、InfoGrid、Infinite Graph</li>
+<li>典型应用：社交网络</li>
+<li>数据模型：图结构</li>
+<li>优势：利用图结构相关算法。</li>
+<li>劣势：需要对整个图做计算才能得出结果，不容易做分布式的集群方案。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>什么是Redis</p>
+<ul>
+<li>Redis是用C语言开发的一个开源的高性能键值对（key-value）数据库，官方提供测试数据，50个并发执行100000个请求,读的速度是110000次/s,写的速度是81000次/s ，且Redis通过提供多种键值数据类型来适应不同场景下的存储需求，目前为止Redis支持的键值数据类型如下：<ol>
+<li>字符串类型 string</li>
+<li>哈希类型 hash</li>
+<li>列表类型 list</li>
+<li>集合类型 set</li>
+<li>有序集合类型 sortedset</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>redis的应用场景</p>
+<ul>
+<li>缓存（数据查询、短连接、新闻内容、商品内容等等）</li>
+<li>聊天室的在线好友列表</li>
+<li>任务队列。（秒杀、抢购、12306等等）</li>
+<li>应用排行榜</li>
+<li>网站访问统计</li>
+<li>数据过期处理（可以精确到毫秒</li>
+<li>分布式集群架构中的session分离</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="2-下载安装"><a href="#2-下载安装" class="headerlink" title="2. 下载安装"></a>2. 下载安装</h2><p>官网下载，官网下的linux版本，需要windows版本需要去github。</p>
+<ul>
+<li>redis.windows.conf：配置文件</li>
+<li>redis-cli.exe：redis的客户端</li>
+<li>redis-server.exe：redis的服务器端</li>
+</ul>
+<hr>
+<h2 id="3-命令操作"><a href="#3-命令操作" class="headerlink" title="3. 命令操作"></a>3. 命令操作</h2><ol>
+<li><p>redis的数据结构：</p>
+<ul>
+<li>redis存储的是：key，value格式的数据，其中key都是字符串，value值有5种不同的数据结构。<ul>
+<li>value的数据结构：<ol>
+<li>字符串类型 string</li>
+<li>哈希类型 hash：就是map格式的</li>
+<li>列表类型 list：链表，就是linkedlist格式的</li>
+<li>集合类型 set：不允许重复元素</li>
+<li>有序集合类型 sortedset：不允许重复元素，会自动排序。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>字符串类型 string</p>
+<ol>
+<li>存储：set key value</li>
+<li>获取：get key</li>
+<li>删除：del key</li>
+</ol>
+</li>
+<li><p>哈希类型 hash</p>
+<ol>
+<li>存储：hset key field value</li>
+<li>获取：hget key field获取key中指定的值，hgetall key获取key中所有的值</li>
+<li>删除：hdel key field</li>
+</ol>
+</li>
+<li><p>列表类型 list：可以添加一个元素到列表的头部或者尾部</p>
+<ol>
+<li>存储<ol>
+<li>lpush key value：添加至列表的头部</li>
+<li>rpush key value：添加至列表的尾部</li>
+</ol>
+</li>
+<li>获取：lrange key start end 范围获取</li>
+<li>删除<ul>
+<li>lpop key：删除头部元素并返回</li>
+<li>rpop key：删除尾部元素并返回</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>集合类型 set</p>
+<ol>
+<li>存储：sadd key value</li>
+<li>获取：smembers key获取集合中所有元素</li>
+<li>删除：srem key value删除某个元素</li>
+</ol>
+</li>
+<li><p>有序集合类型 sortedset</p>
+<ol>
+<li>存储：zadd key score value：给值指定score分数用于排序</li>
+<li>获取：zrange key start end</li>
+<li>删除：zrem key value</li>
+</ol>
+</li>
+<li><p>通用命令</p>
+<ol>
+<li>keys *：查询所有的键</li>
+<li>type key：获取键的数据类型</li>
+<li>del key：删除指定的key value</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h2 id="4-持久化操作"><a href="#4-持久化操作" class="headerlink" title="4. 持久化操作"></a>4. 持久化操作</h2><ol>
+<li>redis是一个内存数据库，当redis服务器重启后，或者电脑重启，数据会丢失，我们可以将redis内存中的数据持久化保存到硬盘的文件中。</li>
+<li>redis持久化机制：<ol>
+<li>RDB：默认方式，不需要进行配置，默认就使用这种机制，在一定的时间间隔内，检测key的变化情况，然后持久化数据。<ol>
+<li>编辑redis.conf文件中的save内容</li>
+<li>用命令行指定配置文件打开redis服务器<code>redis-server redis</code></li>
+</ol>
+</li>
+<li>AOF：日志记录的方式，可以记录每一条指令的操作。每一次命令操作后，持久化数据。<ol>
+<li>编辑redis.conf文件中的appendonly内容为yes</li>
+<li>然后进行相应的配置：<ul>
+<li>#appendfsync always：每一次操作都进行持久化</li>
+<li>appendfsync everysec：每隔一秒进行持久化，默认为这个</li>
+<li>#appendfsync no：不进行持久化</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javaweb/" rel="tag">javaweb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-AJAXandJson" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -1572,386 +1994,6 @@
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cookie/" rel="tag">Cookie</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-javaweb_HTTP" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/08/javaweb_HTTP/"
-    >JavaWeb中HTTP相关的粗略描述</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/08/javaweb_HTTP/" class="article-date">
-  <time datetime="2020-05-07T16:00:00.000Z" itemprop="datePublished">2020-05-08</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JavaWeb/">JavaWeb</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <h1 id="Http"><a href="#Http" class="headerlink" title="Http"></a>Http</h1><ul>
-<li><p>概念：Hyper Text Transfer Protocol 超文本传输协议</p>
-<ul>
-<li>传输协议：定义了客户端和服务器通信时，发送数据的格式。</li>
-<li>特点：<ol>
-<li>基于TCP/IP的高级协议</li>
-<li>默认端口号：80</li>
-<li>基于请求/响应模型的：一次请求对应一次响应</li>
-<li>无状态的：每次请求之间相互独立，不能交互数据</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>历史版本：</p>
-<ul>
-<li>1.0：每次请求响应都会建立新的连接</li>
-<li>1.1：复用连接</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="请求消息数据格式"><a href="#请求消息数据格式" class="headerlink" title="请求消息数据格式"></a>请求消息数据格式</h3><ol>
-<li><p>请求行</p>
-<ul>
-<li>请求方式 请求url 请求协议/版本</li>
-<li>如：GET /login.html HTTP/1.1</li>
-<li>请求方式：<ul>
-<li>HTTP有7种请求方式，常见的有两种：<ul>
-<li>GET：请求参数在请求行中，在url后。请求的url长度是有限制的。不太安全。</li>
-<li>POST：请求参数在请求体中。请求的url长度是无限制的。相对安全。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>请求头：客户端浏览器告诉服务器一些信息</p>
-<ul>
-<li>请求头名：请求头值</li>
-<li>常见的请求头：<ol>
-<li>Host: 主机</li>
-<li>User-Agent: 浏览器告诉服务器，我访问你使用的浏览器版本信息<ul>
-<li>可以在服务器端获取该头的信息，解决浏览器的兼容性问题</li>
-</ul>
-</li>
-<li>Referer: 告诉服务器，当前请求从哪里来<ul>
-<li>作用：<ol>
-<li>防盗链：</li>
-<li>统计工作：</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>请求空行：空行，用于分割post请求头和请求体的</p>
-</li>
-<li><p>请求体（正文）</p>
-<ul>
-<li>封装post请求消息的请求参数的</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h3 id="响应消息数据格式"><a href="#响应消息数据格式" class="headerlink" title="响应消息数据格式"></a>响应消息数据格式</h3><ol>
-<li>响应行：<ul>
-<li>组成：协议/版本 响应状态码 状态码描述</li>
-<li>响应状态码：服务器告诉客户端浏览器本次请求和响应的状态，状态码都是三位数字<ul>
-<li>状态分类：<ol>
-<li>1xx：服务器接收客户端消息，但没有接收完成，等待一段时间后发送1xx的状态码</li>
-<li>2xx：成功。代表：200</li>
-<li>3xx：重定向。代表：302（重定向），304（访问缓存）</li>
-<li>4xx：客户端错误。代表：404（请求路径没有对应的资源），405（请求方式没有对应的方法）</li>
-<li>5xx：服务器端错误。代表：500（服务器内部出现异常）</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>响应头<ul>
-<li>格式：头名称:值</li>
-<li>常见的响应头：<ol>
-<li>Content-Type：服务器告诉客户端浏览器本次响应体的数据格式及编码格式</li>
-<li>Content-disposition：服务器告诉客户端以什么格式打开响应体数据。默认值是<code>in-line 在当前页面内打开</code>，可以设置为<code>attachment;filename=xxx 以附件形式打开响应体</code></li>
-</ol>
-</li>
-</ul>
-</li>
-<li>响应空行</li>
-<li>响应体：传输的数据</li>
-</ol>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Request" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/08/Request/"
-    >Request</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/08/Request/" class="article-date">
-  <time datetime="2020-05-07T16:00:00.000Z" itemprop="datePublished">2020-05-08</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JavaWeb/">JavaWeb</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <h1 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h1><p>Request和Response对象的原理：</p>
-<ol>
-<li>Request和Response对象是由服务器创建的。我们来使用它们。</li>
-<li>Request对象来获取请求消息，Response对象来设置响应消息。</li>
-</ol>
-<h3 id="Request对象继承体系结构"><a href="#Request对象继承体系结构" class="headerlink" title="Request对象继承体系结构"></a>Request对象继承体系结构</h3><p>HttpServletRequest接口继承ServletRequest接口。<br>org.apache.catalina.connector.RequestFacade类（tomcat实现）实现HttpServletRequest接口。</p>
-<h3 id="Request功能："><a href="#Request功能：" class="headerlink" title="Request功能："></a>Request功能：</h3><ol>
-<li><p>获取请求消息数据：</p>
-<ol>
-<li>获取请求行数据：<ul>
-<li>方法：<ol>
-<li>获取请求方式：String getMethod()</li>
-<li>获取虚拟目录：String getContextPath()</li>
-<li>获取Servlet路径：String getServletPath()</li>
-<li>获取<strong>GET方式请求参数：String getQueryString()</strong></li>
-<li>获取请求URI：<ul>
-<li>String getRequestURI()：返回虚拟目录加servlet路径</li>
-<li>String getRequestURI()：返回浏览器地址栏中的地址，即http://…….形式的</li>
-</ul>
-</li>
-<li>获取协议及版本：String getProtocol()</li>
-<li>获取客户机ip地址：String getRemoteAddr()</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>获取请求头数据：<ul>
-<li>方法：<ul>
-<li>String getHeader(String name)：通过请求头的名称获取请求头的值</li>
-<li>Enmueration&lt; string&gt; getHeaderNames()：获取所有请求头的名称</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>获取请求体数据：<ul>
-<li>请求体只有在POST请求方式中才有，请求体中封装了POST请求的参数</li>
-<li>步骤：<ol>
-<li>获取流对象<ul>
-<li>BufferedReader getReader()：获取字符输入流，只能操作字符数据</li>
-<li>ServletInputStream getInputStream()：获取字节输入流，可以操作所有数据类型数据</li>
-</ul>
-</li>
-<li>再从流对象中拿数据</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>其他功能：</p>
-<ol>
-<li><p>获取请求参数通用方式：</p>
-<ol>
-<li>String getParameter(String name)：根据参数名称获取参数值</li>
-<li>String[] getParameterValues(String name)：根据参数名称获取参数值的数组</li>
-<li>Enmueration&lt; string&gt; getParameterNames()：获取所有请求的参数名称</li>
-<li>Map&lt; String, String[]&gt; getParameterMap()：获取所有参数的Map集合</li>
-</ol>
-<ul>
-<li>中文乱码问题：<ul>
-<li>get方式：tomcat8已经将get方式乱码问题解决了</li>
-<li>post方式：在获取参数前，设置request的编码<code>request.setCharacterEncoding(&quot;utf-8&quot;)</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>请求转发：一种在服务器内部的资源跳转方式</p>
-<ul>
-<li>步骤：<ol>
-<li>通过request对象获取请求转发对象：RequestDispatcher getRequestDispatcher(String path)</li>
-<li>使用RequestDispatcher对象来进行转发：forward(ServletRequest request, ServletResponse response)</li>
-</ol>
-</li>
-<li>特点：<ol>
-<li>浏览器地址栏路径不发生变化</li>
-<li>只能转发到当前服务器内部资源中</li>
-<li>转发是一次请求</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>共享数据：</p>
-<ul>
-<li>域对象：一个有作用范围的对象，可以在范围内共享数据</li>
-<li>request域：代表一次请求的范围，一般用于请求转发中的多个资源中共享数据</li>
-<li>方法：<ol>
-<li>void setAttribute(String name, Object obj)：存储数据</li>
-<li>Object getAttribute(String name)：通过键获取值</li>
-<li>void removeAttribute(String name)：通过键移除键值对</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>获取ServletContext：</p>
-<ul>
-<li>ServletContext getServletContext()</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="BeanUtils工具类，简化数据封装"><a href="#BeanUtils工具类，简化数据封装" class="headerlink" title="BeanUtils工具类，简化数据封装"></a>BeanUtils工具类，简化数据封装</h3><ul>
-<li><p>用于封装JavaBean的</p>
-</li>
-<li><p><strong>JavaBean：标准的java类</strong></p>
-<ul>
-<li><p>要求：</p>
-<ol>
-<li>类必须被public修饰</li>
-<li>必须提供空参的构造器</li>
-<li>成员变量必须使用private修饰</li>
-<li>提供public修饰的getter和setter</li>
-</ol>
-</li>
-<li><p>功能：封装数据</p>
-</li>
-</ul>
-</li>
-<li><p>概念：</p>
-<ul>
-<li><p>成员变量</p>
-</li>
-<li><p>属性：setter和getter方法截取后的产物</p>
-<ul>
-<li><p>如</p>
-<pre><code>public void setHehe(String gender){
-     this.gender = gender;
-}</code></pre></li>
-<li><p>其中成员变量是gender，属性是hehe</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>方法：</p>
-<ol>
-<li>setProperty()：设置JavaBean对象属性值</li>
-<li>getProperty()：获取JavaBean对象属性值</li>
-<li>populate(Object obj，Map map)：将map集合的键值对信息封装到对于的JavaBean对象中</li>
-</ol>
-</li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Request/" rel="tag">Request</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
 
 
     </footer>

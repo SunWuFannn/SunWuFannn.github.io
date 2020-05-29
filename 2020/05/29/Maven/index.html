@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Jedis |  小张日记
+    Maven |  小张日记
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -34,7 +34,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-Jedis" class="article article-type-post" itemscope
+  <article id="post-Maven" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -42,7 +42,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Jedis
+  Maven
 </h1>
   
 
@@ -51,12 +51,12 @@
 
     
     <div class="article-meta">
-      <a href="/2020/05/28/Jedis/" class="article-date">
-  <time datetime="2020-05-27T16:00:00.000Z" itemprop="datePublished">2020-05-28</time>
+      <a href="/2020/05/29/Maven/" class="article-date">
+  <time datetime="2020-05-28T16:00:00.000Z" itemprop="datePublished">2020-05-29</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    <a class="article-category-link" href="/categories/javaweb/">javaweb</a>
   </div>
 
       
@@ -66,7 +66,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">352字</span>
+            <span class="post-count">1.4k字</span>
         </span>
     </span>
 
@@ -75,7 +75,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1分钟</span>
+            <span class="post-count">5分钟</span>
         </span>
     </span>
 </div>
@@ -102,82 +102,107 @@
       
 
       
-      <h1 id="Jedis"><a href="#Jedis" class="headerlink" title="Jedis"></a>Jedis</h1><p>一款java操作的redis数据库的工具。</p>
+      <h1 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h1><h2 id="Maven的功能"><a href="#Maven的功能" class="headerlink" title="Maven的功能"></a>Maven的功能</h2><ol>
+<li><p>依赖管理</p>
 <ul>
-<li>使用步骤：<ol>
-<li>下载jedis的jar包</li>
-<li>步骤<ol>
-<li>获取连接<code>Jedis jedis = new Jedis(ip地址,端口号)</code></li>
-<li>进行数据库操作</li>
-<li>关闭连接<code>jedis.close()</code></li>
-</ol>
-</li>
-</ol>
-</li>
+<li>简单的说就是项目中的jar包不再放在项目中，而是放在Maven仓库中，项目中只存放jar包的坐标，那么就会减小项目的大小，比如如果有十个项目需要用到相同的一些jar包，那么需要在各自的项目中存放jar包，<strong>需要十份</strong>，而使用Maven，<strong>则只需要一份</strong>，放入Maven仓库中即可，项目通过对应的jar包坐标去Maven仓库中找到需要的jar包。</li>
 </ul>
-<h2 id="Jedis操作各种数据类型"><a href="#Jedis操作各种数据类型" class="headerlink" title="Jedis操作各种数据类型"></a>Jedis操作各种数据类型</h2><p>操作各种数据类型的方法名字和命令行中的命令名基本一样</p>
+</li>
+<li><p>项目的一键构建</p>
+<ul>
+<li>项目往往都要经历编译、测试、运行、打包、安装 ，部署等一系列过程。<strong>构建</strong>就是项目从编译、测试、运行、打包、安装 ，部署整个过程都交给Maven进行管理。整个构建过程，使用Maven一个命令可以轻松完成整个工作。</li>
+</ul>
+</li>
+</ol>
+<h2 id="Maven的安装"><a href="#Maven的安装" class="headerlink" title="Maven的安装"></a>Maven的安装</h2><ul>
+<li>与tomcat一样，去官网下载，下载完后是压缩包，然后将压缩包解压到你想要的指定位置即可完成安装。</li>
+</ul>
+<h2 id="Maven的环境变量配置"><a href="#Maven的环境变量配置" class="headerlink" title="Maven的环境变量配置"></a>Maven的环境变量配置</h2><ul>
+<li>与配置java变量差不多，在环境变量的系统变量中新建一个MAVEN_HOME，值为Maven的解压路径，然后编辑Path系统变量，添加%MAVEN_HOME%\bin。</li>
+<li><strong>注意：Maven的配置需要依赖JAVA_HOME。</strong></li>
+</ul>
+<h2 id="Maven的仓库和彼此依赖关系"><a href="#Maven的仓库和彼此依赖关系" class="headerlink" title="Maven的仓库和彼此依赖关系"></a>Maven的仓库和彼此依赖关系</h2><ol>
+<li>本地仓库：即在自己的机器上存放jar包的Maven仓库。</li>
+<li>远程仓库：即公司为了管理jar包所专属的一个Maven仓库。</li>
+<li>中央仓库：即互联网中的一个大Maven仓库，存放数以亿计的jar包。</li>
+</ol>
+<ul>
+<li><p>关系：</p>
 <ol>
-<li>字符串类型 string<ul>
-<li>set</li>
-<li>get</li>
-<li>setex：存储后指定时间过后会自动删除</li>
-</ul>
-</li>
-<li>哈希类型 hash：就是map格式的<ul>
-<li>hset</li>
-<li>hget</li>
-<li>hgetall</li>
-</ul>
-</li>
-<li>列表类型 list：链表，就是linkedlist格式的<ul>
-<li>lpush/rpush</li>
-<li>lpop/rpop</li>
-<li>lrange key start end 范围获取</li>
-</ul>
-</li>
-<li>集合类型 set：不允许重复元素<ul>
-<li>sadd</li>
-<li>smembers 获取所有元素</li>
-</ul>
-</li>
-<li>有序集合类型 sortedset：不允许重复元素，会自动排序。<ul>
-<li>zadd</li>
-<li>zrange key start end</li>
-</ul>
-</li>
-</ol>
-<h2 id="Jedis连接池：JedisPool"><a href="#Jedis连接池：JedisPool" class="headerlink" title="Jedis连接池：JedisPool"></a>Jedis连接池：JedisPool</h2><ul>
-<li>使用：<ol>
-<li>可以使用JedisPoolConfig方法创建配置对象然后配置连接池的参数</li>
-<li>创建JedisPool连接池对象，可以空参创建，也可以传入参数创建，比如传入配置对象</li>
-<li>调用方法getResource()方法获取Jedis连接</li>
+<li>如果没有远程仓库，则会先在本地仓库寻找，如果没有则再去中央仓库。（前提：联网。）</li>
+<li>如果有远程仓库，则会先在本地仓库寻找，如果没有则再去远程仓库寻找，如果还没有则最后去中央仓库或者通过本地仓库上传。（前提：和远程仓库在一个局域网。）</li>
 </ol>
 </li>
+<li><p>修改本地仓库的位置</p>
+<ul>
+<li>修改Maven安装目录的conf文件夹下的settings.xnl，添加<code>&lt;localRepository&gt;此处为你的本地仓库的路径&lt;/localRepository&gt;</code>。</li>
 </ul>
-<h2 id="Jedis连接池工具类"><a href="#Jedis连接池工具类" class="headerlink" title="Jedis连接池工具类"></a>Jedis连接池工具类</h2><pre><code>//JedisPool的工具类
-public class JedisPoolUtils {
+</li>
+</ul>
+<h2 id="Maven项目标准目录结构"><a href="#Maven项目标准目录结构" class="headerlink" title="Maven项目标准目录结构"></a>Maven项目标准目录结构</h2><ol>
+<li>src/main/java目录 核心代码部分</li>
+<li>src/main/resources 配置文件部分</li>
+<li>src/test/java目录 测试代码部分</li>
+<li>src/test/resources 测试配置文件部分</li>
+<li>src/main/webapp 页面资源，js,css,图片等</li>
+</ol>
+<h2 id="Maven常用命令"><a href="#Maven常用命令" class="headerlink" title="Maven常用命令"></a>Maven常用命令</h2><ul>
+<li>mvn clean：删除本地编译后的信息，删除本地编译后的target文件夹。</li>
+<li>mvn compile：编译src/main/java目录下的核心代码部分，将编译后的信息放在target文件夹。</li>
+<li>mvn test：编译src/test/java目录下的测试代码部分，将编译后的信息放在target文件夹，<strong>同时也会编译src/main/java目录下的核心代码部</strong>。</li>
+<li>mvn package：编译核心代码部分与测试代码部分，将项目打包，信息存放在target文件夹。</li>
+<li>mvn install：编译核心代码部分与测试代码部分，将项目打包，信息存放在target文件夹，将包发布到本地仓库。</li>
+</ul>
+<h2 id="Maven的生命周期"><a href="#Maven的生命周期" class="headerlink" title="Maven的生命周期"></a>Maven的生命周期</h2><ul>
+<li>默认生命周期：compile –&gt; test –&gt; package –&gt; install –&gt; deploy</li>
+<li>清理生命周期：clean</li>
+<li>站点生命周期</li>
+</ul>
+<h2 id="Maven概念模型"><a href="#Maven概念模型" class="headerlink" title="Maven概念模型"></a>Maven概念模型</h2><p><a href="https://imgchr.com/i/tmuMxe" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/05/29/tmuMxe.png" alt="tmuMxe.png"></a></p>
+<h2 id="IDEA集成Maven插件"><a href="#IDEA集成Maven插件" class="headerlink" title="IDEA集成Maven插件"></a>IDEA集成Maven插件</h2><ul>
+<li>configure –&gt; Settings –&gt; Maven –&gt; 配置maven的路径以及settings.xml的路径</li>
+<li><strong>可以在Runner的VM中添加<code>-DarchetypeCatalog=internal</code>保证不联网时也能创建Maven项目</strong></li>
+</ul>
+<h2 id="使用骨架创建Maven的Java工程"><a href="#使用骨架创建Maven的Java工程" class="headerlink" title="使用骨架创建Maven的Java工程"></a>使用骨架创建Maven的Java工程</h2><ul>
+<li>在创建Maven工程时勾选Create from archetype，然后选择使用的骨架即可完成创建。</li>
+<li><strong>注意：创建完成后没有配置文件的目录，需要手动创建，创建完成后右键make directory as选择对应的配置文件类型。</strong></li>
+</ul>
+<h2 id="不使用骨架创建Maven的Java工程"><a href="#不使用骨架创建Maven的Java工程" class="headerlink" title="不使用骨架创建Maven的Java工程"></a>不使用骨架创建Maven的Java工程</h2><ul>
+<li>创建时不勾选Create from archetype，其他与用骨架差不多</li>
+<li>创建后的项目目录结构与Maven标准目录结构差不多</li>
+</ul>
+<h2 id="使用骨架创建Maven的web工程"><a href="#使用骨架创建Maven的web工程" class="headerlink" title="使用骨架创建Maven的web工程*"></a>使用骨架创建Maven的web工程*</h2><ul>
+<li>在创建Maven工程时勾选Create from archetype，然后选择webapp骨架即可完成创建。</li>
+<li><strong>注意：创建完成后只有main下的webapp目录，其他都要自己创建。</strong></li>
+</ul>
+<h2 id="解决jar包冲突"><a href="#解决jar包冲突" class="headerlink" title="解决jar包冲突"></a>解决jar包冲突</h2><ul>
+<li>可以在对应的depency中加入scope标签，标签内容为provided，意思是只在编译时生效。</li>
+</ul>
+<h2 id="Maven的依赖"><a href="#Maven的依赖" class="headerlink" title="Maven的依赖"></a>Maven的依赖</h2><ul>
+<li><p>一个工程依赖另一个工程，会把依赖工程中的jar包传递过来，但是只有scope范围为compile的才能传递。</p>
+</li>
+<li><p>依赖的排除：设置exclusions标签</p>
+</li>
+</ul>
+<h2 id="Maven版本号统一管理"><a href="#Maven版本号统一管理" class="headerlink" title="Maven版本号统一管理"></a>Maven版本号统一管理</h2><ul>
+<li>在pom中设置properties标签，标签内容为自己随便取一个名字作为一个标签，然后其中的标签内容是版本号。</li>
+<li>在添加依赖的时候version标签内容可以使用${之前properties中取的名字}来控制版本号。当我们需要修改时直接修改properties即可。</li>
+</ul>
+<h2 id="Maven的继承"><a href="#Maven的继承" class="headerlink" title="Maven的继承"></a>Maven的继承</h2><ul>
+<li>在工程中使用的一些依赖的版本号可能不同，比如不同工程使用的junit版本号可能不同，操作可能会有些许不同，可以控制它们的版本号相同。</li>
+<li>步骤：<ol>
+<li>创建一个父工程，打包为pom类型</li>
+<li>在子工程用parent标签声明对父工程的引用</li>
+<li>将子工程中与父工程重复的内容删除（也可以不删）</li>
+<li>在父工程统一管理依赖</li>
+<li>删除子工程中依赖部分的版本号</li>
+</ol>
+</li>
+</ul>
+<h2 id="Maven的聚合"><a href="#Maven的聚合" class="headerlink" title="Maven的聚合"></a>Maven的聚合</h2><ul>
+<li>在pom中设置modules标签用于聚合，指定各个子工程的相对路径，然后在聚合工程上安装，所有子工程都会一起被安装。</li>
+</ul>
 
-    private static JedisPool jedisPool;
-
-    static {
-        InputStream is = JedisPoolUtils.class.getClassLoader().getResourceAsStream(&quot;jedis.properties&quot;);
-        Properties prop = new Properties();
-        try {
-            prop.load(is);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
-        jedisPoolConfig.setMaxTotal(Integer.parseInt(prop.getProperty(&quot;maxTotal&quot;)));
-        jedisPoolConfig.setMaxIdle(Integer.parseInt(prop.getProperty(&quot;maxIdle&quot;)));
-        jedisPool = new JedisPool(jedisPoolConfig, prop.getProperty(&quot;host&quot;), Integer.parseInt(prop.getProperty(&quot;port&quot;)));
-    }
-
-    public static Jedis getJedis() {
-        return jedisPool.getResource();
-    }
-
-}</code></pre>
       
       <!-- reward -->
       
@@ -246,14 +271,14 @@ public class JedisPoolUtils {
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/28/Jedis/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/29/Maven/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jedis/" rel="tag">Jedis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javaweb/" rel="tag">javaweb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Maven/" rel="tag">Maven</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javaweb/" rel="tag">javaweb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
 
 
     </footer>
@@ -264,19 +289,10 @@ public class JedisPoolUtils {
   
   <nav class="article-nav">
     
-      <a href="/2020/05/29/Maven/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Maven
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/05/27/Redis/" class="article-nav-link">
+      <a href="/2020/05/28/Jedis/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Redis</div>
+        <div class="article-nav-title">Jedis</div>
       </a>
     
   </nav>

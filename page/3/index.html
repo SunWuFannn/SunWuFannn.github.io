@@ -68,6 +68,238 @@
     
     
     
+    <article id="post-ConnPool" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/28/ConnPool/"
+    >数据库连接池</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/28/ConnPool/" class="article-date">
+  <time datetime="2020-04-27T16:00:00.000Z" itemprop="datePublished">2020-04-28</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h1><ul>
+<li><p><strong>概念：</strong> 其实就是一个容器（集合），存放数据库连接的容器。当系统初始化好后，容器被创建，容器中会申请一些连接对象，当用户来访问数据库时，从容器中获取连接对象，用户访问完之后，会将连接对象归还给容器。</p>
+</li>
+<li><p><strong>好处：</strong> </p>
+<ol>
+<li>节约资源</li>
+<li>用户访问高效</li>
+</ol>
+</li>
+<li><p><strong>实现：</strong></p>
+<ol>
+<li><p>标准接口：DataSource</p>
+<ol>
+<li>方法：<ul>
+<li>获取连接：getConnection()</li>
+<li>归还连接：Connection.close()。如果连接对象Connection是从连接池中获取的，那么调用Connection.close()方法，则不会再关闭连接了，而是归还连接。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>一般我们不去实现它，有数据库厂商来实现</p>
+<ol>
+<li>C3P0：数据库连接池技术。</li>
+<li>Druid：数据库连接池技术，由阿里巴巴提供。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="C3P0：数据库连接池技术"><a href="#C3P0：数据库连接池技术" class="headerlink" title="C3P0：数据库连接池技术"></a>C3P0：数据库连接池技术</h2><ul>
+<li>步骤：<ol>
+<li>导入jar包（两个） c3p0-0.9.5.5-sources.jar和mchange-commons-java-0.2.19-sources.jar</li>
+<li>定义配置文件：<ul>
+<li>名称：c3p0.properties或者c3p0-config.xml</li>
+<li>路径：直接将文件放在src目录下即可</li>
+</ul>
+</li>
+<li>创建核心对象：数据库连接池对象 ComboPooledDataSource</li>
+<li>获取连接：getConnection</li>
+</ol>
+</li>
+</ul>
+<h2 id="Druid：数据库连接池技术，由阿里巴巴提供"><a href="#Druid：数据库连接池技术，由阿里巴巴提供" class="headerlink" title="Druid：数据库连接池技术，由阿里巴巴提供"></a>Druid：数据库连接池技术，由阿里巴巴提供</h2><ul>
+<li><p>步骤：</p>
+<ol>
+<li>导入jar包 druid-1.1.22.jar</li>
+<li>定义配置文件：<ul>
+<li>是properties形式的</li>
+<li>可以叫任意名称，可以放在任意目录下</li>
+</ul>
+</li>
+<li>获取数据库连接池对象：加载配置文件，然后通过工厂来获取 DruidDataSourceFactory</li>
+<li>获取连接：getConnection</li>
+</ol>
+</li>
+<li><p>定义工具类</p>
+<ol>
+<li>定义一个类 JDBCUtils</li>
+<li>提供静态代码块加载配置文件，初始化连接池对象</li>
+<li>提供方法：<ol>
+<li>获取连接方法：通过数据库连接池获取连接</li>
+<li>释放资源</li>
+<li>获取连接池对象的方法</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p><strong>代码实现示例</strong></p>
+<pre><code>    public class JDBCUtils {
+
+    private static DataSource ds;
+
+    //数据库连接池的初始化
+    static {
+        try {
+            Properties prop = new Properties();
+            prop.load(JDBCUtils.class.getClassLoader().getResourceAsStream(&quot;druid.properties&quot;));
+            ds = DruidDataSourceFactory.createDataSource(prop);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //获取连接的方法
+    public static Connection getConnection() throws SQLException {
+        return ds.getConnection();
+    }
+
+    //释放资源的方法
+    public static void close(Connection conn, Statement st, ResultSet rs) {
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        if (st != null) {
+            try {
+                st.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
+
+    //释放资源的方法
+    public static void close(Connection conn, Statement st) {
+        close(conn, st, null);
+    }
+
+    //获取连接池对象的方法
+    public static DataSource getDataSource() {
+        return ds;
+    }
+
+}</code></pre></li>
+</ul>
+<h1 id="Spring-JDBC"><a href="#Spring-JDBC" class="headerlink" title="Spring JDBC"></a>Spring JDBC</h1><ul>
+<li><p>Spring框架对JDBC的简单封装。提供了一个JDBCTemplate对象简化JDBC的开发。</p>
+</li>
+<li><p>步骤：</p>
+<ol>
+<li>导入jar包。</li>
+<li>创建JDBCTemplate对象。依赖于数据源DataSource。</li>
+<li>调用DBCTemplate来完成增删改查的操作。<ul>
+<li>update()：执行DML语句。</li>
+<li>queryForMap()：查询结果将结果集封装为Map集合，将一条记录封装为Map集合。<ul>
+<li>注意：这个方法查询的结果集长度只能是1。</li>
+</ul>
+</li>
+<li>queryForList()：查询结果将结果集封装为List集合。<ul>
+<li>注意：将每一条记录封装为Map集合，再将map集合装载到List集合中。</li>
+</ul>
+</li>
+<li>query()：查询结果将结果封装为JavaBean对象。<ul>
+<li>参数：RowMapper<ul>
+<li>一般我们使用BeanPropertyRowMapper实现类。可以完成数据到JavaBean的自动封装</li>
+<li>new BeanPropertyRowMapper&lt;类型&gt;（类型.class）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>queryForObject()：查询结果将结果封装为对象。<ul>
+<li>一般用于聚合函数的查询。</li>
+<li>queryForObject(sql语句, 返回值类型.class);</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-HTML" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -2144,97 +2376,6 @@ s  秒</code></pre><p>写对应的模式，会把模式替换为对应的日期�
 </ul>
 <hr>
 <p><strong><em>这些方法都可以用IDEA的自动代码生成，不用手写</em></strong></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-拆箱装箱" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/15/%E6%8B%86%E7%AE%B1%E8%A3%85%E7%AE%B1/"
-    >JAVA中的拆装箱</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/15/%E6%8B%86%E7%AE%B1%E8%A3%85%E7%AE%B1/" class="article-date">
-  <time datetime="2020-04-14T16:00:00.000Z" itemprop="datePublished">2020-04-15</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <h2 id="装箱（拿int类型与Integer类型为例）"><a href="#装箱（拿int类型与Integer类型为例）" class="headerlink" title="装箱（拿int类型与Integer类型为例）"></a>装箱（拿int类型与Integer类型为例）</h2><p>装箱：把基本的数据类型包装到包装类中。</p>
-<p><strong>构造方法：</strong></p>
-<p><code>Integer(int value)；</code>构造一个新分配的 Integer 对象，它表示指定的 int 值。</p>
-<p><code>Integer(String s)；</code>构造一个新分配的 Integer 对象，它表示 String 参数所指示的 int 值。</p>
-<p><strong><em>注意：传递的字符串必须是与此包装类相同的基本类型字符串，否则会抛出异常。</em></strong></p>
-<p><strong>成员方法：</strong></p>
-<p><code>static Integer valueOf(int i)；</code>返回一个表示指定的 int 值的 Integer 实例。</p>
-<p><code>static Integer valueOf(String s)</code>；返回保存指定的 String 的值的 Integer 对象。</p>
-<hr>
-<h2 id="拆箱（拿int类型与Integer类型为例）"><a href="#拆箱（拿int类型与Integer类型为例）" class="headerlink" title="拆箱（拿int类型与Integer类型为例）"></a>拆箱（拿int类型与Integer类型为例）</h2><p>拆箱：在包装类中取出基本类型的数据。</p>
-<p><strong>成员方法：</strong><br><code>int intValue()；</code>以 int 类型返回该 Integer 的值。</p>
-<hr>
-<p>自动装箱与自动拆箱，如：</p>
-<p>自动装箱   Integer integer = 1；</p>
-<p>自动拆箱   integer = integer + 2;</p>
-<p><strong>integer是包装类，无法进行计算，所以自动拆箱了，然后又赋值给integer，自动装箱了。</strong></p>
-<p>其他基本类型与包装类之间的装箱拆箱也与此差不多。</p>
-<hr>
-<p>有关拆箱装箱简要描述，如需知道更多自己查询。</p>
 
       
       <!-- reward -->

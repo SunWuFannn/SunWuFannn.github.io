@@ -68,6 +68,170 @@
     
     
     
+    <article id="post-Cookie" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/12/Cookie/"
+    >Cookie</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/12/Cookie/" class="article-date">
+  <time datetime="2020-05-11T16:00:00.000Z" itemprop="datePublished">2020-05-12</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaWeb/">JavaWeb</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h1><ul>
+<li><p>会话：一次会话中包含多次请求和响应。</p>
+<ul>
+<li>一次会话：浏览器第一次给服务器资源发送请求，会话建立，直到有一方断开为止</li>
+</ul>
+</li>
+<li><p>功能：在一次会话范围内的多次请求间，共享数据。</p>
+</li>
+<li><p>方式：</p>
+<ol>
+<li>客户端会话技术：Cookie</li>
+<li>服务器端会话技术：Session</li>
+</ol>
+</li>
+<li><p><strong>概念：</strong>客户端会话技术，将数据保存到客户端。</p>
+</li>
+<li><p><strong>快速入门：</strong></p>
+<ul>
+<li><strong>使用步骤：</strong><ol>
+<li>创建Cookie对象，绑定数据<ul>
+<li>new Cookie(String name, String value)</li>
+</ul>
+</li>
+<li>发送Cookie对象<ul>
+<li>resp.addCookie(Cookie cookie)</li>
+</ul>
+</li>
+<li>获取Cookie，拿到数据<ul>
+<li>req.getCookies()</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><strong>实现原理</strong></p>
+<ul>
+<li>基于响应体set-cookie和请求头cookie实现</li>
+</ul>
+</li>
+<li><p><strong>cookie的细节</strong></p>
+<ol>
+<li>一次可不可以发送多个cookie？<ul>
+<li>可以</li>
+<li>可以创建多个cookie对象，然后用addCookie发送</li>
+</ul>
+</li>
+<li>cookie在浏览器中保存多长时间？<ul>
+<li>默认情况下，浏览器关闭后，cookie数据被销毁</li>
+<li>持久化存储：setMaxAge(int seconds)<ol>
+<li>正数：将Cookie数据写到硬盘的文件中，持久化存储，数值代表cookie存活时间</li>
+<li>负数：默认值</li>
+<li>零：删除cookie信息</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>cookie能不能存中文？<ul>
+<li>在tomcat8之前，cookie中不能直接存储中文数据，需要将中文数据转码，一般采用URL编码</li>
+<li>tomcat8之后可以存储</li>
+</ul>
+</li>
+<li>cookie获取范围是多大？<ol>
+<li>假设在一个tomcat服务器中，部署了多个web项目，那么在这些web项目中，cookie能不能共享？<ul>
+<li>默认情况下，cookie不能共享</li>
+<li>setPath(String path)：设置cookie的获取范围，默认情况下设置当前的虚拟目录</li>
+<li>如果要共享，则可以将path设置为”/“</li>
+</ul>
+</li>
+<li>不同的tomcat服务器获取cookie？<ul>
+<li>setDomain(String path)：如果设置一级域名相同，那么多个服务器之间cookie可以共享</li>
+<li>如：setDomain(“.baidu.com”)，那么tieba.baidu.com和news.baidu.com可以共享cookie</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p><strong>cookie的特点和作用</strong></p>
+<ol>
+<li>cookie存储数据在客户端浏览器，不太安全</li>
+<li>浏览器对于单个cookie有限制(4kb左右)，以及对同一个域名下的总cookie数量也有限制 (20个左右)</li>
+</ol>
+<ul>
+<li>作用：<ol>
+<li>cookie一般用于存储少量的不太敏感的数据</li>
+<li>在不登录的情况下，完成服务器对客户端的身份识别</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cookie/" rel="tag">Cookie</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-javaweb_HTTP" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -2288,238 +2452,6 @@ resp.setHeader(&quot;location&quot;,&quot;/javaweb_tomcat_war_exploded/ResponseD
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-ConnPool" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/28/ConnPool/"
-    >数据库连接池</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/28/ConnPool/" class="article-date">
-  <time datetime="2020-04-27T16:00:00.000Z" itemprop="datePublished">2020-04-28</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <h1 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h1><ul>
-<li><p><strong>概念：</strong> 其实就是一个容器（集合），存放数据库连接的容器。当系统初始化好后，容器被创建，容器中会申请一些连接对象，当用户来访问数据库时，从容器中获取连接对象，用户访问完之后，会将连接对象归还给容器。</p>
-</li>
-<li><p><strong>好处：</strong> </p>
-<ol>
-<li>节约资源</li>
-<li>用户访问高效</li>
-</ol>
-</li>
-<li><p><strong>实现：</strong></p>
-<ol>
-<li><p>标准接口：DataSource</p>
-<ol>
-<li>方法：<ul>
-<li>获取连接：getConnection()</li>
-<li>归还连接：Connection.close()。如果连接对象Connection是从连接池中获取的，那么调用Connection.close()方法，则不会再关闭连接了，而是归还连接。</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>一般我们不去实现它，有数据库厂商来实现</p>
-<ol>
-<li>C3P0：数据库连接池技术。</li>
-<li>Druid：数据库连接池技术，由阿里巴巴提供。</li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
-<h2 id="C3P0：数据库连接池技术"><a href="#C3P0：数据库连接池技术" class="headerlink" title="C3P0：数据库连接池技术"></a>C3P0：数据库连接池技术</h2><ul>
-<li>步骤：<ol>
-<li>导入jar包（两个） c3p0-0.9.5.5-sources.jar和mchange-commons-java-0.2.19-sources.jar</li>
-<li>定义配置文件：<ul>
-<li>名称：c3p0.properties或者c3p0-config.xml</li>
-<li>路径：直接将文件放在src目录下即可</li>
-</ul>
-</li>
-<li>创建核心对象：数据库连接池对象 ComboPooledDataSource</li>
-<li>获取连接：getConnection</li>
-</ol>
-</li>
-</ul>
-<h2 id="Druid：数据库连接池技术，由阿里巴巴提供"><a href="#Druid：数据库连接池技术，由阿里巴巴提供" class="headerlink" title="Druid：数据库连接池技术，由阿里巴巴提供"></a>Druid：数据库连接池技术，由阿里巴巴提供</h2><ul>
-<li><p>步骤：</p>
-<ol>
-<li>导入jar包 druid-1.1.22.jar</li>
-<li>定义配置文件：<ul>
-<li>是properties形式的</li>
-<li>可以叫任意名称，可以放在任意目录下</li>
-</ul>
-</li>
-<li>获取数据库连接池对象：加载配置文件，然后通过工厂来获取 DruidDataSourceFactory</li>
-<li>获取连接：getConnection</li>
-</ol>
-</li>
-<li><p>定义工具类</p>
-<ol>
-<li>定义一个类 JDBCUtils</li>
-<li>提供静态代码块加载配置文件，初始化连接池对象</li>
-<li>提供方法：<ol>
-<li>获取连接方法：通过数据库连接池获取连接</li>
-<li>释放资源</li>
-<li>获取连接池对象的方法</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p><strong>代码实现示例</strong></p>
-<pre><code>    public class JDBCUtils {
-
-    private static DataSource ds;
-
-    //数据库连接池的初始化
-    static {
-        try {
-            Properties prop = new Properties();
-            prop.load(JDBCUtils.class.getClassLoader().getResourceAsStream(&quot;druid.properties&quot;));
-            ds = DruidDataSourceFactory.createDataSource(prop);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    //获取连接的方法
-    public static Connection getConnection() throws SQLException {
-        return ds.getConnection();
-    }
-
-    //释放资源的方法
-    public static void close(Connection conn, Statement st, ResultSet rs) {
-        if (rs != null) {
-            try {
-                rs.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
-        if (st != null) {
-            try {
-                st.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
-        if (conn != null) {
-            try {
-                conn.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
-    }
-
-    //释放资源的方法
-    public static void close(Connection conn, Statement st) {
-        close(conn, st, null);
-    }
-
-    //获取连接池对象的方法
-    public static DataSource getDataSource() {
-        return ds;
-    }
-
-}</code></pre></li>
-</ul>
-<h1 id="Spring-JDBC"><a href="#Spring-JDBC" class="headerlink" title="Spring JDBC"></a>Spring JDBC</h1><ul>
-<li><p>Spring框架对JDBC的简单封装。提供了一个JDBCTemplate对象简化JDBC的开发。</p>
-</li>
-<li><p>步骤：</p>
-<ol>
-<li>导入jar包。</li>
-<li>创建JDBCTemplate对象。依赖于数据源DataSource。</li>
-<li>调用DBCTemplate来完成增删改查的操作。<ul>
-<li>update()：执行DML语句。</li>
-<li>queryForMap()：查询结果将结果集封装为Map集合，将一条记录封装为Map集合。<ul>
-<li>注意：这个方法查询的结果集长度只能是1。</li>
-</ul>
-</li>
-<li>queryForList()：查询结果将结果集封装为List集合。<ul>
-<li>注意：将每一条记录封装为Map集合，再将map集合装载到List集合中。</li>
-</ul>
-</li>
-<li>query()：查询结果将结果封装为JavaBean对象。<ul>
-<li>参数：RowMapper<ul>
-<li>一般我们使用BeanPropertyRowMapper实现类。可以完成数据到JavaBean的自动封装</li>
-<li>new BeanPropertyRowMapper&lt;类型&gt;（类型.class）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>queryForObject()：查询结果将结果封装为对象。<ul>
-<li>一般用于聚合函数的查询。</li>
-<li>queryForObject(sql语句, 返回值类型.class);</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
 
 
     </footer>

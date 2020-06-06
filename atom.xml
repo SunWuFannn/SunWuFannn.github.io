@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="www.nidiedie.com/"/>
-  <updated>2020-05-29T08:18:50.977Z</updated>
+  <updated>2020-06-06T12:34:34.708Z</updated>
   <id>www.nidiedie.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="www.nidiedie.com/2020/05/29/Maven/"/>
     <id>www.nidiedie.com/2020/05/29/Maven/</id>
     <published>2020-05-28T16:00:00.000Z</published>
-    <updated>2020-05-29T08:18:50.977Z</updated>
+    <updated>2020-06-06T12:34:34.708Z</updated>
     
     <summary type="html">
     
@@ -36,14 +36,14 @@
     </summary>
     
     
-      <category term="javaweb" scheme="www.nidiedie.com/categories/javaweb/"/>
+      <category term="JavaWeb" scheme="www.nidiedie.com/categories/JavaWeb/"/>
     
     
       <category term="学习笔记" scheme="www.nidiedie.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
       <category term="数据库" scheme="www.nidiedie.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-      <category term="javaweb" scheme="www.nidiedie.com/tags/javaweb/"/>
+      <category term="JavaWeb" scheme="www.nidiedie.com/tags/JavaWeb/"/>
     
       <category term="Maven" scheme="www.nidiedie.com/tags/Maven/"/>
     
